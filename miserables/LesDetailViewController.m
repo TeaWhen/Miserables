@@ -25,16 +25,16 @@
         // Update the view.
         [self configureView];
     }
-
+    
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
+    }
 }
 
 - (void)configureView
 {
     // Update the user interface for the detail item.
-
+    
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
     }
@@ -45,6 +45,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+
+    NSString *urlString = @"http://www.baidu.com/";
+    NSURL *url = [NSURL URLWithString: urlString];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    
+    [webView loadRequest:req];
+    [addressBar setText:urlString];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +74,13 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+- (IBAction)goURL:(id)sender {
+    NSURL *url = [NSURL URLWithString:[addressBar text]];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:req];
+    [addressBar resignFirstResponder];
 }
 
 @end

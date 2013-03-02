@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LesDetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface LesDetailViewController : UIViewController <UISplitViewControllerDelegate> {
+    IBOutlet UIWebView *webView;
+    IBOutlet UITextField *addressBar;
+    UIActivityIndicatorView *activityIndicatorView;
+}
+- (IBAction)goURL:(id)sender;
 
 @property (strong, nonatomic) id detailItem;
 
