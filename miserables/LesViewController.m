@@ -10,7 +10,7 @@
 
 @interface LesViewController () <UISearchBarDelegate>
 
-@property (weak, nonatomic) IBOutlet UISearchBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -38,7 +38,6 @@
 {
     [self.searchBar setHidden:NO];
     [self.searchBar becomeFirstResponder];
-    NSLog(@"miaomiao");
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *) searchBar
@@ -48,14 +47,26 @@
 
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
 {
-    NSLog(@"searchBarCancelButtonClicked");
     [self.searchBar setHidden:YES];
     [self.searchBar resignFirstResponder];
 }
 
-- (void) searchBarSearchButtonClicked:(id)sender
+- (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
 {
-    NSLog(@"Search");
+    NSMutableString *pageURL = [NSMutableString stringWithString:@"http://www.baidu.com/"];
+    [pageURL appendString:[self.searchBar text]];
+    NSURL *url = [NSURL URLWithString:pageURL];
+    
+    NSMutableString *html = [NSMutableString stringWithString:@"<html><body><h1>"];
+    [html appendString:[self.searchBar text]];
+    [html appendString:@"</h1><h2>据说很厉害！</h2></body></html>"];
+    
+    [self.webView loadHTMLString:html baseURL:url];
+    NSLog(pageURL);
+    [self.searchBar setHidden:YES];
+    self.navigationBar.topItem.title = [self.searchBar text];
+    [self.searchBar resignFirstResponder];
+    [self.webView becomeFirstResponder];
 }
 
 @end
