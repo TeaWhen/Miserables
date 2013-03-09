@@ -20,8 +20,12 @@
 		1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7A16EB123400EF7BBE /* LesViewController.m */; };
 		1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8516EB1E4900EF7BBE /* icon.png */; };
 		1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */; };
-		1AF87C7116EB5B77003292B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C7016EB5B77003292B0 /* CoreData.framework */; };
-		1AF87C7416EB5BC3003292B0 /* Miserables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7216EB5BC3003292B0 /* Miserables.xcdatamodeld */; };
+		1AF87C8116EB6B27003292B0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7716EB6B27003292B0 /* FMDatabase.m */; };
+		1AF87C8216EB6B27003292B0 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7916EB6B27003292B0 /* FMDatabaseAdditions.m */; };
+		1AF87C8316EB6B27003292B0 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7B16EB6B27003292B0 /* FMDatabasePool.m */; };
+		1AF87C8416EB6B27003292B0 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7D16EB6B27003292B0 /* FMDatabaseQueue.m */; };
+		1AF87C8616EB6B27003292B0 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C8016EB6B27003292B0 /* FMResultSet.m */; };
+		1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,19 +47,17 @@
 		1A1A4A7A16EB123400EF7BBE /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
 		1A1A4A8516EB1E4900EF7BBE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		1AF87C7016EB5B77003292B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		1AF87C7316EB5BC3003292B0 /* Miserables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Miserables.xcdatamodel; sourceTree = "<group>"; };
-		ABD39DB416EB6943000E394E /* FMDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		ABD39DB516EB6943000E394E /* FMDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		ABD39DB616EB6943000E394E /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		ABD39DB716EB6943000E394E /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		ABD39DB816EB6943000E394E /* FMDatabasePool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		ABD39DB916EB6943000E394E /* FMDatabasePool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		ABD39DBA16EB6943000E394E /* FMDatabaseQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		ABD39DBB16EB6943000E394E /* FMDatabaseQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		ABD39DBC16EB6943000E394E /* fmdb.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fmdb.m; sourceTree = "<group>"; };
-		ABD39DBD16EB6943000E394E /* FMResultSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		ABD39DBE16EB6943000E394E /* FMResultSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		1AF87C7616EB6B27003292B0 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		1AF87C7716EB6B27003292B0 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		1AF87C7816EB6B27003292B0 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		1AF87C7916EB6B27003292B0 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		1AF87C7A16EB6B27003292B0 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		1AF87C7B16EB6B27003292B0 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		1AF87C7C16EB6B27003292B0 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		1AF87C7D16EB6B27003292B0 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AF87C7116EB5B77003292B0 /* CoreData.framework in Frameworks */,
+				1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */,
 				1A1A4A5F16EB123400EF7BBE /* UIKit.framework in Frameworks */,
 				1A1A4A6116EB123400EF7BBE /* Foundation.framework in Frameworks */,
 				1A1A4A6316EB123400EF7BBE /* CoreGraphics.framework in Frameworks */,
@@ -76,7 +78,7 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
-				1AF87C7216EB5BC3003292B0 /* Miserables.xcdatamodeld */,
+				1AF87C7516EB6B27003292B0 /* FMDB */,
 				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
@@ -97,7 +99,7 @@
 		1A1A4A5D16EB123400EF7BBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1AF87C7016EB5B77003292B0 /* CoreData.framework */,
+				1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */,
 				1A1A4A5E16EB123400EF7BBE /* UIKit.framework */,
 				1A1A4A6016EB123400EF7BBE /* Foundation.framework */,
 				1A1A4A6216EB123400EF7BBE /* CoreGraphics.framework */,
@@ -132,22 +134,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		ABD39DB316EB6943000E394E /* fmdb */ = {
+		1AF87C7516EB6B27003292B0 /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
-				ABD39DB416EB6943000E394E /* FMDatabase.h */,
-				ABD39DB516EB6943000E394E /* FMDatabase.m */,
-				ABD39DB616EB6943000E394E /* FMDatabaseAdditions.h */,
-				ABD39DB716EB6943000E394E /* FMDatabaseAdditions.m */,
-				ABD39DB816EB6943000E394E /* FMDatabasePool.h */,
-				ABD39DB916EB6943000E394E /* FMDatabasePool.m */,
-				ABD39DBA16EB6943000E394E /* FMDatabaseQueue.h */,
-				ABD39DBB16EB6943000E394E /* FMDatabaseQueue.m */,
-				ABD39DBC16EB6943000E394E /* fmdb.m */,
-				ABD39DBD16EB6943000E394E /* FMResultSet.h */,
-				ABD39DBE16EB6943000E394E /* FMResultSet.m */,
+				1AF87C7616EB6B27003292B0 /* FMDatabase.h */,
+				1AF87C7716EB6B27003292B0 /* FMDatabase.m */,
+				1AF87C7816EB6B27003292B0 /* FMDatabaseAdditions.h */,
+				1AF87C7916EB6B27003292B0 /* FMDatabaseAdditions.m */,
+				1AF87C7A16EB6B27003292B0 /* FMDatabasePool.h */,
+				1AF87C7B16EB6B27003292B0 /* FMDatabasePool.m */,
+				1AF87C7C16EB6B27003292B0 /* FMDatabaseQueue.h */,
+				1AF87C7D16EB6B27003292B0 /* FMDatabaseQueue.m */,
+				1AF87C7F16EB6B27003292B0 /* FMResultSet.h */,
+				1AF87C8016EB6B27003292B0 /* FMResultSet.m */,
 			);
-			name = fmdb;
+			name = FMDB;
 			path = fmdb/src;
 			sourceTree = "<group>";
 		};
@@ -223,7 +224,11 @@
 				1A1A4A6B16EB123400EF7BBE /* main.m in Sources */,
 				1A1A4A6F16EB123400EF7BBE /* LesAppDelegate.m in Sources */,
 				1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */,
-				1AF87C7416EB5BC3003292B0 /* Miserables.xcdatamodeld in Sources */,
+				1AF87C8116EB6B27003292B0 /* FMDatabase.m in Sources */,
+				1AF87C8216EB6B27003292B0 /* FMDatabaseAdditions.m in Sources */,
+				1AF87C8316EB6B27003292B0 /* FMDatabasePool.m in Sources */,
+				1AF87C8416EB6B27003292B0 /* FMDatabaseQueue.m in Sources */,
+				1AF87C8616EB6B27003292B0 /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,20 +354,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1AF87C7216EB5BC3003292B0 /* Miserables.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1AF87C7316EB5BC3003292B0 /* Miserables.xcdatamodel */,
-			);
-			currentVersion = 1AF87C7316EB5BC3003292B0 /* Miserables.xcdatamodel */;
-			name = Miserables.xcdatamodeld;
-			path = Miserables/Miserables.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1A1A4A5316EB123400EF7BBE /* Project object */;
 }
