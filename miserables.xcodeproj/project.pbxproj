@@ -18,6 +18,8 @@
 		1A1A4A7516EB123400EF7BBE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */; };
 		1A1A4A7816EB123400EF7BBE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */; };
 		1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7A16EB123400EF7BBE /* LesViewController.m */; };
+		1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8516EB1E4900EF7BBE /* icon.png */; };
+		1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		1A1A4A7716EB123400EF7BBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1A1A4A7916EB123400EF7BBE /* LesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesViewController.h; sourceTree = "<group>"; };
 		1A1A4A7A16EB123400EF7BBE /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
+		1A1A4A8516EB1E4900EF7BBE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
+				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
+				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				1A1A4A5D16EB123400EF7BBE /* Frameworks */,
 				1A1A4A5C16EB123400EF7BBE /* Products */,
@@ -164,6 +170,8 @@
 				1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */,
 				1A1A4A7516EB123400EF7BBE /* Default-568h@2x.png in Resources */,
 				1A1A4A7816EB123400EF7BBE /* MainStoryboard.storyboard in Resources */,
+				1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */,
+				1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +307,7 @@
 				1A1A4A8016EB123400EF7BBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
