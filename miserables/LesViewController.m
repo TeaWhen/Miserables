@@ -57,12 +57,13 @@
     [pageURL appendString:[self.searchBar text]];
     NSURL *url = [NSURL URLWithString:pageURL];
     
-    NSMutableString *html = [NSMutableString stringWithString:@"<html><body><h1>"];
+    NSMutableString *html = [NSMutableString stringWithString:@"<html><head><style type=\"text/css\">"];
+    [html appendString:@"body {font-size: px;} "];
+    [html appendString:@"</style></head><body><h1>"];
     [html appendString:[self.searchBar text]];
     [html appendString:@"</h1><h2>据说很厉害！</h2></body></html>"];
     
     [self.webView loadHTMLString:html baseURL:url];
-    NSLog(pageURL);
     [self.searchBar setHidden:YES];
     self.navigationBar.topItem.title = [self.searchBar text];
     [self.searchBar resignFirstResponder];
