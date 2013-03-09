@@ -1,21 +1,13 @@
 //
-//  LesDetailViewController.h
-//  miserables
+//  LesViewController.h
+//  Miserables
 //
-//  Created by Yan Zheng on 13-3-2.
-//  Copyright (c) 2013年 Eksband. All rights reserved.
+//  Created by Xhacker on 2013-03-09.
+//  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface LesViewController : UIViewController <UISplitViewControllerDelegate> {
-    IBOutlet UIWebView *webView;
-    IBOutlet UITextField *addressBar;
-    UIActivityIndicatorView *activityIndicatorView;
-}
-- (IBAction)goURL:(id)sender;
+@interface LesViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
-
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

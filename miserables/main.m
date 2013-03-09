@@ -1,9 +1,9 @@
 //
 //  main.m
-//  miserables
+//  Miserables
 //
-//  Created by Yan Zheng on 13-3-2.
-//  Copyright (c) 2013年 Eksband. All rights reserved.
+//  Created by Xhacker on 2013-03-09.
+//  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

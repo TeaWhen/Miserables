@@ -7,112 +7,102 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB97136C16E217E500F037B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB97136B16E217E500F037B8 /* UIKit.framework */; };
-		AB97136E16E217E500F037B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB97136D16E217E500F037B8 /* Foundation.framework */; };
-		AB97137016E217E500F037B8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB97136F16E217E500F037B8 /* CoreGraphics.framework */; };
-		AB97137216E217E500F037B8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB97137116E217E500F037B8 /* CoreData.framework */; };
-		AB97137816E217E500F037B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB97137616E217E500F037B8 /* InfoPlist.strings */; };
-		AB97137A16E217E500F037B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97137916E217E500F037B8 /* main.m */; };
-		AB97137E16E217E500F037B8 /* LesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97137D16E217E500F037B8 /* LesAppDelegate.m */; };
-		AB97138016E217E500F037B8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AB97137F16E217E500F037B8 /* Default.png */; };
-		AB97138216E217E500F037B8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB97138116E217E500F037B8 /* Default@2x.png */; };
-		AB97138416E217E500F037B8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB97138316E217E500F037B8 /* Default-568h@2x.png */; };
-		AB97138716E217E500F037B8 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB97138516E217E500F037B8 /* MainStoryboard_iPhone.storyboard */; };
-		AB97138A16E217E500F037B8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB97138816E217E500F037B8 /* MainStoryboard_iPad.storyboard */; };
-		AB97138D16E217E500F037B8 /* miserables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB97138B16E217E500F037B8 /* miserables.xcdatamodeld */; };
-		AB97139316E217E500F037B8 /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97139216E217E500F037B8 /* LesViewController.m */; };
+		1A1A4A5F16EB123400EF7BBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A4A5E16EB123400EF7BBE /* UIKit.framework */; };
+		1A1A4A6116EB123400EF7BBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A4A6016EB123400EF7BBE /* Foundation.framework */; };
+		1A1A4A6316EB123400EF7BBE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A4A6216EB123400EF7BBE /* CoreGraphics.framework */; };
+		1A1A4A6916EB123400EF7BBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A6716EB123400EF7BBE /* InfoPlist.strings */; };
+		1A1A4A6B16EB123400EF7BBE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A6A16EB123400EF7BBE /* main.m */; };
+		1A1A4A6F16EB123400EF7BBE /* LesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */; };
+		1A1A4A7116EB123400EF7BBE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7016EB123400EF7BBE /* Default.png */; };
+		1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7216EB123400EF7BBE /* Default@2x.png */; };
+		1A1A4A7516EB123400EF7BBE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */; };
+		1A1A4A7816EB123400EF7BBE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */; };
+		1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7A16EB123400EF7BBE /* LesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AB97136816E217E500F037B8 /* miserables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = miserables.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB97136B16E217E500F037B8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		AB97136D16E217E500F037B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		AB97136F16E217E500F037B8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		AB97137116E217E500F037B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		AB97137516E217E500F037B8 /* miserables-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "miserables-Info.plist"; sourceTree = "<group>"; };
-		AB97137716E217E500F037B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AB97137916E217E500F037B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AB97137B16E217E500F037B8 /* miserables-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "miserables-Prefix.pch"; sourceTree = "<group>"; };
-		AB97137C16E217E500F037B8 /* LesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesAppDelegate.h; sourceTree = "<group>"; };
-		AB97137D16E217E500F037B8 /* LesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesAppDelegate.m; sourceTree = "<group>"; };
-		AB97137F16E217E500F037B8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		AB97138116E217E500F037B8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		AB97138316E217E500F037B8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		AB97138616E217E500F037B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		AB97138916E217E500F037B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		AB97138C16E217E500F037B8 /* miserables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = miserables.xcdatamodel; sourceTree = "<group>"; };
-		AB97139116E217E500F037B8 /* LesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesViewController.h; sourceTree = "<group>"; };
-		AB97139216E217E500F037B8 /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
+		1A1A4A5B16EB123400EF7BBE /* Miserables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Miserables.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A1A4A5E16EB123400EF7BBE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1A1A4A6016EB123400EF7BBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1A1A4A6216EB123400EF7BBE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1A1A4A6616EB123400EF7BBE /* Miserables-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Miserables-Info.plist"; sourceTree = "<group>"; };
+		1A1A4A6816EB123400EF7BBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1A1A4A6A16EB123400EF7BBE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1A1A4A6C16EB123400EF7BBE /* Miserables-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Miserables-Prefix.pch"; sourceTree = "<group>"; };
+		1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesAppDelegate.h; sourceTree = "<group>"; };
+		1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesAppDelegate.m; sourceTree = "<group>"; };
+		1A1A4A7016EB123400EF7BBE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		1A1A4A7216EB123400EF7BBE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1A1A4A7716EB123400EF7BBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		1A1A4A7916EB123400EF7BBE /* LesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesViewController.h; sourceTree = "<group>"; };
+		1A1A4A7A16EB123400EF7BBE /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AB97136516E217E500F037B8 /* Frameworks */ = {
+		1A1A4A5816EB123400EF7BBE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB97136C16E217E500F037B8 /* UIKit.framework in Frameworks */,
-				AB97136E16E217E500F037B8 /* Foundation.framework in Frameworks */,
-				AB97137016E217E500F037B8 /* CoreGraphics.framework in Frameworks */,
-				AB97137216E217E500F037B8 /* CoreData.framework in Frameworks */,
+				1A1A4A5F16EB123400EF7BBE /* UIKit.framework in Frameworks */,
+				1A1A4A6116EB123400EF7BBE /* Foundation.framework in Frameworks */,
+				1A1A4A6316EB123400EF7BBE /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB97135F16E217E500F037B8 = {
+		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
-				AB97137316E217E500F037B8 /* miserables */,
-				AB97136A16E217E500F037B8 /* Frameworks */,
-				AB97136916E217E500F037B8 /* Products */,
+				1A1A4A6416EB123400EF7BBE /* Miserables */,
+				1A1A4A5D16EB123400EF7BBE /* Frameworks */,
+				1A1A4A5C16EB123400EF7BBE /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AB97136916E217E500F037B8 /* Products */ = {
+		1A1A4A5C16EB123400EF7BBE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB97136816E217E500F037B8 /* miserables.app */,
+				1A1A4A5B16EB123400EF7BBE /* Miserables.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AB97136A16E217E500F037B8 /* Frameworks */ = {
+		1A1A4A5D16EB123400EF7BBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AB97136B16E217E500F037B8 /* UIKit.framework */,
-				AB97136D16E217E500F037B8 /* Foundation.framework */,
-				AB97136F16E217E500F037B8 /* CoreGraphics.framework */,
-				AB97137116E217E500F037B8 /* CoreData.framework */,
+				1A1A4A5E16EB123400EF7BBE /* UIKit.framework */,
+				1A1A4A6016EB123400EF7BBE /* Foundation.framework */,
+				1A1A4A6216EB123400EF7BBE /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AB97137316E217E500F037B8 /* miserables */ = {
+		1A1A4A6416EB123400EF7BBE /* Miserables */ = {
 			isa = PBXGroup;
 			children = (
-				AB97137C16E217E500F037B8 /* LesAppDelegate.h */,
-				AB97137D16E217E500F037B8 /* LesAppDelegate.m */,
-				AB97138516E217E500F037B8 /* MainStoryboard_iPhone.storyboard */,
-				AB97138816E217E500F037B8 /* MainStoryboard_iPad.storyboard */,
-				AB97139116E217E500F037B8 /* LesViewController.h */,
-				AB97139216E217E500F037B8 /* LesViewController.m */,
-				AB97138B16E217E500F037B8 /* miserables.xcdatamodeld */,
-				AB97137416E217E500F037B8 /* Supporting Files */,
+				1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */,
+				1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */,
+				1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */,
+				1A1A4A7916EB123400EF7BBE /* LesViewController.h */,
+				1A1A4A7A16EB123400EF7BBE /* LesViewController.m */,
+				1A1A4A6516EB123400EF7BBE /* Supporting Files */,
 			);
-			path = miserables;
+			path = Miserables;
 			sourceTree = "<group>";
 		};
-		AB97137416E217E500F037B8 /* Supporting Files */ = {
+		1A1A4A6516EB123400EF7BBE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AB97137516E217E500F037B8 /* miserables-Info.plist */,
-				AB97137616E217E500F037B8 /* InfoPlist.strings */,
-				AB97137916E217E500F037B8 /* main.m */,
-				AB97137B16E217E500F037B8 /* miserables-Prefix.pch */,
-				AB97137F16E217E500F037B8 /* Default.png */,
-				AB97138116E217E500F037B8 /* Default@2x.png */,
-				AB97138316E217E500F037B8 /* Default-568h@2x.png */,
+				1A1A4A6616EB123400EF7BBE /* Miserables-Info.plist */,
+				1A1A4A6716EB123400EF7BBE /* InfoPlist.strings */,
+				1A1A4A6A16EB123400EF7BBE /* main.m */,
+				1A1A4A6C16EB123400EF7BBE /* Miserables-Prefix.pch */,
+				1A1A4A7016EB123400EF7BBE /* Default.png */,
+				1A1A4A7216EB123400EF7BBE /* Default@2x.png */,
+				1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -120,109 +110,99 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AB97136716E217E500F037B8 /* miserables */ = {
+		1A1A4A5A16EB123400EF7BBE /* Miserables */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB97139616E217E500F037B8 /* Build configuration list for PBXNativeTarget "miserables" */;
+			buildConfigurationList = 1A1A4A7E16EB123400EF7BBE /* Build configuration list for PBXNativeTarget "Miserables" */;
 			buildPhases = (
-				AB97136416E217E500F037B8 /* Sources */,
-				AB97136516E217E500F037B8 /* Frameworks */,
-				AB97136616E217E500F037B8 /* Resources */,
+				1A1A4A5716EB123400EF7BBE /* Sources */,
+				1A1A4A5816EB123400EF7BBE /* Frameworks */,
+				1A1A4A5916EB123400EF7BBE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = miserables;
-			productName = miserables;
-			productReference = AB97136816E217E500F037B8 /* miserables.app */;
+			name = Miserables;
+			productName = Miserables;
+			productReference = 1A1A4A5B16EB123400EF7BBE /* Miserables.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AB97136016E217E500F037B8 /* Project object */ = {
+		1A1A4A5316EB123400EF7BBE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Les;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Eksband;
 			};
-			buildConfigurationList = AB97136316E217E500F037B8 /* Build configuration list for PBXProject "miserables" */;
+			buildConfigurationList = 1A1A4A5616EB123400EF7BBE /* Build configuration list for PBXProject "Miserables" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = AB97135F16E217E500F037B8;
-			productRefGroup = AB97136916E217E500F037B8 /* Products */;
+			mainGroup = 1A1A4A5216EB123400EF7BBE;
+			productRefGroup = 1A1A4A5C16EB123400EF7BBE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AB97136716E217E500F037B8 /* miserables */,
+				1A1A4A5A16EB123400EF7BBE /* Miserables */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AB97136616E217E500F037B8 /* Resources */ = {
+		1A1A4A5916EB123400EF7BBE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB97137816E217E500F037B8 /* InfoPlist.strings in Resources */,
-				AB97138016E217E500F037B8 /* Default.png in Resources */,
-				AB97138216E217E500F037B8 /* Default@2x.png in Resources */,
-				AB97138416E217E500F037B8 /* Default-568h@2x.png in Resources */,
-				AB97138716E217E500F037B8 /* MainStoryboard_iPhone.storyboard in Resources */,
-				AB97138A16E217E500F037B8 /* MainStoryboard_iPad.storyboard in Resources */,
+				1A1A4A6916EB123400EF7BBE /* InfoPlist.strings in Resources */,
+				1A1A4A7116EB123400EF7BBE /* Default.png in Resources */,
+				1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */,
+				1A1A4A7516EB123400EF7BBE /* Default-568h@2x.png in Resources */,
+				1A1A4A7816EB123400EF7BBE /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AB97136416E217E500F037B8 /* Sources */ = {
+		1A1A4A5716EB123400EF7BBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB97137A16E217E500F037B8 /* main.m in Sources */,
-				AB97137E16E217E500F037B8 /* LesAppDelegate.m in Sources */,
-				AB97138D16E217E500F037B8 /* miserables.xcdatamodeld in Sources */,
-				AB97139316E217E500F037B8 /* LesViewController.m in Sources */,
+				1A1A4A6B16EB123400EF7BBE /* main.m in Sources */,
+				1A1A4A6F16EB123400EF7BBE /* LesAppDelegate.m in Sources */,
+				1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AB97137616E217E500F037B8 /* InfoPlist.strings */ = {
+		1A1A4A6716EB123400EF7BBE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AB97137716E217E500F037B8 /* en */,
+				1A1A4A6816EB123400EF7BBE /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		AB97138516E217E500F037B8 /* MainStoryboard_iPhone.storyboard */ = {
+		1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AB97138616E217E500F037B8 /* en */,
+				1A1A4A7716EB123400EF7BBE /* en */,
 			);
-			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		AB97138816E217E500F037B8 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB97138916E217E500F037B8 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
+			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		AB97139416E217E500F037B8 /* Debug */ = {
+		1A1A4A7C16EB123400EF7BBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -250,11 +230,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		AB97139516E217E500F037B8 /* Release */ = {
+		1A1A4A7D16EB123400EF7BBE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -275,28 +254,27 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		AB97139716E217E500F037B8 /* Debug */ = {
+		1A1A4A7F16EB123400EF7BBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "miserables/miserables-Prefix.pch";
-				INFOPLIST_FILE = "miserables/miserables-Info.plist";
+				GCC_PREFIX_HEADER = "Miserables/Miserables-Prefix.pch";
+				INFOPLIST_FILE = "Miserables/Miserables-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		AB97139816E217E500F037B8 /* Release */ = {
+		1A1A4A8016EB123400EF7BBE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "miserables/miserables-Prefix.pch";
-				INFOPLIST_FILE = "miserables/miserables-Info.plist";
+				GCC_PREFIX_HEADER = "Miserables/Miserables-Prefix.pch";
+				INFOPLIST_FILE = "Miserables/Miserables-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -305,38 +283,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AB97136316E217E500F037B8 /* Build configuration list for PBXProject "miserables" */ = {
+		1A1A4A5616EB123400EF7BBE /* Build configuration list for PBXProject "Miserables" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB97139416E217E500F037B8 /* Debug */,
-				AB97139516E217E500F037B8 /* Release */,
+				1A1A4A7C16EB123400EF7BBE /* Debug */,
+				1A1A4A7D16EB123400EF7BBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB97139616E217E500F037B8 /* Build configuration list for PBXNativeTarget "miserables" */ = {
+		1A1A4A7E16EB123400EF7BBE /* Build configuration list for PBXNativeTarget "Miserables" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AB97139716E217E500F037B8 /* Debug */,
-				AB97139816E217E500F037B8 /* Release */,
+				1A1A4A7F16EB123400EF7BBE /* Debug */,
+				1A1A4A8016EB123400EF7BBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		AB97138B16E217E500F037B8 /* miserables.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AB97138C16E217E500F037B8 /* miserables.xcdatamodel */,
-			);
-			currentVersion = AB97138C16E217E500F037B8 /* miserables.xcdatamodel */;
-			path = miserables.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = AB97136016E217E500F037B8 /* Project object */;
+	rootObject = 1A1A4A5316EB123400EF7BBE /* Project object */;
 }
