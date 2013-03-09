@@ -49,13 +49,13 @@
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
 {
     NSLog(@"searchBarCancelButtonClicked");
-    [searchBar setHidden:YES];
-    [searchBar resignFirstResponder];
+    [self.searchBar setHidden:YES];
+    [self.searchBar resignFirstResponder];
 }
 
 - (void) searchBarSearchButtonClicked:(id)sender
 {
-    
+    NSLog(@"Search");
 }
 
 @end
