@@ -10,4 +10,14 @@
 
 @interface LesViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISearchBar *search;
+
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigation;
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
+
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapWebView;
+
 @end

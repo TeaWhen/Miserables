@@ -1,20 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3103" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Les View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="LesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBw-Fu-SBm">
+                                <gestureRecognizers/>
+                                <items>
+                                    <navigationItem title="首页" id="I2b-XU-xHV">
+                                        <barButtonItem key="backBarButtonItem" title="返回" id="Tn8-AP-u8k"/>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Vnl-o1-PGg" appends="YES" id="a62-Ot-M6Y"/>
+                                </connections>
+                            </navigationBar>
+                            <searchBar hidden="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5vM-Lz-rfr">
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Sw-rd-u8Q">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NIq-yU-jZ0" appends="YES" id="4a0-xp-Rie"/>
+                                </connections>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="1VM-7b-Lkk"/>
+                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="1Y0-so-hge"/>
+                            <constraint firstItem="sBw-Fu-SBm" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="IhM-kg-IIu"/>
+                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Lry-uU-ZYI"/>
+                            <constraint firstItem="sBw-Fu-SBm" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ZoM-Ks-81i"/>
+                            <constraint firstItem="sBw-Fu-SBm" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="gne-Ia-f7z"/>
+                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="n80-FR-Trv"/>
+                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="top" secondItem="5vM-Lz-rfr" secondAttribute="bottom" type="default" id="nj2-9d-CFe"/>
+                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="pye-oM-LzF"/>
+                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="yxS-Bf-P2T"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navigation" destination="sBw-Fu-SBm" id="AhT-oL-hpa"/>
+                        <outlet property="search" destination="5vM-Lz-rfr" id="6T4-aI-tER"/>
+                        <outlet property="tapNavigation" destination="Vnl-o1-PGg" id="TUR-0s-3RK"/>
+                        <outlet property="tapWebView" destination="NIq-yU-jZ0" id="A73-hA-M3g"/>
+                        <outlet property="webView" destination="5Sw-rd-u8Q" id="BjY-zC-GQW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Vnl-o1-PGg"/>
+                <tapGestureRecognizer id="NIq-yU-jZ0"/>
             </objects>
         </scene>
     </scenes>
