@@ -25,7 +25,7 @@
     self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
     self.tapNavigation.numberOfTapsRequired = 2;
     [self.navigationBar addGestureRecognizer:self.tapNavigation];
-    NSLog(@"miao");
+    self.searchBar.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
