@@ -7,6 +7,7 @@
 //
 
 #import "LesViewController.h"
+#import "FMResultSet.h"
 
 @interface LesViewController () <UISearchBarDelegate>
 
@@ -42,10 +43,19 @@
         NSLog(@"Could not open db.");
     }
     
-    [self.db executeUpdate:@"create table Article (title text, content text)"];
+    [self.db executeUpdate:@"CREATE TABLE Article (title TEXT, content TEXT)"];
     
-    NSString *sql = @"insert into Article (title, content) values (?, ?)";
-    [self.db executeUpdate:sql, @("我爱北京天安门"), @("天安门上太阳升")];
+    FMResultSet *s = [self.db executeQuery:@"SELECT COUNT(*) FROM Article"];
+    int articleCount = 0;
+    if ([s next]) {
+        articleCount = [s intForColumnIndex:0];
+    }
+    
+    if (articleCount == 0) {
+        NSString *sql = @"insert into Article (title, content) values (?, ?)";
+        [self.db executeUpdate:sql, @("我爱北京天安门"), @("天安门上太阳升")];
+        [self.db executeUpdate:sql, @("闫神"), @("厉害死了！")];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,21 +83,21 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
 {
-    NSMutableString *pageURL = [NSMutableString stringWithString:@"http://www.baidu.com/"];
-    [pageURL appendString:[self.searchBar text]];
-    NSURL *url = [NSURL URLWithString:pageURL];
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    NSLog(path);
     
     FMResultSet *articles = [self.db executeQuery:@"select * from Article where title = ?", [self.searchBar text]];
     [articles next];
     NSString *content = [articles stringForColumn:@"content"];
-    
-    NSMutableString *html = [NSMutableString stringWithString:@"<html><head><style type=\"text/css\">"];
-    [html appendString:@"body {font-size: px;} "];
-    [html appendString:@"</style></head><body><h1>"];
+
+    NSMutableString *html = [NSMutableString stringWithString:@"<html><head>"];
+    [html appendString:@"<link rel=\"stylesheet\" href=\"Static/css/main.css\" type=\"text/css\" />"];
+    [html appendString:@"</head><body><h1>"];
     [html appendString:[self.searchBar text]];
     [html appendString:[NSString stringWithFormat:@"</h1><h2>%@</h2></body></html>", content]];
-    
-    [self.webView loadHTMLString:html baseURL:url];
+
+    [self.webView loadHTMLString:html baseURL:baseURL];
     [self.searchBar setHidden:YES];
     self.navigationBar.topItem.title = [self.searchBar text];
     [self.searchBar resignFirstResponder];

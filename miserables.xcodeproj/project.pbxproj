@@ -26,6 +26,7 @@
 		1AF87C8416EB6B27003292B0 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7D16EB6B27003292B0 /* FMDatabaseQueue.m */; };
 		1AF87C8616EB6B27003292B0 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C8016EB6B27003292B0 /* FMResultSet.m */; };
 		1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */; };
+		ABDD817A16EB8FE10094D4CD /* Static in Resources */ = {isa = PBXBuildFile; fileRef = ABDD817916EB8FE10094D4CD /* Static */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		ABDD817916EB8FE10094D4CD /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,13 +80,13 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
+				ABDD817916EB8FE10094D4CD /* Static */,
 				1AF87C7516EB6B27003292B0 /* FMDB */,
 				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				1A1A4A5D16EB123400EF7BBE /* Frameworks */,
 				1A1A4A5C16EB123400EF7BBE /* Products */,
-				ABD39DB316EB6943000E394E /* fmdb */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABDD817A16EB8FE10094D4CD /* Static in Resources */,
 				1A1A4A6916EB123400EF7BBE /* InfoPlist.strings in Resources */,
 				1A1A4A7116EB123400EF7BBE /* Default.png in Resources */,
 				1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */,
