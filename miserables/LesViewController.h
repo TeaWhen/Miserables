@@ -8,15 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LesViewController : UIViewController {
-    IBOutlet UISearchBar *searchBar;
-    IBOutlet UINavigationBar *navigationBar;
-    IBOutlet UIWebView *webView;
-    IBOutlet UITapGestureRecognizer *tapNavigation;
-    
-    NSMutableArray *wikiIndex;
-}
+@interface LesViewController : UIViewController
 
-- (void) doneSearchingClicked:(id)sender;
+
 
 @end

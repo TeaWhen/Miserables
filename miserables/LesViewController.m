@@ -8,7 +8,12 @@
 
 #import "LesViewController.h"
 
-@interface LesViewController ()
+@interface LesViewController () <UISearchBarDelegate>
+
+@property (weak, nonatomic) IBOutlet UISearchBar *navigationBar;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -17,13 +22,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    wikiIndex = [[NSMutableArray alloc] init];
-    tapNavigation = [tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
-    tapNavigation.numberOfTapsRequired = 2;
-    [navigationBar addGestureRecognizer: tapNavigation];
-    
-    searchBar.delegate = self;
+    self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
+    self.tapNavigation.numberOfTapsRequired = 2;
+    [self.navigationBar addGestureRecognizer:self.tapNavigation];
+    NSLog(@"miao");
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,8 +36,9 @@
 
 - (void) navigationBarClicked:(UIPanGestureRecognizer *) tapNavigation
 {
-    [searchBar setHidden:NO];
-    [searchBar becomeFirstResponder];
+    [self.searchBar setHidden:NO];
+    [self.searchBar becomeFirstResponder];
+    NSLog(@"miaomiao");
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *) searchBar
@@ -45,6 +48,7 @@
 
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
 {
+    NSLog(@"searchBarCancelButtonClicked");
     [searchBar setHidden:YES];
     [searchBar resignFirstResponder];
 }

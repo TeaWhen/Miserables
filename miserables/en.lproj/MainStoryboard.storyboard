@@ -20,7 +20,9 @@
                                     </navigationItem>
                                 </items>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Vnl-o1-PGg" appends="YES" id="a62-Ot-M6Y"/>
+                                    <outletCollection property="gestureRecognizers" destination="a6l-7w-kzg" appends="YES" id="GGh-Oe-reo"/>
+                                    <outletCollection property="gestureRecognizers" destination="a6l-7w-kzg" appends="YES" id="ZAe-dn-whr"/>
+                                    <outletCollection property="gestureRecognizers" destination="a6l-7w-kzg" appends="YES" id="p1K-Ki-CKi"/>
                                 </connections>
                             </navigationBar>
                             <searchBar hidden="YES" contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vM-Lz-rfr">
@@ -29,32 +31,37 @@
                             <webView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Sw-rd-u8Q">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="Edp-X1-VEb"/>
+                                    <constraint firstAttribute="height" constant="504" id="X0t-Mi-Oso"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="a6l-7w-kzg" appends="YES" id="ucq-6O-LVw"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="1VM-7b-Lkk"/>
-                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="1Y0-so-hge"/>
+                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="top" secondItem="3" secondAttribute="top" constant="133" id="45d-wH-mH6"/>
                             <constraint firstItem="sBw-Fu-SBm" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="IhM-kg-IIu"/>
-                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Lry-uU-ZYI"/>
+                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="top" secondItem="sBw-Fu-SBm" secondAttribute="bottom" type="default" id="MWB-Yk-3UM"/>
                             <constraint firstItem="sBw-Fu-SBm" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="ZoM-Ks-81i"/>
+                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="aVe-g9-72B"/>
                             <constraint firstItem="sBw-Fu-SBm" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="gne-Ia-f7z"/>
-                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="n80-FR-Trv"/>
-                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="top" secondItem="5vM-Lz-rfr" secondAttribute="bottom" type="default" id="nj2-9d-CFe"/>
-                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="pye-oM-LzF"/>
-                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="yxS-Bf-P2T"/>
+                            <constraint firstItem="5vM-Lz-rfr" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="h8I-vF-I94"/>
+                            <constraint firstItem="5Sw-rd-u8Q" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="63" id="jCv-eA-lys"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="navigationBar" destination="sBw-Fu-SBm" id="mK7-yE-9un"/>
-                        <outlet property="searchBar" destination="5vM-Lz-rfr" id="8dC-XA-lLV"/>
-                        <outlet property="tapNavigation" destination="Vnl-o1-PGg" id="TUR-0s-3RK"/>
-                        <outlet property="webView" destination="5Sw-rd-u8Q" id="BjY-zC-GQW"/>
+                        <outlet property="navigationBar" destination="5vM-Lz-rfr" id="1IM-Ns-f7z"/>
+                        <outlet property="searchBar" destination="5vM-Lz-rfr" id="9dZ-uf-LCa"/>
+                        <outlet property="tapNavigation" destination="a6l-7w-kzg" id="pZ1-Yk-lWa"/>
+                        <outlet property="webView" destination="5Sw-rd-u8Q" id="lq3-Vp-ZLf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Vnl-o1-PGg"/>
+                <tapGestureRecognizer id="a6l-7w-kzg"/>
             </objects>
         </scene>
     </scenes>
@@ -62,7 +69,7 @@
         <class className="LesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tapNavigation" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
