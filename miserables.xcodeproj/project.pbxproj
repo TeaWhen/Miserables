@@ -20,6 +20,8 @@
 		1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7A16EB123400EF7BBE /* LesViewController.m */; };
 		1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8516EB1E4900EF7BBE /* icon.png */; };
 		1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */; };
+		1AF87C7116EB5B77003292B0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C7016EB5B77003292B0 /* CoreData.framework */; };
+		1AF87C7416EB5BC3003292B0 /* Miserables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7216EB5BC3003292B0 /* Miserables.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		1A1A4A7A16EB123400EF7BBE /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
 		1A1A4A8516EB1E4900EF7BBE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		1AF87C7016EB5B77003292B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1AF87C7316EB5BC3003292B0 /* Miserables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Miserables.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF87C7116EB5B77003292B0 /* CoreData.framework in Frameworks */,
 				1A1A4A5F16EB123400EF7BBE /* UIKit.framework in Frameworks */,
 				1A1A4A6116EB123400EF7BBE /* Foundation.framework in Frameworks */,
 				1A1A4A6316EB123400EF7BBE /* CoreGraphics.framework in Frameworks */,
@@ -60,6 +65,7 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
+				1AF87C7216EB5BC3003292B0 /* Miserables.xcdatamodeld */,
 				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
@@ -79,6 +85,7 @@
 		1A1A4A5D16EB123400EF7BBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1AF87C7016EB5B77003292B0 /* CoreData.framework */,
 				1A1A4A5E16EB123400EF7BBE /* UIKit.framework */,
 				1A1A4A6016EB123400EF7BBE /* Foundation.framework */,
 				1A1A4A6216EB123400EF7BBE /* CoreGraphics.framework */,
@@ -185,6 +192,7 @@
 				1A1A4A6B16EB123400EF7BBE /* main.m in Sources */,
 				1A1A4A6F16EB123400EF7BBE /* LesAppDelegate.m in Sources */,
 				1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */,
+				1AF87C7416EB5BC3003292B0 /* Miserables.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +318,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1AF87C7216EB5BC3003292B0 /* Miserables.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1AF87C7316EB5BC3003292B0 /* Miserables.xcdatamodel */,
+			);
+			currentVersion = 1AF87C7316EB5BC3003292B0 /* Miserables.xcdatamodel */;
+			name = Miserables.xcdatamodeld;
+			path = Miserables/Miserables.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1A1A4A5316EB123400EF7BBE /* Project object */;
 }
