@@ -85,13 +85,14 @@
 {
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
+    NSLog(path);
     
     FMResultSet *articles = [self.db executeQuery:@"select * from Article where title = ?", [self.searchBar text]];
     [articles next];
     NSString *content = [articles stringForColumn:@"content"];
 
     NSMutableString *html = [NSMutableString stringWithString:@"<html><head>"];
-    [html appendString:@"<link rel=\"stylesheet\" href=\"Resources/css/main.css\" type=\"text/css\" />"];
+    [html appendString:@"<link rel=\"stylesheet\" href=\"resources/css/main.css\" type=\"text/css\" />"];
     [html appendString:@"</head><body><h1>"];
     [html appendString:[self.searchBar text]];
     [html appendString:[NSString stringWithFormat:@"</h1><h2>%@</h2></body></html>", content]];
