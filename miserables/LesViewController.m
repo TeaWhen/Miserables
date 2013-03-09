@@ -6,14 +6,14 @@
 //  Copyright (c) 2013年 Eksband. All rights reserved.
 //
 
-#import "LesDetailViewController.h"
+#import "LesViewController.h"
 
-@interface LesDetailViewController ()
+@interface LesViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
 
-@implementation LesDetailViewController
+@implementation LesViewController
 
 #pragma mark - Managing the detail item
 

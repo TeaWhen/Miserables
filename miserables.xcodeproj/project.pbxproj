@@ -20,8 +20,7 @@
 		AB97138716E217E500F037B8 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB97138516E217E500F037B8 /* MainStoryboard_iPhone.storyboard */; };
 		AB97138A16E217E500F037B8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB97138816E217E500F037B8 /* MainStoryboard_iPad.storyboard */; };
 		AB97138D16E217E500F037B8 /* miserables.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB97138B16E217E500F037B8 /* miserables.xcdatamodeld */; };
-		AB97139016E217E500F037B8 /* LesMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97138F16E217E500F037B8 /* LesMasterViewController.m */; };
-		AB97139316E217E500F037B8 /* LesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97139216E217E500F037B8 /* LesDetailViewController.m */; };
+		AB97139316E217E500F037B8 /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB97139216E217E500F037B8 /* LesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,10 +41,8 @@
 		AB97138616E217E500F037B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		AB97138916E217E500F037B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		AB97138C16E217E500F037B8 /* miserables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = miserables.xcdatamodel; sourceTree = "<group>"; };
-		AB97138E16E217E500F037B8 /* LesMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesMasterViewController.h; sourceTree = "<group>"; };
-		AB97138F16E217E500F037B8 /* LesMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesMasterViewController.m; sourceTree = "<group>"; };
-		AB97139116E217E500F037B8 /* LesDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesDetailViewController.h; sourceTree = "<group>"; };
-		AB97139216E217E500F037B8 /* LesDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesDetailViewController.m; sourceTree = "<group>"; };
+		AB97139116E217E500F037B8 /* LesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesViewController.h; sourceTree = "<group>"; };
+		AB97139216E217E500F037B8 /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +95,8 @@
 				AB97137D16E217E500F037B8 /* LesAppDelegate.m */,
 				AB97138516E217E500F037B8 /* MainStoryboard_iPhone.storyboard */,
 				AB97138816E217E500F037B8 /* MainStoryboard_iPad.storyboard */,
-				AB97138E16E217E500F037B8 /* LesMasterViewController.h */,
-				AB97138F16E217E500F037B8 /* LesMasterViewController.m */,
-				AB97139116E217E500F037B8 /* LesDetailViewController.h */,
-				AB97139216E217E500F037B8 /* LesDetailViewController.m */,
+				AB97139116E217E500F037B8 /* LesViewController.h */,
+				AB97139216E217E500F037B8 /* LesViewController.m */,
 				AB97138B16E217E500F037B8 /* miserables.xcdatamodeld */,
 				AB97137416E217E500F037B8 /* Supporting Files */,
 			);
@@ -193,8 +188,7 @@
 				AB97137A16E217E500F037B8 /* main.m in Sources */,
 				AB97137E16E217E500F037B8 /* LesAppDelegate.m in Sources */,
 				AB97138D16E217E500F037B8 /* miserables.xcdatamodeld in Sources */,
-				AB97139016E217E500F037B8 /* LesMasterViewController.m in Sources */,
-				AB97139316E217E500F037B8 /* LesDetailViewController.m in Sources */,
+				AB97139316E217E500F037B8 /* LesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +321,7 @@
 				AB97139816E217E500F037B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LesDetailViewController : UIViewController <UISplitViewControllerDelegate> {
+@interface LesViewController : UIViewController <UISplitViewControllerDelegate> {
     IBOutlet UIWebView *webView;
     IBOutlet UITextField *addressBar;
     UIActivityIndicatorView *activityIndicatorView;
