@@ -45,6 +45,17 @@
 		1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		1AF87C7016EB5B77003292B0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1AF87C7316EB5BC3003292B0 /* Miserables.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Miserables.xcdatamodel; sourceTree = "<group>"; };
+		ABD39DB416EB6943000E394E /* FMDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		ABD39DB516EB6943000E394E /* FMDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		ABD39DB616EB6943000E394E /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		ABD39DB716EB6943000E394E /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		ABD39DB816EB6943000E394E /* FMDatabasePool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		ABD39DB916EB6943000E394E /* FMDatabasePool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		ABD39DBA16EB6943000E394E /* FMDatabaseQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		ABD39DBB16EB6943000E394E /* FMDatabaseQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		ABD39DBC16EB6943000E394E /* fmdb.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fmdb.m; sourceTree = "<group>"; };
+		ABD39DBD16EB6943000E394E /* FMResultSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		ABD39DBE16EB6943000E394E /* FMResultSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +76,7 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
+				ABD39DB316EB6943000E394E /* fmdb */,
 				1AF87C7216EB5BC3003292B0 /* Miserables.xcdatamodeld */,
 				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
@@ -120,6 +132,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		ABD39DB316EB6943000E394E /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				ABD39DB416EB6943000E394E /* FMDatabase.h */,
+				ABD39DB516EB6943000E394E /* FMDatabase.m */,
+				ABD39DB616EB6943000E394E /* FMDatabaseAdditions.h */,
+				ABD39DB716EB6943000E394E /* FMDatabaseAdditions.m */,
+				ABD39DB816EB6943000E394E /* FMDatabasePool.h */,
+				ABD39DB916EB6943000E394E /* FMDatabasePool.m */,
+				ABD39DBA16EB6943000E394E /* FMDatabaseQueue.h */,
+				ABD39DBB16EB6943000E394E /* FMDatabaseQueue.m */,
+				ABD39DBC16EB6943000E394E /* fmdb.m */,
+				ABD39DBD16EB6943000E394E /* FMResultSet.h */,
+				ABD39DBE16EB6943000E394E /* FMResultSet.m */,
+			);
+			name = fmdb;
+			path = fmdb/src;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,7 +181,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Eksband;
 			};
-			buildConfigurationList = 1A1A4A5616EB123400EF7BBE /* Build configuration list for PBXProject "Miserables" */;
+			buildConfigurationList = 1A1A4A5616EB123400EF7BBE /* Build configuration list for PBXProject "miserables" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -299,7 +330,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A1A4A5616EB123400EF7BBE /* Build configuration list for PBXProject "Miserables" */ = {
+		1A1A4A5616EB123400EF7BBE /* Build configuration list for PBXProject "miserables" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1A1A4A7C16EB123400EF7BBE /* Debug */,
