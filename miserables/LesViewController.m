@@ -73,21 +73,21 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
 {
-    NSMutableString *pageURL = [NSMutableString stringWithString:@"http://www.baidu.com/"];
-    [pageURL appendString:[self.searchBar text]];
-    NSURL *url = [NSURL URLWithString:pageURL];
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    NSLog(path);
     
     FMResultSet *articles = [self.db executeQuery:@"select * from Article where title = ?", [self.searchBar text]];
     [articles next];
     NSString *content = [articles stringForColumn:@"content"];
-    
-    NSMutableString *html = [NSMutableString stringWithString:@"<html><head><style type=\"text/css\">"];
-    [html appendString:@"body {font-size: px;} "];
-    [html appendString:@"</style></head><body><h1>"];
+
+    NSMutableString *html = [NSMutableString stringWithString:@"<html><head>"];
+    [html appendString:@"<link rel=\"stylesheet\" href=\"resources/css/main.css\" type=\"text/css\" />"];
+    [html appendString:@"</head><body><h1>"];
     [html appendString:[self.searchBar text]];
     [html appendString:[NSString stringWithFormat:@"</h1><h2>%@</h2></body></html>", content]];
-    
-    [self.webView loadHTMLString:html baseURL:url];
+
+    [self.webView loadHTMLString:html baseURL:baseURL];
     [self.searchBar setHidden:YES];
     self.navigationBar.topItem.title = [self.searchBar text];
     [self.searchBar resignFirstResponder];
