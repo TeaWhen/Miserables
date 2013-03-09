@@ -7,6 +7,7 @@
 //
 
 #import "LesViewController.h"
+#import "FMResultSet.h"
 
 @interface LesViewController () <UISearchBarDelegate>
 
@@ -42,10 +43,19 @@
         NSLog(@"Could not open db.");
     }
     
-    [self.db executeUpdate:@"create table Article (title text, content text)"];
+    [self.db executeUpdate:@"CREATE TABLE Article (title TEXT, content TEXT)"];
     
-    NSString *sql = @"insert into Article (title, content) values (?, ?)";
-    [self.db executeUpdate:sql, @("我爱北京天安门"), @("天安门上太阳升")];
+    FMResultSet *s = [self.db executeQuery:@"SELECT COUNT(*) FROM Article"];
+    int articleCount = 0;
+    if ([s next]) {
+        articleCount = [s intForColumnIndex:0];
+    }
+    
+    if (articleCount == 0) {
+        NSString *sql = @"insert into Article (title, content) values (?, ?)";
+        [self.db executeUpdate:sql, @("我爱北京天安门"), @("天安门上太阳升")];
+        [self.db executeUpdate:sql, @("闫神"), @("厉害死了！")];
+    }
 }
 
 - (void)didReceiveMemoryWarning
