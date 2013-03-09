@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMDatabase.h"
 
 @interface LesViewController : UIViewController
 
+@property (strong, nonatomic) FMDatabase *db;
 
+- (void)openDb;
 
 @end
