@@ -76,13 +76,13 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
-				ABD39DB316EB6943000E394E /* fmdb */,
 				1AF87C7216EB5BC3003292B0 /* Miserables.xcdatamodeld */,
 				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				1A1A4A5D16EB123400EF7BBE /* Frameworks */,
 				1A1A4A5C16EB123400EF7BBE /* Products */,
+				ABD39DB316EB6943000E394E /* fmdb */,
 			);
 			sourceTree = "<group>";
 		};
