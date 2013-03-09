@@ -23,15 +23,12 @@
                                     <outletCollection property="gestureRecognizers" destination="Vnl-o1-PGg" appends="YES" id="a62-Ot-M6Y"/>
                                 </connections>
                             </navigationBar>
-                            <searchBar hidden="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="5vM-Lz-rfr">
-                                <textInputTraits key="textInputTraits"/>
+                            <searchBar hidden="YES" contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vM-Lz-rfr">
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </searchBar>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Sw-rd-u8Q">
+                            <webView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Sw-rd-u8Q">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="NIq-yU-jZ0" appends="YES" id="4a0-xp-Rie"/>
-                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -50,19 +47,31 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="navigation" destination="sBw-Fu-SBm" id="AhT-oL-hpa"/>
-                        <outlet property="search" destination="5vM-Lz-rfr" id="6T4-aI-tER"/>
+                        <outlet property="navigationBar" destination="sBw-Fu-SBm" id="mK7-yE-9un"/>
+                        <outlet property="searchBar" destination="5vM-Lz-rfr" id="8dC-XA-lLV"/>
                         <outlet property="tapNavigation" destination="Vnl-o1-PGg" id="TUR-0s-3RK"/>
-                        <outlet property="tapWebView" destination="NIq-yU-jZ0" id="A73-hA-M3g"/>
                         <outlet property="webView" destination="5Sw-rd-u8Q" id="BjY-zC-GQW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Vnl-o1-PGg"/>
-                <tapGestureRecognizer id="NIq-yU-jZ0"/>
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="LesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="tapNavigation" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

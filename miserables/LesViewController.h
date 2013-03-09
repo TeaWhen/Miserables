@@ -8,16 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LesViewController : UIViewController
+@interface LesViewController : UIViewController {
+    IBOutlet UISearchBar *searchBar;
+    IBOutlet UINavigationBar *navigationBar;
+    IBOutlet UIWebView *webView;
+    IBOutlet UITapGestureRecognizer *tapNavigation;
+    
+    NSMutableArray *wikiIndex;
+}
 
-@property (weak, nonatomic) IBOutlet UISearchBar *search;
-
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigation;
-
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
-
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapWebView;
+- (void) doneSearchingClicked:(id)sender;
 
 @end
