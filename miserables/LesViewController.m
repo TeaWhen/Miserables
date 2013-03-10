@@ -9,7 +9,7 @@
 #import "LesViewController.h"
 #import "FMResultSet.h"
 
-@interface LesViewController () <UISearchBarDelegate>
+@interface LesViewController () <UISearchBarDelegate, UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
@@ -30,6 +30,7 @@
     self.tapNavigation.numberOfTapsRequired = 2;
     [self.navigationBar addGestureRecognizer:self.tapNavigation];
     self.searchBar.delegate = self;
+    self.webView.delegate = self;
 }
 
 - (void)openDb
@@ -53,8 +54,9 @@
     
     if (articleCount == 0) {
         NSString *sql = @"INSERT INTO Article (title, content) VALUES (?, ?)";
-        [self.db executeUpdate:sql, @("我爱北京天安门"), @("天安门上太阳升")];
-        [self.db executeUpdate:sql, @("闫神"), @("厉害死了！")];
+        NSString *yanshen = [@("延伸") stringByAddingPercentEscapesUsingEncoding:NSUnicodeStringEncoding];
+        [self.db executeUpdate:sql, @("天安门"), [NSString stringWithFormat:@("天安门上<a href='miserables://%@'>太阳</a>升"), yanshen]];
+        [self.db executeUpdate:sql, @("延伸"), @("厉害死了！")];
     }
 }
 
@@ -83,28 +85,47 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
 {
-    NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    NSString *title = [self.searchBar text];
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUnicodeStringEncoding]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
-    NSString *html_head = @"<link rel='stylesheet' href='Static/css/main.css' type='text/css' />";
-    NSString *html_body;
-
-    FMResultSet *articles = [self.db executeQuery:@"SELECT * FROM Article WHERE title = ?", [self.searchBar text]];
-    if ([articles next]) {
-        NSString *content = [articles stringForColumn:@"content"];
-        html_body = [NSString stringWithFormat:@"<h1>%@</h1><p>%@</p></body></html>", [self.searchBar text], content];
-    }
-    else {
-        html_body = @"未找到条目。";
-    }
-    
-    NSString *html = [NSString stringWithFormat:@"<html><head>%@</head><body>%@</body</html>", html_head, html_body];
-
-    [self.webView loadHTMLString:html baseURL:baseURL];
     [self.searchBar setHidden:YES];
-    self.navigationBar.topItem.title = [self.searchBar text];
+    self.navigationBar.topItem.title = title;
     [self.searchBar resignFirstResponder];
     [self.webView becomeFirstResponder];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if ([request.URL.scheme isEqual: @"miserables"]) {
+        NSString *URL = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUnicodeStringEncoding];
+        /* miserables:// */
+        NSString *title = [URL substringFromIndex:13];
+        NSLog(@"%@", title);
+        NSLog(@"%d", [title isEqual:@"天安门"]);
+
+        NSString *html_head = @"<link rel='stylesheet' href='Static/css/main.css' type='text/css' />";
+        NSString *html_body;
+
+        FMResultSet *articles = [self.db executeQuery:@"SELECT * FROM Article WHERE title = ?", title];
+        if ([articles next]) {
+            NSString *content = [articles stringForColumn:@"content"];
+            html_body = [NSString stringWithFormat:@"<h1>%@</h1><p>%@</p></body></html>", title, content];
+        }
+        else {
+            html_body = @"未找到条目。";
+        }
+
+        NSString *html = [NSString stringWithFormat:@"<html><head>%@</head><body>%@</body</html>", html_head, html_body];
+
+        NSString *path = [[NSBundle mainBundle] bundlePath];
+        NSURL *baseURL = [NSURL fileURLWithPath:path];
+        [self.webView loadHTMLString:html baseURL:baseURL];
+        return NO;
+    }
+    else {
+        return YES;
+    }
 }
 
 @end

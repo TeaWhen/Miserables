@@ -31,7 +31,7 @@
                                     <outletCollection property="gestureRecognizers" destination="a6l-7w-kzg" appends="YES" id="inz-qK-waa"/>
                                 </connections>
                             </searchBar>
-                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Sw-rd-u8Q">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Sw-rd-u8Q">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <dataDetectorType key="dataDetectorTypes"/>
