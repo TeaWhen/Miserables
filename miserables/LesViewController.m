@@ -90,7 +90,6 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
     [self.searchBar setHidden:YES];
-    self.navigationBar.topItem.title = title;
     [self.searchBar resignFirstResponder];
     [self.webView becomeFirstResponder];
 }
@@ -101,8 +100,8 @@
         NSString *URL = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         /* miserables:// */
         NSString *title = [NSString stringWithString:[URL substringFromIndex:13]];
+        self.navigationBar.topItem.title = title;
         NSLog(@"%@", title);
-        NSLog(@"%d", [title isEqualToString:@"string"]);
 
         NSString *html_head = @"<link rel='stylesheet' href='Static/css/main.css' type='text/css' />";
         NSString *html_body;
