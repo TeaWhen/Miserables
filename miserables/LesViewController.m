@@ -15,7 +15,7 @@
 //@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -23,6 +23,7 @@
 @implementation LesViewController
 
 static NSOperationQueue* queue;
+UIView *backupUIView;
 
 - (void)viewDidLoad
 {
@@ -36,9 +37,8 @@ static NSOperationQueue* queue;
     self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
     self.tapNavigation.numberOfTapsRequired = 2;
     [self.navigationController.navigationBar addGestureRecognizer:self.tapNavigation];
-    self.searchBar.delegate = self;
     self.webView.delegate = self;
-    
+
     [WebViewProxy handleRequestsWithHost:@"foo.com" handler:^(NSURLRequest* req, WVPResponse *res) {
         NSString *URL = [req.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Static/css/main.css" ofType:@"png"];
@@ -82,10 +82,26 @@ static NSOperationQueue* queue;
 
 - (void) navigationBarClicked:(UIPanGestureRecognizer *) tapNavigation
 {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [self.searchBar setHidden:NO];
-    [self.webView setFrame:CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height - 88)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 310, 44)];
+    self.searchBar.delegate = self;
+    [self.searchBar setPlaceholder:@"搜索"];
+    [self.searchBar setShowsCancelButton:YES];
+    
+    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchView.backgroundColor = [UIColor clearColor];
+    [searchView addSubview:self.searchBar];
+
+    self.navigationItem.titleView = searchView;
     [self.searchBar becomeFirstResponder];
+    
+    for(id subview in [self.searchBar subviews])
+    {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            [subview setEnabled:YES];
+        }
+    }
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *) searchBar
@@ -95,9 +111,8 @@ static NSOperationQueue* queue;
 
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
 {
-    [self.searchBar setHidden:YES];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.searchBar resignFirstResponder];
+    self.navigationItem.titleView = nil;
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
@@ -108,7 +123,6 @@ static NSOperationQueue* queue;
     
     [self.searchBar setHidden:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.webView setFrame:CGRectMake(0, 200, self.view.frame.size.width, self.view.frame.size.height - 44)];
     [self.searchBar resignFirstResponder];
     [self.webView becomeFirstResponder];
 }
