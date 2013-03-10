@@ -122,11 +122,8 @@
 			children = (
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				ABDD817916EB8FE10094D4CD /* Static */,
-				1AF87C7516EB6B27003292B0 /* FMDB */,
-				AB69A26016EC8D0D0037E52E /* WebViewProxy */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
 				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
-				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				1A1A4A5D16EB123400EF7BBE /* Frameworks */,
 				1A1A4A5C16EB123400EF7BBE /* Products */,
 			);
@@ -143,6 +140,7 @@
 		1A1A4A5D16EB123400EF7BBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB69A26016EC8D0D0037E52E /* WebViewProxy */,
 				1AF87C7516EB6B27003292B0 /* FMDB */,
 				1A25564F16EC87E5004BECAC /* QuickDialog.xcodeproj */,
 				1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */,
