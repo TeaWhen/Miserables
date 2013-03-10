@@ -12,7 +12,8 @@
 
 @interface LesViewController () <UISearchBarDelegate, UIWebViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+//@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -34,7 +35,7 @@ static NSOperationQueue* queue;
     
     self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
     self.tapNavigation.numberOfTapsRequired = 2;
-    [self.navigationBar addGestureRecognizer:self.tapNavigation];
+    [self.navigationController.navigationBar addGestureRecognizer:self.tapNavigation];
     self.searchBar.delegate = self;
     self.webView.delegate = self;
     
@@ -81,7 +82,9 @@ static NSOperationQueue* queue;
 
 - (void) navigationBarClicked:(UIPanGestureRecognizer *) tapNavigation
 {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.searchBar setHidden:NO];
+    [self.webView setFrame:CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height - 88)];
     [self.searchBar becomeFirstResponder];
 }
 
@@ -93,6 +96,7 @@ static NSOperationQueue* queue;
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
 {
     [self.searchBar setHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.searchBar resignFirstResponder];
 }
 
@@ -103,6 +107,8 @@ static NSOperationQueue* queue;
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
     [self.searchBar setHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.webView setFrame:CGRectMake(0, 200, self.view.frame.size.width, self.view.frame.size.height - 44)];
     [self.searchBar resignFirstResponder];
     [self.webView becomeFirstResponder];
 }
@@ -113,12 +119,10 @@ static NSOperationQueue* queue;
         NSString *URL = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         /* miserables:// */
         NSString *title = [NSString stringWithString:[URL substringFromIndex:13]];
-<<<<<<< HEAD
-=======
-        self.navigationBar.topItem.title = title;
-        NSLog(@"%@", title);
->>>>>>> 423507f52077036673d359a48f79b3550ded0213
 
+        self.navigationController.navigationBar.topItem.title = title;
+        NSLog(@"%@", title);
+        
         NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/main.css' type='text/css' />";
         NSString *html_body;
 
