@@ -52,7 +52,7 @@
     }
     
     if (articleCount == 0) {
-        NSString *sql = @"insert into Article (title, content) values (?, ?)";
+        NSString *sql = @"INSERT INTO Article (title, content) VALUES (?, ?)";
         [self.db executeUpdate:sql, @("我爱北京天安门"), @("天安门上太阳升")];
         [self.db executeUpdate:sql, @("闫神"), @("厉害死了！")];
     }
@@ -85,17 +85,20 @@
 {
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
-    NSLog(path);
     
-    FMResultSet *articles = [self.db executeQuery:@"select * from Article where title = ?", [self.searchBar text]];
-    [articles next];
-    NSString *content = [articles stringForColumn:@"content"];
+    NSString *html_head = @"<link rel='stylesheet' href='Static/css/main.css' type='text/css' />";
+    NSString *html_body;
 
-    NSMutableString *html = [NSMutableString stringWithString:@"<html><head>"];
-    [html appendString:@"<link rel=\"stylesheet\" href=\"Static/css/main.css\" type=\"text/css\" />"];
-    [html appendString:@"</head><body><h1>"];
-    [html appendString:[self.searchBar text]];
-    [html appendString:[NSString stringWithFormat:@"</h1><h2>%@</h2></body></html>", content]];
+    FMResultSet *articles = [self.db executeQuery:@"SELECT * FROM Article WHERE title = ?", [self.searchBar text]];
+    if ([articles next]) {
+        NSString *content = [articles stringForColumn:@"content"];
+        html_body = [NSString stringWithFormat:@"<h1>%@</h1><p>%@</p></body></html>", [self.searchBar text], content];
+    }
+    else {
+        html_body = @"未找到条目。";
+    }
+    
+    NSString *html = [NSString stringWithFormat:@"<html><head>%@</head><body>%@</body</html>", html_head, html_body];
 
     [self.webView loadHTMLString:html baseURL:baseURL];
     [self.searchBar setHidden:YES];
