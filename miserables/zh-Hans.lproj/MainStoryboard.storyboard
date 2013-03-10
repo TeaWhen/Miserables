@@ -52,7 +52,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="navigationTitle" destination="age-SH-yeD" id="dlS-Au-UNi"/>
-                        <outlet property="settingButton" destination="esw-i5-CBm" id="2Kt-WL-32o"/>
                         <outlet property="tapNavigation" destination="a6l-7w-kzg" id="pZ1-Yk-lWa"/>
                         <outlet property="webView" destination="5Sw-rd-u8Q" id="lq3-Vp-ZLf"/>
                     </connections>
