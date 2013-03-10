@@ -16,7 +16,7 @@
                                 <gestureRecognizers/>
                                 <items>
                                     <navigationItem title="首页" id="I2b-XU-xHV">
-                                        <barButtonItem key="backBarButtonItem" title="返回" id="Tn8-AP-u8k"/>
+                                        <barButtonItem key="rightBarButtonItem" title="设置" id="esw-i5-CBm"/>
                                     </navigationItem>
                                 </items>
                                 <connections>
