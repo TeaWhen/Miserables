@@ -26,6 +26,8 @@
 		1AF87C8416EB6B27003292B0 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7D16EB6B27003292B0 /* FMDatabaseQueue.m */; };
 		1AF87C8616EB6B27003292B0 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C8016EB6B27003292B0 /* FMResultSet.m */; };
 		1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */; };
+		AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25C16EC8D070037E52E /* WebViewProxy.h */; };
+		AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25D16EC8D070037E52E /* WebViewProxy.m */; };
 		ABDD817A16EB8FE10094D4CD /* Static in Resources */ = {isa = PBXBuildFile; fileRef = ABDD817916EB8FE10094D4CD /* Static */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		AB69A25C16EC8D070037E52E /* WebViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebViewProxy.h; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.h; sourceTree = "<group>"; };
+		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
 		AB7930AB16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		AB7930AC16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		ABDD817916EB8FE10094D4CD /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
@@ -82,8 +86,9 @@
 			children = (
 				ABDD817916EB8FE10094D4CD /* Static */,
 				1AF87C7516EB6B27003292B0 /* FMDB */,
-				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
+				AB69A26016EC8D0D0037E52E /* WebViewProxy */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
+				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				1A1A4A5D16EB123400EF7BBE /* Frameworks */,
 				1A1A4A5C16EB123400EF7BBE /* Products */,
@@ -151,6 +156,16 @@
 				1AF87C8016EB6B27003292B0 /* FMResultSet.m */,
 			);
 			name = FMDB;
+			path = fmdb/src;
+			sourceTree = "<group>";
+		};
+		AB69A26016EC8D0D0037E52E /* WebViewProxy */ = {
+			isa = PBXGroup;
+			children = (
+				AB69A25C16EC8D070037E52E /* WebViewProxy.h */,
+				AB69A25D16EC8D070037E52E /* WebViewProxy.m */,
+			);
+			name = WebViewProxy;
 			path = fmdb/src;
 			sourceTree = "<group>";
 		};
@@ -225,6 +240,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */,
+				AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */,
 				1A1A4A6B16EB123400EF7BBE /* main.m in Sources */,
 				1A1A4A6F16EB123400EF7BBE /* LesAppDelegate.m in Sources */,
 				1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */,

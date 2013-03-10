@@ -8,6 +8,7 @@
 
 #import "LesViewController.h"
 #import "FMResultSet.h"
+#import "WebViewProxy.h"
 
 @interface LesViewController () <UISearchBarDelegate, UIWebViewDelegate>
 
@@ -20,9 +21,14 @@
 
 @implementation LesViewController
 
+static NSOperationQueue* queue;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    queue = [[NSOperationQueue alloc] init];
+    [queue setMaxConcurrentOperationCount:5];
     
     [self openDb];
     
@@ -31,6 +37,13 @@
     [self.navigationBar addGestureRecognizer:self.tapNavigation];
     self.searchBar.delegate = self;
     self.webView.delegate = self;
+    
+    [WebViewProxy handleRequestsWithHost:@"foo.com" handler:^(NSURLRequest* req, WVPResponse *res) {
+        NSString *URL = [req.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Static/css/main.css" ofType:@"png"];
+        NSString *CSS = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        [res respondWithText:@"body {color: #ff0000;}"];
+    }];
 }
 
 - (void)openDb
@@ -101,10 +114,8 @@
         NSString *URL = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         /* miserables:// */
         NSString *title = [NSString stringWithString:[URL substringFromIndex:13]];
-        NSLog(@"%@", title);
-        NSLog(@"%d", [title isEqualToString:@"string"]);
 
-        NSString *html_head = @"<link rel='stylesheet' href='Static/css/main.css' type='text/css' />";
+        NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/main.css' type='text/css' />";
         NSString *html_body;
 
         FMResultSet *articles = [self.db executeQuery:@"SELECT * FROM Article WHERE title = ?", title];
