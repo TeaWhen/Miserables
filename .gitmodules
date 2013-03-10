@@ -4,3 +4,6 @@
 [submodule "WebViewProxy"]
 	path = WebViewProxy
 	url = git://github.com/marcuswestin/WebViewProxy.git
+[submodule "QuickDialog"]
+	path = QuickDialog
+	url = https://github.com/escoz/QuickDialog.git
