@@ -17,13 +17,15 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingButton;
 
 @end
 
 @implementation LesViewController
 
 static NSOperationQueue* queue;
-UIView *backupUIView;
+static UIView *defaultView;
+static UIView *searchView;
 
 - (void)viewDidLoad
 {
@@ -45,6 +47,15 @@ UIView *backupUIView;
         NSString *CSS = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
         [res respondWithText:@"body {color: #ff0000;}"];
     }];
+    
+    defaultView = self.navigationItem.titleView;
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 310, 44)];
+    self.searchBar.delegate = self;
+    [self.searchBar setPlaceholder:@"搜索"];
+    searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchView.backgroundColor = [UIColor clearColor];
+    [searchView addSubview:self.searchBar];
 }
 
 - (void)openDb
@@ -82,26 +93,9 @@ UIView *backupUIView;
 
 - (void) navigationBarClicked:(UIPanGestureRecognizer *) tapNavigation
 {
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-    
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 310, 44)];
-    self.searchBar.delegate = self;
-    [self.searchBar setPlaceholder:@"搜索"];
-    [self.searchBar setShowsCancelButton:YES];
-    
-    UIView *searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    searchView.backgroundColor = [UIColor clearColor];
-    [searchView addSubview:self.searchBar];
-
     self.navigationItem.titleView = searchView;
     [self.searchBar becomeFirstResponder];
-    
-    for(id subview in [self.searchBar subviews])
-    {
-        if ([subview isKindOfClass:[UIButton class]]) {
-            [subview setEnabled:YES];
-        }
-    }
+    self.settingButton.enabled = NO;
 }
 
 - (void) searchBarTextDidBeginEditing:(UISearchBar *) searchBar
@@ -112,7 +106,7 @@ UIView *backupUIView;
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
 {
     [self.searchBar resignFirstResponder];
-    self.navigationItem.titleView = nil;
+    
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
@@ -120,11 +114,9 @@ UIView *backupUIView;
     NSString *title = [self.searchBar text];
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
-    
-    [self.searchBar setHidden:YES];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.searchBar resignFirstResponder];
-    [self.webView becomeFirstResponder];
+    self.settingButton.enabled = YES;
+    self.navigationItem.titleView = defaultView;
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
