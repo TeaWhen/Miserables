@@ -35,7 +35,6 @@
 		1A1A4A6016EB123400EF7BBE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1A1A4A6216EB123400EF7BBE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1A1A4A6616EB123400EF7BBE /* Miserables-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Miserables-Info.plist"; sourceTree = "<group>"; };
-		1A1A4A6816EB123400EF7BBE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1A1A4A6A16EB123400EF7BBE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1A1A4A6C16EB123400EF7BBE /* Miserables-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Miserables-Prefix.pch"; sourceTree = "<group>"; };
 		1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesAppDelegate.h; sourceTree = "<group>"; };
@@ -43,7 +42,6 @@
 		1A1A4A7016EB123400EF7BBE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		1A1A4A7216EB123400EF7BBE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		1A1A4A7716EB123400EF7BBE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1A1A4A7916EB123400EF7BBE /* LesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesViewController.h; sourceTree = "<group>"; };
 		1A1A4A7A16EB123400EF7BBE /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
 		1A1A4A8516EB1E4900EF7BBE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -59,6 +57,8 @@
 		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		AB7930AB16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
+		AB7930AC16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		ABDD817916EB8FE10094D4CD /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +190,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 1A1A4A5216EB123400EF7BBE;
 			productRefGroup = 1A1A4A5C16EB123400EF7BBE /* Products */;
@@ -241,7 +242,7 @@
 		1A1A4A6716EB123400EF7BBE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1A1A4A6816EB123400EF7BBE /* en */,
+				AB7930AC16EC4A9600F3A694 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -249,7 +250,7 @@
 		1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				1A1A4A7716EB123400EF7BBE /* en */,
+				AB7930AB16EC4A9600F3A694 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";

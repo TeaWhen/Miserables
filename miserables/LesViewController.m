@@ -54,7 +54,7 @@
     
     if (articleCount == 0) {
         NSString *sql = @"INSERT INTO Article (title, content) VALUES (?, ?)";
-        NSString *yanshen = [@("延伸") stringByAddingPercentEscapesUsingEncoding:NSUnicodeStringEncoding];
+        NSString *yanshen = [@("延伸") stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [self.db executeUpdate:sql, @("天安门"), [NSString stringWithFormat:@("天安门上<a href='miserables://%@'>太阳</a>升"), yanshen]];
         [self.db executeUpdate:sql, @("延伸"), @("厉害死了！")];
     }
@@ -86,7 +86,7 @@
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
 {
     NSString *title = [self.searchBar text];
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUnicodeStringEncoding]]];
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
     [self.searchBar setHidden:YES];
@@ -98,11 +98,11 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     if ([request.URL.scheme isEqual: @"miserables"]) {
-        NSString *URL = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUnicodeStringEncoding];
+        NSString *URL = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         /* miserables:// */
-        NSString *title = [URL substringFromIndex:13];
+        NSString *title = [NSString stringWithString:[URL substringFromIndex:13]];
         NSLog(@"%@", title);
-        NSLog(@"%d", [title isEqual:@"天安门"]);
+        NSLog(@"%d", [title isEqualToString:@"string"]);
 
         NSString *html_head = @"<link rel='stylesheet' href='Static/css/main.css' type='text/css' />";
         NSString *html_body;
