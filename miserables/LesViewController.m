@@ -40,11 +40,15 @@ static NSOperationQueue* queue;
     self.webView.delegate = self;
     
     [WebViewProxy handleRequestsWithHost:@"foo.com" handler:^(NSURLRequest* req, WVPResponse *res) {
-        NSString *URL = [req.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Static/css/main.css" ofType:@"png"];
-        NSString *CSS = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+//        NSString *URL = [req.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Static/css/main.css" ofType:@"png"];
+//        NSString *CSS = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
         [res respondWithText:@"body {color: #ff0000;}"];
     }];
+    
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"延伸" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    self.webView.autoresizingMask = UIViewAutoresizingNone;
 }
 
 - (void)openDb
@@ -84,7 +88,7 @@ static NSOperationQueue* queue;
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.searchBar setHidden:NO];
-    [self.webView setFrame:CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height - 88)];
+    [self.webView setFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)];
     [self.searchBar becomeFirstResponder];
 }
 
@@ -96,6 +100,7 @@ static NSOperationQueue* queue;
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
 {
     [self.searchBar setHidden:YES];
+    [self.webView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.searchBar resignFirstResponder];
 }
@@ -107,8 +112,8 @@ static NSOperationQueue* queue;
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
     [self.searchBar setHidden:YES];
+    [self.webView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.webView setFrame:CGRectMake(0, 200, self.view.frame.size.width, self.view.frame.size.height - 44)];
     [self.searchBar resignFirstResponder];
     [self.webView becomeFirstResponder];
 }
