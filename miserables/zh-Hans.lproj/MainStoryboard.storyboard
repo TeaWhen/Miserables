@@ -77,6 +77,10 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <progressView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" id="ocO-CI-nIE">
+                            <rect key="frame" x="0.0" y="190" width="320" height="9"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </progressView>
                         <sections>
                             <tableViewSection headerTitle="资料库" id="Gqx-Nb-1wn">
                                 <cells>
@@ -130,14 +134,14 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="Uoe-9w-Oog" style="IBUITableViewCellStyleDefault" id="1F8-eO-4wC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="OGM-R8-i99" style="IBUITableViewCellStyleDefault" id="U6g-Is-TU9">
                                         <rect key="frame" x="0.0" y="135" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="立即更新" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Uoe-9w-Oog">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="立即更新" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OGM-R8-i99">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -158,6 +162,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="设置" id="1rQ-0z-30k"/>
                     <connections>
+                        <outlet property="downloadCell" destination="U6g-Is-TU9" id="9ly-lQ-9NF"/>
+                        <outlet property="downloadLabel" destination="OGM-R8-i99" id="z23-UJ-bhe"/>
+                        <outlet property="downloadProgressView" destination="ocO-CI-nIE" id="J9d-4a-Ag1"/>
                         <outlet property="preferenceTableView" destination="kAY-Qe-aRA" id="kip-Ah-EcR"/>
                     </connections>
                 </tableViewController>
@@ -170,6 +177,9 @@
         <class className="LesPreferenceViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesPreferenceViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="downloadCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="downloadLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="downloadProgressView" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="preferenceTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
