@@ -7,3 +7,6 @@
 [submodule "QuickDialog"]
 	path = QuickDialog
 	url = https://github.com/escoz/QuickDialog.git
+[submodule "AFNetworking"]
+	path = AFNetworking
+	url = https://github.com/AFNetworking/AFNetworking.git
