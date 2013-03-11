@@ -8,7 +8,9 @@
 
 #import "LesPreferenceViewController.h"
 
-@interface LesPreferenceViewController ()
+@interface LesPreferenceViewController () <UITableViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *preferenceTableView;
 
 @end
 
@@ -17,6 +19,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.preferenceTableView.delegate = self;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 0:
+            if (indexPath.row == 2) {
+                NSLog(@"Download clicked.");
+            }
+            break;
+            
+        default:
+            break;
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
