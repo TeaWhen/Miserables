@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Les Navigation Controller-->
         <scene sceneID="q8j-Xt-aF2">
             <objects>
-                <navigationController definesPresentationContext="YES" id="p2G-nb-BIc" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="p2G-nb-BIc" customClass="LesNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="E1x-zZ-Uhc">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -217,6 +217,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="LesNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesNavigationController.h"/>
+        </class>
         <class className="LesPreferenceViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesPreferenceViewController.h"/>
             <relationships>

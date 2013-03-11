@@ -7,10 +7,11 @@
 //
 
 #import "LesPreferenceViewController.h"
+#import "LesNavigationController.h"
 #import "AFDownloadRequestOperation.h"
 #import "AFHTTPRequestOperation.h"
 
-@interface LesPreferenceViewController () <UITableViewDelegate, NSURLConnectionDelegate, NSURLConnectionDownloadDelegate>
+@interface LesPreferenceViewController () <UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *preferenceTableView;
 @property (weak, nonatomic) IBOutlet UIProgressView *downloadProgressView;
@@ -19,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadProgressCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cancelCell;
 
-@property (strong, nonatomic) AFDownloadRequestOperation *downloadOperation;
+@property (weak, nonatomic) LesNavigationController *nav;
 
 @end
 
@@ -30,33 +31,43 @@
     [super viewDidLoad];
     self.preferenceTableView.delegate = self;
     
-    __weak typeof(self) weak_self = self;
     id documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *libraryPath = [documentDirectory stringByAppendingPathComponent:@"article.db"];
+    NSString *libraryPath = [documentDirectory stringByAppendingPathComponent:@"article_new.db"];
     
-    if (!self.downloadOperation) {
-        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://media.animusic2.com.s3.amazonaws.com/Animusic-ResonantChamber480p.mov"]];
-        self.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:libraryPath shouldResume:YES];
-        NSLog(@"miaow");
+    self.nav = [LesNavigationController cast:self.navigationController];
+    
+    if (!self.nav.downloadOperation) {
+        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mirrors.lifetoy.org/debian/pool/main/i/iceweasel/iceweasel_10.0.12esr-1_amd64.deb"]];
+        self.nav.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:libraryPath shouldResume:YES];
     }
     
-    [self.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        weak_self.downloadLabel.text = @"已更新";
-        [weak_self.downloadProgressCell setHidden:YES];
-        [weak_self.cancelCell setHidden:YES];
+    if (self.nav->downloaded) {
+        self.downloadLabel.text = @"已更新";
+        self.downloadLabel.enabled = NO;
+        self.downloadCell.userInteractionEnabled = NO;
+    }
+    
+    [self.nav.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.downloadLabel.text = @"已更新";
+        [self.tableView reloadData];
+        [self.downloadProgressCell setHidden:YES];
+        [self.cancelCell setHidden:YES];
         NSLog(@"Successfully downloaded file to %@", libraryPath);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        // TODO
+        NSLog(@"Error occured: %@", error);
     }];
     
-    [self.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
-        weak_self.downloadLabel.text = @"下载中…";
-        // change the section title
-        [weak_self.tableView reloadData];
-        [weak_self.downloadProgressCell setHidden:NO];
-        [weak_self.cancelCell setHidden:NO];
+    [self.nav.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+        self.downloadLabel.text = @"下载中…";
+        [self.tableView reloadData];
+        [self.downloadProgressCell setHidden:NO];
+        [self.cancelCell setHidden:NO];
+        self.downloadLabel.enabled = NO;
+        self.downloadCell.userInteractionEnabled = NO;
+        
         float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
-        [weak_self.downloadProgressView setProgress:progress];
+        [self.downloadProgressView setProgress:progress];
         NSLog(@"%lld / %lld", totalBytesReadForFile, totalBytesExpectedToReadForFile);
     }];
 }
@@ -68,7 +79,7 @@
             if (indexPath.row == 2) {
                 // Update button clicked
                 NSLog(@"Update clicked.");
-                [self.downloadOperation start];
+                [self.nav.downloadOperation start];
                 
                 self.downloadLabel.text = @"连接中…";
                 self.downloadLabel.enabled = NO;
@@ -79,7 +90,7 @@
             // 
             if (indexPath.row == 1) {
                 // Cancel button clicked
-                [self.downloadOperation cancel];
+                [self.nav.downloadOperation cancel];
                 self.downloadLabel.text = @"立即更新";
                 [self.downloadProgressCell setHidden:YES];
                 [self.cancelCell setHidden:YES];
@@ -110,10 +121,6 @@
     return @"";
 }
 
-- (void)viewDidDisappear
-{
-    [self.downloadOperation cancel];
-}
 
 - (void)didReceiveMemoryWarning
 {

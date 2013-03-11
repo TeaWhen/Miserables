@@ -33,6 +33,7 @@
 		1A22CFB116EDF9F700ED9EF5 /* AFDownloadRequestOperation.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 1A22CFAD16EDF9F700ED9EF5 /* AFDownloadRequestOperation.podspec */; };
 		1A22CFB216EDF9F700ED9EF5 /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = 1A22CFAE16EDF9F700ED9EF5 /* LICENCE */; };
 		1A22CFB316EDF9F700ED9EF5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A22CFAF16EDF9F700ED9EF5 /* README.md */; };
+		1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CFB516EE094800ED9EF5 /* LesNavigationController.m */; };
 		1A25565B16EC881D004BECAC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A25565A16EC881D004BECAC /* CoreLocation.framework */; };
 		1A25565D16EC8826004BECAC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A25565C16EC8826004BECAC /* MapKit.framework */; };
 		1A25565E16EC8851004BECAC /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A25565716EC87E5004BECAC /* libQuickDialog.a */; };
@@ -113,6 +114,8 @@
 		1A22CFAD16EDF9F700ED9EF5 /* AFDownloadRequestOperation.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AFDownloadRequestOperation.podspec; sourceTree = "<group>"; };
 		1A22CFAE16EDF9F700ED9EF5 /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		1A22CFAF16EDF9F700ED9EF5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		1A22CFB416EE094800ED9EF5 /* LesNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesNavigationController.h; path = miserables/LesNavigationController.h; sourceTree = SOURCE_ROOT; };
+		1A22CFB516EE094800ED9EF5 /* LesNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesNavigationController.m; path = miserables/LesNavigationController.m; sourceTree = SOURCE_ROOT; };
 		1A25564F16EC87E5004BECAC /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
 		1A25565A16EC881D004BECAC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1A25565C16EC8826004BECAC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -202,6 +205,8 @@
 				1A1A4A7A16EB123400EF7BBE /* LesViewController.m */,
 				1A25565F16EC8B1D004BECAC /* LesPreferenceViewController.h */,
 				1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */,
+				1A22CFB416EE094800ED9EF5 /* LesNavigationController.h */,
+				1A22CFB516EE094800ED9EF5 /* LesNavigationController.m */,
 				1A1A4A6516EB123400EF7BBE /* Supporting Files */,
 			);
 			path = Miserables;
@@ -416,6 +421,7 @@
 				1A22CFA716EDF3E500ED9EF5 /* AFXMLRequestOperation.m in Sources */,
 				1A22CFA816EDF3E500ED9EF5 /* UIImageView+AFNetworking.m in Sources */,
 				1A22CFB016EDF9F700ED9EF5 /* AFDownloadRequestOperation.m in Sources */,
+				1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
