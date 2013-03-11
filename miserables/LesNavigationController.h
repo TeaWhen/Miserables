@@ -2,7 +2,7 @@
 //  LesNavigationController.h
 //  miserables
 //
-//  Created by Xhacker on 2013-03-11.
+//  Created by Xhacker and Zheng Yan on 2013-03-11.
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
