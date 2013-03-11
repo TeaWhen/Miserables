@@ -7,6 +7,8 @@
 //
 
 #import "LesPreferenceViewController.h"
+#import "AFDownloadRequestOperation.h"
+#import "AFHTTPRequestOperation.h"
 
 @interface LesPreferenceViewController () <UITableViewDelegate, NSURLConnectionDelegate, NSURLConnectionDownloadDelegate>
 
@@ -17,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadProgressCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cancelCell;
 
-@property (strong, nonatomic) NSURLConnection *downloadConn;
+@property (strong, nonatomic) AFDownloadRequestOperation *downloadOperation;
 
 @end
 
@@ -28,10 +30,35 @@
     [super viewDidLoad];
     self.preferenceTableView.delegate = self;
     
-    if (!self.downloadConn) {
-        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://goagentx.googlecode.com/files/GoAgentX-v1.3.14.dmg"]];
-        self.downloadConn = [[NSURLConnection alloc] initWithRequest:req delegate:self startImmediately:NO];
+    __weak typeof(self) weak_self = self;
+    id documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *libraryPath = [documentDirectory stringByAppendingPathComponent:@"article.db"];
+    
+    if (!self.downloadOperation) {
+        NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://media.animusic2.com.s3.amazonaws.com/Animusic-ResonantChamber480p.mov"]];
+        self.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:libraryPath shouldResume:YES];
+        NSLog(@"miaow");
     }
+    
+    [self.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        weak_self.downloadLabel.text = @"已更新";
+        [weak_self.downloadProgressCell setHidden:YES];
+        [weak_self.cancelCell setHidden:YES];
+        NSLog(@"Successfully downloaded file to %@", libraryPath);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+    [self.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+        weak_self.downloadLabel.text = @"下载中…";
+        // change the section title
+        [weak_self.tableView reloadData];
+        [weak_self.downloadProgressCell setHidden:NO];
+        [weak_self.cancelCell setHidden:NO];
+        float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
+        [weak_self.downloadProgressView setProgress:progress];
+        NSLog(@"%lld / %lld", totalBytesReadForFile, totalBytesExpectedToReadForFile);
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -41,7 +68,7 @@
             if (indexPath.row == 2) {
                 // Update button clicked
                 NSLog(@"Update clicked.");
-                [self.downloadConn start];
+                [self.downloadOperation start];
                 
                 self.downloadLabel.text = @"连接中…";
                 self.downloadLabel.enabled = NO;
@@ -52,37 +79,19 @@
             // 
             if (indexPath.row == 1) {
                 // Cancel button clicked
-                
+                [self.downloadOperation cancel];
+                self.downloadLabel.text = @"立即更新";
+                [self.downloadProgressCell setHidden:YES];
+                [self.cancelCell setHidden:YES];
+                [self.tableView reloadData];
+                self.downloadLabel.enabled = YES;
+                self.downloadCell.userInteractionEnabled = YES;
             }
             
         default:
             break;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)connection:(NSURLConnection *)connection didWriteData:(long long)bytesWritten totalBytesWritten:(long long)totalBytesWritten expectedTotalBytes:(long long)expectedTotalBytes
-{
-    self.downloadLabel.text = @"下载中…";
-    // change the section title
-    [self.tableView reloadData];
-    [self.downloadProgressCell setHidden:NO];
-    [self.cancelCell setHidden:NO];
-    [self.downloadProgressView setProgress:(float)totalBytesWritten / expectedTotalBytes];
-    NSLog(@"%lld / %lld", totalBytesWritten, expectedTotalBytes);
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSLog(@"Failed");
-}
-
-- (void)connectionDidFinishDownloading:(NSURLConnection *)connection destinationURL:(NSURL *)destinationURL
-{
-    self.downloadLabel.text = @"已更新";
-    [self.downloadProgressCell setHidden:YES];
-    [self.cancelCell setHidden:YES];
-    NSLog(@"%@", destinationURL.path);
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -99,6 +108,11 @@
     }
     
     return @"";
+}
+
+- (void)viewDidDisappear
+{
+    [self.downloadOperation cancel];
 }
 
 - (void)didReceiveMemoryWarning

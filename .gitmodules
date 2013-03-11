@@ -10,3 +10,6 @@
 [submodule "AFNetworking"]
 	path = AFNetworking
 	url = https://github.com/AFNetworking/AFNetworking.git
+[submodule "AFDownloadRequestOperation"]
+	path = AFDownloadRequestOperation
+	url = https://github.com/steipete/AFDownloadRequestOperation.git
