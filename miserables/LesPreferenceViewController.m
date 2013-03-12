@@ -53,7 +53,7 @@
                 self.downloadCell.userInteractionEnabled = NO;
                 
                 id documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-                NSString *currentLibraryPath = [documentDirectory stringByAppendingPathComponent:@"article_new.db"];
+                NSString *currentLibraryPath = [documentDirectory stringByAppendingPathComponent:@"article.db"];
                 NSString *newLibraryPath = [documentDirectory stringByAppendingPathComponent:@"article_new.db"];
                 
                 if (!self.nav.downloadOperation) {

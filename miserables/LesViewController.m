@@ -46,7 +46,8 @@ static NSOperationQueue* queue;
         [res respondWithText:@"body {color: #ff0000;}"];
     }];
     
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"延伸" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    // default page
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"首页" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     self.webView.autoresizingMask = UIViewAutoresizingNone;
     
@@ -60,7 +61,7 @@ static NSOperationQueue* queue;
     NSString *documentDirectory = [path objectAtIndex:0];
     NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"article.db"];
     
-    self.db = [FMDatabase databaseWithPath:dbPath] ;
+    self.db = [FMDatabase databaseWithPath:dbPath];
     if (![self.db open]) {
         NSLog(@"Could not open db.");
     }
@@ -75,9 +76,7 @@ static NSOperationQueue* queue;
     
     if (articleCount == 0) {
         NSString *sql = @"INSERT INTO Article (title, content) VALUES (?, ?)";
-        NSString *yanshen = [@("延伸") stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [self.db executeUpdate:sql, @("天安门"), [NSString stringWithFormat:@("天安门上<a href='miserables://%@'>太阳</a>升"), yanshen]];
-        [self.db executeUpdate:sql, @("延伸"), @("厉害死了！")];
+        [self.db executeUpdate:sql, @("首页"), @("您还没有安装资料库，请进入设置页下载。（若网络连接较慢，也可通过「iTunes 文件共享」导入。）")];
     }
 }
 
