@@ -81,7 +81,8 @@
                     [self.nav.downloadOperation deleteTempFileWithError:nil];
                     self.nav.downloadOperation = nil;
                     
-                    // Display a HUD
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"下载失败" message:@"请稍后重试\n" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    [alert show];
                     
                     self.downloadLabel.text = @"立即更新";
                     [self.downloadProgressCell setHidden:YES];

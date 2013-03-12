@@ -49,6 +49,9 @@ static NSOperationQueue* queue;
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"延伸" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     self.webView.autoresizingMask = UIViewAutoresizingNone;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"闫神好！" message:@"厉害死了！\n" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)openDb
