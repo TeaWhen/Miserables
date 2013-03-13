@@ -11,8 +11,4 @@
 
 @interface LesViewController : UIViewController
 
-@property (strong, nonatomic) FMDatabase *db;
-
-- (void)openDb;
-
 @end

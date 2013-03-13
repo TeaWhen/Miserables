@@ -7,6 +7,7 @@
 //
 
 #import "LesViewController.h"
+#import "LesNavigationController.h"
 #import "FMResultSet.h"
 #import "WebViewProxy.h"
 
@@ -17,6 +18,8 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+@property (weak, nonatomic) LesNavigationController *nav;
 
 @end
 
@@ -31,7 +34,8 @@ static NSOperationQueue* queue;
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:5];
     
-    [self openDb];
+    self.nav = [LesNavigationController cast:self.navigationController];
+    [self.nav openDb];
     
     self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
     self.tapNavigation.numberOfTapsRequired = 2;
@@ -53,31 +57,6 @@ static NSOperationQueue* queue;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"闫神好！" message:@"厉害死了！\n" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
-}
-
-- (void)openDb
-{
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [path objectAtIndex:0];
-    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"article.db"];
-    
-    self.db = [FMDatabase databaseWithPath:dbPath];
-    if (![self.db open]) {
-        NSLog(@"Could not open db.");
-    }
-    
-    [self.db executeUpdate:@"CREATE TABLE Article (title TEXT, content TEXT)"];
-    
-    FMResultSet *s = [self.db executeQuery:@"SELECT COUNT(*) FROM Article"];
-    int articleCount = 0;
-    if ([s next]) {
-        articleCount = [s intForColumnIndex:0];
-    }
-    
-    if (articleCount == 0) {
-        NSString *sql = @"INSERT INTO Article (title, content) VALUES (?, ?)";
-        [self.db executeUpdate:sql, @("首页"), @("您还没有安装资料库，请进入设置页下载。（若网络连接较慢，也可通过「iTunes 文件共享」导入。）")];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,7 +112,7 @@ static NSOperationQueue* queue;
         NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/main.css' type='text/css' />";
         NSString *html_body;
 
-        FMResultSet *articles = [self.db executeQuery:@"SELECT * FROM Article WHERE title = ?", title];
+        FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title = ?", title];
         if ([articles next]) {
             NSString *content = [articles stringForColumn:@"content"];
             html_body = [NSString stringWithFormat:@"<h1>%@</h1><p>%@</p></body></html>", title, content];

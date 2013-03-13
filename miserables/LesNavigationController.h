@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FMDatabase.h"
 #import "AFDownloadRequestOperation.h"
 
 @interface LesNavigationController : UINavigationController {
@@ -14,8 +15,10 @@
     BOOL downloaded;
 }
 
-+ (instancetype)cast:(id)from;
-
 @property (strong, nonatomic) AFDownloadRequestOperation *downloadOperation;
+@property (strong, nonatomic) FMDatabase *db;
+
++ (instancetype)cast:(id)from;
+- (void)openDb;
 
 @end
