@@ -75,8 +75,10 @@
                     NSFileManager *fm = [NSFileManager defaultManager];
                     [fm removeItemAtPath:currentLibraryPath error:nil];
                     [fm moveItemAtPath:newLibraryPath toPath:currentLibraryPath error:nil];
+                    
+                    // Reload database
+                    [self.nav openDb];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    // TODO
                     NSLog(@"Error occured: %@", error);
                     [self.nav.downloadOperation deleteTempFileWithError:nil];
                     self.nav.downloadOperation = nil;

@@ -10,6 +10,8 @@
 
 @interface LesNavigationController ()
 
+@property (strong, nonatomic) NSString *dbPath;
+
 @end
 
 @implementation LesNavigationController
@@ -19,6 +21,22 @@
         return from;
     }
     return nil;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self->downloaded = NO;
+    
 }
 
 - (void)openDb
@@ -44,22 +62,6 @@
         NSString *sql = @"INSERT INTO Article (title, content) VALUES (?, ?)";
         [self.db executeUpdate:sql, @("首页"), @("您还没有安装资料库，请进入设置页下载。（若网络连接较慢，也可通过「iTunes 文件共享」导入。）")];
     }
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self->downloaded = NO;
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
