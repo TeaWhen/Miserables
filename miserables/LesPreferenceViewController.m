@@ -10,15 +10,19 @@
 #import "LesNavigationController.h"
 #import "AFDownloadRequestOperation.h"
 #import "AFHTTPRequestOperation.h"
+#import "FMResultSet.h"
 
 @interface LesPreferenceViewController () <UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *preferenceTableView;
+@property (weak, nonatomic) IBOutlet UILabel *articleCountLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *downloadProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadProgressCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cancelCell;
+
+- (void)updateArticleCount;
 
 @property (weak, nonatomic) LesNavigationController *nav;
 
@@ -38,6 +42,18 @@
         self.downloadLabel.enabled = NO;
         self.downloadCell.userInteractionEnabled = NO;
     }
+    
+    [self updateArticleCount];
+}
+
+- (void)updateArticleCount
+{
+    FMResultSet *s = [self.nav.db executeQuery:@"SELECT COUNT(*) FROM Article"];
+    int articleCount = 0;
+    if ([s next]) {
+        articleCount = [s intForColumnIndex:0];
+    }
+    self.articleCountLabel.text = [NSString stringWithFormat:@"%d", articleCount];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,6 +94,7 @@
                     
                     // Reload database
                     [self.nav openDb];
+                    [self updateArticleCount];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     NSLog(@"Error occured: %@", error);
                     [self.nav.downloadOperation deleteTempFileWithError:nil];

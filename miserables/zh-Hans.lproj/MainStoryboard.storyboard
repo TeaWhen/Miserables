@@ -203,6 +203,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="设置" id="1rQ-0z-30k"/>
                     <connections>
+                        <outlet property="articleCountLabel" destination="kK7-cB-m3o" id="phu-t3-T1G"/>
                         <outlet property="cancelCell" destination="1kP-zO-TI0" id="5gj-gY-JyU"/>
                         <outlet property="downloadCell" destination="U6g-Is-TU9" id="9ly-lQ-9NF"/>
                         <outlet property="downloadLabel" destination="OGM-R8-i99" id="z23-UJ-bhe"/>
@@ -223,6 +224,7 @@
         <class className="LesPreferenceViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesPreferenceViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="articleCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="cancelCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="downloadCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="downloadLabel" candidateClass="UILabel"/>

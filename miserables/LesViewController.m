@@ -13,7 +13,6 @@
 
 @interface LesViewController () <UISearchBarDelegate, UIWebViewDelegate>
 
-//@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
