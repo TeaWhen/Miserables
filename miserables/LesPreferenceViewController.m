@@ -11,10 +11,12 @@
 #import "AFDownloadRequestOperation.h"
 #import "AFHTTPRequestOperation.h"
 #import "FMResultSet.h"
+#import "NSDate+PrettyDate.h"
 
 @interface LesPreferenceViewController () <UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *preferenceTableView;
+@property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *articleCountLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *downloadProgressView;
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
@@ -23,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *cancelCell;
 
 - (void)updateArticleCount;
+- (void)updateUpdateDate;
 
 @property (weak, nonatomic) LesNavigationController *nav;
 
@@ -43,7 +46,9 @@
         self.downloadCell.userInteractionEnabled = NO;
     }
     
+    // Update things
     [self updateArticleCount];
+    [self updateUpdateDate];
 }
 
 - (void)updateArticleCount
@@ -54,6 +59,18 @@
         articleCount = [s intForColumnIndex:0];
     }
     self.articleCountLabel.text = [NSString stringWithFormat:@"%d", articleCount];
+}
+
+- (void)updateUpdateDate
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSDate *updateDate = [defaults objectForKey:@"LibraryLastUpdateDate"];
+    if (updateDate) {
+        self.updateDateLabel.text = [updateDate prettyDate];
+    }
+    else {
+        self.updateDateLabel.text = @"从未";
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,9 +109,11 @@
                     [fm removeItemAtPath:currentLibraryPath error:nil];
                     [fm moveItemAtPath:newLibraryPath toPath:currentLibraryPath error:nil];
                     
-                    // Reload database
+                    // Reload things
                     [self.nav openDb];
                     [self updateArticleCount];
+                    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
+                    [self updateUpdateDate];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     NSLog(@"Error occured: %@", error);
                     [self.nav.downloadOperation deleteTempFileWithError:nil];

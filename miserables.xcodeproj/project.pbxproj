@@ -38,6 +38,7 @@
 		1A25565D16EC8826004BECAC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A25565C16EC8826004BECAC /* MapKit.framework */; };
 		1A25565E16EC8851004BECAC /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A25565716EC87E5004BECAC /* libQuickDialog.a */; };
 		1A25566116EC8B1D004BECAC /* LesPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */; };
+		1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */; };
 		1AF87C8116EB6B27003292B0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7716EB6B27003292B0 /* FMDatabase.m */; };
 		1AF87C8216EB6B27003292B0 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7916EB6B27003292B0 /* FMDatabaseAdditions.m */; };
 		1AF87C8316EB6B27003292B0 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7B16EB6B27003292B0 /* FMDatabasePool.m */; };
@@ -121,6 +122,8 @@
 		1A25565C16EC8826004BECAC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1A25565F16EC8B1D004BECAC /* LesPreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesPreferenceViewController.h; path = miserables/LesPreferenceViewController.h; sourceTree = SOURCE_ROOT; };
 		1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesPreferenceViewController.m; path = miserables/LesPreferenceViewController.m; sourceTree = SOURCE_ROOT; };
+		1AE4C3FA16F0532800EB7C10 /* NSDate+PrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+PrettyDate.h"; path = "miserables/Common/NSDate+PrettyDate.h"; sourceTree = SOURCE_ROOT; };
+		1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+PrettyDate.m"; path = "miserables/Common/NSDate+PrettyDate.m"; sourceTree = SOURCE_ROOT; };
 		1AF87C7616EB6B27003292B0 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		1AF87C7716EB6B27003292B0 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		1AF87C7816EB6B27003292B0 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -201,6 +204,7 @@
 				1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */,
 				1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */,
 				1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */,
+				1AE4C3FE16F0533400EB7C10 /* Common */,
 				1A1A4A7916EB123400EF7BBE /* LesViewController.h */,
 				1A1A4A7A16EB123400EF7BBE /* LesViewController.m */,
 				1A25565F16EC8B1D004BECAC /* LesPreferenceViewController.h */,
@@ -272,6 +276,15 @@
 				1A25565716EC87E5004BECAC /* libQuickDialog.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1AE4C3FE16F0533400EB7C10 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1AE4C3FA16F0532800EB7C10 /* NSDate+PrettyDate.h */,
+				1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		1AF87C7516EB6B27003292B0 /* FMDB */ = {
@@ -422,6 +435,7 @@
 				1A22CFA816EDF3E500ED9EF5 /* UIImageView+AFNetworking.m in Sources */,
 				1A22CFB016EDF9F700ED9EF5 /* AFDownloadRequestOperation.m in Sources */,
 				1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */,
+				1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

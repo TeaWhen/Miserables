@@ -210,6 +210,7 @@
                         <outlet property="downloadProgressCell" destination="iqK-xK-Wda" id="QGx-Ad-nPs"/>
                         <outlet property="downloadProgressView" destination="r7q-RV-LM1" id="LRY-aI-Sfq"/>
                         <outlet property="preferenceTableView" destination="kAY-Qe-aRA" id="kip-Ah-EcR"/>
+                        <outlet property="updateDateLabel" destination="mPL-QP-iup" id="E7S-l7-iPx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcG-tF-iqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,6 +232,7 @@
                 <relationship kind="outlet" name="downloadProgressCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="downloadProgressView" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="preferenceTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="LesViewController" superclassName="UIViewController">
