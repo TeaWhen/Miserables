@@ -90,7 +90,7 @@
                 NSString *newLibraryPath = [documentDirectory stringByAppendingPathComponent:@"article_new.db"];
                 
                 if (!self.nav.downloadOperation) {
-                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://mirrors.lifetoy.org/debian/pool/main/i/iceweasel/iceweasel_10.0.12esr-1_amd64.deb"]];
+                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://127.0.0.1/~xhacker/article.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
                     self.nav.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:newLibraryPath shouldResume:YES];
                     self.nav.downloadOperation.shouldOverwrite = YES;
                 }
@@ -119,7 +119,15 @@
                     [self.nav.downloadOperation deleteTempFileWithError:nil];
                     self.nav.downloadOperation = nil;
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"下载失败" message:@"请稍后重试\n" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    NSString *message;
+                    if ([operation.response statusCode] == 404) {
+                        message = @"服务器出错，请联系我们。";
+                    }
+                    else {
+                        message = error.localizedDescription;
+                    }
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"下载失败" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                     [alert show];
                     
                     self.downloadLabel.text = @"立即更新";
