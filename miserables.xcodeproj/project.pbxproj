@@ -50,7 +50,7 @@
 		1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */; };
 		AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25C16EC8D070037E52E /* WebViewProxy.h */; };
 		AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25D16EC8D070037E52E /* WebViewProxy.m */; };
-		AB7B574916F1FC2F000960CB /* Static in Resources */ = {isa = PBXBuildFile; fileRef = AB7B574816F1FC2F000960CB /* Static */; };
+		AB7B574916F1FC2F000960CB /* (null) in Resources */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,8 +92,8 @@
 		1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1A1A4A7916EB123400EF7BBE /* LesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesViewController.h; sourceTree = "<group>"; };
 		1A1A4A7A16EB123400EF7BBE /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
-		1A1A4A8516EB1E4900EF7BBE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		1A1A4A8516EB1E4900EF7BBE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		1A22CF8D16EDF3E500ED9EF5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		1A22CF8E16EDF3E500ED9EF5 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		1A22CF8F16EDF3E500ED9EF5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -149,8 +149,6 @@
 		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
 		AB7930AB16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		AB7930AC16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		AB7B574816F1FC2F000960CB /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
-		ABDD817916EB8FE10094D4CD /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,11 +172,8 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
-				AB7B574816F1FC2F000960CB /* Static */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
-				ABDD817916EB8FE10094D4CD /* Static */,
-				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
-				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
+				1A26E79C16F2037E00EC72E8 /* Resources */,
 				1A1A4A5D16EB123400EF7BBE /* Frameworks */,
 				1A1A4A5C16EB123400EF7BBE /* Products */,
 			);
@@ -215,10 +210,10 @@
 		1A1A4A6416EB123400EF7BBE /* Miserables */ = {
 			isa = PBXGroup;
 			children = (
+				1AE4C3FE16F0533400EB7C10 /* Common */,
 				1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */,
 				1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */,
 				1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */,
-				1AE4C3FE16F0533400EB7C10 /* Common */,
 				1A1A4A7916EB123400EF7BBE /* LesViewController.h */,
 				1A1A4A7A16EB123400EF7BBE /* LesViewController.m */,
 				1A25565F16EC8B1D004BECAC /* LesPreferenceViewController.h */,
@@ -304,6 +299,16 @@
 			);
 			name = ViewDeck;
 			path = ViewDeck/ViewDeck;
+			sourceTree = "<group>";
+		};
+		1A26E79C16F2037E00EC72E8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
+				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
+			);
+			name = Resources;
+			path = Miserables;
 			sourceTree = "<group>";
 		};
 		1AE4C3FE16F0533400EB7C10 /* Common */ = {
@@ -420,7 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB7B574916F1FC2F000960CB /* Static in Resources */,
+				AB7B574916F1FC2F000960CB /* (null) in Resources */,
 				1A1A4A6916EB123400EF7BBE /* InfoPlist.strings in Resources */,
 				1A1A4A7116EB123400EF7BBE /* Default.png in Resources */,
 				1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */,
