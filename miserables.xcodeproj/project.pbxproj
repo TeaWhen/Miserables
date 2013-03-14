@@ -36,8 +36,11 @@
 		1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CFB516EE094800ED9EF5 /* LesNavigationController.m */; };
 		1A25565B16EC881D004BECAC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A25565A16EC881D004BECAC /* CoreLocation.framework */; };
 		1A25565D16EC8826004BECAC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A25565C16EC8826004BECAC /* MapKit.framework */; };
-		1A25565E16EC8851004BECAC /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A25565716EC87E5004BECAC /* libQuickDialog.a */; };
 		1A25566116EC8B1D004BECAC /* LesPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */; };
+		1A26E79516F1C7E400EC72E8 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A26E79016F1C7E400EC72E8 /* IISideController.m */; };
+		1A26E79616F1C7E400EC72E8 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A26E79216F1C7E400EC72E8 /* IIViewDeckController.m */; };
+		1A26E79716F1C7E400EC72E8 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A26E79416F1C7E400EC72E8 /* IIWrapController.m */; };
+		1A26E79A16F1C81D00EC72E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */; };
 		1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */; };
 		1AF87C8116EB6B27003292B0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7716EB6B27003292B0 /* FMDatabase.m */; };
 		1AF87C8216EB6B27003292B0 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7916EB6B27003292B0 /* FMDatabaseAdditions.m */; };
@@ -122,6 +125,13 @@
 		1A25565C16EC8826004BECAC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1A25565F16EC8B1D004BECAC /* LesPreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesPreferenceViewController.h; path = miserables/LesPreferenceViewController.h; sourceTree = SOURCE_ROOT; };
 		1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesPreferenceViewController.m; path = miserables/LesPreferenceViewController.m; sourceTree = SOURCE_ROOT; };
+		1A26E78F16F1C7E400EC72E8 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		1A26E79016F1C7E400EC72E8 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		1A26E79116F1C7E400EC72E8 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		1A26E79216F1C7E400EC72E8 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		1A26E79316F1C7E400EC72E8 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		1A26E79416F1C7E400EC72E8 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
+		1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1AE4C3FA16F0532800EB7C10 /* NSDate+PrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+PrettyDate.h"; path = "miserables/Common/NSDate+PrettyDate.h"; sourceTree = SOURCE_ROOT; };
 		1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+PrettyDate.m"; path = "miserables/Common/NSDate+PrettyDate.m"; sourceTree = SOURCE_ROOT; };
 		1AF87C7616EB6B27003292B0 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
@@ -147,7 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A25565E16EC8851004BECAC /* libQuickDialog.a in Frameworks */,
+				1A26E79A16F1C81D00EC72E8 /* QuartzCore.framework in Frameworks */,
 				1A25565D16EC8826004BECAC /* MapKit.framework in Frameworks */,
 				1A25565B16EC881D004BECAC /* CoreLocation.framework in Frameworks */,
 				1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */,
@@ -183,12 +193,14 @@
 		1A1A4A5D16EB123400EF7BBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A26E78E16F1C7E400EC72E8 /* ViewDeck */,
 				1A22CFAA16EDF9F700ED9EF5 /* AFDownloadRequestOperation */,
 				1A22CF8C16EDF3E500ED9EF5 /* AFNetworking */,
 				AB69A26016EC8D0D0037E52E /* WebViewProxy */,
 				1AF87C7516EB6B27003292B0 /* FMDB */,
 				1A25564F16EC87E5004BECAC /* QuickDialog.xcodeproj */,
 				1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */,
+				1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */,
 				1A25565A16EC881D004BECAC /* CoreLocation.framework */,
 				1A25565C16EC8826004BECAC /* MapKit.framework */,
 				1A1A4A5E16EB123400EF7BBE /* UIKit.framework */,
@@ -276,6 +288,20 @@
 				1A25565716EC87E5004BECAC /* libQuickDialog.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1A26E78E16F1C7E400EC72E8 /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				1A26E78F16F1C7E400EC72E8 /* IISideController.h */,
+				1A26E79016F1C7E400EC72E8 /* IISideController.m */,
+				1A26E79116F1C7E400EC72E8 /* IIViewDeckController.h */,
+				1A26E79216F1C7E400EC72E8 /* IIViewDeckController.m */,
+				1A26E79316F1C7E400EC72E8 /* IIWrapController.h */,
+				1A26E79416F1C7E400EC72E8 /* IIWrapController.m */,
+			);
+			name = ViewDeck;
+			path = ViewDeck/ViewDeck;
 			sourceTree = "<group>";
 		};
 		1AE4C3FE16F0533400EB7C10 /* Common */ = {
@@ -436,6 +462,9 @@
 				1A22CFB016EDF9F700ED9EF5 /* AFDownloadRequestOperation.m in Sources */,
 				1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */,
 				1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */,
+				1A26E79516F1C7E400EC72E8 /* IISideController.m in Sources */,
+				1A26E79616F1C7E400EC72E8 /* IIViewDeckController.m in Sources */,
+				1A26E79716F1C7E400EC72E8 /* IIWrapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
