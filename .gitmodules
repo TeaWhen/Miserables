@@ -13,3 +13,6 @@
 [submodule "AFDownloadRequestOperation"]
 	path = AFDownloadRequestOperation
 	url = https://github.com/steipete/AFDownloadRequestOperation.git
+[submodule "ViewDeck"]
+	path = ViewDeck
+	url = https://github.com/Inferis/ViewDeck.git
