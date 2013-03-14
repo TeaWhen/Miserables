@@ -43,10 +43,12 @@ static NSOperationQueue* queue;
     self.webView.delegate = self;
     
     [WebViewProxy handleRequestsWithHost:@"foo.com" handler:^(NSURLRequest* req, WVPResponse *res) {
-//        NSString *URL = [req.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Static/css/main.css" ofType:@"png"];
-//        NSString *CSS = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-        [res respondWithText:@"body {color: #ff0000;}"];
+        NSString *URL = [req.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *fileName = [[URL substringFromIndex:14] stringByReplacingOccurrencesOfString:@"#__webviewproxyreq__" withString:@""];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:[@"/Static" stringByAppendingString:fileName] ofType:nil];
+        [NSFileHandle fileHandleForUpdatingAtPath:filePath];
+        NSString *CSS = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+        [res respondWithText:CSS];
     }];
     
     // default page
@@ -108,7 +110,7 @@ static NSOperationQueue* queue;
         self.navigationController.navigationBar.topItem.title = title;
         NSLog(@"%@", title);
         
-        NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/main.css' type='text/css' />";
+        NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
         NSString *html_body;
 
         FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title = ?", title];

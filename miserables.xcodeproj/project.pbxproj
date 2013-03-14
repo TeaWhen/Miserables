@@ -50,7 +50,7 @@
 		1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */; };
 		AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25C16EC8D070037E52E /* WebViewProxy.h */; };
 		AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25D16EC8D070037E52E /* WebViewProxy.m */; };
-		ABDD817A16EB8FE10094D4CD /* Static in Resources */ = {isa = PBXBuildFile; fileRef = ABDD817916EB8FE10094D4CD /* Static */; };
+		AB7B574916F1FC2F000960CB /* Static in Resources */ = {isa = PBXBuildFile; fileRef = AB7B574816F1FC2F000960CB /* Static */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +149,7 @@
 		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
 		AB7930AB16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		AB7930AC16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		AB7B574816F1FC2F000960CB /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
 		ABDD817916EB8FE10094D4CD /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +174,7 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
+				AB7B574816F1FC2F000960CB /* Static */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				ABDD817916EB8FE10094D4CD /* Static */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
@@ -418,7 +420,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABDD817A16EB8FE10094D4CD /* Static in Resources */,
+				AB7B574916F1FC2F000960CB /* Static in Resources */,
 				1A1A4A6916EB123400EF7BBE /* InfoPlist.strings in Resources */,
 				1A1A4A7116EB123400EF7BBE /* Default.png in Resources */,
 				1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */,
