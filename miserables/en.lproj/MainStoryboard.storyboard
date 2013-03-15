@@ -76,10 +76,6 @@
                             </tableView>
                             <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vM-Lz-rfr">
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="a6l-7w-kzg" appends="YES" id="inz-qK-waa"/>
                                 </connections>
