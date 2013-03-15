@@ -79,7 +79,7 @@ static NSOperationQueue* queue;
         FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title = ?", title];
         if ([articles next]) {
             NSString *content = [articles stringForColumn:@"content"];
-            html_body = [NSString stringWithFormat:@"<h1>%@</h1><p>%@</p></body></html>", title, content];
+            html_body = [NSString stringWithFormat:@"<h1>%@</h1><hr />%@</body></html>", title, content];
         }
         else {
             html_body = @"未找到条目。";
