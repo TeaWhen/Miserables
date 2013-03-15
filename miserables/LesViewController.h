@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
+#import "LesNavigationController.h"
 
 @interface LesViewController : UIViewController
+
+@property (weak, nonatomic) LesNavigationController *nav;
 
 @end

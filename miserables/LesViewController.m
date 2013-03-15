@@ -11,14 +11,11 @@
 #import "FMResultSet.h"
 #import "WebViewProxy.h"
 
-@interface LesViewController () <UISearchBarDelegate, UIWebViewDelegate>
+@interface LesViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
-@property (weak, nonatomic) LesNavigationController *nav;
 
 @end
 
@@ -39,7 +36,6 @@ static NSOperationQueue* queue;
     self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
     self.tapNavigation.numberOfTapsRequired = 2;
     [self.navigationController.navigationBar addGestureRecognizer:self.tapNavigation];
-    self.searchBar.delegate = self;
     self.webView.delegate = self;
     
     [WebViewProxy handleRequestsWithHost:@"foo.com" handler:^(NSURLRequest* req, WVPResponse *res) {
@@ -54,10 +50,6 @@ static NSOperationQueue* queue;
     // default page
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"首页" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
-    self.webView.autoresizingMask = UIViewAutoresizingNone;
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"闫神好！" message:@"厉害死了！\n" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,46 +60,7 @@ static NSOperationQueue* queue;
 
 - (void) navigationBarClicked:(UIPanGestureRecognizer *) tapNavigation
 {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [self.searchBar setHidden:NO];
-    [self.webView setFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)];
-    [self.searchBar becomeFirstResponder];
-}
-
-- (void) searchBarTextDidBeginEditing:(UISearchBar *) searchBar
-{
-    
-}
-
-- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title LIKE ?", [NSString stringWithFormat:@"%%%@%%", searchText]];
-    while ([articles next]) {
-        NSString *title = [articles stringForColumn:@"title"];
-//        NSString *content = [articles stringForColumn:@"content"];
-        NSLog(@" -> %@", title);
-    }
-}
-
-- (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
-{
-    [self.searchBar setHidden:YES];
-    [self.webView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.searchBar resignFirstResponder];
-}
-
-- (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
-{
-    NSString *title = [self.searchBar text];
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
-    
-    [self.searchBar setHidden:YES];
-    [self.webView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.searchBar resignFirstResponder];
-    [self.webView becomeFirstResponder];
+    [self performSegueWithIdentifier:@"search" sender:self];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
