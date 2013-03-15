@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadProgressCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cancelCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *downloadButton;
 
 - (void)updateArticleCount;
 - (void)updateUpdateDate;
@@ -80,6 +81,11 @@
             if (indexPath.row == 2) {
                 // Update button clicked
                 NSLog(@"Update clicked.");
+                
+                UIActivityIndicatorView *progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+                progressIndicator.center = CGPointMake(self.downloadButton.center.x + 100, self.downloadButton.center.y);
+                [self.view addSubview:progressIndicator];
+                [progressIndicator startAnimating];
                 
                 self.downloadLabel.text = @"连接中…";
                 self.downloadLabel.enabled = NO;

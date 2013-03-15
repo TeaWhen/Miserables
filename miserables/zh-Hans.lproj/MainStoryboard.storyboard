@@ -176,7 +176,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="OGM-R8-i99" style="IBUITableViewCellStyleDefault" id="U6g-Is-TU9">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="downloadButton" textLabel="OGM-R8-i99" style="IBUITableViewCellStyleDefault" id="U6g-Is-TU9">
                                         <rect key="frame" x="0.0" y="135" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -256,6 +256,7 @@
                     <connections>
                         <outlet property="articleCountLabel" destination="kK7-cB-m3o" id="phu-t3-T1G"/>
                         <outlet property="cancelCell" destination="1kP-zO-TI0" id="5gj-gY-JyU"/>
+                        <outlet property="downloadButton" destination="U6g-Is-TU9" id="B3t-Na-Jmw"/>
                         <outlet property="downloadCell" destination="U6g-Is-TU9" id="9ly-lQ-9NF"/>
                         <outlet property="downloadLabel" destination="OGM-R8-i99" id="z23-UJ-bhe"/>
                         <outlet property="downloadProgressCell" destination="iqK-xK-Wda" id="QGx-Ad-nPs"/>
@@ -269,42 +270,6 @@
             <point key="canvasLocation" x="679" y="-92"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="LesNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesNavigationController.h"/>
-        </class>
-        <class className="LesPreferenceViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesPreferenceViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="articleCountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cancelCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="downloadCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="downloadLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="downloadProgressCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="downloadProgressView" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="preferenceTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="LesSearchViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesSearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="resultTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="LesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="navigationTitle" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="tapNavigation" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
