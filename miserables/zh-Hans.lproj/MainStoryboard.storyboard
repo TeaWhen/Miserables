@@ -313,6 +313,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="IIViewDeckController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IIViewDeckController.h"/>
+        </class>
         <class className="LesInitialViewController" superclassName="IIViewDeckController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesInitialViewController.h"/>
         </class>

@@ -4,9 +4,6 @@
 [submodule "WebViewProxy"]
 	path = WebViewProxy
 	url = git://github.com/marcuswestin/WebViewProxy.git
-[submodule "QuickDialog"]
-	path = QuickDialog
-	url = git://github.com/escoz/QuickDialog.git
 [submodule "AFNetworking"]
 	path = AFNetworking
 	url = https://github.com/AFNetworking/AFNetworking.git
