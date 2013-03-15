@@ -50,11 +50,9 @@
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    NSLog(searchText);
     FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", searchText]];
     while ([articles next]) {
         NSString *title = [articles stringForColumn:@"title"];
-        //        NSString *content = [articles stringForColumn:@"content"];
         NSLog(@" -> %@", title);
     }
 }

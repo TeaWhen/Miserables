@@ -70,7 +70,6 @@ static NSOperationQueue* queue;
         NSString *title = [NSString stringWithString:[URL substringFromIndex:13]];
 
         self.navigationController.navigationBar.topItem.title = title;
-        NSLog(@"%@", title);
         
         NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
         NSString *html_body;
@@ -78,7 +77,7 @@ static NSOperationQueue* queue;
         FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title = ?", title];
         if ([articles next]) {
             NSString *content = [articles stringForColumn:@"content"];
-            html_body = [NSString stringWithFormat:@"<h1>%@</h1><hr />%@</body></html>", title, content];
+            html_body = [NSString stringWithFormat:@"<p>%@</p></body></html>", title, content];
         }
         else {
             html_body = @"未找到条目。";
