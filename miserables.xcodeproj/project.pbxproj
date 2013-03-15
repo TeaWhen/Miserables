@@ -148,6 +148,8 @@
 		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		AB1D0E0716F30A8F009EE979 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		AB1D0E0916F30A8F009EE979 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB69A25C16EC8D070037E52E /* WebViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebViewProxy.h; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.h; sourceTree = "<group>"; };
 		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
 		AB7930AB16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AB7930AC16EC4A9600F3A694 /* zh-Hans */,
+				AB1D0E0916F30A8F009EE979 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AB7930AB16EC4A9600F3A694 /* zh-Hans */,
+				AB1D0E0716F30A8F009EE979 /* en */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
