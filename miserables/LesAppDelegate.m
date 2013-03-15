@@ -8,6 +8,7 @@
 
 #import "LesAppDelegate.h"
 #import "FMDatabase.h"
+#import "LesViewController.h"
 
 @implementation LesAppDelegate
 
