@@ -37,6 +37,17 @@
     self.searchBar.delegate = self;
     self.resultTableView.dataSource = self;
     
+    for (UIView *searchBarSubview in [self.searchBar subviews]) {
+        if ([searchBarSubview conformsToProtocol:@protocol(UITextInputTraits)]) {
+            @try {
+                [(UITextField *)searchBarSubview setReturnKeyType:UIReturnKeyGo];
+            }
+            @catch (NSException * e) {
+                // ignore exception
+            }
+        }
+    }
+    
     [self searchBar:self.searchBar textDidChange:@""];
     [self.searchBar becomeFirstResponder];
 }
