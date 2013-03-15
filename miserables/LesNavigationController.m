@@ -16,13 +16,6 @@
 
 @implementation LesNavigationController
 
-+ (instancetype)cast:(id)from {
-    if ([from isKindOfClass:self]) {
-        return from;
-    }
-    return nil;
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

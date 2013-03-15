@@ -38,7 +38,7 @@
     [super viewDidLoad];
     self.preferenceTableView.delegate = self;
 
-    self.nav = [LesNavigationController cast:self.navigationController];
+    self.nav = (LesNavigationController *)(self.navigationController);
     
     if (self.nav->downloaded) {
         self.downloadLabel.text = @"已更新";
