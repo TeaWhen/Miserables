@@ -36,9 +36,9 @@
 	
     self.searchBar.delegate = self;
     self.resultTableView.dataSource = self;
-    [self.searchBar becomeFirstResponder];
     
     [self searchBar:self.searchBar textDidChange:@""];
+    [self.searchBar becomeFirstResponder];
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
@@ -62,7 +62,6 @@
     while ([articles next]) {
         NSString *title = [articles stringForColumn:@"title"];
         [self.result addObject:title];
-        NSLog(@" -> %@", title);
     }
     [self.resultTableView reloadData];
 }

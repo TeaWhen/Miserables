@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LesSearchViewController : UIViewController
+@interface LesSearchViewController : UITableViewController
 
 @end
