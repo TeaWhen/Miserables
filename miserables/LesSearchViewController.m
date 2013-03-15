@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *resultTableView;
 
+@property (weak, nonatomic) LesViewController *parent;
+@property (weak, nonatomic) LesNavigationController *nav;
+
 @end
 
 @implementation LesSearchViewController
@@ -23,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.nav = (LesNavigationController *)(self.presentingViewController);
+    self.parent = [self.nav.viewControllers objectAtIndex:0];
 	
     self.searchBar.delegate = self;
     [self.searchBar becomeFirstResponder];
@@ -32,7 +38,9 @@
 {
     NSString *title = [self.searchBar text];
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
@@ -42,9 +50,8 @@
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    LesViewController *parent = (LesViewController *)(self.parentViewController);
-    LesNavigationController *nav = (LesNavigationController *)(parent.nav);
-    FMResultSet *articles = [nav.db executeQuery:@"SELECT * FROM Article WHERE title LIKE ?", [NSString stringWithFormat:@"%%%@%%", searchText]];
+    NSLog(searchText);
+    FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", searchText]];
     while ([articles next]) {
         NSString *title = [articles stringForColumn:@"title"];
         //        NSString *content = [articles stringForColumn:@"content"];

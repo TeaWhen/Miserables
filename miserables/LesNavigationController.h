@@ -18,7 +18,6 @@
 @property (strong, nonatomic) AFDownloadRequestOperation *downloadOperation;
 @property (strong, nonatomic) FMDatabase *db;
 
-+ (instancetype)cast:(id)from;
 - (void)openDb;
 
 @end

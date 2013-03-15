@@ -13,5 +13,6 @@
 @interface LesViewController : UIViewController
 
 @property (weak, nonatomic) LesNavigationController *nav;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end

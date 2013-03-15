@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -30,7 +29,7 @@ static NSOperationQueue* queue;
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:5];
     
-    self.nav = [LesNavigationController cast:self.navigationController];
+    self.nav = (LesNavigationController *)(self.navigationController);
     [self.nav openDb];
     
     self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
