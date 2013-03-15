@@ -90,7 +90,7 @@
                 NSString *newLibraryPath = [documentDirectory stringByAppendingPathComponent:@"article_new.db"];
                 
                 if (!self.nav.downloadOperation) {
-                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://127.0.0.1/~xhacker/article.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
+                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://42.121.18.11/static/mis/article.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
                     self.nav.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:newLibraryPath shouldResume:YES];
                     self.nav.downloadOperation.shouldOverwrite = YES;
                 }
