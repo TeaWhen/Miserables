@@ -79,6 +79,16 @@ static NSOperationQueue* queue;
     
 }
 
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title LIKE ?", [NSString stringWithFormat:@"%%%@%%", searchText]];
+    while ([articles next]) {
+        NSString *title = [articles stringForColumn:@"title"];
+//        NSString *content = [articles stringForColumn:@"content"];
+        NSLog(@" -> %@", title);
+    }
+}
+
 - (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
 {
     [self.searchBar setHidden:YES];
