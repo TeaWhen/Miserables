@@ -50,8 +50,6 @@
 		AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25C16EC8D070037E52E /* WebViewProxy.h */; };
 		AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25D16EC8D070037E52E /* WebViewProxy.m */; };
 		AB7B574916F1FC2F000960CB /* (null) in Resources */ = {isa = PBXBuildFile; };
-		ABB5E17A16F353A400797B14 /* LesInitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB5E17916F353A400797B14 /* LesInitialViewController.m */; };
-		ABDD7EAB16F351F400837C04 /* LesLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDD7EAA16F351F400837C04 /* LesLeftViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,10 +127,6 @@
 		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
 		AB7930AB16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		AB7930AC16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		ABB5E17816F353A400797B14 /* LesInitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesInitialViewController.h; path = ../miserables/LesInitialViewController.h; sourceTree = "<group>"; };
-		ABB5E17916F353A400797B14 /* LesInitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesInitialViewController.m; path = ../miserables/LesInitialViewController.m; sourceTree = "<group>"; };
-		ABDD7EA916F351F400837C04 /* LesLeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesLeftViewController.h; path = miserables/LesLeftViewController.h; sourceTree = SOURCE_ROOT; };
-		ABDD7EAA16F351F400837C04 /* LesLeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesLeftViewController.m; path = miserables/LesLeftViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,10 +197,6 @@
 				1A22CFB516EE094800ED9EF5 /* LesNavigationController.m */,
 				1A98490916F2FFE6008B69EA /* LesSearchViewController.h */,
 				1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */,
-				ABDD7EA916F351F400837C04 /* LesLeftViewController.h */,
-				ABDD7EAA16F351F400837C04 /* LesLeftViewController.m */,
-				ABB5E17816F353A400797B14 /* LesInitialViewController.h */,
-				ABB5E17916F353A400797B14 /* LesInitialViewController.m */,
 				1A1A4A6516EB123400EF7BBE /* Supporting Files */,
 			);
 			path = Miserables;
@@ -427,8 +417,6 @@
 				1A26E79616F1C7E400EC72E8 /* IIViewDeckController.m in Sources */,
 				1A26E79716F1C7E400EC72E8 /* IIWrapController.m in Sources */,
 				1A98490B16F2FFE6008B69EA /* LesSearchViewController.m in Sources */,
-				ABDD7EAB16F351F400837C04 /* LesLeftViewController.m in Sources */,
-				ABB5E17A16F353A400797B14 /* LesInitialViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

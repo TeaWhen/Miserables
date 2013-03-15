@@ -20,7 +20,7 @@
 
 @implementation LesViewController
 
-static NSOperationQueue* queue;
+static NSOperationQueue *queue;
 
 - (void)viewDidLoad
 {
