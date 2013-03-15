@@ -7,6 +7,7 @@
 //
 
 #import "LesNavigationController.h"
+#import "IIViewDeckController.h"
 
 @interface LesNavigationController ()
 
