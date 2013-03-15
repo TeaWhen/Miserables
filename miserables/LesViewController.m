@@ -31,8 +31,8 @@ static NSOperationQueue* queue;
     
     self.nav = (LesNavigationController *)(self.navigationController);
     [self.nav openDb];
-
-    self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked)];
+    
+    self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
     self.tapNavigation.numberOfTapsRequired = 2;
     [self.navigationController.navigationBar addGestureRecognizer:self.tapNavigation];
     self.webView.delegate = self;
@@ -57,7 +57,7 @@ static NSOperationQueue* queue;
     // Dispose of any resources that can be recreated.
 }
 
-- (void) navigationBarClicked
+- (void) navigationBarClicked:(UIPanGestureRecognizer *) tapNavigation
 {
     [self performSegueWithIdentifier:@"search" sender:self];
 }
