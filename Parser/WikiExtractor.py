@@ -61,6 +61,7 @@ import bz2
 import os.path
 from htmlentitydefs import name2codepoint
 import sqlite3
+import opencc
 
 ### PARAMS ####################################################################
 
@@ -110,6 +111,36 @@ conn = sqlite3.connect('article.db')
 conn.text_factory = str
 c = conn.cursor()
 
+#### Traditional and Simplified Convert #######################################
+#
+#def mdic():
+#    table = open('ZhConversion.php','r').readlines()
+#    dic = dict()
+#    name = []
+#    for line in table:
+#        if line[0] == '$':
+#            name.append(dic)
+#            dic = dict()
+#        if line[0] == "'":
+#            word = line.split("'")
+#            dic[word[1]] = word[3]
+#    name[3].update(name[1]) # 简繁通用转换规则(zh2Hant)加上台湾区域用法(zh2TW)
+#    name[4].update(name[1]) # 简繁通用转换规则(zh2Hant)加上香港区域用法(zh2HK)
+#    name[5].update(name[2]) # 繁简通用转换规则(zh2Hans)加上大陆区域用法(zh2CN)
+#    return name[3],name[4],name[5]
+#
+#def convert(string, dic):
+#    i = 0
+#    while i < len(string):
+#        for j in range(min(len(string) - i, i + 40), 0, -1):
+#            if string[i:][:j] in dic:
+#                t = dic[string[i:][:j]]
+#                string.replace(string[i:][:j], t, 1)
+#                i += len(t) - 1
+#                break
+#        i += 1
+#    return string
+#
 ##### Main function ###########################################################
 
 def WikiDocument(out, id, title, text):
@@ -178,7 +209,7 @@ def normalizeTitle(title):
           title = prefix.capitalize() + ":" + optionalWhitespace + rest
   else:
       # no namespace, just capitalize first letter
-      title = title.capitalize();
+      title = title.capitalize()
   return title
 
 ##
@@ -343,13 +374,9 @@ def make_anchor_tag(match):
         anchor = link
     anchor += trail
     if keepLinks:
-        return '<a href="miserables://%s">%s</a>' % (urlencode(link), anchor)
+        return u'<a href="miserables://{0}">{1}</a>'.format(urllib.quote_plus(link.encode('utf-8')), anchor)
     else:
         return anchor
-
-def urlencode(s) :
-    reprStr = repr(s).replace(r'\x', '%')
-    return reprStr[1:-1]
 
 def clean(text):
 
@@ -574,21 +601,22 @@ def process_data(input, output):
         elif tag == 'text':
             inText = True
             line = line[m.start(3):m.end(3)] + '\n'
-            page.append(line)
+            page.append(cc.convert(line))
             if m.lastindex == 4: # open-close
                 inText = False
         elif tag == '/text':
             if m.group(1):
-                page.append(m.group(1) + '\n')
+                page.append(cc.convert(m.group(1) + '\n'))
             inText = False
         elif inText:
-            page.append(line)
+            page.append(cc.convert(line))
         elif tag == '/page':
             colon = title.find(':')
             if (colon < 0 or title[:colon] in acceptedNamespaces) and \
                     not redirect:
+                title = cc.convert(title)
                 print id, title.encode('utf-8')
-                if int(id) > 3000:
+                if int(id) > 200:
                     conn.commit()
                     c.close()
                     exit()
@@ -673,4 +701,5 @@ def main():
     output_splitter.close()
 
 if __name__ == '__main__':
+    cc = opencc.OpenCC('t2s')
     main()
