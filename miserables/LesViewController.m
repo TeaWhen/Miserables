@@ -49,6 +49,10 @@ static NSOperationQueue *queue;
     // default page
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"首页" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    
+    UIButton *floatButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    floatButton.frame = CGRectMake(10, 370, 30, 30);
+    [self.view addSubview:floatButton];
 }
 
 - (void)didReceiveMemoryWarning
