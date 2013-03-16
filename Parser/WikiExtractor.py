@@ -373,7 +373,7 @@ def clean(text):
     text = italic_quote.sub(r'&quot;\1&quot;', text)
     text = italic.sub(r'&quot;\1&quot;', text)
     text = quote_quote.sub(r'\1', text)
-    # text = text.replace("'''", '<b>').replace("''", '&quot;')
+    text = text.replace("'''", '').replace("''", '&quot;')
 
     ################ Process HTML ###############
 
