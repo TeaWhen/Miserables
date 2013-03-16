@@ -369,16 +369,11 @@ def clean(text):
 
     # Handle bold/italic/quote
     text = bold_italic.sub(r'\1', text)
-    text = bold.sub(r'\1', text)
+    text = bold.sub(r'<b>\1</b>', text)
     text = italic_quote.sub(r'&quot;\1&quot;', text)
     text = italic.sub(r'&quot;\1&quot;', text)
     text = quote_quote.sub(r'\1', text)
-
-    while "'''" in text:
-        text = text.replace("'''", '<b>', 1)
-        text = text.replace("'''", '</b>', 1)
-
-    text = text.replace("''", '&quot;')
+    # text = text.replace("'''", '<b>').replace("''", '&quot;')
 
     ################ Process HTML ###############
 
