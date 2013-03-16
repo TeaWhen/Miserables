@@ -60,6 +60,7 @@ import re
 import bz2
 import os.path
 from htmlentitydefs import name2codepoint
+import sqlite3
 
 ### PARAMS ####################################################################
 
@@ -105,22 +106,23 @@ discardElements = set([
 # Program version
 version = '2.3'
 
+conn = sqlite3.connect('article.db')
+conn.text_factory = str
+c = conn.cursor()
 
 ##### Main function ###########################################################
 
 def WikiDocument(out, id, title, text):
     url = get_url(id, prefix)
-    header = '<doc id="%s" url="%s" title="%s">\n' % (id, url, title)
+    # header = '<doc id="%s" url="%s" title="%s">\n' % (id, url, title)
     # Separate header from text with a newline.
-    header += title + '\n'
-    header = header.encode('utf-8')
+    # header = header.encode('utf-8')
     text = clean(text)
-    footer = "\n</doc>"
-    out.reserve(len(header) + len(text) + len(footer))
-    print >> out, header
+    # footer = "\n</doc>"
+    content = ''
     for line in compact(text):
-        print >> out, line.encode('utf-8')
-    print >> out, footer
+        content += '<p>%s</p>\n' % line.encode('utf-8')
+    c.execute('INSERT INTO Article VALUES (?,?)', (title, content,))
 
 def get_url(id, prefix):
     return "%s?curid=%s" % (prefix, id)
@@ -341,9 +343,13 @@ def make_anchor_tag(match):
         anchor = link
     anchor += trail
     if keepLinks:
-        return '<a href="miserables://%s">%s</a>' % (link, anchor)
+        return '<a href="miserables://%s">%s</a>' % (urlencode(link), anchor)
     else:
         return anchor
+
+def urlencode(s) :
+    reprStr = repr(s).replace(r'\x', '%')
+    return reprStr[1:-1]
 
 def clean(text):
 
@@ -582,6 +588,10 @@ def process_data(input, output):
             if (colon < 0 or title[:colon] in acceptedNamespaces) and \
                     not redirect:
                 print id, title.encode('utf-8')
+                if int(id) > 3000:
+                    conn.commit()
+                    c.close()
+                    exit()
                 sys.stdout.flush()
                 WikiDocument(output, id, title, ''.join(page))
             id = None
