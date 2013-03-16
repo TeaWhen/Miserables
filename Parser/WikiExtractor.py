@@ -616,10 +616,6 @@ def process_data(input, output):
                     not redirect:
                 title = cc.convert(title)
                 print id, title.encode('utf-8')
-                if int(id) > 200:
-                    conn.commit()
-                    c.close()
-                    exit()
                 sys.stdout.flush()
                 WikiDocument(output, id, title, ''.join(page))
             id = None
@@ -702,4 +698,8 @@ def main():
 
 if __name__ == '__main__':
     cc = opencc.OpenCC('t2s')
-    main()
+    try:
+        main()
+    except:
+        conn.commit()
+        c.close()
