@@ -111,7 +111,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Library" footerTitle="You can also use iTunes to import database." id="Gqx-Nb-1wn">
+                            <tableViewSection headerTitle="Library" footerTitle="You can also use iTunes File Sharing to import database." id="Gqx-Nb-1wn">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="4rF-mi-m4T" detailTextLabel="mPL-QP-iup" style="IBUITableViewCellStyleValue1" id="er6-qI-Uts">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -127,8 +127,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="3 Days Ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mPL-QP-iup">
-                                                    <rect key="frame" x="202" y="11" width="88" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="3 days ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mPL-QP-iup">
+                                                    <rect key="frame" x="206" y="11" width="84" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,8 +145,8 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Wiki Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DlE-Un-Y63">
-                                                    <rect key="frame" x="10" y="11" width="104" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Number of Entries" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DlE-Un-Y63">
+                                                    <rect key="frame" x="10" y="11" width="148" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -183,7 +183,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Download Speed" id="w91-pX-LCZ">
+                            <tableViewSection headerTitle="Download Progress" id="w91-pX-LCZ">
                                 <cells>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="iqK-xK-Wda">
                                         <rect key="frame" x="0.0" y="276" width="320" height="45"/>
@@ -265,6 +265,7 @@
             <relationships>
                 <relationship kind="outlet" name="articleCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="cancelCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="downloadButton" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="downloadCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="downloadLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="downloadProgressCell" candidateClass="UITableViewCell"/>
