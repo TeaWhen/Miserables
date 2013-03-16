@@ -82,7 +82,7 @@
                 // Update button clicked
                 NSLog(@"Update clicked.");
                 
-                UIActivityIndicatorView *progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+                UIActivityIndicatorView *progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
                 progressIndicator.center = CGPointMake(self.downloadButton.center.x + 100, self.downloadButton.center.y);
                 [self.view addSubview:progressIndicator];
                 [progressIndicator startAnimating];
@@ -96,7 +96,7 @@
                 NSString *newLibraryPath = [documentDirectory stringByAppendingPathComponent:@"article_new.db"];
                 
                 if (!self.nav.downloadOperation) {
-                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://42.121.18.11/static/mis/article.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
+                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://10.121.18.11/static/mis/article.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
                     self.nav.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:newLibraryPath shouldResume:YES];
                     self.nav.downloadOperation.shouldOverwrite = YES;
                 }
@@ -104,6 +104,7 @@
                 [self.nav.downloadOperation start];
                 
                 [self.nav.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    [progressIndicator stopAnimating];
                     self.downloadLabel.text = @"已更新";
                     [self.tableView reloadData];
                     [self.downloadProgressCell setHidden:YES];
@@ -121,6 +122,7 @@
                     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
                     [self updateUpdateDate];
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [progressIndicator stopAnimating];
                     NSLog(@"Error occured: %@", error);
                     [self.nav.downloadOperation deleteTempFileWithError:nil];
                     self.nav.downloadOperation = nil;
@@ -145,6 +147,7 @@
                 }];
                 
                 [self.nav.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+                    [progressIndicator stopAnimating];
                     self.downloadLabel.text = @"下载中…";
                     [self.tableView reloadData];
                     [self.downloadProgressCell setHidden:NO];
