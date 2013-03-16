@@ -110,4 +110,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *title = [self.result objectAtIndex:indexPath.row];
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
