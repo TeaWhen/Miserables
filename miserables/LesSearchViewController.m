@@ -25,6 +25,12 @@
 
 @implementation LesSearchViewController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.searchBar becomeFirstResponder];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -48,8 +54,8 @@
         }
     }
     
-    [self searchBar:self.searchBar textDidChange:@""];
     [self.searchBar becomeFirstResponder];
+    [self searchBar:self.searchBar textDidChange:@""];
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar

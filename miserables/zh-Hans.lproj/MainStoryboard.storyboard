@@ -100,7 +100,6 @@
                     <connections>
                         <outlet property="resultTableView" destination="jDG-jM-h4a" id="l2g-cI-cUe"/>
                         <outlet property="searchBar" destination="MzL-5n-waO" id="Yor-QX-6dl"/>
-                        <outlet property="searchDisplayController" destination="bMd-fl-ZIw" id="PhY-yC-lVX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsq-0h-QTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
