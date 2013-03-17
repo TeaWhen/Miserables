@@ -35,9 +35,6 @@
 		1A22CFB316EDF9F700ED9EF5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A22CFAF16EDF9F700ED9EF5 /* README.md */; };
 		1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CFB516EE094800ED9EF5 /* LesNavigationController.m */; };
 		1A25566116EC8B1D004BECAC /* LesPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */; };
-		1A26E79516F1C7E400EC72E8 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A26E79016F1C7E400EC72E8 /* IISideController.m */; };
-		1A26E79616F1C7E400EC72E8 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A26E79216F1C7E400EC72E8 /* IIViewDeckController.m */; };
-		1A26E79716F1C7E400EC72E8 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A26E79416F1C7E400EC72E8 /* IIWrapController.m */; };
 		1A26E79A16F1C81D00EC72E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */; };
 		1A98490B16F2FFE6008B69EA /* LesSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */; };
 		1ACF92D416F36C1D006ACE08 /* Static in Resources */ = {isa = PBXBuildFile; fileRef = 1ACF92D316F36C1D006ACE08 /* Static */; };
@@ -48,6 +45,7 @@
 		1AF87C8416EB6B27003292B0 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7D16EB6B27003292B0 /* FMDatabaseQueue.m */; };
 		1AF87C8616EB6B27003292B0 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C8016EB6B27003292B0 /* FMResultSet.m */; };
 		1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */; };
+		4267057716F5574000295AD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4267057916F5574000295AD7 /* Localizable.strings */; };
 		AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25C16EC8D070037E52E /* WebViewProxy.h */; };
 		AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25D16EC8D070037E52E /* WebViewProxy.m */; };
 /* End PBXBuildFile section */
@@ -99,12 +97,6 @@
 		1A25565C16EC8826004BECAC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1A25565F16EC8B1D004BECAC /* LesPreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesPreferenceViewController.h; path = miserables/LesPreferenceViewController.h; sourceTree = SOURCE_ROOT; };
 		1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesPreferenceViewController.m; path = miserables/LesPreferenceViewController.m; sourceTree = SOURCE_ROOT; };
-		1A26E78F16F1C7E400EC72E8 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
-		1A26E79016F1C7E400EC72E8 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
-		1A26E79116F1C7E400EC72E8 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		1A26E79216F1C7E400EC72E8 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
-		1A26E79316F1C7E400EC72E8 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
-		1A26E79416F1C7E400EC72E8 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A98490916F2FFE6008B69EA /* LesSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesSearchViewController.h; path = miserables/LesSearchViewController.h; sourceTree = SOURCE_ROOT; };
 		1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesSearchViewController.m; path = miserables/LesSearchViewController.m; sourceTree = SOURCE_ROOT; };
@@ -122,11 +114,13 @@
 		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		AB1D0E0716F30A8F009EE979 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		AB1D0E0916F30A8F009EE979 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4267057116F554DC00295AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4267057316F5552600295AD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
+		4267057416F5552600295AD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4267057816F5574000295AD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4267057A16F5579E00295AD7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		AB69A25C16EC8D070037E52E /* WebViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebViewProxy.h; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.h; sourceTree = "<group>"; };
 		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
-		AB7930AB16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
 		AB7930AC16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,7 +162,6 @@
 		1A1A4A5D16EB123400EF7BBE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1A26E78E16F1C7E400EC72E8 /* ViewDeck */,
 				1A22CFAA16EDF9F700ED9EF5 /* AFDownloadRequestOperation */,
 				1A22CF8C16EDF3E500ED9EF5 /* AFNetworking */,
 				AB69A26016EC8D0D0037E52E /* WebViewProxy */,
@@ -210,6 +203,7 @@
 				1A1A4A6616EB123400EF7BBE /* Miserables-Info.plist */,
 				1A1A4A6716EB123400EF7BBE /* InfoPlist.strings */,
 				1A1A4A6A16EB123400EF7BBE /* main.m */,
+				4267057916F5574000295AD7 /* Localizable.strings */,
 				1A1A4A6C16EB123400EF7BBE /* Miserables-Prefix.pch */,
 				1A1A4A7016EB123400EF7BBE /* Default.png */,
 				1A1A4A7216EB123400EF7BBE /* Default@2x.png */,
@@ -255,20 +249,6 @@
 				1A22CFAF16EDF9F700ED9EF5 /* README.md */,
 			);
 			path = AFDownloadRequestOperation;
-			sourceTree = "<group>";
-		};
-		1A26E78E16F1C7E400EC72E8 /* ViewDeck */ = {
-			isa = PBXGroup;
-			children = (
-				1A26E78F16F1C7E400EC72E8 /* IISideController.h */,
-				1A26E79016F1C7E400EC72E8 /* IISideController.m */,
-				1A26E79116F1C7E400EC72E8 /* IIViewDeckController.h */,
-				1A26E79216F1C7E400EC72E8 /* IIViewDeckController.m */,
-				1A26E79316F1C7E400EC72E8 /* IIWrapController.h */,
-				1A26E79416F1C7E400EC72E8 /* IIWrapController.m */,
-			);
-			name = ViewDeck;
-			path = ViewDeck/ViewDeck;
 			sourceTree = "<group>";
 		};
 		1A26E79C16F2037E00EC72E8 /* Resources */ = {
@@ -355,6 +335,7 @@
 			knownRegions = (
 				en,
 				"zh-Hans",
+				Base,
 			);
 			mainGroup = 1A1A4A5216EB123400EF7BBE;
 			productRefGroup = 1A1A4A5C16EB123400EF7BBE /* Products */;
@@ -382,6 +363,7 @@
 				1A22CFB116EDF9F700ED9EF5 /* AFDownloadRequestOperation.podspec in Resources */,
 				1A22CFB216EDF9F700ED9EF5 /* LICENCE in Resources */,
 				1A22CFB316EDF9F700ED9EF5 /* README.md in Resources */,
+				4267057716F5574000295AD7 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,9 +397,6 @@
 				1A22CFB016EDF9F700ED9EF5 /* AFDownloadRequestOperation.m in Sources */,
 				1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */,
 				1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */,
-				1A26E79516F1C7E400EC72E8 /* IISideController.m in Sources */,
-				1A26E79616F1C7E400EC72E8 /* IIViewDeckController.m in Sources */,
-				1A26E79716F1C7E400EC72E8 /* IIWrapController.m in Sources */,
 				1A98490B16F2FFE6008B69EA /* LesSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +408,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AB7930AC16EC4A9600F3A694 /* zh-Hans */,
-				AB1D0E0916F30A8F009EE979 /* en */,
+				4267057416F5552600295AD7 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -437,10 +416,20 @@
 		1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AB7930AB16EC4A9600F3A694 /* zh-Hans */,
-				AB1D0E0716F30A8F009EE979 /* en */,
+				4267057116F554DC00295AD7 /* Base */,
+				4267057316F5552600295AD7 /* en */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		4267057916F5574000295AD7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4267057816F5574000295AD7 /* en */,
+				4267057A16F5579E00295AD7 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
