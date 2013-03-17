@@ -11,7 +11,7 @@
 #import "LesNavigationController.h"
 #import "FMResultSet.h"
 
-@interface LesSearchViewController () <UISearchBarDelegate, UITableViewDataSource>
+@interface LesSearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *resultTableView;
