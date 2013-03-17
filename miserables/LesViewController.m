@@ -83,15 +83,9 @@ static NSOperationQueue *queue;
         }
 
         NSString *html = [NSString stringWithFormat:@"<html><head>%@</head><body>%@</body></html>", html_head, html_body];
-
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        NSURL *baseURL = [NSURL fileURLWithPath:path];
-        [self.webView loadHTMLString:html baseURL:baseURL];
-        return NO;
+        [self.webView loadHTMLString:html baseURL:nil];
     }
-    else {
-        return YES;
-    }
+    return YES;
 }
 
 #pragma mark Float buttons
