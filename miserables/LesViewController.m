@@ -51,7 +51,8 @@ static NSOperationQueue *queue;
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
     UIButton *floatButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    floatButton.frame = CGRectMake(10, 370, 30, 30);
+    floatButton.frame = CGRectMake(10, self.view.frame.size.height - 84, 30, 30);
+    NSLog(@"%@", self.view);
     [self.view addSubview:floatButton];
 }
 
