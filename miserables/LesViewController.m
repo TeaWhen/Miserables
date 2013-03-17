@@ -49,11 +49,6 @@ static NSOperationQueue *queue;
     // default page
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"首页" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
-    
-    UIButton *floatButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    floatButton.frame = CGRectMake(10, self.view.frame.size.height - 84, 30, 30);
-    NSLog(@"%@", self.view);
-    [self.view addSubview:floatButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -98,5 +93,20 @@ static NSOperationQueue *queue;
         return YES;
     }
 }
+
+#pragma mark Float buttons
+
+- (IBAction)backClicked:(UIButton *)sender {
+    NSLog(@"Back.");
+}
+
+- (IBAction)forwardClicked:(UIButton *)sender {
+    NSLog(@"Forward.");
+}
+
+- (IBAction)favoriteClicked:(UIButton *)sender {
+    NSLog(@"Favorite.");
+}
+
 
 @end
