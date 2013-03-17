@@ -114,11 +114,11 @@
 		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		4267057116F554DC00295AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		4267057316F5552600295AD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
-		4267057416F5552600295AD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4267057816F5574000295AD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4267057A16F5579E00295AD7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4267057A16F5579E00295AD7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		42B75FD916F5601B003D3580 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
+		42B75FDC16F5605E003D3580 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		42B75FDD16F5605E003D3580 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		42B75FDE16F5605E003D3580 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB69A25C16EC8D070037E52E /* WebViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebViewProxy.h; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.h; sourceTree = "<group>"; };
 		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
 		AB7930AC16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AB7930AC16EC4A9600F3A694 /* zh-Hans */,
-				4267057416F5552600295AD7 /* en */,
+				42B75FDD16F5605E003D3580 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -416,8 +416,8 @@
 		1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4267057116F554DC00295AD7 /* Base */,
-				4267057316F5552600295AD7 /* en */,
+				42B75FD916F5601B003D3580 /* zh-Hans */,
+				42B75FDC16F5605E003D3580 /* en */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -425,8 +425,8 @@
 		4267057916F5574000295AD7 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4267057816F5574000295AD7 /* en */,
 				4267057A16F5579E00295AD7 /* zh-Hans */,
+				42B75FDE16F5605E003D3580 /* en */,
 			);
 			name = Localizable.strings;
 			path = ..;
