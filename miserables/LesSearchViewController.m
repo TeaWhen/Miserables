@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.nav = (LesNavigationController *)(self.presentingViewController);
     self.parent = [self.nav.viewControllers objectAtIndex:0];
     
@@ -54,7 +54,6 @@
         }
     }
     
-    [self.searchBar becomeFirstResponder];
     [self searchBar:self.searchBar textDidChange:@""];
 }
 
@@ -86,7 +85,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark Table view methods
@@ -96,13 +94,11 @@
     return 1;
 }
 
-// Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.result.count;
 }
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
