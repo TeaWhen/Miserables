@@ -35,7 +35,8 @@
     }
     
     [self.db executeUpdate:@"CREATE TABLE Article (title TEXT, content TEXT)"];
-    
+    [self.db executeUpdate:@"CREATE TABLE Favorite (title TEXT)"];
+
     FMResultSet *s = [self.db executeQuery:@"SELECT COUNT(*) FROM Article"];
     int articleCount = 0;
     if ([s next]) {

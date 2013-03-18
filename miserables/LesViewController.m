@@ -99,8 +99,16 @@ static NSOperationQueue *queue;
 }
 
 - (IBAction)favoriteClicked:(UIButton *)sender {
-    NSLog(@"Favorite.");
+    NSString *title = [NSString stringWithString:self.navigationController.navigationBar.topItem.title];
+    FMResultSet *s = [self.nav.db executeQuery:@"SELECT * FROM Favorite WHERE title = ?", title];
+    if ([s next]) {
+        NSLog(@"加过了~");
+    }
+    else {
+        self.nav.db.traceExecution = YES;
+        self.nav.db.logsErrors = YES;
+        [self.nav.db executeUpdate:@"INSERT INTO Favorite VALUES (?)", title];
+    }
 }
-
 
 @end
