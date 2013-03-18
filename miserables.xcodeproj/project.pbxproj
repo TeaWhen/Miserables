@@ -36,6 +36,7 @@
 		1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CFB516EE094800ED9EF5 /* LesNavigationController.m */; };
 		1A25566116EC8B1D004BECAC /* LesPreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */; };
 		1A26E79A16F1C81D00EC72E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */; };
+		1A4D73F916F6E209003CFC46 /* LesFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */; };
 		1A98490B16F2FFE6008B69EA /* LesSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */; };
 		1ACF92D416F36C1D006ACE08 /* Static in Resources */ = {isa = PBXBuildFile; fileRef = 1ACF92D316F36C1D006ACE08 /* Static */; };
 		1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */; };
@@ -98,6 +99,8 @@
 		1A25565F16EC8B1D004BECAC /* LesPreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesPreferenceViewController.h; path = miserables/LesPreferenceViewController.h; sourceTree = SOURCE_ROOT; };
 		1A25566016EC8B1D004BECAC /* LesPreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesPreferenceViewController.m; path = miserables/LesPreferenceViewController.m; sourceTree = SOURCE_ROOT; };
 		1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1A4D73F716F6E209003CFC46 /* LesFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesFavoritesViewController.h; path = miserables/LesFavoritesViewController.h; sourceTree = SOURCE_ROOT; };
+		1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesFavoritesViewController.m; path = miserables/LesFavoritesViewController.m; sourceTree = SOURCE_ROOT; };
 		1A98490916F2FFE6008B69EA /* LesSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesSearchViewController.h; path = miserables/LesSearchViewController.h; sourceTree = SOURCE_ROOT; };
 		1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesSearchViewController.m; path = miserables/LesSearchViewController.m; sourceTree = SOURCE_ROOT; };
 		1ACF92D316F36C1D006ACE08 /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */,
 				1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */,
 				1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */,
+				1A4D73F716F6E209003CFC46 /* LesFavoritesViewController.h */,
+				1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */,
 				1A1A4A7916EB123400EF7BBE /* LesViewController.h */,
 				1A1A4A7A16EB123400EF7BBE /* LesViewController.m */,
 				1A25565F16EC8B1D004BECAC /* LesPreferenceViewController.h */,
@@ -398,6 +403,7 @@
 				1A22CFB616EE094800ED9EF5 /* LesNavigationController.m in Sources */,
 				1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */,
 				1A98490B16F2FFE6008B69EA /* LesSearchViewController.m in Sources */,
+				1A4D73F916F6E209003CFC46 /* LesFavoritesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

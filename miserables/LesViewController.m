@@ -105,8 +105,6 @@ static NSOperationQueue *queue;
         NSLog(@"加过了~");
     }
     else {
-        self.nav.db.traceExecution = YES;
-        self.nav.db.logsErrors = YES;
         [self.nav.db executeUpdate:@"INSERT INTO Favorite VALUES (?)", title];
     }
 }

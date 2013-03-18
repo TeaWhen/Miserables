@@ -20,6 +20,46 @@
             </objects>
             <point key="canvasLocation" x="-252" y="107"/>
         </scene>
+        <!--Les Favorites View Controller-->
+        <scene sceneID="bHd-ay-TRf">
+            <objects>
+                <viewController id="xn3-zD-hVh" customClass="LesFavoritesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="buP-uN-zAK">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mGf-1h-9DA">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9K-XO-0zP">
+                                <items>
+                                    <navigationItem title="收藏夹" id="Sgf-RO-HBx">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="LW8-C8-vVa"/>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="MLT-2E-Pxv">
+                                            <connections>
+                                                <action selector="doneClicked:" destination="xn3-zD-hVh" id="aiw-IX-Aya"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mGf-1h-9DA" firstAttribute="top" secondItem="I9K-XO-0zP" secondAttribute="bottom" type="default" id="HfE-cJ-mTn"/>
+                            <constraint firstItem="mGf-1h-9DA" firstAttribute="trailing" secondItem="buP-uN-zAK" secondAttribute="trailing" type="default" id="Hsz-K7-fTN"/>
+                            <constraint firstItem="I9K-XO-0zP" firstAttribute="top" secondItem="buP-uN-zAK" secondAttribute="top" type="default" id="SZt-7o-Uhi"/>
+                            <constraint firstItem="I9K-XO-0zP" firstAttribute="trailing" secondItem="buP-uN-zAK" secondAttribute="trailing" type="default" id="TlQ-eB-QJW"/>
+                            <constraint firstItem="mGf-1h-9DA" firstAttribute="bottom" secondItem="buP-uN-zAK" secondAttribute="bottom" type="default" id="YxH-60-UFW"/>
+                            <constraint firstItem="I9K-XO-0zP" firstAttribute="leading" secondItem="buP-uN-zAK" secondAttribute="leading" type="default" id="dnx-3M-Asm"/>
+                            <constraint firstItem="mGf-1h-9DA" firstAttribute="leading" secondItem="buP-uN-zAK" secondAttribute="leading" type="default" id="lTx-EB-QBv"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBA-Oa-FM9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="184" y="-598"/>
+        </scene>
         <!--Les View Controller - 首页-->
         <scene sceneID="5">
             <objects>
@@ -89,7 +129,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="首页" id="age-SH-yeD">
-                        <barButtonItem key="leftBarButtonItem" title="收藏" id="mO1-sR-JQM"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="mO1-sR-JQM">
+                            <connections>
+                                <segue destination="xn3-zD-hVh" kind="modal" id="E5o-Ao-kfM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="设置" id="esw-i5-CBm">
                             <connections>
                                 <segue destination="33w-6c-5jK" kind="push" id="QgP-eL-l7P"/>
@@ -316,6 +360,12 @@
         </scene>
     </scenes>
     <classes>
+        <class className="LesFavoritesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesFavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneClicked:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
         <class className="LesNavigationController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesNavigationController.h"/>
         </class>

@@ -34,8 +34,11 @@
         NSLog(@"Could not open db.");
     }
     
-    [self.db executeUpdate:@"CREATE TABLE Article (title TEXT, content TEXT)"];
-    [self.db executeUpdate:@"CREATE TABLE Favorite (title TEXT)"];
+    self.db.traceExecution = YES;
+    self.db.logsErrors = YES;
+    
+    [self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS Article (title TEXT, content TEXT)"];
+    [self.db executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorite (title TEXT)"];
 
     FMResultSet *s = [self.db executeQuery:@"SELECT COUNT(*) FROM Article"];
     int articleCount = 0;
