@@ -20,6 +20,8 @@
 		1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7A16EB123400EF7BBE /* LesViewController.m */; };
 		1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8516EB1E4900EF7BBE /* icon.png */; };
 		1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */; };
+		1A1F4BD216F7070D00A3989D /* favorite_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F4BD116F7070D00A3989D /* favorite_0.png */; };
+		1A1F4BD416F707E300A3989D /* favorite_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F4BD316F707E300A3989D /* favorite_1.png */; };
 		1A22CFA016EDF3E500ED9EF5 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CF8E16EDF3E500ED9EF5 /* AFHTTPClient.m */; };
 		1A22CFA116EDF3E500ED9EF5 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CF9016EDF3E500ED9EF5 /* AFHTTPRequestOperation.m */; };
 		1A22CFA216EDF3E500ED9EF5 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CF9216EDF3E500ED9EF5 /* AFImageRequestOperation.m */; };
@@ -68,6 +70,8 @@
 		1A1A4A7A16EB123400EF7BBE /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
 		1A1A4A8516EB1E4900EF7BBE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
+		1A1F4BD116F7070D00A3989D /* favorite_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favorite_0.png; path = miserables/UI/favorite_0.png; sourceTree = SOURCE_ROOT; };
+		1A1F4BD316F707E300A3989D /* favorite_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favorite_1.png; path = miserables/UI/favorite_1.png; sourceTree = SOURCE_ROOT; };
 		1A22CF8D16EDF3E500ED9EF5 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		1A22CF8E16EDF3E500ED9EF5 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		1A22CF8F16EDF3E500ED9EF5 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 		1A26E79C16F2037E00EC72E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A1F4BD116F7070D00A3989D /* favorite_0.png */,
+				1A1F4BD316F707E300A3989D /* favorite_1.png */,
 				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
 				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
 			);
@@ -369,6 +375,8 @@
 				1A22CFB216EDF9F700ED9EF5 /* LICENCE in Resources */,
 				1A22CFB316EDF9F700ED9EF5 /* README.md in Resources */,
 				4267057716F5574000295AD7 /* Localizable.strings in Resources */,
+				1A1F4BD216F7070D00A3989D /* favorite_0.png in Resources */,
+				1A1F4BD416F707E300A3989D /* favorite_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

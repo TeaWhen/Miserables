@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @end
 
@@ -88,24 +89,17 @@ static NSOperationQueue *queue;
     return YES;
 }
 
-#pragma mark Float buttons
-
-- (IBAction)backClicked:(UIButton *)sender {
-    NSLog(@"Back.");
-}
-
-- (IBAction)forwardClicked:(UIButton *)sender {
-    NSLog(@"Forward.");
-}
-
 - (IBAction)favoriteClicked:(UIButton *)sender {
     NSString *title = [NSString stringWithString:self.navigationController.navigationBar.topItem.title];
     FMResultSet *s = [self.nav.db executeQuery:@"SELECT * FROM Favorite WHERE title = ?", title];
     if ([s next]) {
         NSLog(@"加过了~");
+        [self.nav.db executeUpdate:@"DELETE FROM Favorite WHERE title = ?", title];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];
     }
     else {
         [self.nav.db executeUpdate:@"INSERT INTO Favorite VALUES (?)", title];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_1.png"] forState:UIControlStateNormal];
     }
 }
 
