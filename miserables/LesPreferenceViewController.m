@@ -37,12 +37,17 @@
 
 @implementation LesPreferenceViewController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.parent = [self.nav.viewControllers objectAtIndex:0];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.preferenceTableView.delegate = self;
-    self.parent = [self.nav.viewControllers objectAtIndex:0];
-
+    
     self.nav = (LesNavigationController *)(self.navigationController);
     
     if (self.nav->downloaded) {
@@ -108,10 +113,6 @@
                 [self.nav.downloadOperation start];
                 
                 [self.nav.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    NSString *title = @"首页";
-                    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-                    [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
-
                     [progressIndicator stopAnimating];
                     self.downloadLabel.text = @"已更新";
                     [self.tableView reloadData];
@@ -129,6 +130,7 @@
                     [self updateArticleCount];
                     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
                     [self updateUpdateDate];
+
                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                     [progressIndicator stopAnimating];
                     NSLog(@"Error occured: %@", error);
@@ -212,6 +214,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    if ([self.parent.title isEqualToString:@"首页"])
+    {
+        NSString *title = @"首页";
+        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    }
 }
 
 @end

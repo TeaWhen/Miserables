@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (strong, nonatomic) NSString *title;
 
 @end
 
@@ -27,6 +28,8 @@ static NSOperationQueue *queue;
 {
     [super viewDidLoad];
     
+    self.title = @"首页";
+   
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:5];
     
@@ -48,7 +51,7 @@ static NSOperationQueue *queue;
     }];
     
     // default page
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"首页" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [self.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
     [self openFavoriteDb];
@@ -71,6 +74,7 @@ static NSOperationQueue *queue;
         NSString *URL = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         /* miserables:// */
         NSString *title = [NSString stringWithString:[URL substringFromIndex:13]];
+        self.title = title;
 
         self.navigationController.navigationBar.topItem.title = title;
         
