@@ -122,4 +122,10 @@ static NSOperationQueue *queue;
     [self.favoriteDB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorite (title TEXT)"];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"首页" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+}
+
 @end
