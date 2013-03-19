@@ -124,8 +124,7 @@ static NSOperationQueue *queue;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [@"首页" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    [self.webView reload];
 }
 
 @end
