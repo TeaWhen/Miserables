@@ -97,14 +97,14 @@ static NSOperationQueue *queue;
 
 - (IBAction)favoriteClicked:(UIButton *)sender {
     NSString *title = [NSString stringWithString:self.navigationController.navigationBar.topItem.title];
-    FMResultSet *s = [self.favoriteDB executeQuery:@"SELECT * FROM Favorite WHERE title = ?", title];
+    FMResultSet *s = [self.favoriteDb executeQuery:@"SELECT * FROM Favorite WHERE title = ?", title];
     if ([s next]) {
         NSLog(@"加过了~");
-        [self.favoriteDB executeUpdate:@"DELETE FROM Favorite WHERE title = ?", title];
+        [self.favoriteDb executeUpdate:@"DELETE FROM Favorite WHERE title = ?", title];
         [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];
     }
     else {
-        [self.favoriteDB executeUpdate:@"INSERT INTO Favorite VALUES (?)", title];
+        [self.favoriteDb executeUpdate:@"INSERT INTO Favorite VALUES (?)", title];
         [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_1.png"] forState:UIControlStateNormal];
     }
 }
@@ -115,15 +115,15 @@ static NSOperationQueue *queue;
     NSString *documentDirectory = [path objectAtIndex:0];
     NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"favorite.db"];
     
-    self.favoriteDB = [FMDatabase databaseWithPath:dbPath];
-    if (![self.favoriteDB open]) {
+    self.favoriteDb = [FMDatabase databaseWithPath:dbPath];
+    if (![self.favoriteDb open]) {
         NSLog(@"Could not open db.");
     }
     
-    self.favoriteDB.traceExecution = YES;
-    self.favoriteDB.logsErrors = YES;
+    self.favoriteDb.traceExecution = YES;
+    self.favoriteDb.logsErrors = YES;
 
-    [self.favoriteDB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorite (title TEXT)"];
+    [self.favoriteDb executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorite (title TEXT)"];
 }
 
 @end

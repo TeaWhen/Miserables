@@ -14,7 +14,7 @@
 
 @property (weak, nonatomic) LesNavigationController *nav;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) FMDatabase *favoriteDB;
+@property (strong, nonatomic) FMDatabase *favoriteDb;
 
 - (void)openFavoriteDb;
 
