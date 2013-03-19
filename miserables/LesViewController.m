@@ -122,9 +122,4 @@ static NSOperationQueue *queue;
     [self.favoriteDB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorite (title TEXT)"];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.webView reload];
-}
-
 @end

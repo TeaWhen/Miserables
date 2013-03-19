@@ -12,6 +12,7 @@
 #import "AFHTTPRequestOperation.h"
 #import "FMResultSet.h"
 #import "NSDate+PrettyDate.h"
+#import "LesViewController.h"
 
 @interface LesPreferenceViewController () <UITableViewDelegate>
 
@@ -24,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadProgressCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cancelCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadButton;
+
+@property (weak, nonatomic) LesViewController *parent;
 
 - (void)updateArticleCount;
 - (void)updateUpdateDate;
@@ -38,6 +41,7 @@
 {
     [super viewDidLoad];
     self.preferenceTableView.delegate = self;
+    self.parent = [self.nav.viewControllers objectAtIndex:0];
 
     self.nav = (LesNavigationController *)(self.navigationController);
     
@@ -104,6 +108,10 @@
                 [self.nav.downloadOperation start];
                 
                 [self.nav.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSString *title = @"首页";
+                    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+                    [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+
                     [progressIndicator stopAnimating];
                     self.downloadLabel.text = @"已更新";
                     [self.tableView reloadData];
