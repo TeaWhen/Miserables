@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 import sqlite3
-import urllib2
+import requests
 from bs4 import BeautifulSoup
 
 conn = sqlite3.connect('articles.db')
@@ -32,10 +32,9 @@ def main():
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
 	count = 1
 	for title in f:
-		req = urllib2.Request('http://zh.wikipedia.org/zh-cn/{0}'.format(title[:-1]))
-		req.add_header('User-agent', 'Mozilla/5.0')
-		r = urllib2.urlopen(req)
-		raw_html = r.read().decode('utf8')
+		headers = {'User-agent': 'Mozilla/5.0'}
+		r = requests.get('http://zh.wikipedia.org/zh-cn/{0}'.format(title[:-1]), headers=headers)
+		raw_html = r.text
 		html = parse(raw_html)
 		insert_article(title[:-1], html)
 		count = count + 1
