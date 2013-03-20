@@ -25,6 +25,8 @@
         [self openDB];
     }
     
+    [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT)"];
+    
     return self;
 }
 
@@ -41,8 +43,6 @@
     
     self.DB.traceExecution = YES;
     self.DB.logsErrors = YES;
-    
-    [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT)"];
 }
 
 - (NSMutableArray *)list

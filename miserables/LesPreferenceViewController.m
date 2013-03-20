@@ -13,6 +13,7 @@
 #import "FMResultSet.h"
 #import "NSDate+PrettyDate.h"
 #import "LesViewController.h"
+#import "Articles.h"
 
 @interface LesPreferenceViewController () <UITableViewDelegate>
 
@@ -63,12 +64,8 @@
 
 - (void)updateArticleCount
 {
-    FMResultSet *s = [self.nav.db executeQuery:@"SELECT COUNT(*) FROM Article"];
-    int articleCount = 0;
-    if ([s next]) {
-        articleCount = [s intForColumnIndex:0];
-    }
-    self.articleCountLabel.text = [NSString stringWithFormat:@"%d", articleCount];
+    Articles *articles = [[Articles alloc] init];
+    self.articleCountLabel.text = [NSString stringWithFormat:@"%d", [articles count]];
 }
 
 - (void)updateUpdateDate
@@ -101,11 +98,11 @@
                 self.downloadCell.userInteractionEnabled = NO;
                 
                 id documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-                NSString *currentLibraryPath = [documentDirectory stringByAppendingPathComponent:@"article.db"];
-                NSString *newLibraryPath = [documentDirectory stringByAppendingPathComponent:@"article_new.db"];
+                NSString *currentLibraryPath = [documentDirectory stringByAppendingPathComponent:@"articles.db"];
+                NSString *newLibraryPath = [documentDirectory stringByAppendingPathComponent:@"articles_new.db"];
                 
                 if (!self.nav.downloadOperation) {
-                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://42.121.18.11/static/mis/article.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:12.0];
+                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://42.121.18.11/static/mis/articles.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:12.0];
                     self.nav.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:newLibraryPath shouldResume:YES];
                     self.nav.downloadOperation.shouldOverwrite = YES;
                 }
@@ -126,7 +123,6 @@
                     [fm moveItemAtPath:newLibraryPath toPath:currentLibraryPath error:nil];
                     
                     // Reload things
-                    [self.nav openDb];
                     [self updateArticleCount];
                     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
                     [self updateUpdateDate];

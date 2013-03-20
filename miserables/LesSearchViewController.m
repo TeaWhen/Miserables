@@ -10,6 +10,7 @@
 #import "LesViewController.h"
 #import "LesNavigationController.h"
 #import "FMResultSet.h"
+#import "Articles.h"
 
 @interface LesSearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -73,10 +74,9 @@
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", searchText]];
     [self.result removeAllObjects];
-    while ([articles next]) {
-        NSString *title = [articles stringForColumn:@"title"];
+    Articles *articles = [[Articles alloc] init];
+    for (NSString *title in [articles articlesByKeyword:searchText]) {
         [self.result addObject:title];
     }
     [self.resultTableView reloadData];

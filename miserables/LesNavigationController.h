@@ -16,8 +16,5 @@
 }
 
 @property (strong, nonatomic) AFDownloadRequestOperation *downloadOperation;
-@property (strong, nonatomic) FMDatabase *db;
-
-- (void)openDb;
 
 @end

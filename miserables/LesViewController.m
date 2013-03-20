@@ -11,12 +11,14 @@
 #import "FMResultSet.h"
 #import "WebViewProxy.h"
 #import "Favorites.h"
+#import "Articles.h"
 
 @interface LesViewController () <UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
 @property (strong, nonatomic) NSString *title;
 
 @end
@@ -33,10 +35,7 @@ static NSOperationQueue *queue;
    
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:5];
-    
-    self.nav = (LesNavigationController *)(self.navigationController);
-    [self.nav openDb];
-    
+        
     self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
     self.tapNavigation.numberOfTapsRequired = 2;
     [self.navigationController.navigationBar addGestureRecognizer:self.tapNavigation];
@@ -80,9 +79,10 @@ static NSOperationQueue *queue;
         NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
         NSString *html_body;
 
-        FMResultSet *articles = [self.nav.db executeQuery:@"SELECT * FROM Article WHERE title = ?", title];
-        if ([articles next]) {
-            html_body = [articles stringForColumn:@"content"];
+        Articles *articles = [[Articles alloc] init];
+        NSString *content = [articles articleByTitle:title];
+        if (content) {
+            html_body = content;
         }
         else {
             html_body = @"未找到条目。";
