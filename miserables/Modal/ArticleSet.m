@@ -13,7 +13,6 @@
 @interface ArticleSet ()
 
 @property FMDatabase *DB;
-@property int articleCount;
 - (void)openDB;
 
 @end
@@ -28,11 +27,12 @@
         [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Articles (title TEXT, content TEXT)"];
         
         FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Articles"];
+        int articleCount = 0;
         if ([rs next]) {
-            self.articleCount = [rs intForColumnIndex:0];
+            articleCount = [rs intForColumnIndex:0];
         }
         
-        if (self.articleCount == 0) {
+        if (articleCount == 0) {
             NSString *sql = @"INSERT INTO Articles (title, content) VALUES (?, ?)";
             [self.DB executeUpdate:sql, @("首页"), @("您还没有安装资料库，请进入设置页下载。（若网络连接较慢，也可通过「iTunes 文件共享」导入。）")];
         }
@@ -79,7 +79,11 @@
 
 - (int)count
 {
-    return self.articleCount;
+    FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Articles"];
+    if ([rs next]) {
+        return [rs intForColumnIndex:0];
+    }
+    return 0;
 }
 
 @end

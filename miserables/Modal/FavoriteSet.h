@@ -14,5 +14,6 @@
 - (BOOL)exist:(NSString *)title;
 - (void)add:(NSString *)title;
 - (void)delete:(NSString *)title;
+- (int)count;
 
 @end

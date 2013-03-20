@@ -76,4 +76,13 @@
     [self.DB executeUpdate:@"DELETE FROM Favorites WHERE title = ?", title];
 }
 
+- (int)count
+{
+    FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Favorites"];
+    if ([rs next]) {
+        return [rs intForColumnIndex:0];
+    }
+    return 0;
+}
+
 @end
