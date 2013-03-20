@@ -57,7 +57,7 @@
         self.downloadCell.userInteractionEnabled = NO;
     }
     
-    // Update things
+    // update things
     [self updateArticleCount];
     [self updateUpdateDate];
 }
@@ -85,7 +85,7 @@
     switch (indexPath.section) {
         case 0:
             if (indexPath.row == 2) {
-                // Update button clicked
+                // update button clicked
                 NSLog(@"Update clicked.");
                 
                 UIActivityIndicatorView *progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -122,7 +122,7 @@
                     [fm removeItemAtPath:currentLibraryPath error:nil];
                     [fm moveItemAtPath:newLibraryPath toPath:currentLibraryPath error:nil];
                     
-                    // Reload things
+                    // reload things
                     [self updateArticleCount];
                     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
                     [self updateUpdateDate];
@@ -163,14 +163,13 @@
                     
                     float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
                     [self.downloadProgressView setProgress:progress];
-                    NSLog(@"%lld / %lld", totalBytesReadForFile, totalBytesExpectedToReadForFile);
+                    // NSLog(@"%lld / %lld", totalBytesReadForFile, totalBytesExpectedToReadForFile);
                 }];
             }
             break;
         case 1:
-            // 
             if (indexPath.row == 1) {
-                // Cancel button clicked
+                // cancel button clicked
                 NSLog(@"Cancel clicked.");
                 [self.nav.downloadOperation cancel];
                 self.nav.downloadOperation = nil;
@@ -209,7 +208,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillDisappear:(BOOL)animated
