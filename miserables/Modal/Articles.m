@@ -25,18 +25,17 @@
     
     if (self) {
         [self openDB];
-    }
-    
-    [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Articles (title TEXT, content TEXT)"];
-    
-    FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Articles"];
-    if ([rs next]) {
-        self.articleCount = [rs intForColumnIndex:0];
-    }
-    
-    if (self.articleCount == 0) {
-        NSString *sql = @"INSERT INTO Articles (title, content) VALUES (?, ?)";
-        [self.DB executeUpdate:sql, @("首页"), @("您还没有安装资料库，请进入设置页下载。（若网络连接较慢，也可通过「iTunes 文件共享」导入。）")];
+        [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Articles (title TEXT, content TEXT)"];
+        
+        FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Articles"];
+        if ([rs next]) {
+            self.articleCount = [rs intForColumnIndex:0];
+        }
+        
+        if (self.articleCount == 0) {
+            NSString *sql = @"INSERT INTO Articles (title, content) VALUES (?, ?)";
+            [self.DB executeUpdate:sql, @("首页"), @("您还没有安装资料库，请进入设置页下载。（若网络连接较慢，也可通过「iTunes 文件共享」导入。）")];
+        }
     }
     
     return self;

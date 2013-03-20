@@ -24,9 +24,8 @@
     
     if (self) {
         [self openDB];
+        [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT)"];
     }
-    
-    [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT)"];
     
     return self;
 }
