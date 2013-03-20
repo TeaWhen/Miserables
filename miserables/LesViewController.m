@@ -94,6 +94,11 @@ static NSOperationQueue *queue;
     return YES;
 }
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [webView.scrollView setContentSize: CGSizeMake(webView.frame.size.width, webView.scrollView.contentSize.height)];
+}
+
 - (IBAction)favoriteClicked:(UIButton *)sender {
     NSString *title = [NSString stringWithString:self.navigationController.navigationBar.topItem.title];
     Favorites *fav = [[Favorites alloc] init];
