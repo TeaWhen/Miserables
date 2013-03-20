@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
 import sqlite3
@@ -34,8 +35,7 @@ def main():
 	for title in f:
 		headers = {'User-agent': 'Mozilla/5.0'}
 		r = requests.get('http://zh.wikipedia.org/zh-cn/{0}'.format(title[:-1]), headers=headers)
-		raw_html = r.text
-		html = parse(raw_html)
+		html = parse(r.text)
 		insert_article(title[:-1], html)
 		count = count + 1
 		if count >= 100:
