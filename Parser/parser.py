@@ -25,19 +25,22 @@ def parse(html):
 	scr = html.find_all("span", { "class" : "editsection"})
 	for tag in scr:
 		tag.decompose()
-	html = html.prettify()
-	return html
+	return html.renderContents()
 
 def main():
 	open_db()
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
+	count = 1
 	for title in f:
-		req = urllib2.Request('http://zh.wikipedia.org/wiki/{0}'.format(title[:-1]))
+		req = urllib2.Request('http://zh.wikipedia.org/zh-cn/{0}'.format(title[:-1]))
 		req.add_header('User-agent', 'Mozilla/5.0')
 		r = urllib2.urlopen(req)
 		raw_html = r.read().decode('utf8')
 		html = parse(raw_html)
 		insert_article(title[:-1], html)
+		count = count + 1
+		if count >= 100:
+			break
 
 if __name__ == "__main__":
 	try:

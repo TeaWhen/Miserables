@@ -98,7 +98,7 @@
 - (void)updateSequence
 {
     for (NSInteger i = 0; i < [self.favorites count]; ++i) {
-        [self.DB executeUpdate:@"UPDATE `Favorites` SET `sequence` = ? WHERE title = ?", i, [self.favorites objectAtIndex:i]];
+        [self.DB executeUpdate:@"UPDATE Favorites SET sequence = ? WHERE title = ?", i, [self.favorites objectAtIndex:i]];
     }
 }
 
