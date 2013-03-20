@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *favoritesNavigationItem;
 @property (weak, nonatomic) LesViewController *parent;
 @property (weak, nonatomic) LesNavigationController *nav;
-@property NSArray *favorites;
+@property FavoriteSet *favoriteSet;
 
 @end
 
@@ -26,8 +26,7 @@
 {
     [super viewDidLoad];
     
-    FavoriteSet *favs = [[FavoriteSet alloc] init];
-    self.favorites = [favs list];
+    self.favoriteSet = [[FavoriteSet alloc] init];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -53,7 +52,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.favorites.count;
+    return [self.favoriteSet count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,13 +64,13 @@
         cell = [[UITableViewCell alloc] init];
     }
     
-	cell.textLabel.text = [self.favorites objectAtIndex:indexPath.row];
+	cell.textLabel.text = [[self.favoriteSet list] objectAtIndex:indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = [self.favorites objectAtIndex:indexPath.row];
+    NSString *title = [[self.favoriteSet list] objectAtIndex:indexPath.row];
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
@@ -115,9 +114,9 @@ sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle) editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Delete %d", indexPath.row);
-//    [chatArray removeObjectAtIndex:indexPath.row];
-//    [chatTableView reloadData];
+    NSLog(@"Delete row %d.", indexPath.row);
+    [self.favoriteSet deleteAtRow:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

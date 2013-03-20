@@ -14,6 +14,7 @@
 
 @property FMDatabase *DB;
 - (void)openDB;
+@property NSMutableArray *favorites;
 
 @end
 
@@ -47,14 +48,16 @@
 
 - (NSMutableArray *)list
 {
-    FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Favorites"];
-    NSMutableArray *favorites = [[NSMutableArray alloc] init];
-    while ([rs next]) {
-        NSString *title = [rs stringForColumn:@"title"];
-        [favorites addObject:title];
+    if (!self.favorites) {
+        FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Favorites"];
+        self.favorites = [[NSMutableArray alloc] init];
+        while ([rs next]) {
+            NSString *title = [rs stringForColumn:@"title"];
+            [self.favorites addObject:title];
+        }
     }
     
-    return favorites;
+    return self.favorites;
 }
 
 - (BOOL)exist:(NSString *)title
@@ -76,13 +79,20 @@
     [self.DB executeUpdate:@"DELETE FROM Favorites WHERE title = ?", title];
 }
 
-- (int)count
+- (void)deleteAtRow:(NSInteger)row
 {
-    FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Favorites"];
-    if ([rs next]) {
-        return [rs intForColumnIndex:0];
+    NSString *title = [self.favorites objectAtIndex:row];
+    [self.favorites removeObjectAtIndex:row];
+    [self delete:title];
+}
+
+- (NSInteger)count
+{
+    if (!self.favorites) {
+        [self list];
     }
-    return 0;
+    
+    return self.favorites.count;
 }
 
 @end
