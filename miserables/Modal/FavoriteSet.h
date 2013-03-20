@@ -16,6 +16,7 @@
 - (void)add:(NSString *)title;
 - (void)delete:(NSString *)title;
 - (void)deleteAtRow:(NSInteger)row;
+- (void)moveRow:(NSInteger)sourceRow toRow:(NSInteger)destinationRow;
 - (NSInteger)count;
 
 @end

@@ -86,6 +86,14 @@
     [self delete:title];
 }
 
+- (void)moveRow:(NSInteger)sourceRow toRow:(NSInteger)destinationRow
+{
+    // TODO: real database operation is not executed
+    NSString *title = [self.favorites objectAtIndex:sourceRow];
+    [self.favorites removeObjectAtIndex:sourceRow];
+    [self.favorites insertObject:title atIndex:destinationRow];
+}
+
 - (NSInteger)count
 {
     if (!self.favorites) {

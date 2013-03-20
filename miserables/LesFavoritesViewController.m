@@ -104,12 +104,11 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)
 sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    NSUInteger fromRow = [sourceIndexPath row];
-    NSUInteger toRow = [destinationIndexPath row];
+    if (sourceIndexPath == destinationIndexPath) {
+        return;
+    }
     
-//    id object = [list objectAtIndex:fromRow];
-//    [list removeObjectAtIndex:fromRow];
-//    [list insertObject:object atIndex:toRow];
+    [self.favoriteSet moveRow:sourceIndexPath.row toRow:destinationIndexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle) editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
