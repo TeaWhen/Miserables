@@ -8,6 +8,7 @@
 
 #import "Favorites.h"
 #import "FMDatabase.h"
+#import "FMResultSet.h"
 
 @interface Favorites ()
 
@@ -47,8 +48,14 @@
 
 - (NSMutableArray *)list
 {
-    // TODO
-    return nil;
+    FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Favorites"];
+    NSMutableArray *favorites = [[NSMutableArray alloc] init];
+    while ([rs next]) {
+        NSString *title = [rs stringForColumn:@"title"];
+        [favorites addObject:title];
+    }
+    
+    return favorites;
 }
 
 - (BOOL)exist:(NSString *)title

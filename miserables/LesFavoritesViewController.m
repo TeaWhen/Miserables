@@ -7,8 +7,15 @@
 //
 
 #import "LesFavoritesViewController.h"
+#import "LesViewController.h"
+#import "Favorites.h"
 
-@interface LesFavoritesViewController ()
+@interface LesFavoritesViewController () <UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) LesViewController *parent;
+@property (weak, nonatomic) LesNavigationController *nav;
+@property NSArray *favorites;
 
 @end
 
@@ -17,7 +24,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    Favorites *favs = [[Favorites alloc] init];
+    self.favorites = [favs list];
+    self.tableView.dataSource = self;
+    
+    self.nav = (LesNavigationController *)(self.presentingViewController);
+    self.parent = [self.nav.viewControllers objectAtIndex:0];
 }
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender {
@@ -27,7 +40,41 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+#pragma mark Table view methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.favorites.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] init];
+    }
+    
+	cell.textLabel.text = [self.favorites objectAtIndex:indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *title = [self.favorites objectAtIndex:indexPath.row];
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end
