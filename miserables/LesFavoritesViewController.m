@@ -8,7 +8,7 @@
 
 #import "LesFavoritesViewController.h"
 #import "LesViewController.h"
-#import "Favorites.h"
+#import "FavoriteSet.h"
 
 @interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -26,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    Favorites *favs = [[Favorites alloc] init];
+    FavoriteSet *favs = [[FavoriteSet alloc] init];
     self.favorites = [favs list];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;

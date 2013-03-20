@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
-#import "Articles.h"
+#import "ArticleSet.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 
-@interface Articles ()
+@interface ArticleSet ()
 
 @property FMDatabase *DB;
 @property int articleCount;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation Articles
+@implementation ArticleSet
 
 - (id)init {
     self = [super init];

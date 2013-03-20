@@ -10,7 +10,7 @@
 #import "LesViewController.h"
 #import "LesNavigationController.h"
 #import "FMResultSet.h"
-#import "Articles.h"
+#import "ArticleSet.h"
 
 @interface LesSearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -75,7 +75,7 @@
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     [self.result removeAllObjects];
-    Articles *articles = [[Articles alloc] init];
+    ArticleSet *articles = [[ArticleSet alloc] init];
     for (NSString *title in [articles articlesByKeyword:searchText]) {
         [self.result addObject:title];
     }

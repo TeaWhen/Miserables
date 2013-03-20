@@ -13,7 +13,7 @@
 #import "FMResultSet.h"
 #import "NSDate+PrettyDate.h"
 #import "LesViewController.h"
-#import "Articles.h"
+#import "ArticleSet.h"
 
 @interface LesPreferenceViewController () <UITableViewDelegate>
 
@@ -64,7 +64,7 @@
 
 - (void)updateArticleCount
 {
-    Articles *articles = [[Articles alloc] init];
+    ArticleSet *articles = [[ArticleSet alloc] init];
     self.articleCountLabel.text = [NSString stringWithFormat:@"%d", [articles count]];
 }
 

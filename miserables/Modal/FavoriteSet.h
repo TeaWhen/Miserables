@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Favorites : NSObject
+@interface FavoriteSet : NSObject
 
 - (NSMutableArray *)list;
 - (BOOL)exist:(NSString *)title;

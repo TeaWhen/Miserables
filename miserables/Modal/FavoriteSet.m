@@ -6,18 +6,18 @@
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
-#import "Favorites.h"
+#import "FavoriteSet.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 
-@interface Favorites ()
+@interface FavoriteSet ()
 
 @property FMDatabase *DB;
 - (void)openDB;
 
 @end
 
-@implementation Favorites
+@implementation FavoriteSet
 
 - (id)init {
     self = [super init];

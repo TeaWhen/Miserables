@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Articles : NSObject
+@interface ArticleSet : NSObject
 
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword;
 - (NSString *)articleByTitle:(NSString *)title;

@@ -10,8 +10,8 @@
 #import "LesNavigationController.h"
 #import "FMResultSet.h"
 #import "WebViewProxy.h"
-#import "Favorites.h"
-#import "Articles.h"
+#import "FavoriteSet.h"
+#import "ArticleSet.h"
 
 @interface LesViewController () <UIWebViewDelegate>
 
@@ -79,8 +79,8 @@ static NSOperationQueue *queue;
         NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
         NSString *html_body;
 
-        Articles *articles = [[Articles alloc] init];
-        NSString *content = [articles articleByTitle:title];
+        ArticleSet *articleSet = [[ArticleSet alloc] init];
+        NSString *content = [articleSet articleByTitle:title];
         if (content) {
             html_body = content;
         }
@@ -101,7 +101,7 @@ static NSOperationQueue *queue;
 
 - (IBAction)favoriteClicked:(UIButton *)sender {
     NSString *title = [NSString stringWithString:self.navigationController.navigationBar.topItem.title];
-    Favorites *favs = [[Favorites alloc] init];
+    FavoriteSet *favs = [[FavoriteSet alloc] init];
     if ([favs exist:title]) {
         [favs delete:title];
         [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];
