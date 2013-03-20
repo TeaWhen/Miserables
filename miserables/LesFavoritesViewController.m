@@ -10,7 +10,7 @@
 #import "LesViewController.h"
 #import "Favorites.h"
 
-@interface LesFavoritesViewController () <UITableViewDataSource>
+@interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) LesViewController *parent;
@@ -28,6 +28,7 @@
     Favorites *favs = [[Favorites alloc] init];
     self.favorites = [favs list];
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     self.nav = (LesNavigationController *)(self.presentingViewController);
     self.parent = [self.nav.viewControllers objectAtIndex:0];
