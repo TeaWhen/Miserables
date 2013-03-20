@@ -13,6 +13,7 @@
 @interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UINavigationItem *favoritesNavigationItem;
 @property (weak, nonatomic) LesViewController *parent;
 @property (weak, nonatomic) LesNavigationController *nav;
 @property NSArray *favorites;
@@ -80,14 +81,14 @@
 #pragma mark Table view editing
 
 - (IBAction)editClicked:(UIBarButtonItem *)sender {
-    if (sender.style == UIBarButtonSystemItemEdit) {
-        [self.tableView setEditing:YES animated:YES];
-        sender.style = UIBarButtonSystemItemDone;
+    if ([self.tableView isEditing]) {
+        self.favoritesNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editClicked:)];
+        [self.tableView setEditing:NO animated:YES];
     }
     else
     {
-        [self.tableView setEditing:NO animated:YES];
-        sender.style = UIBarButtonSystemItemEdit;
+        self.favoritesNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editClicked:)];
+        [self.tableView setEditing:YES animated:YES];
     }
 }
 
