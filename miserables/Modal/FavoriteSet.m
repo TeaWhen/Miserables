@@ -13,8 +13,9 @@
 @interface FavoriteSet ()
 
 @property FMDatabase *DB;
-- (void)openDB;
 @property NSMutableArray *favorites;
+- (void)openDB;
+- (void)updateSequence;
 
 @end
 
@@ -25,7 +26,7 @@
     
     if (self) {
         [self openDB];
-        [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT)"];
+        [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT, sequence INT, timestamp INTEGER)"];
     }
     
     return self;
@@ -49,7 +50,7 @@
 - (NSMutableArray *)list
 {
     if (!self.favorites) {
-        FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Favorites"];
+        FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM `Favorites` ORDER BY `sequence` DESC, `timestamp` ASC"];
         self.favorites = [[NSMutableArray alloc] init];
         while ([rs next]) {
             NSString *title = [rs stringForColumn:@"title"];
@@ -71,7 +72,8 @@
 
 - (void)add:(NSString *)title
 {
-    [self.DB executeUpdate:@"INSERT INTO Favorites VALUES (?)", title];
+    NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
+    [self.DB executeUpdate:@"INSERT INTO Favorites (title, timestamp, sequence) VALUES (?, ?, 0)", title, timestamp];
 }
 
 - (void)delete:(NSString *)title
@@ -88,10 +90,16 @@
 
 - (void)moveRow:(NSInteger)sourceRow toRow:(NSInteger)destinationRow
 {
-    // TODO: real database operation is not executed
     NSString *title = [self.favorites objectAtIndex:sourceRow];
     [self.favorites removeObjectAtIndex:sourceRow];
     [self.favorites insertObject:title atIndex:destinationRow];
+}
+
+- (void)updateSequence
+{
+    for (NSInteger i = 0; i < [self.favorites count]; ++i) {
+        [self.DB executeUpdate:@"UPDATE `Favorites` SET `sequence` = ? WHERE title = ?", i, [self.favorites objectAtIndex:i]];
+    }
 }
 
 - (NSInteger)count
