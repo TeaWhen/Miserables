@@ -77,5 +77,46 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark Table view editing
+
+- (IBAction)editClicked:(UIBarButtonItem *)sender {
+    if (sender.style == UIBarButtonSystemItemEdit) {
+        [self.tableView setEditing:YES animated:YES];
+        sender.style = UIBarButtonSystemItemDone;
+    }
+    else
+    {
+        [self.tableView setEditing:NO animated:YES];
+        sender.style = UIBarButtonSystemItemEdit;
+    }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)
+sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    NSUInteger fromRow = [sourceIndexPath row];
+    NSUInteger toRow = [destinationIndexPath row];
+    
+//    id object = [list objectAtIndex:fromRow];
+//    [list removeObjectAtIndex:fromRow];
+//    [list insertObject:object atIndex:toRow];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle) editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Delete %d", indexPath.row);
+//    [chatArray removeObjectAtIndex:indexPath.row];
+//    [chatTableView reloadData];
+}
 
 @end

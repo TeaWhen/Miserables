@@ -34,7 +34,11 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9K-XO-0zP">
                                 <items>
                                     <navigationItem title="收藏夹" id="Sgf-RO-HBx">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="LW8-C8-vVa"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="LW8-C8-vVa">
+                                            <connections>
+                                                <action selector="editClicked:" destination="xn3-zD-hVh" id="eXt-f5-cCB"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="MLT-2E-Pxv">
                                             <connections>
                                                 <action selector="doneClicked:" destination="xn3-zD-hVh" id="aiw-IX-Aya"/>
@@ -345,6 +349,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesFavoritesViewController.h"/>
             <relationships>
                 <relationship kind="action" name="doneClicked:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="editClicked:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
