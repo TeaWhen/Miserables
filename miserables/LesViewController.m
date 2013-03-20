@@ -10,6 +10,7 @@
 #import "LesNavigationController.h"
 #import "FMResultSet.h"
 #import "WebViewProxy.h"
+#import "Favorites.h"
 
 @interface LesViewController () <UIWebViewDelegate>
 
@@ -53,8 +54,6 @@ static NSOperationQueue *queue;
     // default page
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [self.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
-    
-    [self openFavoriteDb];
 }
 
 - (void)didReceiveMemoryWarning
@@ -97,33 +96,15 @@ static NSOperationQueue *queue;
 
 - (IBAction)favoriteClicked:(UIButton *)sender {
     NSString *title = [NSString stringWithString:self.navigationController.navigationBar.topItem.title];
-    FMResultSet *s = [self.favoriteDb executeQuery:@"SELECT * FROM Favorite WHERE title = ?", title];
-    if ([s next]) {
-        NSLog(@"加过了~");
-        [self.favoriteDb executeUpdate:@"DELETE FROM Favorite WHERE title = ?", title];
+    Favorites *fav = [[Favorites alloc] init];
+    if ([fav exist:title]) {
+        [fav delete:title];
         [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];
     }
     else {
-        [self.favoriteDb executeUpdate:@"INSERT INTO Favorite VALUES (?)", title];
+        [fav add:title];
         [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_1.png"] forState:UIControlStateNormal];
     }
-}
-
-- (void)openFavoriteDb
-{
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [path objectAtIndex:0];
-    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"favorite.db"];
-    
-    self.favoriteDb = [FMDatabase databaseWithPath:dbPath];
-    if (![self.favoriteDb open]) {
-        NSLog(@"Could not open db.");
-    }
-    
-    self.favoriteDb.traceExecution = YES;
-    self.favoriteDb.logsErrors = YES;
-
-    [self.favoriteDb executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorite (title TEXT)"];
 }
 
 @end
