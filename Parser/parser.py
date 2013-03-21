@@ -28,7 +28,7 @@ def parse(html, title):
 	scr = html.find_all("span", { "class" : "editsection"})
 	for tag in scr:
 		tag.decompose()
-	return html.renderContents()
+	return html.div.renderContents()
 
 def main():
 	open_db()
