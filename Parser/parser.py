@@ -4,6 +4,7 @@
 import sqlite3
 import requests
 import urllib
+import re
 from bs4 import BeautifulSoup
 
 conn = sqlite3.connect('articles.db')
@@ -25,10 +26,13 @@ def parse(html, title):
 	for tag in scr:
 		tag.decompose()
 	#html.find("div", { "class" : "noprint"}).decompose()
-	scr = html.find_all("span", { "class" : "editsection"})
+	scr = html.find_all("span", "editsection")
 	for tag in scr:
 		tag.decompose()
-	return html.div.renderContents()
+	scr = html.find_all(class_=re.compile(".*metadata.*"))
+	for tag in scr:
+		tag.decompose()
+	return html.renderContents()
 
 def main():
 	open_db()
@@ -40,7 +44,7 @@ def main():
 		headers = {'User-agent': 'Mozilla/5.0'}
 		r = requests.get('http://zh.wikipedia.org/zh-cn/{0}'.format(urllib.quote(title)), headers=headers)
 		html = parse(r.text, title)
-		insert_article(title[:-1], html)
+		insert_article(title, html)
 		count = count + 1
 		if count >= 100:
 			break
