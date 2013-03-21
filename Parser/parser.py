@@ -32,7 +32,8 @@ def parse(html, title):
 	scr = html.find_all(class_=re.compile(".*metadata.*"))
 	for tag in scr:
 		tag.decompose()
-	return html.renderContents()
+	html = re.sub(r'href="/wiki/(.*)"', r'href="\1"',html.renderContents())
+	return html
 
 def main():
 	open_db()
