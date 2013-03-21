@@ -52,5 +52,6 @@ def main():
 if __name__ == "__main__":
 	try:
 		main()
+		conn.commit()
 	except KeyboardInterrupt:
 		conn.commit()
