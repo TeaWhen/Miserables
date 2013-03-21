@@ -2,6 +2,7 @@
 
 import sqlite3
 import urllib2
+import urllib
 from bs4 import BeautifulSoup
 
 conn = sqlite3.connect('articles.db')
@@ -12,7 +13,6 @@ def open_db():
 	c.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content TEXT)')
 	
 def insert_article(title, content):
-	print title
 	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, content))
 
 def parse(html):
@@ -31,13 +31,16 @@ def parse(html):
 def main():
 	open_db()
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
+	i = 1
 	for title in f:
-		req = urllib2.Request('http://zh.wikipedia.org/wiki/{0}'.format(title[:-1]))
+		req = urllib2.Request('http://zh.wikipedia.org/wiki/{0}'.format(urllib.quote(title[:-1])))
 		req.add_header('User-agent', 'Mozilla/5.0')
 		r = urllib2.urlopen(req)
 		raw_html = r.read().decode('utf8')
 		html = parse(raw_html)
 		insert_article(title[:-1], html)
+		print i, title[:-1]
+		i = i + 1
 
 if __name__ == "__main__":
 	try:
