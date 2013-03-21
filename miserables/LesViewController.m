@@ -30,9 +30,7 @@ static NSOperationQueue *queue;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.title = @"首页";
-   
+       
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:5];
         
@@ -51,8 +49,7 @@ static NSOperationQueue *queue;
     }];
     
     // default page
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [self.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+    [self loadArticle:@"首页"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,36 +63,31 @@ static NSOperationQueue *queue;
     [self performSegueWithIdentifier:@"search" sender:self];
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (void)loadArticle:(NSString *)title
 {
-    if ([request.URL.scheme isEqual: @"miserables"]) {
-        NSString *URL = [request.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        /* miserables:// */
-        NSString *title = [NSString stringWithString:[URL substringFromIndex:13]];
-        self.title = title;
-
-        self.navigationController.navigationBar.topItem.title = title;
-        
-        NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
-        NSString *html_body;
-
-        ArticleSet *articleSet = [[ArticleSet alloc] init];
-        NSString *content = [articleSet articleByTitle:title];
-        if (content) {
-            html_body = content;
-        }
-        else {
-            html_body = @"未找到条目。";
-        }
-
-        NSString *html = [NSString stringWithFormat:@"<html><head>%@</head><body>%@</body></html>", html_head, html_body];
-        [self.webView loadHTMLString:html baseURL:nil];
+    self.title = title;
+    
+    self.navigationController.navigationBar.topItem.title = title;
+    
+    NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
+    NSString *html_body;
+    
+    ArticleSet *articleSet = [[ArticleSet alloc] init];
+    NSString *content = [articleSet articleByTitle:title];
+    if (content) {
+        html_body = content;
     }
-    return YES;
+    else {
+        html_body = @"未找到条目。";
+    }
+    
+    NSString *html = [NSString stringWithFormat:@"<html><head>%@</head><body>%@</body></html>", html_head, html_body];
+    [self.webView loadHTMLString:html baseURL:nil];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    // disable horizontal scrolling
     [webView.scrollView setContentSize: CGSizeMake(webView.frame.size.width, webView.scrollView.contentSize.height)];
 }
 
