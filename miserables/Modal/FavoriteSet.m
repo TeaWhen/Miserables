@@ -13,7 +13,9 @@
 @interface FavoriteSet ()
 
 @property FMDatabase *DB;
+@property NSMutableArray *favorites;
 - (void)openDB;
+- (void)updateSequence;
 
 @end
 
@@ -24,7 +26,7 @@
     
     if (self) {
         [self openDB];
-        [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT)"];
+        [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT, sequence INT, timestamp INTEGER)"];
     }
     
     return self;
@@ -47,14 +49,16 @@
 
 - (NSMutableArray *)list
 {
-    FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Favorites"];
-    NSMutableArray *favorites = [[NSMutableArray alloc] init];
-    while ([rs next]) {
-        NSString *title = [rs stringForColumn:@"title"];
-        [favorites addObject:title];
+    if (!self.favorites) {
+        FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM `Favorites` ORDER BY `sequence` DESC, `timestamp` ASC"];
+        self.favorites = [[NSMutableArray alloc] init];
+        while ([rs next]) {
+            NSString *title = [rs stringForColumn:@"title"];
+            [self.favorites addObject:title];
+        }
     }
     
-    return favorites;
+    return self.favorites;
 }
 
 - (BOOL)exist:(NSString *)title
@@ -68,7 +72,8 @@
 
 - (void)add:(NSString *)title
 {
-    [self.DB executeUpdate:@"INSERT INTO Favorites VALUES (?)", title];
+    NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
+    [self.DB executeUpdate:@"INSERT INTO Favorites (title, timestamp, sequence) VALUES (?, ?, 0)", title, timestamp];
 }
 
 - (void)delete:(NSString *)title
@@ -76,13 +81,34 @@
     [self.DB executeUpdate:@"DELETE FROM Favorites WHERE title = ?", title];
 }
 
-- (int)count
+- (void)deleteAtRow:(NSInteger)row
 {
-    FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Favorites"];
-    if ([rs next]) {
-        return [rs intForColumnIndex:0];
+    NSString *title = [self.favorites objectAtIndex:row];
+    [self.favorites removeObjectAtIndex:row];
+    [self delete:title];
+}
+
+- (void)moveRow:(NSInteger)sourceRow toRow:(NSInteger)destinationRow
+{
+    NSString *title = [self.favorites objectAtIndex:sourceRow];
+    [self.favorites removeObjectAtIndex:sourceRow];
+    [self.favorites insertObject:title atIndex:destinationRow];
+}
+
+- (void)updateSequence
+{
+    for (NSInteger i = 0; i < [self.favorites count]; ++i) {
+        [self.DB executeUpdate:@"UPDATE Favorites SET sequence = ? WHERE title = ?", i, [self.favorites objectAtIndex:i]];
     }
-    return 0;
+}
+
+- (NSInteger)count
+{
+    if (!self.favorites) {
+        [self list];
+    }
+    
+    return self.favorites.count;
 }
 
 @end

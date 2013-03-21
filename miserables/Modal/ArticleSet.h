@@ -12,6 +12,6 @@
 
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword;
 - (NSString *)articleByTitle:(NSString *)title;
-- (int)count;
+- (NSInteger)count;
 
 @end

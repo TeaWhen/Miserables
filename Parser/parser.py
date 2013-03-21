@@ -1,7 +1,8 @@
+#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
 import sqlite3
-import urllib2
+import requests
 import urllib
 from bs4 import BeautifulSoup
 
@@ -15,9 +16,11 @@ def open_db():
 def insert_article(title, content):
 	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, content))
 
-def parse(html):
+def parse(html, title):
 	soup = BeautifulSoup(html)
 	html = soup.body.find(id='mw-content-text')
+	t = open('contents/{0}.html'.format(title), 'w')
+	t.write(html.renderContents())
 	scr = html.find_all('script')
 	for tag in scr:
 		tag.decompose()
@@ -25,22 +28,22 @@ def parse(html):
 	scr = html.find_all("span", { "class" : "editsection"})
 	for tag in scr:
 		tag.decompose()
-	html = html.prettify()
-	return html
+	return html.renderContents()
 
 def main():
 	open_db()
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
-	i = 1
+	count = 1
 	for title in f:
-		req = urllib2.Request('http://zh.wikipedia.org/wiki/{0}'.format(urllib.quote(title[:-1])))
-		req.add_header('User-agent', 'Mozilla/5.0')
-		r = urllib2.urlopen(req)
-		raw_html = r.read().decode('utf8')
-		html = parse(raw_html)
+		title = title.strip()
+		print count, title
+		headers = {'User-agent': 'Mozilla/5.0'}
+		r = requests.get('http://zh.wikipedia.org/zh-cn/{0}'.format(urllib.quote(title)), headers=headers)
+		html = parse(r.text, title)
 		insert_article(title[:-1], html)
-		print i, title[:-1]
-		i = i + 1
+		count = count + 1
+		if count >= 100:
+			break
 
 if __name__ == "__main__":
 	try:

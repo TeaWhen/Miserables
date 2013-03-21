@@ -77,7 +77,7 @@
     return nil;
 }
 
-- (int)count
+- (NSInteger)count
 {
     FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Articles"];
     if ([rs next]) {

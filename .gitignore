@@ -16,6 +16,8 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+
 Parser/*.gz
 Parser/*.xml
 Parser/extracted
+Parser/articles.db
