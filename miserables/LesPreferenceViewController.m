@@ -102,7 +102,7 @@
                 NSString *newLibraryPath = [documentDirectory stringByAppendingPathComponent:@"articles_new.db"];
                 
                 if (!self.nav.downloadOperation) {
-                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://hcc.im/x/miserables/articles.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:12.0];
+                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://42.121.18.11/static/mis/articles.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:12.0];
                     self.nav.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:newLibraryPath shouldResume:YES];
                     self.nav.downloadOperation.shouldOverwrite = YES;
                 }
