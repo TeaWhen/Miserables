@@ -21,3 +21,4 @@ Parser/*.gz
 Parser/*.xml
 Parser/extracted
 Parser/articles.db
+Parser/contents/*

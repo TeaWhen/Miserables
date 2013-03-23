@@ -5,6 +5,8 @@ import sqlite3
 import requests
 import urllib
 import re
+import os
+import os.path
 from bs4 import BeautifulSoup
 
 conn = sqlite3.connect('articles.db')
@@ -20,8 +22,6 @@ def insert_article(title, content):
 def parse(html, title):
 	soup = BeautifulSoup(html)
 	html = soup.body.find(id='mw-content-text')
-	t = open('contents/{0}.html'.format(title), 'w')
-	t.write(html.renderContents())
 	scr = html.find_all('script')
 	for tag in scr:
 		tag.decompose()
@@ -32,7 +32,7 @@ def parse(html, title):
 	scr = html.find_all(class_=re.compile(".*metadata.*"))
 	for tag in scr:
 		tag.decompose()
-	html = re.sub(r'href="/wiki/(.*)"', r'href="\1"',html.renderContents())
+	html = re.sub(r'href="/wiki/(.*)"', r'href="\1"', html.renderContents())
 	return html
 
 def main():
@@ -43,8 +43,16 @@ def main():
 		title = title.strip()
 		print count, title
 		headers = {'User-agent': 'Mozilla/5.0'}
-		r = requests.get('http://zh.wikipedia.org/zh-cn/{0}'.format(urllib.quote(title)), headers=headers)
+		r = requests.get('http://zh.wikipedia.org/w/index.php?title={0}&variant=zh-cn&redirect=no'.format(urllib.quote(title)), headers=headers)
 		html = parse(r.text, title)
+		
+		# output HTML file for debug
+		output_dir = os.path.join(os.path.dirname(__file__), 'contents')
+		if not os.path.exists(output_dir):
+			os.makedirs(output_dir)
+		with open(os.path.join(output_dir, title + '.html'), 'w') as html_file:
+			html_file.write(html)
+
 		insert_article(title, html)
 		count = count + 1
 		if count >= 100:
