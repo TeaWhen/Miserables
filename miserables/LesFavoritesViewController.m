@@ -31,7 +31,7 @@
     self.tableView.delegate = self;
     
     self.nav = (LesNavigationController *)(self.presentingViewController);
-    self.parent = [self.nav.viewControllers objectAtIndex:0];
+    self.parent = self.nav.viewControllers[0];
 }
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender {
@@ -56,21 +56,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+{    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] init];
     }
     
-	cell.textLabel.text = [[self.favoriteSet list] objectAtIndex:indexPath.row];
+	cell.textLabel.text = [self.favoriteSet list][indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = [[self.favoriteSet list] objectAtIndex:indexPath.row];
+    NSString *title = [self.favoriteSet list][indexPath.row];
     [self.parent loadArticle:title];
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -114,7 +112,7 @@ sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     NSLog(@"Delete row %d.", indexPath.row);
     [self.favoriteSet deleteAtRow:indexPath.row];
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

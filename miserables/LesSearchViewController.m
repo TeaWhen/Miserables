@@ -37,7 +37,7 @@
     [super viewDidLoad];
 
     self.nav = (LesNavigationController *)(self.presentingViewController);
-    self.parent = [self.nav.viewControllers objectAtIndex:0];
+    self.parent = self.nav.viewControllers[0];
     
     self.result = [[NSMutableArray alloc] init];
 	
@@ -100,21 +100,19 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+{    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] init];
     }
     
-	cell.textLabel.text = [self.result objectAtIndex:indexPath.row];
+	cell.textLabel.text = self.result[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = [self.result objectAtIndex:indexPath.row];
+    NSString *title = self.result[indexPath.row];
     [self.parent loadArticle:title];
     
     [self dismissViewControllerAnimated:YES completion:nil];
