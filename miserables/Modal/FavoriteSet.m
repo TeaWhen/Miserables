@@ -73,7 +73,8 @@
 - (void)add:(NSString *)title
 {
     NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
-    [self.DB executeUpdate:@"INSERT INTO Favorites (title, timestamp, sequence) VALUES (?, ?, 0)", title, timestamp];
+    NSInteger time = timestamp;
+    [self.DB executeUpdate:@"INSERT INTO Favorites (title, timestamp, sequence) VALUES (?, 0, 0)", title];
 }
 
 - (void)delete:(NSString *)title

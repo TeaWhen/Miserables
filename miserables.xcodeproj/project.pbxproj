@@ -10,13 +10,11 @@
 		1A1A4A5F16EB123400EF7BBE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A4A5E16EB123400EF7BBE /* UIKit.framework */; };
 		1A1A4A6116EB123400EF7BBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A4A6016EB123400EF7BBE /* Foundation.framework */; };
 		1A1A4A6316EB123400EF7BBE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A1A4A6216EB123400EF7BBE /* CoreGraphics.framework */; };
-		1A1A4A6916EB123400EF7BBE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A6716EB123400EF7BBE /* InfoPlist.strings */; };
 		1A1A4A6B16EB123400EF7BBE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A6A16EB123400EF7BBE /* main.m */; };
 		1A1A4A6F16EB123400EF7BBE /* LesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */; };
 		1A1A4A7116EB123400EF7BBE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7016EB123400EF7BBE /* Default.png */; };
 		1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7216EB123400EF7BBE /* Default@2x.png */; };
 		1A1A4A7516EB123400EF7BBE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */; };
-		1A1A4A7816EB123400EF7BBE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */; };
 		1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7A16EB123400EF7BBE /* LesViewController.m */; };
 		1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8516EB1E4900EF7BBE /* icon.png */; };
 		1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */; };
@@ -50,7 +48,6 @@
 		1AF87C8416EB6B27003292B0 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7D16EB6B27003292B0 /* FMDatabaseQueue.m */; };
 		1AF87C8616EB6B27003292B0 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C8016EB6B27003292B0 /* FMResultSet.m */; };
 		1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */; };
-		4267057716F5574000295AD7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4267057916F5574000295AD7 /* Localizable.strings */; };
 		AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25C16EC8D070037E52E /* WebViewProxy.h */; };
 		AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25D16EC8D070037E52E /* WebViewProxy.m */; };
 /* End PBXBuildFile section */
@@ -190,7 +187,7 @@
 		1A1A4A6416EB123400EF7BBE /* Miserables */ = {
 			isa = PBXGroup;
 			children = (
-				1A874F0116F953510050517E /* Modal */,
+				1A874F0116F953510050517E /* Model */,
 				1AE4C3FE16F0533400EB7C10 /* Common */,
 				1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */,
 				1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */,
@@ -276,7 +273,7 @@
 			path = Miserables;
 			sourceTree = "<group>";
 		};
-		1A874F0116F953510050517E /* Modal */ = {
+		1A874F0116F953510050517E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				1A874EFE16F9534A0050517E /* FavoriteSet.h */,
@@ -284,7 +281,7 @@
 				1A874F0216F9584B0050517E /* ArticleSet.h */,
 				1A874F0316F9584B0050517E /* ArticleSet.m */,
 			);
-			name = Modal;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		1AE4C3FE16F0533400EB7C10 /* Common */ = {
@@ -379,17 +376,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ACF92D416F36C1D006ACE08 /* Static in Resources */,
-				1A1A4A6916EB123400EF7BBE /* InfoPlist.strings in Resources */,
 				1A1A4A7116EB123400EF7BBE /* Default.png in Resources */,
 				1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */,
 				1A1A4A7516EB123400EF7BBE /* Default-568h@2x.png in Resources */,
-				1A1A4A7816EB123400EF7BBE /* MainStoryboard.storyboard in Resources */,
 				1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */,
 				1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */,
 				1A22CFB116EDF9F700ED9EF5 /* AFDownloadRequestOperation.podspec in Resources */,
 				1A22CFB216EDF9F700ED9EF5 /* LICENCE in Resources */,
 				1A22CFB316EDF9F700ED9EF5 /* README.md in Resources */,
-				4267057716F5574000295AD7 /* Localizable.strings in Resources */,
 				1A1F4BD216F7070D00A3989D /* favorite_0.png in Resources */,
 				1A1F4BD416F707E300A3989D /* favorite_1.png in Resources */,
 			);

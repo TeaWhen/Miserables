@@ -92,14 +92,13 @@ static NSOperationQueue *queue;
 }
 
 - (IBAction)favoriteClicked:(UIButton *)sender {
-    NSString *title = [NSString stringWithString:self.navigationController.navigationBar.topItem.title];
     FavoriteSet *favs = [[FavoriteSet alloc] init];
-    if ([favs exist:title]) {
-        [favs delete:title];
+    if ([favs exist:self.title]) {
+        [favs delete:self.title];
         [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];
     }
     else {
-        [favs add:title];
+        [favs add:self.title];
         [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_1.png"] forState:UIControlStateNormal];
     }
 }
