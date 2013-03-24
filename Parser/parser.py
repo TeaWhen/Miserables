@@ -15,10 +15,11 @@ conn.text_factory = str
 c = conn.cursor()
 
 def open_db():
-	c.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content TEXT)')
+	c.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
 	
 def insert_article(title, content):
-	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, pylzma.compress(content)))
+	compressed = pylzma.compress(content)
+	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, compressed))
 
 def parse(html, title):
 	soup = BeautifulSoup(html)
