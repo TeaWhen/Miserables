@@ -38,6 +38,7 @@ def parse(html, title):
 	urls = re.findall('href=\"(/wiki/.*?)\"', html)
 	for item in urls:
 		html = html.replace(item, urllib.unquote(item.replace('/wiki/', '')))
+	re.sub(r'<!--.+?-->', '', html, 0, re.DOTALL)
 	return html
 
 def main():
