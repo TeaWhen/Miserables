@@ -8,6 +8,7 @@ import re
 import os
 import os.path
 from bs4 import BeautifulSoup
+import pylzma
 
 conn = sqlite3.connect('articles.db')
 conn.text_factory = str
@@ -17,7 +18,7 @@ def open_db():
 	c.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content TEXT)')
 	
 def insert_article(title, content):
-	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, content))
+	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, pylzma.compress(content)))
 
 def parse(html, title):
 	soup = BeautifulSoup(html)
