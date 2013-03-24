@@ -16,7 +16,7 @@ c = conn.cursor()
 
 def open_db():
 	c.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
-	
+
 def insert_article(title, content):
 	compressed = pylzma.compress(content)
 	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, compressed))
