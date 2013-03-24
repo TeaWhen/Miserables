@@ -19,7 +19,7 @@ def open_db():
 	
 def insert_article(title, content):
 	compressed = pylzma.compress(content)
-	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, compressed))
+	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
 
 def parse(html, title):
 	soup = BeautifulSoup(html)
