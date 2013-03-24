@@ -42,6 +42,7 @@
 		1A98490B16F2FFE6008B69EA /* LesSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */; };
 		1ACF92D416F36C1D006ACE08 /* Static in Resources */ = {isa = PBXBuildFile; fileRef = 1ACF92D316F36C1D006ACE08 /* Static */; };
 		1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */; };
+		1AF8016A16FF48F6001D29CD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */; };
 		1AF87C8116EB6B27003292B0 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7716EB6B27003292B0 /* FMDatabase.m */; };
 		1AF87C8216EB6B27003292B0 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7916EB6B27003292B0 /* FMDatabaseAdditions.m */; };
 		1AF87C8316EB6B27003292B0 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7B16EB6B27003292B0 /* FMDatabasePool.m */; };
@@ -128,10 +129,8 @@
 		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		4267057A16F5579E00295AD7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		AB69A25C16EC8D070037E52E /* WebViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebViewProxy.h; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.h; sourceTree = "<group>"; };
 		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
-		AB7930AC16EC4A9600F3A694 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF8016A16FF48F6001D29CD /* MainStoryboard.storyboard in Resources */,
 				1ACF92D416F36C1D006ACE08 /* Static in Resources */,
 				1A1A4A7116EB123400EF7BBE /* Default.png in Resources */,
 				1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */,
@@ -435,7 +435,6 @@
 		1A1A4A6716EB123400EF7BBE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AB7930AC16EC4A9600F3A694 /* zh-Hans */,
 				1AD2A89A16FF4417004137FE /* en */,
 			);
 			name = InfoPlist.strings;
@@ -453,7 +452,6 @@
 		4267057916F5574000295AD7 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4267057A16F5579E00295AD7 /* zh-Hans */,
 				1AD2A89B16FF4417004137FE /* en */,
 			);
 			name = Localizable.strings;
