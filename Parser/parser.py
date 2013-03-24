@@ -32,7 +32,10 @@ def parse(html, title):
 	scr = html.find_all(class_=re.compile(".*metadata.*"))
 	for tag in scr:
 		tag.decompose()
-	html = re.sub(r'href="/wiki/(.*)"', r'href="\1"', html.renderContents())
+	html = html.renderContents()
+	urls = re.findall('href=\"(/wiki/.*?)\"', html)
+	for item in urls:
+		html = html.replace(item, urllib.unquote(item.replace('/wiki/', '')))
 	return html
 
 def main():
