@@ -52,6 +52,21 @@ def parse(html):
 	tags = html.find_all('a', 'image')
 	for tag in tags:
 		tag.decompose()
+		
+	# delete class="navbox"'s table
+	tags = html.find_all('table', 'navbox')
+	for tag in tags:
+		tag.decompose()
+
+	# delete class="noprint"'s everything
+	tags = html.find_all(class_=re.compile(".*noprint.*"))
+	for tag in tags:
+		tag.decompose()
+
+	# delete class="noprint"'s everything
+	tags = html.find_all("a", "new")
+	for tag in tags:
+		tag.unwrap()
 
 	html = html.renderContents()
 	html = html.replace('\n', '')
