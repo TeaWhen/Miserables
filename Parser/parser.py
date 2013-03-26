@@ -37,8 +37,8 @@ def parse(html, title):
 	# delete a's rel and title attribute
 	tags = html.find_all('a')
 	for tag in tags:
-		if 'ref' in tag.attrs:
-			del tag['ref']
+		if 'rel' in tag.attrs:
+			del tag['rel']
 		if 'title' in tag.attrs:
 			del tag['title']
 
