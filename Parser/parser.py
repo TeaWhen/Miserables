@@ -21,7 +21,7 @@ def insert_article(title, content):
 	compressed = pylzma.compress(content)
 	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
 
-def parse(html, title):
+def parse(html):
 	soup = BeautifulSoup(html)
 	html = soup.body.find(id='mw-content-text')
 	scr = html.find_all('script')
@@ -34,6 +34,7 @@ def parse(html, title):
 	scr = html.find_all(class_=re.compile(".*metadata.*"))
 	for tag in scr:
 		tag.decompose()
+
 	# delete a's rel and title attribute
 	tags = html.find_all('a')
 	for tag in tags:
@@ -41,13 +42,23 @@ def parse(html, title):
 			del tag['rel']
 		if 'title' in tag.attrs:
 			del tag['title']
+	
+	# delete id="noteTA"'s div
+	tags = html.find_all('div', id='noteTA')
+	for tag in tags:
+		tag.decompose()
+
+	# delete class="image"'s a
+	tags = html.find_all('a', 'image')
+	for tag in tags:
+		tag.decompose()
 
 	html = html.renderContents()
 	html = html.replace('\n', '')
 	urls = re.findall('href=\"(/wiki/.*?)\"', html)
 	for item in urls:
 		html = html.replace(item, urllib.unquote(item.replace('/wiki/', '')))
-	re.sub(r'<!--.+?-->', '', html, 0, re.DOTALL)
+	html = re.sub(r'<!--.+?-->', '', html, 0, re.DOTALL)
 	return html
 
 def main():
@@ -59,7 +70,7 @@ def main():
 		print count, title
 		headers = {'User-agent': 'Mozilla/5.0'}
 		r = requests.get('http://zh.wikipedia.org/w/index.php?title={0}&variant=zh-cn&redirect=no'.format(urllib.quote(title)), headers=headers)
-		html = parse(r.text, title)
+		html = parse(r.text)
 		
 		# output HTML file for debug
 		output_dir = os.path.join(os.path.dirname(__file__), 'contents')
