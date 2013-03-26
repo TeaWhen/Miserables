@@ -91,12 +91,12 @@ def main():
 		output_dir = os.path.join(os.path.dirname(__file__), 'contents')
 		if not os.path.exists(output_dir):
 			os.makedirs(output_dir)
-		with open(os.path.join(output_dir, title + '.html'), 'w') as html_file:
+		with open(os.path.join(output_dir, title.replace('/', '-') + '.html'), 'w') as html_file:
 			html_file.write(html)
 
 		insert_article(title, html)
 		count = count + 1
-		if count >= 100:
+		if count >= 10000:
 			break
 
 if __name__ == "__main__":

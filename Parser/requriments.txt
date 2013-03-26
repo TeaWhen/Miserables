@@ -1,2 +1,2 @@
-distribute
-opencc-python
+beautifulsoup4
+pylzma
