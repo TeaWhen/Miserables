@@ -8,11 +8,13 @@
 
 #import "LesAppDelegate.h"
 #import "FMDatabase.h"
+#import "TestFlight.h"
 
 @implementation LesAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [TestFlight takeOff:@"59293f0b-a5a2-4d57-9a58-866ab448db1d"];
     return YES;
 }
 							

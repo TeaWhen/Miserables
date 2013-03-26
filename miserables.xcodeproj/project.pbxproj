@@ -49,6 +49,10 @@
 		1AF87C8416EB6B27003292B0 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C7D16EB6B27003292B0 /* FMDatabaseQueue.m */; };
 		1AF87C8616EB6B27003292B0 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF87C8016EB6B27003292B0 /* FMResultSet.m */; };
 		1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */; };
+		4F083B90170200430052BE16 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F083B8C170200430052BE16 /* libTestFlight.a */; };
+		4F083B91170200430052BE16 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F083B8D170200430052BE16 /* README.md */; };
+		4F083B92170200430052BE16 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F083B8E170200430052BE16 /* release_notes.md */; };
+		4F083B94170200680052BE16 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F083B93170200680052BE16 /* libz.dylib */; };
 		AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25C16EC8D070037E52E /* WebViewProxy.h */; };
 		AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25D16EC8D070037E52E /* WebViewProxy.m */; };
 /* End PBXBuildFile section */
@@ -129,6 +133,11 @@
 		1AF87C7F16EB6B27003292B0 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		1AF87C8016EB6B27003292B0 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		1AF87C8716EB6BFC003292B0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4F083B8C170200430052BE16 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		4F083B8D170200430052BE16 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		4F083B8E170200430052BE16 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		4F083B8F170200430052BE16 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		4F083B93170200680052BE16 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		AB69A25C16EC8D070037E52E /* WebViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WebViewProxy.h; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.h; sourceTree = "<group>"; };
 		AB69A25D16EC8D070037E52E /* WebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WebViewProxy.m; path = ../../WebViewProxy/WebViewProxy/WebViewProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,11 +147,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F083B94170200680052BE16 /* libz.dylib in Frameworks */,
 				1A26E79A16F1C81D00EC72E8 /* QuartzCore.framework in Frameworks */,
 				1AF87C8816EB6BFC003292B0 /* libsqlite3.dylib in Frameworks */,
 				1A1A4A5F16EB123400EF7BBE /* UIKit.framework in Frameworks */,
 				1A1A4A6116EB123400EF7BBE /* Foundation.framework in Frameworks */,
 				1A1A4A6316EB123400EF7BBE /* CoreGraphics.framework in Frameworks */,
+				4F083B90170200430052BE16 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +163,7 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
+				4F083B93170200680052BE16 /* libz.dylib */,
 				1ACF92D316F36C1D006ACE08 /* Static */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				1A26E79C16F2037E00EC72E8 /* Resources */,
@@ -193,6 +205,7 @@
 				1AE4C3FE16F0533400EB7C10 /* Common */,
 				1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */,
 				1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */,
+				4F083B8B170200430052BE16 /* TestFlightSDK1.2.4 */,
 				1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */,
 				1A4D73F716F6E209003CFC46 /* LesFavoritesViewController.h */,
 				1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */,
@@ -313,6 +326,17 @@
 			path = fmdb/src;
 			sourceTree = "<group>";
 		};
+		4F083B8B170200430052BE16 /* TestFlightSDK1.2.4 */ = {
+			isa = PBXGroup;
+			children = (
+				4F083B8C170200430052BE16 /* libTestFlight.a */,
+				4F083B8D170200430052BE16 /* README.md */,
+				4F083B8E170200430052BE16 /* release_notes.md */,
+				4F083B8F170200430052BE16 /* TestFlight.h */,
+			);
+			path = TestFlightSDK1.2.4;
+			sourceTree = "<group>";
+		};
 		AB69A26016EC8D0D0037E52E /* WebViewProxy */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +413,8 @@
 				1A22CFB316EDF9F700ED9EF5 /* README.md in Resources */,
 				1A1F4BD216F7070D00A3989D /* favorite_0.png in Resources */,
 				1A1F4BD416F707E300A3989D /* favorite_1.png in Resources */,
+				4F083B91170200430052BE16 /* README.md in Resources */,
+				4F083B92170200430052BE16 /* release_notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +558,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Miserables/Miserables-Prefix.pch";
 				INFOPLIST_FILE = "Miserables/Miserables-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Miserables/TestFlightSDK1.2.4\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -550,6 +580,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Miserables/Miserables-Prefix.pch";
 				INFOPLIST_FILE = "Miserables/Miserables-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Miserables/TestFlightSDK1.2.4\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
