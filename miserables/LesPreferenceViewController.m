@@ -52,7 +52,7 @@
     self.nav = (LesNavigationController *)(self.navigationController);
     
     if (self.nav->downloaded) {
-        self.downloadLabel.text = @"已更新";
+        self.downloadLabel.text = @"Already updated";
         self.downloadLabel.enabled = NO;
         self.downloadCell.userInteractionEnabled = NO;
     }
@@ -76,7 +76,7 @@
         self.updateDateLabel.text = [updateDate prettyDate];
     }
     else {
-        self.updateDateLabel.text = @"从未";
+        self.updateDateLabel.text = @"Never update";
     }
 }
 
@@ -93,7 +93,7 @@
                 [self.view addSubview:progressIndicator];
                 [progressIndicator startAnimating];
                 
-                self.downloadLabel.text = @"连接中…";
+                self.downloadLabel.text = @"Connecting...";
                 self.downloadLabel.enabled = NO;
                 self.downloadCell.userInteractionEnabled = NO;
                 
@@ -111,7 +111,7 @@
                 
                 [self.nav.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                     [progressIndicator stopAnimating];
-                    self.downloadLabel.text = @"已更新";
+                    self.downloadLabel.text = @"Already updated";
                     [self.tableView reloadData];
                     [self.downloadProgressCell setHidden:YES];
                     [self.cancelCell setHidden:YES];
@@ -135,16 +135,16 @@
                     
                     NSString *message;
                     if ([operation.response statusCode] == 404) {
-                        message = @"服务器出错，请联系我们。";
+                        message = @"Server error, please contact us";
                     }
                     else {
                         message = error.localizedDescription;
                     }
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"下载失败" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download failure" message:message delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
                     [alert show];
                     
-                    self.downloadLabel.text = @"立即更新";
+                    self.downloadLabel.text = @"Update Now";
                     [self.downloadProgressCell setHidden:YES];
                     [self.cancelCell setHidden:YES];
                     [self.tableView reloadData];
@@ -154,7 +154,7 @@
                 
                 [self.nav.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
                     [progressIndicator stopAnimating];
-                    self.downloadLabel.text = @"下载中…";
+                    self.downloadLabel.text = @"Downloading...";
                     [self.tableView reloadData];
                     [self.downloadProgressCell setHidden:NO];
                     [self.cancelCell setHidden:NO];
@@ -174,7 +174,7 @@
                 [self.nav.downloadOperation cancel];
                 self.nav.downloadOperation = nil;
                 
-                self.downloadLabel.text = @"立即更新";
+                self.downloadLabel.text = @"Update Now";
                 [self.downloadProgressCell setHidden:YES];
                 [self.cancelCell setHidden:YES];
                 [self.tableView reloadData];
@@ -190,14 +190,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"资料库";
+        return @"Library";
     }
     else if (section == 1) {
         if (self.downloadProgressCell.hidden) {
             return @"";
         }
         else {
-            return @"下载进度";
+            return @"Download progress";
         }
     }
     
@@ -212,9 +212,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if ([self.parent.title isEqualToString:@"首页"])
+    if ([self.parent.title isEqualToString:@"Main Page"])
     {
-        NSString *title = @"首页";
+        NSString *title = @"Main Page";
         NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     }

@@ -34,7 +34,7 @@
         
         if (articleCount == 0) {
             NSString *sql = @"INSERT INTO Articles (title, content) VALUES (?, ?)";
-            [self.DB executeUpdate:sql, @("首页"), @("您还没有安装资料库，请进入设置页下载。（若网络连接较慢，也可通过「iTunes 文件共享」导入。）")];
+            [self.DB executeUpdate:sql, @("Main Page"), @("You haven't install the library, please go to Settings and download. (If the network is slow, you can also use iTunes File Sharing to import the library.)")];
         }
     }
     

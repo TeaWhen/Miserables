@@ -49,7 +49,7 @@ static NSOperationQueue *queue;
     }];
     
     // default page
-    [self loadArticle:@"首页"];
+    [self loadArticle:@"Main Page"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,7 +78,7 @@ static NSOperationQueue *queue;
         html_body = content;
     }
     else {
-        html_body = @"未找到条目。";
+        html_body = @"No entry found.";
     }
     
     NSString *html = [NSString stringWithFormat:@"<html><head>%@</head><body>%@</body></html>", html_head, html_body];

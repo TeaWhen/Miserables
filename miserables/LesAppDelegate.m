@@ -8,7 +8,6 @@
 
 #import "LesAppDelegate.h"
 #import "FMDatabase.h"
-#import "TestFlight.h"
 
 @implementation LesAppDelegate
 
