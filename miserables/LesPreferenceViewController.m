@@ -112,7 +112,7 @@
                 [self.nav.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                     [progressIndicator stopAnimating];
                     self.downloadLabel.text = @"Already updated";
-                    [self.tableView reloadData];
+                    [self.preferenceTableView reloadData];
                     [self.downloadProgressCell setHidden:YES];
                     [self.cancelCell setHidden:YES];
                     self.nav->downloaded = YES;
@@ -147,7 +147,7 @@
                     self.downloadLabel.text = @"Update Now";
                     [self.downloadProgressCell setHidden:YES];
                     [self.cancelCell setHidden:YES];
-                    [self.tableView reloadData];
+                    [self.preferenceTableView reloadData];
                     self.downloadLabel.enabled = YES;
                     self.downloadCell.userInteractionEnabled = YES;
                 }];
@@ -155,7 +155,7 @@
                 [self.nav.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
                     [progressIndicator stopAnimating];
                     self.downloadLabel.text = @"Downloading...";
-                    [self.tableView reloadData];
+                    [self.preferenceTableView reloadData];
                     [self.downloadProgressCell setHidden:NO];
                     [self.cancelCell setHidden:NO];
                     self.downloadLabel.enabled = NO;
@@ -177,7 +177,7 @@
                 self.downloadLabel.text = @"Update Now";
                 [self.downloadProgressCell setHidden:YES];
                 [self.cancelCell setHidden:YES];
-                [self.tableView reloadData];
+                [self.preferenceTableView reloadData];
                 self.downloadLabel.enabled = YES;
                 self.downloadCell.userInteractionEnabled = YES;
             }
