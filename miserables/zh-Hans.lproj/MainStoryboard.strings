@@ -1,0 +1,39 @@
+
+/* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "1rQ-0z-30k"; */
+"1rQ-0z-30k.title" = "设置";
+
+/* Class = "IBUILabel"; text = "Updated on"; ObjectID = "4rF-mi-m4T"; */
+"4rF-mi-m4T.text" = "更新于";
+
+/* Class = "IBUILabel"; text = "Number of Articles"; ObjectID = "DlE-Un-Y63"; */
+"DlE-Un-Y63.text" = "条目数";
+
+/* Class = "IBUITableViewSection"; footerTitle = "If the network is slow, you can also use iTunes File Sharing to import the library."; ObjectID = "Gqx-Nb-1wn"; */
+"Gqx-Nb-1wn.footerTitle" = "若网速较慢，也可以使用 iTunes 文件共享导入资料库。";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Library"; ObjectID = "Gqx-Nb-1wn"; */
+"Gqx-Nb-1wn.headerTitle" = "资料库";
+
+/* Class = "IBUILabel"; text = "取消"; ObjectID = "NXb-rU-FjJ"; */
+"NXb-rU-FjJ.text" = "取消";
+
+/* Class = "IBUILabel"; text = "Update Now"; ObjectID = "OGM-R8-i99"; */
+"OGM-R8-i99.text" = "立即更新";
+
+/* Class = "IBUINavigationItem"; title = "Favorates"; ObjectID = "Sgf-RO-HBx"; */
+"Sgf-RO-HBx.title" = "收藏夹";
+
+/* Class = "IBUINavigationItem"; title = "Main Page"; ObjectID = "age-SH-yeD"; */
+"age-SH-yeD.title" = "首页";
+
+/* Class = "IBUIBarButtonItem"; title = "Settings"; ObjectID = "esw-i5-CBm"; */
+"esw-i5-CBm.title" = "设置";
+
+/* Class = "IBUILabel"; text = "314159"; ObjectID = "kK7-cB-m3o"; */
+"kK7-cB-m3o.text" = "314159";
+
+/* Class = "IBUILabel"; text = "3 days ago"; ObjectID = "mPL-QP-iup"; */
+"mPL-QP-iup.text" = "3 天前";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Download Progress"; ObjectID = "w91-pX-LCZ"; */
+"w91-pX-LCZ.headerTitle" = "下载进度";
