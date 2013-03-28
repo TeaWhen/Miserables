@@ -123,22 +123,7 @@
                             <constraint firstItem="5Sw-rd-u8Q" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="uE0-V3-DXN"/>
                         </constraints>
                     </view>
-<<<<<<< HEAD
                     <navigationItem key="navigationItem" title="Home" id="age-SH-yeD"/>
-=======
-                    <navigationItem key="navigationItem" title="Main Page" id="age-SH-yeD">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="mO1-sR-JQM">
-                            <connections>
-                                <segue destination="xn3-zD-hVh" kind="modal" id="E5o-Ao-kfM"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="esw-i5-CBm">
-                            <connections>
-                                <segue destination="33w-6c-5jK" kind="push" id="QgP-eL-l7P"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
->>>>>>> #52 try to i18n and l10n
                     <connections>
                         <outlet property="navigationTitle" destination="age-SH-yeD" id="dlS-Au-UNi"/>
                         <outlet property="searchDisplayController" destination="ScZ-e0-1mK" id="g6N-d2-ruX"/>
@@ -238,11 +223,7 @@
                             </items>
                         </navigationBar>
                         <sections>
-<<<<<<< HEAD
-                            <tableViewSection headerTitle="" footerTitle="Or, you can use File Sharing via iTunes." id="Gqx-Nb-1wn">
-=======
                             <tableViewSection headerTitle="Library" footerTitle="If the network is slow, you can also use iTunes File Sharing to import the library." id="Gqx-Nb-1wn">
->>>>>>> #52 try to i18n and l10n
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="4rF-mi-m4T" detailTextLabel="mPL-QP-iup" style="IBUITableViewCellStyleValue1" id="er6-qI-Uts">
                                         <rect key="frame" x="0.0" y="54" width="320" height="45"/>
@@ -317,11 +298,7 @@
                             <tableViewSection headerTitle="Download Progress" id="w91-pX-LCZ">
                                 <cells>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="iqK-xK-Wda">
-<<<<<<< HEAD
                                         <rect key="frame" x="0.0" y="265" width="320" height="45"/>
-=======
-                                        <rect key="frame" x="0.0" y="276" width="320" height="45"/>
->>>>>>> #52 try to i18n and l10n
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -341,11 +318,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="NXb-rU-FjJ" style="IBUITableViewCellStyleDefault" id="1kP-zO-TI0">
-<<<<<<< HEAD
                                         <rect key="frame" x="0.0" y="310" width="320" height="45"/>
-=======
-                                        <rect key="frame" x="0.0" y="321" width="320" height="45"/>
->>>>>>> #52 try to i18n and l10n
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
