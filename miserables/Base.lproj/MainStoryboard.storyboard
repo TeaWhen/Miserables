@@ -14,7 +14,7 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UpB-WN-5Ql">
                                 <items>
-                                    <barButtonItem systemItem="edit" id="LfK-QU-ALX">
+                                    <barButtonItem title="Edit" id="LfK-QU-ALX">
                                         <connections>
                                             <action selector="editClicked:" destination="xn3-zD-hVh" id="DBk-f3-pFe"/>
                                         </connections>
@@ -35,9 +35,6 @@
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="mGf-1h-9DA">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="375" id="Wzw-NG-3P1"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Cell" textLabel="vTd-zE-85n" style="IBUITableViewCellStyleDefault" id="No9-md-Jze">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -76,16 +73,18 @@
                             <constraint firstItem="UpB-WN-5Ql" firstAttribute="trailing" secondItem="buP-uN-zAK" secondAttribute="trailing" type="default" id="Gd4-Dg-1cc"/>
                             <constraint firstItem="m5T-Ga-Cgt" firstAttribute="trailing" secondItem="buP-uN-zAK" secondAttribute="trailing" type="default" id="HQd-jX-0e3"/>
                             <constraint firstItem="m5T-Ga-Cgt" firstAttribute="top" secondItem="buP-uN-zAK" secondAttribute="top" type="default" id="IXH-jM-oz8"/>
+                            <constraint firstItem="UpB-WN-5Ql" firstAttribute="top" secondItem="mGf-1h-9DA" secondAttribute="bottom" type="default" id="MuM-id-Iyv"/>
                             <constraint firstItem="UpB-WN-5Ql" firstAttribute="leading" secondItem="buP-uN-zAK" secondAttribute="leading" type="default" id="QSV-da-Iyn"/>
                             <constraint firstItem="mGf-1h-9DA" firstAttribute="trailing" secondItem="buP-uN-zAK" secondAttribute="trailing" type="default" id="R1h-pR-jZH"/>
                             <constraint firstItem="mGf-1h-9DA" firstAttribute="top" secondItem="m5T-Ga-Cgt" secondAttribute="bottom" type="default" id="Uao-Cw-0Uu"/>
-                            <constraint firstItem="UpB-WN-5Ql" firstAttribute="top" secondItem="mGf-1h-9DA" secondAttribute="bottom" type="default" id="la2-2u-DiA"/>
+                            <constraint firstItem="UpB-WN-5Ql" firstAttribute="bottom" secondItem="buP-uN-zAK" secondAttribute="bottom" type="default" id="sFN-tb-w1l"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" id="W2R-Xr-zm3"/>
                     <toolbarItems/>
                     <connections>
                         <outlet property="tableView" destination="mGf-1h-9DA" id="ab4-Wp-TxP"/>
+                        <outlet property="toolbar" destination="UpB-WN-5Ql" id="Yxq-mq-C36"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBA-Oa-FM9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,8 +380,8 @@
             <relationships>
                 <relationship kind="action" name="doneClicked:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="editClicked:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="favoritesNavigationItem" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="LesPreferenceViewController" superclassName="UIViewController">

@@ -13,9 +13,7 @@
 @interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UINavigationItem *favoritesNavigationItem;
-@property (weak, nonatomic) LesViewController *parent;
-@property (weak, nonatomic) LesNavigationController *nav;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property FavoriteSet *favoriteSet;
 
 @end
@@ -69,7 +67,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *title = [self.favoriteSet list][indexPath.row];
-    [self.parent loadArticle:title];
+//    [self.parent loadArticle:title];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -78,12 +76,14 @@
 
 - (IBAction)editClicked:(UIBarButtonItem *)sender {
     if ([self.tableView isEditing]) {
-        self.favoritesNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editClicked:)];
+        [sender setStyle:UIBarButtonItemStyleBordered];
+        sender.title = @"Edit";
         [self.tableView setEditing:NO animated:YES];
     }
     else
     {
-        self.favoritesNavigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editClicked:)];
+        [sender setStyle:UIBarButtonItemStyleDone];
+        sender.title = @"Done";
         [self.tableView setEditing:YES animated:YES];
     }
 }
