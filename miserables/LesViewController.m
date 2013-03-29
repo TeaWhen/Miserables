@@ -13,11 +13,12 @@
 #import "FavoriteSet.h"
 #import "ArticleSet.h"
 
-@interface LesViewController () <UIWebViewDelegate>
+@interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSString *title;
 
@@ -38,6 +39,7 @@ static NSOperationQueue *queue;
     self.tapNavigation.numberOfTapsRequired = 2;
     [self.navigationController.navigationBar addGestureRecognizer:self.tapNavigation];
     self.webView.delegate = self;
+    self.searchBar.delegate = self;
     
     [WebViewProxy handleRequestsWithHost:@"foo.com" handler:^(NSURLRequest* req, WVPResponse *res) {
         NSString *URL = [req.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -89,6 +91,11 @@ static NSOperationQueue *queue;
 {
     // disable horizontal scrolling
     [webView.scrollView setContentSize: CGSizeMake(webView.frame.size.width, webView.scrollView.contentSize.height)];
+}
+
+- (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
+{
+    [self performSegueWithIdentifier:@"favorites" sender:self];
 }
 
 - (IBAction)favoriteClicked:(UIButton *)sender {

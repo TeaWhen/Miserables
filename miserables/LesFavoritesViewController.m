@@ -30,8 +30,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.nav = (LesNavigationController *)(self.presentingViewController);
-    self.parent = self.nav.viewControllers[0];
+//    self.nav = (LesNavigationController *)(self.presentingViewController);
+//    self.parent = self.nav.viewControllers[0];
 }
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender {
