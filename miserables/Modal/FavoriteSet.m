@@ -50,7 +50,7 @@
 - (NSMutableArray *)list
 {
     if (!self.favorites) {
-        FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM `Favorites` ORDER BY `sequence` DESC, `timestamp` ASC"];
+        FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Favorites ORDER BY sequence, timestamp"];
         self.favorites = [[NSMutableArray alloc] init];
         while ([rs next]) {
             NSString *title = [rs stringForColumn:@"title"];
@@ -93,12 +93,13 @@
     NSString *title = [self.favorites objectAtIndex:sourceRow];
     [self.favorites removeObjectAtIndex:sourceRow];
     [self.favorites insertObject:title atIndex:destinationRow];
+    [self updateSequence];
 }
 
 - (void)updateSequence
 {
     for (NSInteger i = 0; i < [self.favorites count]; ++i) {
-        [self.DB executeUpdate:@"UPDATE Favorites SET sequence = ? WHERE title = ?", i, [self.favorites objectAtIndex:i]];
+        [self.DB executeUpdate:@"UPDATE Favorites SET sequence = ? WHERE title = ?", [NSString stringWithFormat:@"%d", i], [self.favorites objectAtIndex:i]];
     }
 }
 
