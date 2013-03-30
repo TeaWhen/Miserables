@@ -8,7 +8,6 @@
 
 #import "LesSearchViewController.h"
 #import "LesViewController.h"
-#import "LesNavigationController.h"
 #import "FMResultSet.h"
 #import "ArticleSet.h"
 
@@ -16,9 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *resultTableView;
-
-@property (weak, nonatomic) LesViewController *parent;
-@property (weak, nonatomic) LesNavigationController *nav;
 
 @property (strong, nonatomic) NSMutableArray *result;
 
@@ -35,9 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.nav = (LesNavigationController *)(self.presentingViewController);
-    self.parent = self.nav.viewControllers[0];
     
     self.result = [[NSMutableArray alloc] init];
 	
@@ -62,7 +55,7 @@
 {
     NSString *title = [self.searchBar text];
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-    [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+//    [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -113,7 +106,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *title = self.result[indexPath.row];
-    [self.parent loadArticle:title];
+//    [self.parent loadArticle:title];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

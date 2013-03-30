@@ -7,7 +7,6 @@
 //
 
 #import "LesViewController.h"
-#import "LesNavigationController.h"
 #import "FMResultSet.h"
 #import "WebViewProxy.h"
 #import "FavoriteSet.h"
@@ -17,7 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
-@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSString *title;
@@ -102,11 +100,11 @@ static NSOperationQueue *queue;
     FavoriteSet *favs = [[FavoriteSet alloc] init];
     if ([favs exist:self.title]) {
         [favs delete:self.title];
-        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];
+//        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];
     }
     else {
         [favs add:self.title];
-        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_1.png"] forState:UIControlStateNormal];
+//        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_1.png"] forState:UIControlStateNormal];
     }
 }
 
