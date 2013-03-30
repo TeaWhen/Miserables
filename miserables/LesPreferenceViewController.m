@@ -152,19 +152,19 @@
                     self.downloadCell.userInteractionEnabled = YES;
                 }];
                 
-                [self.nav.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
-                    [progressIndicator stopAnimating];
-                    self.downloadLabel.text = @"Downloading...";
-                    [self.preferenceTableView reloadData];
-                    [self.downloadProgressCell setHidden:NO];
-                    [self.cancelCell setHidden:NO];
-                    self.downloadLabel.enabled = NO;
-                    self.downloadCell.userInteractionEnabled = NO;
-                    
-                    float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
-                    [self.downloadProgressView setProgress:progress];
-                    // NSLog(@"%lld / %lld", totalBytesReadForFile, totalBytesExpectedToReadForFile);
-                }];
+//                [self.nav.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+//                    [progressIndicator stopAnimating];
+//                    self.downloadLabel.text = @"Downloading...";
+//                    [self.preferenceTableView reloadData];
+//                    [self.downloadProgressCell setHidden:NO];
+//                    [self.cancelCell setHidden:NO];
+//                    self.downloadLabel.enabled = NO;
+//                    self.downloadCell.userInteractionEnabled = NO;
+//                    
+//                    float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
+//                    [self.downloadProgressView setProgress:progress];
+//                    // NSLog(@"%lld / %lld", totalBytesReadForFile, totalBytesExpectedToReadForFile);
+//                }];
             }
             break;
         case 1:

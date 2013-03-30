@@ -1,0 +1,21 @@
+
+DEPENDENCIES: 
+- AFDownloadRequestOperation
+- AFNetworking
+- FMDB
+- TestFlightSDK
+
+PODS: 
+- AFDownloadRequestOperation (0.0.2): 
+  - AFNetworking (>= 1.1)
+- AFNetworking (1.2.0)
+- FMDB (2.0)
+- TestFlightSDK (1.3.0.beta2)
+
+COCOAPODS: 0.16.4
+
+SPEC CHECKSUMS: 
+  FMDB: 77fb1c93b51bbf14d84d49d5374344b7f68c54f1
+  AFNetworking: 3cbae45f61a9f995cdbd56bd571223910d7f4e44
+  TestFlightSDK: 359dbd5b9b363a9e35351bb71cc9dfd8ca6c8c36
+  AFDownloadRequestOperation: f8ec82ee8a6273defa5e3a74fdd0be9b0d937fde

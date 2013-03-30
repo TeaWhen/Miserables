@@ -17,6 +17,8 @@ profile
 DerivedData
 .idea/
 
+Pods/
+
 Parser/*.gz
 Parser/*.xml
 Parser/extracted
