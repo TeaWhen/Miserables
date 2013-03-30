@@ -10,3 +10,6 @@
 [submodule "AFDownloadRequestOperation"]
 	path = AFDownloadRequestOperation
 	url = https://github.com/steipete/AFDownloadRequestOperation.git
+[submodule "lzmaSDK"]
+	path = lzmaSDK
+	url = git://github.com/mdejong/lzmaSDK.git
