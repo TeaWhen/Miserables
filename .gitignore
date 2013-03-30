@@ -22,3 +22,6 @@ Parser/*.xml
 Parser/extracted
 Parser/articles.db
 Parser/contents/*
+
+cosette/*.pyc
+cosette/*.db
