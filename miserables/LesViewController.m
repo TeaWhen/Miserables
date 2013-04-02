@@ -7,8 +7,8 @@
 //
 
 #import "LesViewController.h"
-#import "FMResultSet.h"
 #import "WebViewProxy.h"
+#import "LZMAExtractor.h"
 #import "FavoriteSet.h"
 #import "ArticleSet.h"
 
