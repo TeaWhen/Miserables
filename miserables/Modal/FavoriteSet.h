@@ -12,7 +12,8 @@
 @interface FavoriteSet : NSObject
 
 + (FavoriteSet *)singleton;
-- (void)closeDB;
+- (void)close;
+
 - (NSMutableArray *)list;
 - (BOOL)exist:(NSString *)title;
 - (void)add:(NSString *)title;

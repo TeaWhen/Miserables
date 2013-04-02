@@ -72,7 +72,7 @@ static NSOperationQueue *queue;
     NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
     NSString *html_body;
     
-    ArticleSet *articleSet = [[ArticleSet alloc] init];
+    ArticleSet *articleSet = [ArticleSet singleton];
     NSString *content = [articleSet articleByTitle:title];
     if (content) {
         html_body = content;

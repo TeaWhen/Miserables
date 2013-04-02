@@ -10,6 +10,9 @@
 
 @interface ArticleSet : NSObject
 
++ (ArticleSet *)singleton;
+- (void)close;
+
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword;
 - (NSString *)articleByTitle:(NSString *)title;
 - (NSInteger)count;

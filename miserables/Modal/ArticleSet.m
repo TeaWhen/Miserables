@@ -19,6 +19,14 @@
 
 @implementation ArticleSet
 
++ (ArticleSet *)singleton
+{
+    static ArticleSet *sharedInstance = nil;
+    static dispatch_once_t once = 0;
+    dispatch_once(&once, ^{sharedInstance = [[self alloc] init];});
+    return sharedInstance;
+}
+
 - (id)init {
     self = [super init];
     
@@ -43,17 +51,28 @@
 
 - (void)openDB
 {
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [path objectAtIndex:0];
-    NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"articles.db"];
-    
-    self.DB = [FMDatabase databaseWithPath:DBPath];
-    if (![self.DB open]) {
-        NSLog(@"Could not open db.");
+    if (!self.DB) {
+        NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [path objectAtIndex:0];
+        NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"articles.db"];
+        
+        self.DB = [FMDatabase databaseWithPath:DBPath];
+        if (![self.DB open]) {
+            NSLog(@"Could not open db.");
+        }
+        
+        self.DB.traceExecution = YES;
+        self.DB.logsErrors = YES;
     }
-    
-    self.DB.traceExecution = YES;
-    self.DB.logsErrors = YES;
+}
+
+- (void)close
+{
+    if (self.DB) {
+        if (![self.DB close]) {
+            NSLog(@"Could not close db.");
+        }
+    }
 }
 
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword

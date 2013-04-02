@@ -8,6 +8,7 @@
 
 #import "LesAppDelegate.h"
 #import "FavoriteSet.h"
+#import "ArticleSet.h"
 
 @implementation LesAppDelegate
 
@@ -28,8 +29,8 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     NSLog(@"applicationDidEnterBackground");
-    FavoriteSet *favoriteSet = [FavoriteSet singleton];
-    [favoriteSet closeDB];
+    [[FavoriteSet singleton] close];
+    [[ArticleSet singleton] close];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

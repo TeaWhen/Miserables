@@ -68,7 +68,7 @@
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     [self.result removeAllObjects];
-    ArticleSet *articles = [[ArticleSet alloc] init];
+    ArticleSet *articles = [ArticleSet singleton];
     for (NSString *title in [articles articlesByKeyword:searchText]) {
         [self.result addObject:title];
     }

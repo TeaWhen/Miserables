@@ -23,10 +23,10 @@
 
 + (FavoriteSet *)singleton
 {
-    static FavoriteSet *sharedFavoriteSet = nil;
+    static FavoriteSet *sharedInstance = nil;
     static dispatch_once_t once = 0;
-    dispatch_once(&once, ^{sharedFavoriteSet = [[self alloc] init];});
-    return sharedFavoriteSet;
+    dispatch_once(&once, ^{sharedInstance = [[self alloc] init];});
+    return sharedInstance;
 }
 
 - (id)init {
@@ -57,7 +57,7 @@
     }
 }
 
-- (void)closeDB
+- (void)close
 {
     if (self.DB) {
         if (![self.DB close]) {

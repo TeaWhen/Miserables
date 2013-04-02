@@ -56,7 +56,7 @@
 
 - (void)updateArticleCount
 {
-    ArticleSet *articles = [[ArticleSet alloc] init];
+    ArticleSet *articles = [ArticleSet singleton];
     self.articleCountLabel.text = [NSString stringWithFormat:@"%d", [articles count]];
 }
 
