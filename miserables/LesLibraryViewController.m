@@ -7,14 +7,13 @@
 //
 
 #import "LesLibraryViewController.h"
-#import "AFDownloadRequestOperation.h"
-#import "AFHTTPRequestOperation.h"
 #import "FMResultSet.h"
 #import "NSDate+PrettyDate.h"
 #import "LesViewController.h"
 #import "ArticleSet.h"
+#import "LesDownloader.h"
 
-@interface LesLibraryViewController () <UITableViewDelegate>
+@interface LesLibraryViewController () <UITableViewDelegate, LesDownloaderDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
@@ -25,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadProgressCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *cancelCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadButton;
+
+@property LesDownloader *downloader;
 
 - (void)updateArticleCount;
 - (void)updateUpdateDate;
@@ -47,6 +48,8 @@
 //        self.downloadLabel.enabled = NO;
 //        self.downloadCell.userInteractionEnabled = NO;
 //    }
+    
+    self.downloader = [LesDownloader singleton];
     
     // update things
     [self updateArticleCount];
@@ -88,36 +91,9 @@
                 self.downloadLabel.enabled = NO;
                 self.downloadCell.userInteractionEnabled = NO;
                 
-                id documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-                NSString *currentLibraryPath = [documentDirectory stringByAppendingPathComponent:@"articles.db"];
-                NSString *newLibraryPath = [documentDirectory stringByAppendingPathComponent:@"articles_new.db"];
+                [self.downloader start];
                 
-//                if (!self.nav.downloadOperation) {
-//                    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://42.121.18.11/static/mis/articles.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:12.0];
-//                    self.nav.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:newLibraryPath shouldResume:YES];
-//                    self.nav.downloadOperation.shouldOverwrite = YES;
-//                }
-//                
-//                [self.nav.downloadOperation start];
-//                
 //                [self.nav.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                    [progressIndicator stopAnimating];
-//                    self.downloadLabel.text = @"Already updated";
-//                    [self.preferenceTableView reloadData];
-//                    [self.downloadProgressCell setHidden:YES];
-//                    [self.cancelCell setHidden:YES];
-//                    self.nav->downloaded = YES;
-//                    NSLog(@"Successfully downloaded file to %@", newLibraryPath);
-//                    
-//                    NSFileManager *fm = [NSFileManager defaultManager];
-//                    [fm removeItemAtPath:currentLibraryPath error:nil];
-//                    [fm moveItemAtPath:newLibraryPath toPath:currentLibraryPath error:nil];
-//                    
-//                    // reload things
-//                    [self updateArticleCount];
-//                    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
-//                    [self updateUpdateDate];
-//
 //                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //                    [progressIndicator stopAnimating];
 //                    NSLog(@"Error occured: %@", error);
@@ -161,9 +137,8 @@
         case 1:
             if (indexPath.row == 1) {
                 // cancel button clicked
-//                NSLog(@"Cancel clicked.");
-//                [self.nav.downloadOperation cancel];
-//                self.nav.downloadOperation = nil;
+                NSLog(@"Cancel clicked.");
+                [self.downloader cancel];
                 
                 self.downloadLabel.text = @"Update Now";
                 [self.downloadProgressCell setHidden:YES];
@@ -192,6 +167,28 @@
     return @"";
 }
 
+- (void)downloadCompleted
+{
+    self.downloadLabel.text = @"Already updated";
+    [self.tableView reloadData];
+    [self.downloadProgressCell setHidden:YES];
+    [self.cancelCell setHidden:YES];
+//    NSLog(@"Successfully downloaded file to %@", newLibraryPath);
+    
+//    NSFileManager *fm = [NSFileManager defaultManager];
+//    [fm removeItemAtPath:currentLibraryPath error:nil];
+//    [fm moveItemAtPath:newLibraryPath toPath:currentLibraryPath error:nil];
+    
+    // reload things
+    [self updateArticleCount];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
+    [self updateUpdateDate];
+}
+
+- (void)downloadFailed:(NSError *)error
+{
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
