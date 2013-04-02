@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
 
 @property FavoriteSet *favoriteSet;
+@property id recentsDelegate;
 
 @end
 
@@ -31,8 +32,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-//    self.nav = (LesNavigationController *)(self.presentingViewController);
-//    self.parent = self.nav.viewControllers[0];
+    self.recentsDelegate = [[LesRecentsDelegate alloc] init];
 }
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender {
@@ -59,9 +59,8 @@ enum {
     }
     else if (sender.selectedSegmentIndex == RecentsSeg) {
         self.titleNavigationItem.title = @"Recents";
-        id recentsDelegate = [[LesRecentsDelegate alloc] init];
-        self.tableView.dataSource = recentsDelegate;
-        self.tableView.delegate = recentsDelegate;
+        self.tableView.dataSource = self.recentsDelegate;
+        self.tableView.delegate = self.recentsDelegate;
     }
     else if (sender.selectedSegmentIndex == LibrarySeg) {
         self.titleNavigationItem.title = @"Library";
