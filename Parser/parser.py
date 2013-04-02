@@ -8,7 +8,7 @@ import re
 import os
 import os.path
 from bs4 import BeautifulSoup
-import pylzma
+import zlib
 
 conn = sqlite3.connect('articles.db')
 conn.text_factory = str
@@ -18,7 +18,7 @@ def open_db():
 	c.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
 
 def insert_article(title, content):
-	compressed = pylzma.compress(content)
+	compressed = zlib.compress(content)
 	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
 
 def parse(html):
@@ -96,7 +96,7 @@ def main():
 
 		insert_article(title, html)
 		count = count + 1
-		if count >= 10000:
+		if count >= 100:
 			break
 
 if __name__ == "__main__":

@@ -8,7 +8,6 @@
 
 #import "LesViewController.h"
 #import "WebViewProxy.h"
-#import "LZMAExtractor.h"
 #import "FavoriteSet.h"
 #import "ArticleSet.h"
 

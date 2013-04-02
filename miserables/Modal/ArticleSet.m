@@ -9,6 +9,7 @@
 #import "ArticleSet.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
+#import "NSData+Godzippa.h"
 
 @interface ArticleSet ()
 
@@ -83,7 +84,7 @@
         NSString *title = [rs stringForColumn:@"title"];
         [articles addObject:title];
     }
-    
+
     return articles;
 }
 
@@ -91,7 +92,8 @@
 {
     FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title = ?", title];
     if ([rs next]) {
-        return [rs stringForColumn:@"content"];
+        NSString *content = [NSString stringWithString:[rs stringForColumn:@"content"]];
+        return [self decompressString:content];
     }
     return nil;
 }
@@ -103,6 +105,15 @@
         return [rs intForColumnIndex:0];
     }
     return 0;
+}
+
+- (NSString *)decompressString:(NSString *)compressed
+{
+    NSData *originalData = [compressed dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *compressedData = [originalData dataByGZipCompressingWithError:nil];
+    NSData *decompressedData = [compressedData dataByGZipDecompressingDataWithError:nil];
+    NSString *decompressedString = [[NSString alloc] initWithData:decompressedData encoding:NSUTF8StringEncoding];
+    return decompressedString;
 }
 
 @end
