@@ -18,7 +18,7 @@ DerivedData
 .idea/
 
 Pods/
-Podfile.log
+Podfile.lock
 
 Parser/*.gz
 Parser/*.xml
