@@ -8,12 +8,15 @@
 
 #import "LesFavoritesViewController.h"
 #import "LesViewController.h"
+#import "LesRecentsDelegate.h"
 #import "FavoriteSet.h"
 
 @interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
+
 @property FavoriteSet *favoriteSet;
 
 @end
@@ -39,6 +42,31 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+enum {
+    FavoritesSeg = 0,
+    RecentsSeg,
+    LibrarySeg,
+};
+
+- (IBAction)segmentChanged:(UISegmentedControl *)sender
+{
+    if (sender.selectedSegmentIndex == FavoritesSeg) {
+        self.titleNavigationItem.title = @"Favorites";
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+    }
+    else if (sender.selectedSegmentIndex == RecentsSeg) {
+        self.titleNavigationItem.title = @"Recents";
+        id recentsDelegate = [[LesRecentsDelegate alloc] init];
+        self.tableView.dataSource = recentsDelegate;
+        self.tableView.delegate = recentsDelegate;
+    }
+    else if (sender.selectedSegmentIndex == LibrarySeg) {
+        self.titleNavigationItem.title = @"Library";
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark Table view methods
