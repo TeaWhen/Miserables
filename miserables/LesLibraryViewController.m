@@ -16,7 +16,7 @@
 
 @interface LesLibraryViewController () <UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *preferenceTableView;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *articleCountLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *downloadProgressView;
@@ -41,7 +41,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.delegate = self;
     
 //    if (self.nav->downloaded) {
 //        self.downloadLabel.text = @"Already updated";
@@ -169,7 +168,7 @@
                 self.downloadLabel.text = @"Update Now";
                 [self.downloadProgressCell setHidden:YES];
                 [self.cancelCell setHidden:YES];
-                [self.preferenceTableView reloadData];
+                [self.tableView reloadData];
                 self.downloadLabel.enabled = YES;
                 self.downloadCell.userInteractionEnabled = YES;
             }
@@ -181,10 +180,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return @"Library";
-    }
-    else if (section == 1) {
+    if (section == 1) {
         if (self.downloadProgressCell.hidden) {
             return @"";
         }
@@ -204,12 +200,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-//    if ([self.parent.title isEqualToString:@"Main Page"])
-//    {
-//        NSString *title = @"Main Page";
-//        NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-//        [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
-//    }
+    // TODO: if main view is displaying main page, reload it.
 }
 
 @end

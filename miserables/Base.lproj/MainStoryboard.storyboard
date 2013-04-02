@@ -227,7 +227,6 @@
         <!--Les Library View Controller - Library-->
         <scene sceneID="Jh2-HV-yFJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YcG-tF-iqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="33w-6c-5jK" customClass="LesLibraryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kAY-Qe-aRA">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -373,10 +372,11 @@
                         <outlet property="downloadLabel" destination="OGM-R8-i99" id="z23-UJ-bhe"/>
                         <outlet property="downloadProgressCell" destination="iqK-xK-Wda" id="QGx-Ad-nPs"/>
                         <outlet property="downloadProgressView" destination="r7q-RV-LM1" id="LRY-aI-Sfq"/>
-                        <outlet property="preferenceTableView" destination="kAY-Qe-aRA" id="kip-Ah-EcR"/>
+                        <outlet property="tableView" destination="kAY-Qe-aRA" id="dmw-j6-4Oq"/>
                         <outlet property="updateDateLabel" destination="mPL-QP-iup" id="E7S-l7-iPx"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YcG-tF-iqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1159" y="-115"/>
         </scene>
@@ -403,7 +403,7 @@
                 <relationship kind="outlet" name="downloadLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="downloadProgressCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="downloadProgressView" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="preferenceTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
