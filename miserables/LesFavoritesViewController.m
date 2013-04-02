@@ -15,10 +15,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (weak, nonatomic) IBOutlet UINavigationItem *titleNavigationItem;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property FavoriteSet *favoriteSet;
 @property id recentsDelegate;
+@property NSInteger prevSegment;
 
 @end
 
@@ -31,6 +32,8 @@
     self.favoriteSet = [FavoriteSet singleton];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.prevSegment = self.segmentedControl.selectedSegmentIndex;
     
     self.recentsDelegate = [[LesRecentsDelegate alloc] init];
 }
@@ -53,19 +56,25 @@ enum {
 - (IBAction)segmentChanged:(UISegmentedControl *)sender
 {
     if (sender.selectedSegmentIndex == FavoritesSeg) {
-        self.titleNavigationItem.title = @"Favorites";
+        self.title = @"Favorites";
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
+        [self.tableView reloadData];
+        
+        self.prevSegment = self.segmentedControl.selectedSegmentIndex;
     }
     else if (sender.selectedSegmentIndex == RecentsSeg) {
-        self.titleNavigationItem.title = @"Recents";
+        self.title = @"Recents";
         self.tableView.dataSource = self.recentsDelegate;
         self.tableView.delegate = self.recentsDelegate;
+        [self.tableView reloadData];
+        
+        self.prevSegment = self.segmentedControl.selectedSegmentIndex;
     }
     else if (sender.selectedSegmentIndex == LibrarySeg) {
-        self.titleNavigationItem.title = @"Library";
+        self.segmentedControl.selectedSegmentIndex = self.prevSegment;
+        [self performSegueWithIdentifier:@"Library" sender:self];
     }
-    [self.tableView reloadData];
 }
 
 #pragma mark Table view methods

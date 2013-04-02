@@ -6,6 +6,6 @@
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
-@interface LesPreferenceViewController : UIViewController
+@interface LesLibraryViewController : UITableViewController
 
 @end

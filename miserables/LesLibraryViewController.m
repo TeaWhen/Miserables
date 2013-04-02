@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
-#import "LesPreferenceViewController.h"
+#import "LesLibraryViewController.h"
 #import "AFDownloadRequestOperation.h"
 #import "AFHTTPRequestOperation.h"
 #import "FMResultSet.h"
@@ -14,7 +14,7 @@
 #import "LesViewController.h"
 #import "ArticleSet.h"
 
-@interface LesPreferenceViewController () <UITableViewDelegate>
+@interface LesLibraryViewController () <UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *preferenceTableView;
 @property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
@@ -31,7 +31,7 @@
 
 @end
 
-@implementation LesPreferenceViewController
+@implementation LesLibraryViewController
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -41,8 +41,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.preferenceTableView.delegate = self;
-        
+//    self.delegate = self;
+    
 //    if (self.nav->downloaded) {
 //        self.downloadLabel.text = @"Already updated";
 //        self.downloadLabel.enabled = NO;

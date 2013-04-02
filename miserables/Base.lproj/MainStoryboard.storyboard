@@ -4,12 +4,27 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Y3w-5d-8nF">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="AzV-le-D8R" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IfE-Zf-dgp">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xn3-zD-hVh" kind="relationship" relationship="rootViewController" id="kGZ-HZ-Zue"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEO-38-RG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="679" y="-753"/>
+        </scene>
         <!--Les Favorites View Controller - Favorites-->
         <scene sceneID="bHd-ay-TRf">
             <objects>
                 <viewController title="Favorites" id="xn3-zD-hVh" customClass="LesFavoritesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="buP-uN-zAK">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UpB-WN-5Ql">
@@ -57,43 +72,37 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5T-Ga-Cgt">
-                                <items>
-                                    <navigationItem title="Favorites" id="gIL-sy-WIP">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EF0-z7-WX6">
-                                            <connections>
-                                                <action selector="doneClicked:" destination="xn3-zD-hVh" id="qXk-71-9pJ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="m5T-Ga-Cgt" firstAttribute="leading" secondItem="buP-uN-zAK" secondAttribute="leading" type="default" id="6zA-kb-cYV"/>
                             <constraint firstItem="mGf-1h-9DA" firstAttribute="leading" secondItem="buP-uN-zAK" secondAttribute="leading" type="default" id="Egw-xd-wPf"/>
                             <constraint firstItem="UpB-WN-5Ql" firstAttribute="trailing" secondItem="buP-uN-zAK" secondAttribute="trailing" type="default" id="Gd4-Dg-1cc"/>
-                            <constraint firstItem="m5T-Ga-Cgt" firstAttribute="trailing" secondItem="buP-uN-zAK" secondAttribute="trailing" type="default" id="HQd-jX-0e3"/>
-                            <constraint firstItem="m5T-Ga-Cgt" firstAttribute="top" secondItem="buP-uN-zAK" secondAttribute="top" type="default" id="IXH-jM-oz8"/>
                             <constraint firstItem="UpB-WN-5Ql" firstAttribute="top" secondItem="mGf-1h-9DA" secondAttribute="bottom" type="default" id="MuM-id-Iyv"/>
                             <constraint firstItem="UpB-WN-5Ql" firstAttribute="leading" secondItem="buP-uN-zAK" secondAttribute="leading" type="default" id="QSV-da-Iyn"/>
                             <constraint firstItem="mGf-1h-9DA" firstAttribute="trailing" secondItem="buP-uN-zAK" secondAttribute="trailing" type="default" id="R1h-pR-jZH"/>
-                            <constraint firstItem="mGf-1h-9DA" firstAttribute="top" secondItem="m5T-Ga-Cgt" secondAttribute="bottom" type="default" id="Uao-Cw-0Uu"/>
+                            <constraint firstItem="mGf-1h-9DA" firstAttribute="top" secondItem="buP-uN-zAK" secondAttribute="top" type="default" id="pRp-CN-3UE"/>
                             <constraint firstItem="UpB-WN-5Ql" firstAttribute="bottom" secondItem="buP-uN-zAK" secondAttribute="bottom" type="default" id="sFN-tb-w1l"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" id="W2R-Xr-zm3"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Favorites" id="GtM-jb-5p3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EF0-z7-WX6">
+                            <connections>
+                                <action selector="doneClicked:" destination="xn3-zD-hVh" id="qXk-71-9pJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="segmentedControl" destination="Dgv-Om-FJE" id="9IF-Sc-uE3"/>
                         <outlet property="tableView" destination="mGf-1h-9DA" id="ab4-Wp-TxP"/>
-                        <outlet property="titleNavigationItem" destination="gIL-sy-WIP" id="YKN-eD-YcC"/>
                         <outlet property="toolbar" destination="UpB-WN-5Ql" id="Yxq-mq-C36"/>
+                        <segue destination="33w-6c-5jK" kind="push" identifier="Library" id="xRY-Dh-7SO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBA-Oa-FM9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="679" y="-769"/>
+            <point key="canvasLocation" x="1159" y="-753"/>
         </scene>
         <!--Les View Controller - Home-->
         <scene sceneID="5">
@@ -139,7 +148,7 @@
                         <outlet property="tapNavigation" destination="a6l-7w-kzg" id="pZ1-Yk-lWa"/>
                         <outlet property="webView" destination="5Sw-rd-u8Q" id="lq3-Vp-ZLf"/>
                         <segue destination="yn5-HQ-mvc" kind="modal" identifier="search" id="ywU-z7-8Wm"/>
-                        <segue destination="xn3-zD-hVh" kind="modal" identifier="favorites" id="FWW-yk-opz"/>
+                        <segue destination="AzV-le-D8R" kind="modal" identifier="favorites" id="tYM-aa-yZp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -215,26 +224,20 @@
             </objects>
             <point key="canvasLocation" x="679" y="-115"/>
         </scene>
-        <!--Les Preference View Controller - Library-->
+        <!--Les Library View Controller - Library-->
         <scene sceneID="Jh2-HV-yFJ">
             <objects>
-                <tableViewController id="33w-6c-5jK" customClass="LesPreferenceViewController" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YcG-tF-iqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="33w-6c-5jK" customClass="LesLibraryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="kAY-Qe-aRA">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="aNj-0r-mlW">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Library" id="oLr-eb-vaL"/>
-                            </items>
-                        </navigationBar>
                         <sections>
-                            <tableViewSection headerTitle="Library" footerTitle="If the network is slow, you can also use iTunes File Sharing to import the library." id="Gqx-Nb-1wn">
+                            <tableViewSection headerTitle="" footerTitle="If the network is slow, you can also use iTunes File Sharing to import the library." id="Gqx-Nb-1wn">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="4rF-mi-m4T" detailTextLabel="mPL-QP-iup" style="IBUITableViewCellStyleValue1" id="er6-qI-Uts">
-                                        <rect key="frame" x="0.0" y="80" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="10" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -259,7 +262,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="DlE-Un-Y63" detailTextLabel="kK7-cB-m3o" style="IBUITableViewCellStyleValue1" id="cNY-gF-nrD">
-                                        <rect key="frame" x="0.0" y="125" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -284,7 +287,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="downloadButton" textLabel="OGM-R8-i99" style="IBUITableViewCellStyleDefault" id="U6g-Is-TU9">
-                                        <rect key="frame" x="0.0" y="169" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="99" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -306,7 +309,7 @@
                             <tableViewSection headerTitle="Download Progress" id="w91-pX-LCZ">
                                 <cells>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="iqK-xK-Wda">
-                                        <rect key="frame" x="0.0" y="310" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="240" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -326,7 +329,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" textLabel="NXb-rU-FjJ" style="IBUITableViewCellStyleDefault" id="1kP-zO-TI0">
-                                        <rect key="frame" x="0.0" y="355" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="285" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -360,7 +363,8 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Library" id="6BW-u2-WzV"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Library" id="mqo-e0-6A9"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="articleCountLabel" destination="kK7-cB-m3o" id="phu-t3-T1G"/>
                         <outlet property="cancelCell" destination="1kP-zO-TI0" id="5gj-gY-JyU"/>
@@ -373,9 +377,8 @@
                         <outlet property="updateDateLabel" destination="mPL-QP-iup" id="E7S-l7-iPx"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YcG-tF-iqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1134" y="-769"/>
+            <point key="canvasLocation" x="1159" y="-115"/>
         </scene>
     </scenes>
     <classes>
@@ -385,13 +388,13 @@
                 <relationship kind="action" name="doneClicked:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="editClicked:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="segmentChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="titleNavigationItem" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
-        <class className="LesPreferenceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesPreferenceViewController.h"/>
+        <class className="LesLibraryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesLibraryViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="articleCountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="cancelCell" candidateClass="UITableViewCell"/>
@@ -414,6 +417,7 @@
         <class className="LesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesViewController.h"/>
             <relationships>
+                <relationship kind="action" name="favoriteClicked:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="navigationTitle" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="tapNavigation" candidateClass="UITapGestureRecognizer"/>
