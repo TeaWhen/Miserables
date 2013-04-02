@@ -97,7 +97,7 @@ static NSOperationQueue *queue;
 }
 
 - (IBAction)favoriteClicked:(UIButton *)sender {
-    FavoriteSet *favs = [[FavoriteSet alloc] init];
+    FavoriteSet *favs = [FavoriteSet singleton];
     if ([favs exist:self.title]) {
         [favs delete:self.title];
 //        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];

@@ -24,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    self.favoriteSet = [[FavoriteSet alloc] init];
+    self.favoriteSet = [FavoriteSet singleton];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     

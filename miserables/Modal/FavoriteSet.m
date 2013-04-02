@@ -21,6 +21,14 @@
 
 @implementation FavoriteSet
 
++ (FavoriteSet *)singleton
+{
+    static FavoriteSet *sharedFavoriteSet = nil;
+    static dispatch_once_t once = 0;
+    dispatch_once(&once, ^{sharedFavoriteSet = [[self alloc] init];});
+    return sharedFavoriteSet;
+}
+
 - (id)init {
     self = [super init];
     
@@ -34,17 +42,28 @@
 
 - (void)openDB
 {
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [path objectAtIndex:0];
-    NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"favorites.db"];
-    
-    self.DB = [FMDatabase databaseWithPath:DBPath];
-    if (![self.DB open]) {
-        NSLog(@"Could not open db.");
+    if (!self.DB) {
+        NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [path objectAtIndex:0];
+        NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"favorites.db"];
+        
+        self.DB = [FMDatabase databaseWithPath:DBPath];
+        if (![self.DB open]) {
+            NSLog(@"Could not open db.");
+        }
+        
+        self.DB.traceExecution = YES;
+        self.DB.logsErrors = YES;
     }
-    
-    self.DB.traceExecution = YES;
-    self.DB.logsErrors = YES;
+}
+
+- (void)closeDB
+{
+    if (self.DB) {
+        if (![self.DB close]) {
+            NSLog(@"Could not close db.");
+        }
+    }
 }
 
 - (NSMutableArray *)list
