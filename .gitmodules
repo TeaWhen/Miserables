@@ -1,6 +1,3 @@
 [submodule "WebViewProxy"]
 	path = WebViewProxy
 	url = git://github.com/marcuswestin/WebViewProxy.git
-[submodule "lzmaSDK"]
-	path = lzmaSDK
-	url = git://github.com/mdejong/lzmaSDK.git
