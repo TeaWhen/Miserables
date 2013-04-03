@@ -11,7 +11,7 @@
 @protocol LesDownloaderDelegate <NSObject>
 
 - (void)downloadCompleted;
-- (void)downloadFailed:(NSError *)error;
+- (void)downloadFailed:(NSError *)error withStatusCode:(NSInteger)statusCode;
 - (void)downloaded:(long long)currentBytes of:(long long)totalBytes;
 
 @end
@@ -24,6 +24,7 @@
 - (void)cancel;
 
 @property id<LesDownloaderDelegate> delegate;
+@property BOOL downloaded;
 
 // TODO
 - (void)pause;

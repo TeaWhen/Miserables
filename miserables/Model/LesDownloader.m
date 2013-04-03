@@ -35,6 +35,27 @@
         NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://42.121.18.11/static/mis/articles.db"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:12.0];
         self.downloadOperation = [[AFDownloadRequestOperation alloc] initWithRequest:req targetPath:newLibraryPath shouldResume:YES];
         self.downloadOperation.shouldOverwrite = YES;
+
+        __weak LesDownloader *weakSelf = self;
+        
+        [self.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"Successfully downloaded file to %@", newLibraryPath);
+            NSFileManager *fm = [NSFileManager defaultManager];
+            [fm removeItemAtPath:currentLibraryPath error:nil];
+            [fm moveItemAtPath:newLibraryPath toPath:currentLibraryPath error:nil];
+
+            // TODO: better use a time instead.
+            weakSelf.downloaded = YES;
+            [weakSelf.delegate downloadCompleted];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [weakSelf.delegate downloadFailed:error withStatusCode:[operation.response statusCode]];
+            [weakSelf.downloadOperation deleteTempFileWithError:nil];
+            weakSelf.downloadOperation = nil;
+        }];
+        
+        [self.downloadOperation setProgressiveDownloadProgressBlock:^(AFHTTPRequestOperation *operation, NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+            [weakSelf.delegate downloaded:totalBytesReadForFile of:totalBytesExpectedToReadForFile];
+        }];
     }
     
     [self.downloadOperation start];

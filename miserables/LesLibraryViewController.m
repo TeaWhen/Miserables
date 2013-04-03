@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *downloadButton;
 
 @property LesDownloader *downloader;
+@property UIActivityIndicatorView *progressIndicator;
 
 - (void)updateArticleCount;
 - (void)updateUpdateDate;
@@ -43,13 +44,18 @@
 {
     [super viewDidLoad];
     
-//    if (self.nav->downloaded) {
-//        self.downloadLabel.text = @"Already updated";
-//        self.downloadLabel.enabled = NO;
-//        self.downloadCell.userInteractionEnabled = NO;
-//    }
-    
     self.downloader = [LesDownloader singleton];
+    self.downloader.delegate = self;
+    
+    if (self.downloader.downloaded) {
+        self.downloadLabel.text = @"Already updated";
+        self.downloadLabel.enabled = NO;
+        self.downloadCell.userInteractionEnabled = NO;
+    }
+    
+    self.progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.progressIndicator.center = CGPointMake(self.downloadButton.center.x + 100, self.downloadButton.center.y);
+    [self.view addSubview:self.progressIndicator];
     
     // update things
     [self updateArticleCount];
@@ -82,56 +88,13 @@
                 // update button clicked
                 NSLog(@"Update clicked.");
                 
-                UIActivityIndicatorView *progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-                progressIndicator.center = CGPointMake(self.downloadButton.center.x + 100, self.downloadButton.center.y);
-                [self.view addSubview:progressIndicator];
-                [progressIndicator startAnimating];
+                [self.progressIndicator startAnimating];
                 
                 self.downloadLabel.text = @"Connecting...";
                 self.downloadLabel.enabled = NO;
                 self.downloadCell.userInteractionEnabled = NO;
                 
                 [self.downloader start];
-                
-//                [self.nav.downloadOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                    [progressIndicator stopAnimating];
-//                    NSLog(@"Error occured: %@", error);
-//                    [self.nav.downloadOperation deleteTempFileWithError:nil];
-//                    self.nav.downloadOperation = nil;
-//                    
-//                    NSString *message;
-//                    if ([operation.response statusCode] == 404) {
-//                        message = @"Server error, please contact us";
-//                    }
-//                    else {
-//                        message = error.localizedDescription;
-//                    }
-//                    
-//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download failure" message:message delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-//                    [alert show];
-//                    
-//                    self.downloadLabel.text = @"Update Now";
-//                    [self.downloadProgressCell setHidden:YES];
-//                    [self.cancelCell setHidden:YES];
-//                    [self.preferenceTableView reloadData];
-//                    self.downloadLabel.enabled = YES;
-//                    self.downloadCell.userInteractionEnabled = YES;
-//                }];
-//                
-//                [self.nav.downloadOperation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
-//                    [progressIndicator stopAnimating];
-//                    self.downloadLabel.text = @"Downloading...";
-//                    [self.preferenceTableView reloadData];
-//                    [self.downloadProgressCell setHidden:NO];
-//                    [self.cancelCell setHidden:NO];
-//                    self.downloadLabel.enabled = NO;
-//                    self.downloadCell.userInteractionEnabled = NO;
-//                    
-//                    float progress = totalBytesReadForFile / (float)totalBytesExpectedToReadForFile;
-//                    [self.downloadProgressView setProgress:progress];
-//                    // NSLog(@"%lld / %lld", totalBytesReadForFile, totalBytesExpectedToReadForFile);
-//                }];
             }
             break;
         case 1:
@@ -173,11 +136,6 @@
     [self.tableView reloadData];
     [self.downloadProgressCell setHidden:YES];
     [self.cancelCell setHidden:YES];
-//    NSLog(@"Successfully downloaded file to %@", newLibraryPath);
-    
-//    NSFileManager *fm = [NSFileManager defaultManager];
-//    [fm removeItemAtPath:currentLibraryPath error:nil];
-//    [fm moveItemAtPath:newLibraryPath toPath:currentLibraryPath error:nil];
     
     // reload things
     [self updateArticleCount];
@@ -185,9 +143,43 @@
     [self updateUpdateDate];
 }
 
-- (void)downloadFailed:(NSError *)error
+- (void)downloadFailed:(NSError *)error withStatusCode:(NSInteger)statusCode
 {
+    [self.progressIndicator stopAnimating];
+    NSLog(@"Error occured: %@", error);
     
+    NSString *message;
+    if (statusCode == 404) {
+        message = @"Sever error, please contact us.";
+    }
+    else {
+        message = error.localizedDescription;
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download failure" message:message delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alert show];
+    
+    self.downloadLabel.text = @"Update Now";
+    [self.downloadProgressCell setHidden:YES];
+    [self.cancelCell setHidden:YES];
+    [self.tableView reloadData];
+    self.downloadLabel.enabled = YES;
+    self.downloadCell.userInteractionEnabled = YES;
+}
+
+- (void)downloaded:(long long)currentBytes of:(long long)totalBytes
+{
+    [self.progressIndicator stopAnimating];
+    self.downloadLabel.text = @"Downloading...";
+    [self.tableView reloadData];
+    [self.downloadProgressCell setHidden:NO];
+    [self.cancelCell setHidden:NO];
+    self.downloadLabel.enabled = NO;
+    self.downloadCell.userInteractionEnabled = NO;
+    
+    float progress = currentBytes / (float)totalBytes;
+    [self.downloadProgressView setProgress:progress];
+    // NSLog(@"%lld / %lld", currentBytes, totalBytes);
 }
 
 - (void)didReceiveMemoryWarning
