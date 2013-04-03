@@ -16,6 +16,7 @@
 @property NSMutableArray *favorites;
 - (void)openDB;
 - (void)updateSequence;
+- (void)reload;
 
 @end
 
@@ -69,15 +70,20 @@
 - (NSMutableArray *)list
 {
     if (!self.favorites) {
-        FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Favorites ORDER BY sequence, timestamp"];
-        self.favorites = [[NSMutableArray alloc] init];
-        while ([rs next]) {
-            NSString *title = [rs stringForColumn:@"title"];
-            [self.favorites addObject:title];
-        }
+        [self reload];
     }
     
     return self.favorites;
+}
+
+- (void)reload
+{
+    FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Favorites ORDER BY sequence, timestamp"];
+    self.favorites = [[NSMutableArray alloc] init];
+    while ([rs next]) {
+        NSString *title = [rs stringForColumn:@"title"];
+        [self.favorites addObject:title];
+    }
 }
 
 - (BOOL)exist:(NSString *)title
@@ -93,11 +99,13 @@
 {
     NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
     [self.DB executeUpdate:@"INSERT INTO Favorites (title, timestamp, sequence) VALUES (?, ?, 0)", title, [NSString stringWithFormat:@"%d", (NSInteger)timestamp]];
+    [self reload];
 }
 
 - (void)delete:(NSString *)title
 {
     [self.DB executeUpdate:@"DELETE FROM Favorites WHERE title = ?", title];
+    [self reload];
 }
 
 - (void)deleteAtRow:(NSInteger)row

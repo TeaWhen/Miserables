@@ -19,6 +19,8 @@
 
 @property (strong, nonatomic) NSString *title;
 
+- (void)setSearchIconToFavorites;
+
 @end
 
 @implementation LesViewController
@@ -37,6 +39,8 @@ static NSOperationQueue *queue;
     [self.navigationController.navigationBar addGestureRecognizer:self.tapNavigation];
     self.webView.delegate = self;
     self.searchBar.delegate = self;
+    
+    [self setSearchIconToFavorites];
     
     [WebViewProxy handleRequestsWithHost:@"foo.com" handler:^(NSURLRequest* req, WVPResponse *res) {
         NSString *URL = [req.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -95,15 +99,29 @@ static NSOperationQueue *queue;
     [self performSegueWithIdentifier:@"favorites" sender:self];
 }
 
-- (IBAction)favoriteClicked:(UIButton *)sender {
+- (void)setSearchIconToFavorites
+{
+    UITextField *searchField = nil;
+    for (UIView *subview in self.searchBar.subviews) {
+        if ([subview isKindOfClass:[UITextField class]]) {
+            searchField = (UITextField *)subview;
+            break;
+        }
+    }
+    if (searchField) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        [button addTarget:self action:@selector(favoriteClicked:) forControlEvents:UIControlEventTouchUpInside];
+        searchField.leftView = button;
+    }
+}
+
+- (void)favoriteClicked:(UIButton *)sender {
     FavoriteSet *favs = [FavoriteSet singleton];
     if ([favs exist:self.title]) {
         [favs delete:self.title];
-//        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_0.png"] forState:UIControlStateNormal];
     }
     else {
         [favs add:self.title];
-//        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_1.png"] forState:UIControlStateNormal];
     }
 }
 
