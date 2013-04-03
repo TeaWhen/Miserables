@@ -31,7 +31,6 @@
 		1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */; };
 		1AF8016A16FF48F6001D29CD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */; };
 		69E996E6BFE6461087498C7E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6A22F612CB405CABA23C2C /* libPods.a */; };
-		AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25C16EC8D070037E52E /* WebViewProxy.h */; };
 		AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB69A25D16EC8D070037E52E /* WebViewProxy.m */; };
 		ABF04E98170AB2F2005B2D54 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF04E97170AB2F2005B2D54 /* libz.dylib */; };
 		BF88057A170B02C900B4E441 /* LesDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BF880579170B02C900B4E441 /* LesDownloader.m */; };
@@ -316,7 +315,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB69A25E16EC8D070037E52E /* WebViewProxy.h in Sources */,
 				AB69A25F16EC8D070037E52E /* WebViewProxy.m in Sources */,
 				1A1A4A6B16EB123400EF7BBE /* main.m in Sources */,
 				1A1A4A6F16EB123400EF7BBE /* LesAppDelegate.m in Sources */,
@@ -419,10 +417,6 @@
 				GCC_PREFIX_HEADER = "Miserables/Miserables-Prefix.pch";
 				INFOPLIST_FILE = "Miserables/Miserables-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Miserables/TestFlightSDK1.2.4\"",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -440,10 +434,6 @@
 				GCC_PREFIX_HEADER = "Miserables/Miserables-Prefix.pch";
 				INFOPLIST_FILE = "Miserables/Miserables-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Miserables/TestFlightSDK1.2.4\"",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

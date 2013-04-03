@@ -61,6 +61,12 @@
     [self.downloadOperation start];
 }
 
+// TODO
+- (void)pause
+{
+    ;
+}
+
 - (void)cancel
 {
     [self.downloadOperation cancel];

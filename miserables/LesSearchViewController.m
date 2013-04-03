@@ -53,9 +53,7 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
 {
-    NSString *title = [self.searchBar text];
-    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"miserables://%@", [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-//    [self.parent.webView loadRequest:[NSURLRequest requestWithURL:URL]];
+//    NSString *title = [self.searchBar text];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -105,7 +103,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = self.result[indexPath.row];
+//    NSString *title = self.result[indexPath.row];
 //    [self.parent loadArticle:title];
     
     [self dismissViewControllerAnimated:YES completion:nil];
