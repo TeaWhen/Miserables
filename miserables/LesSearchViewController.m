@@ -37,30 +37,7 @@
     self.searchBar.delegate = self;
     self.resultTableView.dataSource = self;
     
-    for (UIView *searchBarSubview in [self.searchBar subviews]) {
-        if ([searchBarSubview conformsToProtocol:@protocol(UITextInputTraits)]) {
-            @try {
-                [(UITextField *)searchBarSubview setReturnKeyType:UIReturnKeyGo];
-            }
-            @catch (NSException * e) {
-                // ignore exception
-            }
-        }
-    }
-    
     [self searchBar:self.searchBar textDidChange:@""];
-}
-
-- (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
-{
-//    NSString *title = [self.searchBar text];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void) searchBarCancelButtonClicked:(UISearchBar*) searchBar
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText

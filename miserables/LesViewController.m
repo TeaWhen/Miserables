@@ -13,8 +13,6 @@
 
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
 
-@property (weak, nonatomic) IBOutlet UINavigationItem *navigationTitle;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapNavigation;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSString *title;
@@ -33,12 +31,20 @@ static NSOperationQueue *queue;
        
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:5];
-        
-    self.tapNavigation = [self.tapNavigation initWithTarget:self action: @selector(navigationBarClicked:)];
-    self.tapNavigation.numberOfTapsRequired = 2;
-    [self.navigationController.navigationBar addGestureRecognizer:self.tapNavigation];
+    
     self.webView.delegate = self;
     self.searchBar.delegate = self;
+    
+    for (UIView *searchBarSubview in [self.searchBar subviews]) {
+        if ([searchBarSubview conformsToProtocol:@protocol(UITextInputTraits)]) {
+            @try {
+                [(UITextField *)searchBarSubview setReturnKeyType:UIReturnKeyGo];
+            }
+            @catch (NSException * e) {
+                // ignore exception
+            }
+        }
+    }
     
     [self setSearchIconToFavorites];
     
@@ -59,11 +65,6 @@ static NSOperationQueue *queue;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void) navigationBarClicked:(UIPanGestureRecognizer *) tapNavigation
-{
-    [self performSegueWithIdentifier:@"search" sender:self];
 }
 
 - (void)loadArticle:(NSString *)title
@@ -97,6 +98,12 @@ static NSOperationQueue *queue;
 - (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
 {
     [self performSegueWithIdentifier:@"favorites" sender:self];
+}
+
+- (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
+{
+    NSString *title = [self.searchBar text];
+    [self loadArticle:title];
 }
 
 - (void)setSearchIconToFavorites
