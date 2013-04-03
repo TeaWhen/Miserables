@@ -9,6 +9,7 @@
 #import "LesViewController.h"
 #import "WebViewProxy.h"
 #import "FavoriteSet.h"
+#import "RecentSet.h"
 #import "ArticleSet.h"
 
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
@@ -69,8 +70,11 @@ static NSOperationQueue *queue;
 
 - (void)loadArticle:(NSString *)title
 {
-    self.title = title;
+    RecentSet *rec = [RecentSet singleton];
+    [rec add:title];
     
+    self.title = title;
+
     self.navigationController.navigationBar.topItem.title = title;
     
     NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";

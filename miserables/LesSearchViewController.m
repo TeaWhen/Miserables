@@ -73,7 +73,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] init];
     }
-    
+
 	cell.textLabel.text = self.result[indexPath.row];
     return cell;
 }

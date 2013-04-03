@@ -46,7 +46,7 @@
     if (!self.DB) {
         NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [path objectAtIndex:0];
-        NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"favorites.db"];
+        NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"app.db"];
         
         self.DB = [FMDatabase databaseWithPath:DBPath];
         if (![self.DB open]) {

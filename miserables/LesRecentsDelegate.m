@@ -7,6 +7,7 @@
 //
 
 #import "LesRecentsDelegate.h"
+#import "RecentSet.h"
 
 @interface LesRecentsDelegate () <UITableViewDataSource, UITableViewDelegate>
 
@@ -15,8 +16,6 @@
 
 @implementation LesRecentsDelegate
 
-#pragma mark Table view methods
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -24,7 +23,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    RecentSet *rec = [RecentSet singleton];
+    return [rec count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -34,9 +34,9 @@
         cell = [[UITableViewCell alloc] init];
     }
     
-	cell.textLabel.text = @"meow";
+    RecentSet *rec = [RecentSet singleton];
+	cell.textLabel.text = [rec list][indexPath.row];
     return cell;
 }
-
 
 @end
