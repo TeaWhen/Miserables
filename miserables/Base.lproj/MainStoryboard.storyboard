@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEO-38-RG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="679" y="-753"/>
+            <point key="canvasLocation" x="679" y="-765"/>
         </scene>
         <!--Les Favorites View Controller - Favorites-->
         <scene sceneID="bHd-ay-TRf">
@@ -583,7 +583,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7L-lH-UBk">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <mutableString key="text">Copyright (c) 2012 Peter Steinberger &lt;steipete@gmail.com>
+                                <string key="text">Copyright (c) 2012 Peter Steinberger &lt;steipete@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -601,7 +601,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.</mutableString>
+THE SOFTWARE.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -631,7 +631,7 @@ THE SOFTWARE.</mutableString>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7h-Ux-Wjf">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <mutableString key="text">Copyright (c) 2012 Mattt Thompson (http://mattt.me/)
+                                <string key="text">Copyright (c) 2012 Mattt Thompson (http://mattt.me/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -649,7 +649,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.</mutableString>
+THE SOFTWARE.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -679,7 +679,7 @@ THE SOFTWARE.</mutableString>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYt-v9-fWH">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <mutableString key="text">If you are using fmdb in your project, I'd love to hear about it.  Let me 
+                                <string key="text">If you are using fmdb in your project, I'd love to hear about it.  Let me 
 know at gus@flyingmeat.com.
 
 In short, this is the MIT License.
@@ -702,7 +702,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.</mutableString>
+THE SOFTWARE.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
@@ -780,6 +780,7 @@ THE SOFTWARE.</string>
                 <relationship kind="action" name="segmentChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="LesLibraryViewController" superclassName="UITableViewController">
