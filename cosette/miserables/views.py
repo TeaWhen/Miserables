@@ -14,7 +14,7 @@ def version(request):
 def notice(request):
     notice = Notice.objects.all()[0]
     return {
-        "time": notice.time,
+        "time": notice.time.strftime('%Y-%m-%d %H:%M:%S'),
         "content": notice.content,
     }
 
@@ -23,6 +23,6 @@ def library(request):
     library = Library.objects.all()[0]
     return {
         "id": library.id,
-        "time": library.time,
+        "time": library.time.strftime('%Y-%m-%d %H:%M:%S'),
         "url": library.url,
     }
