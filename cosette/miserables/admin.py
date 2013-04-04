@@ -5,3 +5,4 @@ from miserables.models import *
 
 admin.site.register(App)
 admin.site.register(Notice)
+admin.site.register(Library)
