@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     (r'^app/version/$', 'miserables.views.version'),
+    (r'^app/notice/$', 'miserables.views.notice'),
 )
 
 urlpatterns += staticfiles_urlpatterns()
