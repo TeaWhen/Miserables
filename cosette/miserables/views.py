@@ -17,3 +17,12 @@ def notice(request):
         "time": notice.time,
         "content": notic.content,
     }
+
+@json_response
+def library(request):
+    library = Library.objects.all()[0]
+    return {
+        "id": library.id,
+        "time": library.time,
+        "url": library.url,
+    }
