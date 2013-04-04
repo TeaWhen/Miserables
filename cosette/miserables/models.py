@@ -17,7 +17,7 @@ class Notice(models.Model):
 
 class Library(models.Model):
     time = models.DateTimeField(auto_now=True)
-    url = models.CharField(max_length=30)
+    url = models.CharField(max_length=300)
 
     def __unicode__(self):
         return 'Id: {} - Time: {} - Url: {}'.format(self.pk, self.time, self.url)
