@@ -112,7 +112,7 @@
 {
     NSString *title = [self.favorites objectAtIndex:row];
     [self.favorites removeObjectAtIndex:row];
-    [self delete:title];
+    [self remove:title];
 }
 
 - (void)moveRow:(NSInteger)sourceRow toRow:(NSInteger)destinationRow
