@@ -148,7 +148,7 @@ sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle) editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Delete row %d.", indexPath.row);
-    [self.favoriteSet deleteAtRow:indexPath.row];
+    [self.favoriteSet removeAtRow:indexPath.row];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 

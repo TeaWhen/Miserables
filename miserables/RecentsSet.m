@@ -15,7 +15,6 @@
 @property FMDatabase *DB;
 @property NSMutableArray *recent;
 - (void)openDB;
-- (void)updateSequence;
 - (void)reload;
 
 @end
@@ -105,11 +104,11 @@
 - (void)update:(NSString *)title
 {
     NSTimeInterval timestamp = [[NSDate date] timeIntervalSince1970];
-    FMResultSet *s = [self.DB executeQuery:@"UPDATE Recent SET timestamp = ? WHERE title = ?", [NSString stringWithFormat:@"%d", (NSInteger)timestamp], title];
+    [self.DB executeQuery:@"UPDATE Recent SET timestamp = ? WHERE title = ?", [NSString stringWithFormat:@"%d", (NSInteger)timestamp], title];
     [self reload];
 }
 
-- (void)delete:(NSString *)title
+- (void)remove:(NSString *)title
 {
     [self.DB executeUpdate:@"DELETE FROM Recent WHERE title = ?", title];
     [self reload];

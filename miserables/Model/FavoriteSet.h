@@ -17,8 +17,8 @@
 - (NSMutableArray *)list;
 - (BOOL)exist:(NSString *)title;
 - (void)add:(NSString *)title;
-- (void)delete:(NSString *)title;
-- (void)deleteAtRow:(NSInteger)row;
+- (void)remove:(NSString *)title;
+- (void)removeAtRow:(NSInteger)row;
 - (void)moveRow:(NSInteger)sourceRow toRow:(NSInteger)destinationRow;
 - (NSInteger)count;
 
