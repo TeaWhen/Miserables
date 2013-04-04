@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSString *title;
 
 - (void)setSearchIconToFavorites;
+@property bool soul;
+@property int soulCurId;
 
 @end
 
@@ -60,6 +62,17 @@ static NSOperationQueue *queue;
     
     // default page
     [self loadArticle:@"Main Page"];
+    
+    UISwipeGestureRecognizer *backRecongnizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goBack:)];
+    backRecongnizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.webView addGestureRecognizer:backRecongnizer];
+
+    UISwipeGestureRecognizer *forwardRecongnizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goForward:)];
+    forwardRecongnizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.webView addGestureRecognizer:forwardRecongnizer];
+    
+    self.soul = false;
+    self.soulCurId = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,11 +81,46 @@ static NSOperationQueue *queue;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)goBack:(UIGestureRecognizer *)sender
+{
+    if (!self.soul)
+    {
+        self.soul = true;
+        self.soulCurId = 0;
+    }
+    RecentsSet *rec = [RecentsSet singleton];
+    NSMutableArray *list = [rec list];
+    if (self.soulCurId + 1 < [rec count])
+    {
+        [self loadArticle:list[self.soulCurId + 1]];
+        self.soulCurId += 1;
+    }
+}
+
+- (void)goForward:(UIGestureRecognizer *)sender
+{
+    if (!self.soul)
+    {
+        self.soul = true;
+        self.soulCurId = 0;
+    }
+    RecentsSet *rec = [RecentsSet singleton];
+    NSMutableArray *list = [rec list];
+    if (self.soulCurId - 1 > 0)
+    {
+        [self loadArticle:list[self.soulCurId - 1]];
+        self.soulCurId -= 1;
+    }
+}
+
 - (void)loadArticle:(NSString *)title
 {
-    RecentsSet *rec = [RecentsSet singleton];
-    [rec add:title];
-    
+    if (self.soul)
+    {
+        RecentsSet *rec = [RecentsSet singleton];
+        [rec add:title];
+    }
+
     self.title = title;
 
     self.navigationController.navigationBar.topItem.title = title;
@@ -106,6 +154,7 @@ static NSOperationQueue *queue;
 
 - (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
 {
+    self.soul = false;
     NSString *title = [self.searchBar text];
     [self loadArticle:title];
 }

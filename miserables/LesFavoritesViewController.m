@@ -28,13 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.favoriteSet = [FavoriteSet singleton];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+
     self.prevSegment = self.segmentedControl.selectedSegmentIndex;
-    
+
     self.recentsDelegate = [[LesRecentsDelegate alloc] init];
 }
 
