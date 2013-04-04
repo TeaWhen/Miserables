@@ -102,13 +102,13 @@
     [self reload];
 }
 
-- (void)delete:(NSString *)title
+- (void)remove:(NSString *)title
 {
     [self.DB executeUpdate:@"DELETE FROM Favorites WHERE title = ?", title];
     [self reload];
 }
 
-- (void)deleteAtRow:(NSInteger)row
+- (void)removeAtRow:(NSInteger)row
 {
     NSString *title = [self.favorites objectAtIndex:row];
     [self.favorites removeObjectAtIndex:row];
