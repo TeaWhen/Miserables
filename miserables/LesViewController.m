@@ -9,7 +9,7 @@
 #import "LesViewController.h"
 #import "WebViewProxy.h"
 #import "FavoriteSet.h"
-#import "RecentSet.h"
+#import "RecentsSet.h"
 #import "ArticleSet.h"
 
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
@@ -70,7 +70,7 @@ static NSOperationQueue *queue;
 
 - (void)loadArticle:(NSString *)title
 {
-    RecentSet *rec = [RecentSet singleton];
+    RecentsSet *rec = [RecentsSet singleton];
     [rec add:title];
     
     self.title = title;

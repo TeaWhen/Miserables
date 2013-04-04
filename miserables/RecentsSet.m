@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
-#import "RecentSet.h"
+#import "RecentsSet.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 
-@interface RecentSet ()
+@interface RecentsSet ()
 
 @property FMDatabase *DB;
 @property NSMutableArray *recent;
@@ -20,11 +20,11 @@
 
 @end
 
-@implementation RecentSet
+@implementation RecentsSet
 
-+ (RecentSet *)singleton
++ (RecentsSet *)singleton
 {
-    static RecentSet *sharedInstance = nil;
+    static RecentsSet *sharedInstance = nil;
     static dispatch_once_t once = 0;
     dispatch_once(&once, ^{sharedInstance = [[self alloc] init];});
     return sharedInstance;

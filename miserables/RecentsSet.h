@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RecentSet : NSObject
+@interface RecentsSet : NSObject
 
-+ (RecentSet *)singleton;
++ (RecentsSet *)singleton;
 - (void)close;
 - (NSMutableArray *)list;
 - (BOOL)exist:(NSString *)title;
