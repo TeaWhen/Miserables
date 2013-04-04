@@ -15,7 +15,7 @@ def notice(request):
     notice = Notice.objects.all()[0]
     return {
         "time": notice.time,
-        "content": notic.content,
+        "content": notice.content,
     }
 
 @json_response
