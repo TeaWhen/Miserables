@@ -129,7 +129,7 @@ static NSOperationQueue *queue;
 - (void)favoriteClicked:(UIButton *)sender {
     FavoriteSet *favs = [FavoriteSet singleton];
     if ([favs exist:self.title]) {
-        [favs delete:self.title];
+        [favs remove:self.title];
     }
     else {
         [favs add:self.title];
