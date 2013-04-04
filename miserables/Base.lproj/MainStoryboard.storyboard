@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBA-Oa-FM9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1159" y="-753"/>
+            <point key="canvasLocation" x="192" y="-127"/>
         </scene>
         <!--Les View Controller - Home-->
         <scene sceneID="5">
@@ -159,7 +159,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="182" y="-421"/>
+            <point key="canvasLocation" x="192" y="-765"/>
         </scene>
         <!--Les Library View Controller - Library-->
         <scene sceneID="Jh2-HV-yFJ">
@@ -321,14 +321,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcG-tF-iqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1159" y="-115"/>
+            <point key="canvasLocation" x="679" y="-127"/>
         </scene>
         <!--Table View Controller - Credits-->
         <scene sceneID="aW6-Q3-KuZ">
             <objects>
                 <tableViewController id="P3Q-JP-yQf" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="zMh-YI-DV9">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -396,6 +396,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="5fc-yL-18O" kind="push" id="FWR-ml-g4w"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="f9o-Fp-cgc" style="IBUITableViewCellStyleDefault" id="0mS-UF-jaV">
                                         <rect key="frame" x="0.0" y="227" width="320" height="44"/>
@@ -412,6 +415,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="BDG-Tw-Uv5" kind="push" id="VcE-75-EnK"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="12o-G9-4At" style="IBUITableViewCellStyleDefault" id="WxR-R7-db3">
                                         <rect key="frame" x="0.0" y="271" width="320" height="45"/>
@@ -428,6 +434,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="u5u-1l-4GO" kind="push" id="4j8-vh-dOq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -558,23 +567,71 @@
                         <barButtonItem title="Item" id="1gM-s7-Rkh"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Credits" id="zEx-aw-ajS"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pz2-j1-HRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="-115"/>
+            <point key="canvasLocation" x="1138" y="-127"/>
         </scene>
-        <!--View Controller - AFNetworking-->
-        <scene sceneID="pYR-Ij-dkW">
+        <!--View Controller - AFDownloadRequestOperation-->
+        <scene sceneID="Uu8-XX-eab">
             <objects>
-                <viewController id="l6P-Xg-aKb" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7rh-f3-v3s">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                <viewController id="5fc-yL-18O" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wtu-wY-z84">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii1-Y5-fHu">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7L-lH-UBk">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <mutableString key="text">Copyright (c) 2011 Gowalla (http://gowalla.com/)
+                                <mutableString key="text">Copyright (c) 2012 Peter Steinberger &lt;steipete@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished
+to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R7L-lH-UBk" firstAttribute="leading" secondItem="Wtu-wY-z84" secondAttribute="leading" type="default" id="Qzd-tT-tdi"/>
+                            <constraint firstItem="R7L-lH-UBk" firstAttribute="top" secondItem="Wtu-wY-z84" secondAttribute="top" type="default" id="Yme-F4-Mg5"/>
+                            <constraint firstItem="R7L-lH-UBk" firstAttribute="bottom" secondItem="Wtu-wY-z84" secondAttribute="bottom" type="default" id="aOT-CN-7oe"/>
+                            <constraint firstItem="R7L-lH-UBk" firstAttribute="trailing" secondItem="Wtu-wY-z84" secondAttribute="trailing" type="default" id="rg7-Ly-YOS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="AFDownloadRequestOperation" id="n0U-1y-0wM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4XD-SQ-sQe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1609" y="-393"/>
+        </scene>
+        <!--View Controller - Godzippa-->
+        <scene sceneID="krb-n8-lhJ">
+            <objects>
+                <viewController id="u5u-1l-4GO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l4n-nE-aXR">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7h-Ux-Wjf">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">Copyright (c) 2012 Mattt Thompson (http://mattt.me/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -600,6 +657,107 @@ THE SOFTWARE.</mutableString>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="y7h-Ux-Wjf" firstAttribute="bottom" secondItem="l4n-nE-aXR" secondAttribute="bottom" type="default" id="Tyn-bu-gPV"/>
+                            <constraint firstItem="y7h-Ux-Wjf" firstAttribute="top" secondItem="l4n-nE-aXR" secondAttribute="top" type="default" id="cIF-pF-Y9y"/>
+                            <constraint firstItem="y7h-Ux-Wjf" firstAttribute="leading" secondItem="l4n-nE-aXR" secondAttribute="leading" type="default" id="h9t-vM-4hI"/>
+                            <constraint firstItem="y7h-Ux-Wjf" firstAttribute="trailing" secondItem="l4n-nE-aXR" secondAttribute="trailing" type="default" id="zSe-q9-I2L"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Godzippa" id="nxj-N6-fO4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0K-bL-cxO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2019" y="194"/>
+        </scene>
+        <!--View Controller - FMDB-->
+        <scene sceneID="uC9-ha-xiD">
+            <objects>
+                <viewController id="BDG-Tw-Uv5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Moq-fI-yuf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYt-v9-fWH">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">If you are using fmdb in your project, I'd love to hear about it.  Let me 
+know at gus@flyingmeat.com.
+
+In short, this is the MIT License.
+
+Copyright (c) 2008 Flying Meat Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RYt-v9-fWH" firstAttribute="bottom" secondItem="Moq-fI-yuf" secondAttribute="bottom" type="default" id="4cD-kQ-wDr"/>
+                            <constraint firstItem="RYt-v9-fWH" firstAttribute="top" secondItem="Moq-fI-yuf" secondAttribute="top" type="default" id="aVe-Xs-NHj"/>
+                            <constraint firstItem="RYt-v9-fWH" firstAttribute="trailing" secondItem="Moq-fI-yuf" secondAttribute="trailing" type="default" id="kjM-v9-AYA"/>
+                            <constraint firstItem="RYt-v9-fWH" firstAttribute="leading" secondItem="Moq-fI-yuf" secondAttribute="leading" type="default" id="orl-z5-Jx5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="FMDB" id="cGY-m0-vhd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2tI-Gh-tVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1609" y="194"/>
+        </scene>
+        <!--View Controller - AFNetworking-->
+        <scene sceneID="pYR-Ij-dkW">
+            <objects>
+                <viewController id="l6P-Xg-aKb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7rh-f3-v3s">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii1-Y5-fHu">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Copyright (c) 2011 Gowalla (http://gowalla.com/)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
                             <constraint firstItem="Ii1-Y5-fHu" firstAttribute="leading" secondItem="7rh-f3-v3s" secondAttribute="leading" type="default" id="8bi-o3-Bfu"/>
                             <constraint firstItem="Ii1-Y5-fHu" firstAttribute="bottom" secondItem="7rh-f3-v3s" secondAttribute="bottom" type="default" id="Pkr-CY-SGh"/>
                             <constraint firstItem="Ii1-Y5-fHu" firstAttribute="top" secondItem="7rh-f3-v3s" secondAttribute="top" type="default" id="ZT4-l1-2de"/>
@@ -610,7 +768,7 @@ THE SOFTWARE.</mutableString>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcZ-Yx-Lf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2035" y="-328"/>
+            <point key="canvasLocation" x="2019" y="-393"/>
         </scene>
     </scenes>
     <classes>
@@ -622,7 +780,6 @@ THE SOFTWARE.</mutableString>
                 <relationship kind="action" name="segmentChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="LesLibraryViewController" superclassName="UITableViewController">
