@@ -175,7 +175,8 @@ static NSOperationQueue *queue;
     }
 }
 
-- (void)favoriteClicked:(UIButton *)sender {
+- (void)favoriteClicked:(UIButton *)sender
+{
     FavoriteSet *favs = [FavoriteSet singleton];
     if ([favs exist:self.title]) {
         [favs remove:self.title];
