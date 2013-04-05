@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
-#import "RecentsSet.h"
+#import "RecentSet.h"
 #import "FMDatabase.h"
 #import "FMResultSet.h"
 
-@interface RecentsSet ()
+@interface RecentSet ()
 
 @property FMDatabase *DB;
 @property NSMutableArray *recent;
@@ -19,11 +19,11 @@
 
 @end
 
-@implementation RecentsSet
+@implementation RecentSet
 
-+ (RecentsSet *)singleton
++ (RecentSet *)singleton
 {
-    static RecentsSet *sharedInstance = nil;
+    static RecentSet *sharedInstance = nil;
     static dispatch_once_t once = 0;
     dispatch_once(&once, ^{sharedInstance = [[self alloc] init];});
     return sharedInstance;
@@ -34,7 +34,7 @@
     
     if (self) {
         [self openDB];
-        [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Recent (title TEXT, timestamp INTEGER)"];
+        [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Recents (title TEXT, timestamp INTEGER)"];
     }
 
     return self;
@@ -45,7 +45,7 @@
     if (!self.DB) {
         NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [path objectAtIndex:0];
-        NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"app.db"];
+        NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"recents.db"];
         
         self.DB = [FMDatabase databaseWithPath:DBPath];
         if (![self.DB open]) {

@@ -9,7 +9,7 @@
 #import "LesViewController.h"
 #import "WebViewProxy.h"
 #import "FavoriteSet.h"
-#import "RecentsSet.h"
+#import "RecentSet.h"
 #import "ArticleSet.h"
 
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
@@ -88,7 +88,7 @@ static NSOperationQueue *queue;
         self.soul = true;
         self.soulCurId = 0;
     }
-    RecentsSet *rec = [RecentsSet singleton];
+    RecentSet *rec = [RecentSet singleton];
     NSMutableArray *list = [rec list];
     if (self.soulCurId + 1 < [rec count])
     {
@@ -104,7 +104,7 @@ static NSOperationQueue *queue;
         self.soul = true;
         self.soulCurId = 0;
     }
-    RecentsSet *rec = [RecentsSet singleton];
+    RecentSet *rec = [RecentSet singleton];
     NSMutableArray *list = [rec list];
     if (self.soulCurId - 1 > 0)
     {
@@ -117,7 +117,7 @@ static NSOperationQueue *queue;
 {
     if (self.soul)
     {
-        RecentsSet *rec = [RecentsSet singleton];
+        RecentSet *rec = [RecentSet singleton];
         [rec add:title];
     }
 
