@@ -14,6 +14,7 @@
 
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSString *title;

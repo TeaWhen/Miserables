@@ -11,8 +11,6 @@
 
 @interface LesViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-
 - (void)loadArticle:(NSString *)title;
 
 @end
