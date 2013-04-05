@@ -123,8 +123,6 @@ static NSOperationQueue *queue;
     }
 
     self.title = title;
-
-    self.navigationController.navigationBar.topItem.title = title;
     
     NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
     NSString *html_body;
