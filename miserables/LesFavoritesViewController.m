@@ -103,8 +103,8 @@ enum {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *title = [self.favoriteSet list][indexPath.row];
-    NSLog(@"%@", title);
-//    [self.parent loadArticle:title];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LesLoadArticleNotification object:self userInfo:@{@"title": title}];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -107,12 +107,12 @@
 		1A1A4A5216EB123400EF7BBE = {
 			isa = PBXGroup;
 			children = (
-				ABF04E97170AB2F2005B2D54 /* libz.dylib */,
 				1ACF92D316F36C1D006ACE08 /* Static */,
 				1A1A4A6416EB123400EF7BBE /* Miserables */,
 				1A26E79C16F2037E00EC72E8 /* Resources */,
 				1A1A4A5D16EB123400EF7BBE /* Frameworks */,
 				1A1A4A5C16EB123400EF7BBE /* Products */,
+				ABF04E97170AB2F2005B2D54 /* libz.dylib */,
 				D8AE4C34EF974B45A8D74557 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";

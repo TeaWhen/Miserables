@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
 
+extern NSString * const LesLoadArticleNotification;
+
 @interface LesViewController : UIViewController
 
-- (void)loadArticle:(NSString *)title;
+- (void)handleLoadArticle:(NSNotification *)note;
 
 @end

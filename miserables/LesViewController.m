@@ -12,16 +12,19 @@
 #import "RecentSet.h"
 #import "ArticleSet.h"
 
+NSString * const LesLoadArticleNotification = @"LesLoadArticle";
+
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSString *title;
-
-- (void)setSearchIconToFavorites;
 @property bool soul;
 @property int soulCurId;
+
+- (void)loadArticle:(NSString *)title;
+- (void)setSearchIconToFavorites;
 
 @end
 
@@ -63,6 +66,8 @@ static NSOperationQueue *queue;
     
     // default page
     [self loadArticle:@"Main Page"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoadArticle:) name:LesLoadArticleNotification object:nil];
     
     UISwipeGestureRecognizer *backRecongnizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goBack:)];
     backRecongnizer.direction = UISwipeGestureRecognizerDirectionRight;
@@ -112,6 +117,11 @@ static NSOperationQueue *queue;
         [self loadArticle:list[self.soulCurId - 1]];
         self.soulCurId -= 1;
     }
+}
+
+- (void)handleLoadArticle:(NSNotification *)note
+{
+    [self loadArticle:note.userInfo[@"title"]];
 }
 
 - (void)loadArticle:(NSString *)title
