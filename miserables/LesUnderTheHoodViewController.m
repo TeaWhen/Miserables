@@ -7,8 +7,14 @@
 //
 
 #import "LesUnderTheHoodViewController.h"
+#import "Cosette.h"
 
 @interface LesUnderTheHoodViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *appVersionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dbVersionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noticeTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noticeContentLabel;
 
 @end
 
@@ -18,7 +24,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -26,6 +31,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[Cosette me] requestVersionWithSuccess:^(id JSON) {
+        self.appVersionLabel.text = JSON[@"stable"];
+        self.dbVersionLabel.text = JSON[@"db"];
+    } failure:^(NSError *error) {
+        ;
+    }];
+    
+    [[Cosette me] requestNoticeWithSuccess:^(id JSON) {
+        self.noticeTimeLabel.text = JSON[@"time"];
+        self.noticeContentLabel.text = JSON[@"content"];
+    } failure:^(NSError *error) {
+        ;
+    }];
 }
 
 - (void)didReceiveMemoryWarning
