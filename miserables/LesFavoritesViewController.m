@@ -12,8 +12,6 @@
 #import "LesPlaceholderCell.h"
 #import "FavoriteSet.h"
 
-extern const NSInteger placeholderNth;
-
 @interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

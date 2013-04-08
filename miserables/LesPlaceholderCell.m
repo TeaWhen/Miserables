@@ -8,7 +8,7 @@
 
 #import "LesPlaceholderCell.h"
 
-const NSInteger placeholderNth = 4;
+NSInteger const placeholderNth = 4;
 
 @implementation LesPlaceholderCell
 

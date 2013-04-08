@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+FOUNDATION_EXPORT NSInteger const placeholderNth;
+
 @interface LesPlaceholderCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *label;

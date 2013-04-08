@@ -10,8 +10,6 @@
 #import "LesPlaceholderCell.h"
 #import "RecentSet.h"
 
-extern const NSInteger placeholderNth;
-
 @interface LesRecentsDelegate () <UITableViewDataSource, UITableViewDelegate>
 
 @end
