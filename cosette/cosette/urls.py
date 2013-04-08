@@ -8,6 +8,8 @@ from django.conf.urls.static import static
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
+    (r'^library/$', 'miserables.views.library'),
+
     (r'^app/version/$', 'miserables.views.version'),
     (r'^app/notice/$', 'miserables.views.notice'),
 )

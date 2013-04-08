@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
 
+FOUNDATION_EXPORT NSString * const LesLoadArticleNotification;
+
 @interface LesViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
-
-- (void)loadArticle:(NSString *)title;
+- (void)handleLoadArticle:(NSNotification *)note;
 
 @end

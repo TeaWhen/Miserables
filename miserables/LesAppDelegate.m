@@ -9,6 +9,7 @@
 #import "LesAppDelegate.h"
 #import "FavoriteSet.h"
 #import "ArticleSet.h"
+#import "RecentSet.h"
 
 @implementation LesAppDelegate
 
@@ -31,6 +32,7 @@
     NSLog(@"applicationDidEnterBackground");
     [[FavoriteSet singleton] close];
     [[ArticleSet singleton] close];
+    [[RecentSet singleton] close];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

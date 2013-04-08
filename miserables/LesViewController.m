@@ -9,18 +9,22 @@
 #import "LesViewController.h"
 #import "WebViewProxy.h"
 #import "FavoriteSet.h"
-#import "RecentsSet.h"
+#import "RecentSet.h"
 #import "ArticleSet.h"
+
+NSString * const LesLoadArticleNotification = @"LesLoadArticle";
 
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
 
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSString *title;
-
-- (void)setSearchIconToFavorites;
 @property bool soul;
 @property int soulCurId;
+
+- (void)loadArticle:(NSString *)title;
+- (void)setSearchIconToFavorites;
 
 @end
 
@@ -63,6 +67,8 @@ static NSOperationQueue *queue;
     // default page
     [self loadArticle:@"Main Page"];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoadArticle:) name:LesLoadArticleNotification object:nil];
+    
     UISwipeGestureRecognizer *backRecongnizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goBack:)];
     backRecongnizer.direction = UISwipeGestureRecognizerDirectionRight;
     [self.webView addGestureRecognizer:backRecongnizer];
@@ -88,7 +94,7 @@ static NSOperationQueue *queue;
         self.soul = true;
         self.soulCurId = 0;
     }
-    RecentsSet *rec = [RecentsSet singleton];
+    RecentSet *rec = [RecentSet singleton];
     NSMutableArray *list = [rec list];
     if (self.soulCurId + 1 < [rec count])
     {
@@ -104,7 +110,7 @@ static NSOperationQueue *queue;
         self.soul = true;
         self.soulCurId = 0;
     }
-    RecentsSet *rec = [RecentsSet singleton];
+    RecentSet *rec = [RecentSet singleton];
     NSMutableArray *list = [rec list];
     if (self.soulCurId - 1 > 0)
     {
@@ -113,17 +119,20 @@ static NSOperationQueue *queue;
     }
 }
 
+- (void)handleLoadArticle:(NSNotification *)note
+{
+    [self loadArticle:note.userInfo[@"title"]];
+}
+
 - (void)loadArticle:(NSString *)title
 {
     if (self.soul)
     {
-        RecentsSet *rec = [RecentsSet singleton];
+        RecentSet *rec = [RecentSet singleton];
         [rec add:title];
     }
 
     self.title = title;
-
-    self.navigationController.navigationBar.topItem.title = title;
     
     NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
     NSString *html_body;
@@ -152,7 +161,7 @@ static NSOperationQueue *queue;
     [self performSegueWithIdentifier:@"favorites" sender:self];
 }
 
-- (void) searchBarSearchButtonClicked:(UISearchBar*) searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *) searchBar
 {
     self.soul = false;
     NSString *title = [self.searchBar text];
@@ -175,7 +184,8 @@ static NSOperationQueue *queue;
     }
 }
 
-- (void)favoriteClicked:(UIButton *)sender {
+- (void)favoriteClicked:(UIButton *)sender
+{
     FavoriteSet *favs = [FavoriteSet singleton];
     if ([favs exist:self.title]) {
         [favs remove:self.title];
