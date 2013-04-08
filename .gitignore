@@ -26,5 +26,5 @@ Parser/extracted
 Parser/articles.db
 Parser/contents/*
 
-cosette/*.pyc
+*.pyc
 cosette/*.db
