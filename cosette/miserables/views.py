@@ -1,4 +1,4 @@
-from miserables.models import App, Notice
+from miserables.models import App, Notice, Library
 from miserables.helpers import json_response
 
 @json_response
