@@ -9,7 +9,10 @@
 #import "LesFavoritesViewController.h"
 #import "LesViewController.h"
 #import "LesRecentsDelegate.h"
+#import "LesPlaceholderCell.h"
 #import "FavoriteSet.h"
+
+extern const NSInteger placeholderNth;
 
 @interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -86,27 +89,50 @@ enum {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.favoriteSet count];
+    if ([self.favoriteSet count]) {
+        return [self.favoriteSet count];
+    }
+    else {
+        // placeholder cell
+        return placeholderNth;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
+{
+    id cell;
+    if ([self.favoriteSet count]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] init];
+        }
+        [cell textLabel].text = [self.favoriteSet list][indexPath.row];
+    }
+    else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Placeholder"];
+        if (cell == nil) {
+            cell = [[LesPlaceholderCell alloc] init];
+        }
+        if (indexPath.row + 1 == placeholderNth) {
+            [cell label].text = @"No Favorites";
+        }
+        else {
+            [cell label].text = @"";
+        }
     }
     
-	cell.textLabel.text = [self.favoriteSet list][indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = [self.favoriteSet list][indexPath.row];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:LesLoadArticleNotification object:self userInfo:@{@"title": title}];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self.favoriteSet count]) {
+        NSString *title = [self.favoriteSet list][indexPath.row];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:LesLoadArticleNotification object:self userInfo:@{@"title": title}];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark Table view editing

@@ -7,12 +7,14 @@
 //
 
 #import "LesRecentsDelegate.h"
+#import "LesPlaceholderCell.h"
 #import "RecentSet.h"
+
+extern const NSInteger placeholderNth;
 
 @interface LesRecentsDelegate () <UITableViewDataSource, UITableViewDelegate>
 
 @end
-
 
 @implementation LesRecentsDelegate
 
@@ -24,18 +26,39 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     RecentSet *rec = [RecentSet singleton];
-    return [rec count];
+    if ([rec count]) {
+        return [rec count];
+    }
+    else {
+        // placeholder cell
+        return placeholderNth;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
+    id cell;
+    RecentSet *rec = [RecentSet singleton];
+    if ([rec count]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] init];
+        }
+        [cell textLabel].text = [rec list][indexPath.row];
+    }
+    else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Placeholder"];
+        if (cell == nil) {
+            cell = [[LesPlaceholderCell alloc] init];
+        }
+        if (indexPath.row + 1 == placeholderNth) {
+            [cell label].text = @"No Recents";
+        }
+        else {
+            [cell label].text = @"";
+        }
     }
     
-    RecentSet *rec = [RecentSet singleton];
-	cell.textLabel.text = [rec list][indexPath.row];
     return cell;
 }
 
