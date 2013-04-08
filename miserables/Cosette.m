@@ -63,4 +63,27 @@ NSString * const baseURL = @"http://42.121.18.11:24601/";
     [self requestJSONWithPath:@"app/notice/" success:success failure:failure];
 }
 
+- (void)getNewNoticeWithCallback:(void (^)(NSString *))callback
+{
+    NSDate *lastNoticed = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastNoticed"];
+    if (!lastNoticed) {
+        lastNoticed = [NSDate date];
+        [[NSUserDefaults standardUserDefaults] setObject:lastNoticed forKey:@"LastNoticed"];
+    }
+    
+    [self requestNoticeWithSuccess:^(id JSON) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-mm-dd hh:mm:ss"];
+        NSDate *noticeTime = [dateFormatter dateFromString:JSON[@"time"]];
+        if (noticeTime > lastNoticed) {
+            callback(JSON[@"content"]);
+        }
+        else {
+            callback(nil);
+        }
+    } failure:^(NSError *error) {
+        callback(nil);
+    }];
+}
+
 @end

@@ -161,7 +161,7 @@ static NSOperationQueue *queue;
     [self performSegueWithIdentifier:@"favorites" sender:self];
 }
 
-- (void) searchBarSearchButtonClicked:(UISearchBar *) searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *) searchBar
 {
     self.soul = false;
     NSString *title = [self.searchBar text];

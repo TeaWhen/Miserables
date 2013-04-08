@@ -13,5 +13,6 @@
 + (Cosette *)me;
 - (void)requestVersionWithSuccess:(void (^)(id JSON))success failure:(void (^)(NSError *error))failure;
 - (void)requestNoticeWithSuccess:(void (^)(id JSON))success failure:(void (^)(NSError *error))failure;
+- (void)getNewNoticeWithCallback:(void (^)(NSString *content))callback;
 
 @end
