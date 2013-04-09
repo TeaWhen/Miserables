@@ -78,7 +78,7 @@ def parse(html):
 
 def main():
 	open_db()
-	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
+	f = open('titles.txt', 'r')
 	count = 1
 	for title in f:
 		title = title.strip()
