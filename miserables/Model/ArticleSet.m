@@ -92,7 +92,7 @@
 {
     FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title = ?", title];
     if ([rs next]) {
-        NSString *content = [NSString stringWithString:[rs stringForColumn:@"content"]];
+        NSString *content = [rs stringForColumn:@"content"];
         return [self decompressString:content];
     }
     return nil;
