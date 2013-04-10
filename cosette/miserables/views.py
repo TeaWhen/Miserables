@@ -20,9 +20,9 @@ def notice(request):
 
 @json_response
 def library(request):
-    library = Library.objects.all()[0]
-    return {
+    librarys = Library.objects.all()
+    return [].append({
         "id": library.id,
         "time": library.time.strftime('%Y-%m-%d %H:%M:%S'),
         "url": library.url,
-    }
+    } for library in librarys)
