@@ -126,14 +126,14 @@ static NSOperationQueue *queue;
 
 - (void)loadArticle:(NSString *)title
 {
-    if (self.soul)
+    if (!self.soul)
     {
         RecentSet *rec = [RecentSet singleton];
         [rec add:title];
     }
 
     self.title = title;
-    
+
     NSString *html_head = @"<link rel='stylesheet' href='http://foo.com/css/main.css' type='text/css' />";
     NSString *html_body;
     
