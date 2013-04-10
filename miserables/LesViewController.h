@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FMDatabase.h"
 
-FOUNDATION_EXPORT NSString * const LesLoadArticleNotification;
+FOUNDATION_EXPORT NSString * const kLesLoadArticleNotification;
 
 @interface LesViewController : UIViewController
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-FOUNDATION_EXPORT NSInteger const placeholderNth;
+FOUNDATION_EXPORT NSInteger const kPlaceholderNth;
 
 @interface LesPlaceholderCell : UITableViewCell
 

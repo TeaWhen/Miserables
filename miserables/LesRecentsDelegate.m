@@ -29,7 +29,7 @@
     }
     else {
         // placeholder cell
-        return placeholderNth;
+        return kPlaceholderNth;
     }
 }
 
@@ -49,7 +49,7 @@
         if (cell == nil) {
             cell = [[LesPlaceholderCell alloc] init];
         }
-        if (indexPath.row + 1 == placeholderNth) {
+        if (indexPath.row + 1 == kPlaceholderNth) {
             [cell label].text = @"No Recents";
         }
         else {

@@ -92,7 +92,7 @@ enum {
     }
     else {
         // placeholder cell
-        return placeholderNth;
+        return kPlaceholderNth;
     }
 }
 
@@ -111,7 +111,7 @@ enum {
         if (cell == nil) {
             cell = [[LesPlaceholderCell alloc] init];
         }
-        if (indexPath.row + 1 == placeholderNth) {
+        if (indexPath.row + 1 == kPlaceholderNth) {
             [cell label].text = @"No Favorites";
         }
         else {
@@ -127,7 +127,7 @@ enum {
     if ([self.favoriteSet count]) {
         NSString *title = [self.favoriteSet list][indexPath.row];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:LesLoadArticleNotification object:self userInfo:@{@"title": title}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": title}];
         
         [self dismissViewControllerAnimated:YES completion:nil];
     }

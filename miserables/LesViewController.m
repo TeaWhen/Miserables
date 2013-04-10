@@ -12,7 +12,7 @@
 #import "RecentSet.h"
 #import "ArticleSet.h"
 
-NSString * const LesLoadArticleNotification = @"LesLoadArticle";
+NSString * const kLesLoadArticleNotification = @"LesLoadArticle";
 
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
 
@@ -67,7 +67,7 @@ static NSOperationQueue *queue;
     // default page
     [self loadArticle:@"Main Page"];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoadArticle:) name:LesLoadArticleNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoadArticle:) name:kLesLoadArticleNotification object:nil];
     
     UISwipeGestureRecognizer *backRecongnizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goBack:)];
     backRecongnizer.direction = UISwipeGestureRecognizerDirectionRight;
