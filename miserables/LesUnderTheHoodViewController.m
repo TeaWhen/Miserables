@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dbVersionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noticeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noticeContentLabel;
+@property (weak, nonatomic) IBOutlet UITextView *libraryTextView;
 
 @end
 
@@ -45,6 +46,13 @@
     } failure:^(NSError *error) {
         ;
     }];
+    
+    [[Cosette me] requestLibrariesWithSuccess:^(id JSON) {
+        self.libraryTextView.text = [NSString stringWithFormat:@"%@", JSON];
+    } failure:^(NSError *error) {
+        ;
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning

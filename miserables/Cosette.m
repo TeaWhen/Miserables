@@ -86,4 +86,9 @@ NSString * const baseURL = @"http://42.121.18.11:24601/";
     }];
 }
 
+- (void)requestLibrariesWithSuccess:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    [self requestJSONWithPath:@"library/" success:success failure:failure];
+}
+
 @end
