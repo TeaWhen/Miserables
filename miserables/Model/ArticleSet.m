@@ -93,7 +93,7 @@
     FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title = ?", title];
     if ([rs next]) {
         NSData *content = [rs dataForColumn:@"content"];
-        return [self decompressString:content];
+        return [self decompressData:content];
     }
     return nil;
 }
@@ -107,7 +107,7 @@
     return 0;
 }
 
-- (NSString *)decompressString:(NSData *)compressedData
+- (NSString *)decompressData:(NSData *)compressedData
 {
     NSData *decompressedData = [compressedData dataByGZipDecompressingDataWithError:nil];
     NSString *decompressedString = [NSString stringWithUTF8String:[decompressedData bytes]];

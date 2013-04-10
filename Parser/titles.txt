@@ -5,3 +5,4 @@ Palm Pre
 Canonical公司
 韦诺之战
 颗粒物
+Python
