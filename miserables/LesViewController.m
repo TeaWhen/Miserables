@@ -121,6 +121,7 @@ static NSOperationQueue *queue;
 
 - (void)handleLoadArticle:(NSNotification *)note
 {
+    self.soul = false;
     [self loadArticle:note.userInfo[@"title"]];
 }
 
@@ -130,6 +131,10 @@ static NSOperationQueue *queue;
     {
         RecentSet *rec = [RecentSet singleton];
         [rec add:title];
+    }
+    else
+    {
+        self.soulCurId = 0;
     }
 
     self.title = title;

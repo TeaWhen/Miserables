@@ -46,7 +46,7 @@
             [self.DB executeUpdate:sql, @("Main Page"), @("You haven't install the library, please go to Settings and download. (If the network is slow, you can also use iTunes File Sharing to import the library.)")];
         }
     }
-    
+
     return self;
 }
 
@@ -93,6 +93,10 @@
     FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title = ?", title];
     if ([rs next]) {
         NSData *content = [rs dataForColumn:@"content"];
+        if ([title isEqualToString:@"Main Page"])
+        {
+            return [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+        }
         return [self decompressData:content];
     }
     return nil;
