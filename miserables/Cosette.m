@@ -44,7 +44,6 @@ NSString * const baseURL = @"http://42.121.18.11:24601/";
 {
     NSMutableURLRequest *request = [self.httpClient requestWithMethod:@"GET" path:path parameters:nil];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"Got JSON: %@", JSON);
         success(JSON);
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Failed to get JSON: %@", [error userInfo]);
