@@ -33,7 +33,10 @@ def parse(html):
 		tag.decompose()
 	scr = html.find_all(class_=re.compile(".*metadata.*"))
 	for tag in scr:
-		tag.decompose()
+		try:
+			tag.decompose()
+		except:
+			continue
 
 	# delete a's rel and title attribute
 	tags = html.find_all('a')
