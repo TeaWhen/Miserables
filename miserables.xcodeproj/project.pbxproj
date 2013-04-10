@@ -16,14 +16,16 @@
 		1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7216EB123400EF7BBE /* Default@2x.png */; };
 		1A1A4A7516EB123400EF7BBE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */; };
 		1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7A16EB123400EF7BBE /* LesViewController.m */; };
-		1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8516EB1E4900EF7BBE /* icon.png */; };
-		1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */; };
+		1A1A4A8616EB1E4900EF7BBE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8516EB1E4900EF7BBE /* Icon.png */; };
+		1A1A4A8816EB1E5000EF7BBE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A8716EB1E5000EF7BBE /* Icon@2x.png */; };
 		1A1F4BD216F7070D00A3989D /* favorite_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F4BD116F7070D00A3989D /* favorite_0.png */; };
 		1A1F4BD416F707E300A3989D /* favorite_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A1F4BD316F707E300A3989D /* favorite_1.png */; };
 		1A25566116EC8B1D004BECAC /* LesLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A25566016EC8B1D004BECAC /* LesLibraryViewController.m */; };
 		1A26E79A16F1C81D00EC72E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */; };
 		1A4D73F916F6E209003CFC46 /* LesFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */; };
 		1A7D5E0B1707292700CCF834 /* LesRecentsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5E0A1707292700CCF834 /* LesRecentsDelegate.m */; };
+		1A839716171541F4006B4D42 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A839714171541F4006B4D42 /* Icon-72.png */; };
+		1A8397191715484A006B4D42 /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8397181715484A006B4D42 /* Icon-144.png */; };
 		1A84F42017129839006FC0EF /* LesPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F41F17129839006FC0EF /* LesPlaceholderCell.m */; };
 		1A84F4231712A46A006FC0EF /* LesUnderTheHoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F4221712A46A006FC0EF /* LesUnderTheHoodViewController.m */; };
 		1A84F4261712A9D6006FC0EF /* Cosette.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F4251712A9D6006FC0EF /* Cosette.m */; };
@@ -55,8 +57,8 @@
 		1A1A4A7416EB123400EF7BBE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1A1A4A7916EB123400EF7BBE /* LesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LesViewController.h; sourceTree = "<group>"; };
 		1A1A4A7A16EB123400EF7BBE /* LesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LesViewController.m; sourceTree = "<group>"; };
-		1A1A4A8516EB1E4900EF7BBE /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
-		1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
+		1A1A4A8516EB1E4900EF7BBE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		1A1A4A8716EB1E5000EF7BBE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		1A1F4BD116F7070D00A3989D /* favorite_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favorite_0.png; path = miserables/UI/favorite_0.png; sourceTree = SOURCE_ROOT; };
 		1A1F4BD316F707E300A3989D /* favorite_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = favorite_1.png; path = miserables/UI/favorite_1.png; sourceTree = SOURCE_ROOT; };
 		1A25565A16EC881D004BECAC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -68,6 +70,8 @@
 		1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesFavoritesViewController.m; path = miserables/LesFavoritesViewController.m; sourceTree = SOURCE_ROOT; };
 		1A7D5E091707292700CCF834 /* LesRecentsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesRecentsDelegate.h; path = miserables/LesRecentsDelegate.h; sourceTree = SOURCE_ROOT; };
 		1A7D5E0A1707292700CCF834 /* LesRecentsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesRecentsDelegate.m; path = miserables/LesRecentsDelegate.m; sourceTree = SOURCE_ROOT; };
+		1A839714171541F4006B4D42 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = SOURCE_ROOT; };
+		1A8397181715484A006B4D42 /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = SOURCE_ROOT; };
 		1A84F41E17129839006FC0EF /* LesPlaceholderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesPlaceholderCell.h; path = miserables/LesPlaceholderCell.h; sourceTree = SOURCE_ROOT; };
 		1A84F41F17129839006FC0EF /* LesPlaceholderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesPlaceholderCell.m; path = miserables/LesPlaceholderCell.m; sourceTree = SOURCE_ROOT; };
 		1A84F4211712A46A006FC0EF /* LesUnderTheHoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesUnderTheHoodViewController.h; path = miserables/LesUnderTheHoodViewController.h; sourceTree = SOURCE_ROOT; };
@@ -184,10 +188,12 @@
 		1A26E79C16F2037E00EC72E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1A839714171541F4006B4D42 /* Icon-72.png */,
+				1A8397181715484A006B4D42 /* Icon-144.png */,
+				1A1A4A8516EB1E4900EF7BBE /* Icon.png */,
+				1A1A4A8716EB1E5000EF7BBE /* Icon@2x.png */,
 				1A1F4BD116F7070D00A3989D /* favorite_0.png */,
 				1A1F4BD316F707E300A3989D /* favorite_1.png */,
-				1A1A4A8516EB1E4900EF7BBE /* icon.png */,
-				1A1A4A8716EB1E5000EF7BBE /* icon@2x.png */,
 			);
 			name = Resources;
 			path = Miserables;
@@ -312,10 +318,12 @@
 				1A1A4A7116EB123400EF7BBE /* Default.png in Resources */,
 				1A1A4A7316EB123400EF7BBE /* Default@2x.png in Resources */,
 				1A1A4A7516EB123400EF7BBE /* Default-568h@2x.png in Resources */,
-				1A1A4A8616EB1E4900EF7BBE /* icon.png in Resources */,
-				1A1A4A8816EB1E5000EF7BBE /* icon@2x.png in Resources */,
+				1A1A4A8616EB1E4900EF7BBE /* Icon.png in Resources */,
+				1A1A4A8816EB1E5000EF7BBE /* Icon@2x.png in Resources */,
 				1A1F4BD216F7070D00A3989D /* favorite_0.png in Resources */,
 				1A1F4BD416F707E300A3989D /* favorite_1.png in Resources */,
+				1A839716171541F4006B4D42 /* Icon-72.png in Resources */,
+				1A8397191715484A006B4D42 /* Icon-144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
