@@ -25,4 +25,4 @@ def library(request):
         "id": library.id,
         "time": library.time.strftime('%Y-%m-%d %H:%M:%S'),
         "url": library.url,
-    } for library in librarys)
+    }) for library in librarys
