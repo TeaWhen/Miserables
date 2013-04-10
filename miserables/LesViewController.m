@@ -150,6 +150,18 @@ static NSOperationQueue *queue;
     [self.webView loadHTMLString:html baseURL:nil];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        NSURL *url = request.URL;
+        NSString *urlString = url.absoluteString;
+        NSString *title = [urlString componentsSeparatedByString:@"/"].lastObject;
+        [self loadArticle:title];
+        return NO;
+    }
+    return YES;
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     // disable horizontal scrolling
