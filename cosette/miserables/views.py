@@ -12,20 +12,24 @@ def version(request):
 
 @json_response
 def notice(request):
-    notice = Notice.objects.all()[0]
-    return {
-        "time": notice.time.strftime('%Y-%m-%d %H:%M:%S'),
-        "content": notice.content,
-    }
+    if Notice.objects.count() == 0:
+        return {
+            "time": '1987-09-14 00:00:00',
+            "content": 'Across the Great Wall, we can reach every corner in the world.',
+        }
+    else:
+        notice = Notice.objects.all()[0]
+        return {
+            "time": notice.time.strftime('%Y-%m-%d %H:%M:%S'),
+            "content": notice.content,
+        }
 
 @json_response
 def library(request):
     librarys = Library.objects.all()
-    ret = []
-    for library in librarys:
-        ret.append({
-            "id": library.id,
-            "time": library.time.strftime('%Y-%m-%d %H:%M:%S'),
-            "url": library.url,
-        })
-    return ret
+    response = [{
+        "id": library.id,
+        "time": library.time.strftime('%Y-%m-%d %H:%M:%S'),
+        "url": library.url,
+    } for library in librarys]
+    return response
