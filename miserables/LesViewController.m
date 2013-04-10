@@ -89,15 +89,16 @@ static NSOperationQueue *queue;
 
 - (void)goBack:(UIGestureRecognizer *)sender
 {
-    if (!self.soul)
-    {
-        self.soul = true;
-        self.soulCurId = 0;
-    }
+    NSLog(@"goBack");
     RecentSet *rec = [RecentSet singleton];
     NSMutableArray *list = [rec list];
-    if (self.soulCurId + 1 < [rec count])
+    if (self.soulCurId + 1 <= [rec count])
     {
+        if (!self.soul)
+        {
+            self.soul = true;
+            self.soulCurId = 0;
+        }
         [self loadArticle:list[self.soulCurId + 1]];
         self.soulCurId += 1;
     }
@@ -105,15 +106,16 @@ static NSOperationQueue *queue;
 
 - (void)goForward:(UIGestureRecognizer *)sender
 {
-    if (!self.soul)
-    {
-        self.soul = true;
-        self.soulCurId = 0;
-    }
+    NSLog(@"goForward");
     RecentSet *rec = [RecentSet singleton];
     NSMutableArray *list = [rec list];
-    if (self.soulCurId - 1 > 0)
+    if (self.soulCurId - 1 >= 0)
     {
+        if (!self.soul)
+        {
+            self.soul = true;
+            self.soulCurId = 0;
+        }
         [self loadArticle:list[self.soulCurId - 1]];
         self.soulCurId -= 1;
     }

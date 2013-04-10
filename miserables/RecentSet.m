@@ -68,16 +68,14 @@
 
 - (NSMutableArray *)list
 {
-    if (!self.recents) {
-        [self reload];
-    }
-    
+    // !! LOW EFFICIENCY
+    [self reload];
     return self.recents;
 }
 
 - (void)reload
 {
-    FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Recents ORDER BY timestamp"];
+    FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Recents ORDER BY timestamp DESC"];
     self.recents = [[NSMutableArray alloc] init];
     while ([rs next]) {
         NSString *title = [rs stringForColumn:@"title"];
