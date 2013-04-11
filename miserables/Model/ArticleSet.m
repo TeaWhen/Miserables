@@ -95,7 +95,7 @@
 {
     FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title = ?", title];
     if (![rs next]) {
-        rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE LOWER(title) = LOWER(?)", title];
+        rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title = ? COLLATE NOCASE", title];
         if (![rs next]) {
             return nil;
         }
