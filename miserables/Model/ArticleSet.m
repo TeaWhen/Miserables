@@ -94,15 +94,19 @@
 - (NSString *)articleByTitle:(NSString *)title
 {
     FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title = ?", title];
-    if ([rs next]) {
-        NSData *content = [rs dataForColumn:@"content"];
-        if ([title isEqualToString:@"Main Page"])
-        {
-            return [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+    if (![rs next]) {
+        rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE LOWER(title) = LOWER(?)", title];
+        if (![rs next]) {
+            return nil;
         }
-        return [self decompressData:content];
     }
-    return nil;
+    
+    NSData *content = [rs dataForColumn:@"content"];
+    if ([title isEqualToString:@"Main Page"])
+    {
+        return [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+    }
+    return [self decompressData:content];
 }
 
 - (NSInteger)count
