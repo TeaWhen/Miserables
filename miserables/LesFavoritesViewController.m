@@ -13,12 +13,7 @@
 
 @interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
-
 @property FavoriteSet *favoriteSet;
-@property NSInteger prevSegment;
 
 @end
 
@@ -29,10 +24,6 @@
     [super viewDidLoad];
 
     self.favoriteSet = [FavoriteSet singleton];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-
-    self.prevSegment = self.segmentedControl.selectedSegmentIndex;
 }
 
 - (void)didReceiveMemoryWarning
