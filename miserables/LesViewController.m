@@ -14,7 +14,7 @@
 
 NSString * const kLesLoadArticleNotification = @"LesLoadArticle";
 
-@interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -181,7 +181,7 @@ static NSOperationQueue *queue;
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     self.tableView.hidden = NO;
-    [self searchBar:self.searchBar textDidChange:@""];
+    [self searchBar:self.searchBar textDidChange:searchBar.text];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -264,6 +264,13 @@ static NSOperationQueue *queue;
     [self loadArticle:title];
     self.tableView.hidden = YES;
     [self.searchBar resignFirstResponder];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if ([scrollView isEqual:self.tableView]) {
+        [self.searchBar resignFirstResponder];
+    }
 }
 
 @end
