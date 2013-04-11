@@ -162,6 +162,10 @@ static NSOperationQueue *queue;
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         NSURL *url = request.URL;
         NSString *urlString = url.absoluteString;
+        if ([urlString rangeOfString:@"#"].location != NSNotFound) {
+            // string contains #
+            return YES;
+        }
         NSString *title = [urlString componentsSeparatedByString:@"/"].lastObject;
         [self loadArticle:title];
         return NO;
