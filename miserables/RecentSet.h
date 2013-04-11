@@ -11,7 +11,9 @@
 @interface RecentSet : NSObject
 
 + (RecentSet *)singleton;
+- (void)open;
 - (void)close;
+
 - (NSMutableArray *)list;
 - (BOOL)exist:(NSString *)title;
 - (void)add:(NSString *)title;

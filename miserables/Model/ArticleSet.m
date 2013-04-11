@@ -14,7 +14,7 @@
 @interface ArticleSet ()
 
 @property FMDatabase *DB;
-- (void)openDB;
+- (void)initDB;
 
 @end
 
@@ -32,7 +32,7 @@
     self = [super init];
     
     if (self) {
-        [self openDB];
+        [self initDB];
         [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Articles (title TEXT, content TEXT)"];
         
         FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Articles"];
@@ -50,7 +50,7 @@
     return self;
 }
 
-- (void)openDB
+- (void)initDB
 {
     if (!self.DB) {
         NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -58,21 +58,24 @@
         NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"articles.db"];
         
         self.DB = [FMDatabase databaseWithPath:DBPath];
-        if (![self.DB open]) {
-            NSLog(@"Could not open db.");
-        }
+        [self open];
         
         self.DB.traceExecution = YES;
         self.DB.logsErrors = YES;
     }
 }
 
+- (void)open
+{
+    if (![self.DB open]) {
+        NSLog(@"Could not open db.");
+    }
+}
+
 - (void)close
 {
-    if (self.DB) {
-        if (![self.DB close]) {
-            NSLog(@"Could not close db.");
-        }
+    if (![self.DB close]) {
+        NSLog(@"Could not close db.");
     }
 }
 

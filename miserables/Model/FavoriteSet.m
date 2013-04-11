@@ -14,7 +14,7 @@
 
 @property FMDatabase *DB;
 @property NSMutableArray *favorites;
-- (void)openDB;
+- (void)initDB;
 - (void)updateSequence;
 - (void)reload;
 
@@ -34,14 +34,14 @@
     self = [super init];
     
     if (self) {
-        [self openDB];
+        [self initDB];
         [self.DB executeUpdate:@"CREATE TABLE IF NOT EXISTS Favorites (title TEXT, sequence INT, timestamp INTEGER)"];
     }
     
     return self;
 }
 
-- (void)openDB
+- (void)initDB
 {
     if (!self.DB) {
         NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -49,21 +49,24 @@
         NSString *DBPath = [documentDirectory stringByAppendingPathComponent:@"favorites.db"];
         
         self.DB = [FMDatabase databaseWithPath:DBPath];
-        if (![self.DB open]) {
-            NSLog(@"Could not open db.");
-        }
+        [self open];
         
         self.DB.traceExecution = YES;
         self.DB.logsErrors = YES;
     }
 }
 
+- (void)open
+{
+    if (![self.DB open]) {
+        NSLog(@"Could not open db.");
+    }
+}
+
 - (void)close
 {
-    if (self.DB) {
-        if (![self.DB close]) {
-            NSLog(@"Could not close db.");
-        }
+    if (![self.DB close]) {
+        NSLog(@"Could not close db.");
     }
 }
 

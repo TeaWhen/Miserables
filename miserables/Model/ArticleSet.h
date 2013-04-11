@@ -11,6 +11,7 @@
 @interface ArticleSet : NSObject
 
 + (ArticleSet *)singleton;
+- (void)open;
 - (void)close;
 
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword;

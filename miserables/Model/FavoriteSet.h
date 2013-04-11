@@ -12,6 +12,7 @@
 @interface FavoriteSet : NSObject
 
 + (FavoriteSet *)singleton;
+- (void)open;
 - (void)close;
 
 - (NSMutableArray *)list;
