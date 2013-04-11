@@ -143,6 +143,9 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <dataDetectorType key="dataDetectorTypes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="qsy-2Y-j0q"/>
+                                </connections>
                             </webView>
                             <searchBar contentMode="redraw" showsBookmarkButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gUR-GI-q40">
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
@@ -154,23 +157,64 @@
                                     <outlet property="delegate" destination="2" id="xzn-rx-JIn"/>
                                 </connections>
                             </searchBar>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Gdq-ct-rDM">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Jw6-3l-FEe">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bV6-nR-5SZ">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="D6c-cC-LFf">
+                                        <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="8Ec-Os-wXb"/>
+                                    <outlet property="delegate" destination="2" id="eIA-lB-YB7"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Gdq-ct-rDM" firstAttribute="top" secondItem="gUR-GI-q40" secondAttribute="bottom" type="default" id="0mj-Pf-Pnx"/>
                             <constraint firstItem="gUR-GI-q40" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="FCE-wz-I1J"/>
                             <constraint firstItem="5Sw-rd-u8Q" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="Ffb-8I-6Yu"/>
                             <constraint firstItem="gUR-GI-q40" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="KI0-qb-zsM"/>
                             <constraint firstItem="gUR-GI-q40" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="Mhl-qt-pYd"/>
                             <constraint firstItem="5Sw-rd-u8Q" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="ReZ-YJ-r5n"/>
                             <constraint firstItem="5Sw-rd-u8Q" firstAttribute="top" secondItem="gUR-GI-q40" secondAttribute="bottom" type="default" id="c8D-ot-NVd"/>
+                            <constraint firstItem="Gdq-ct-rDM" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="dNO-EY-MCz"/>
+                            <constraint firstItem="Gdq-ct-rDM" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="nv0-Rj-OEt"/>
                             <constraint firstItem="5Sw-rd-u8Q" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="uE0-V3-DXN"/>
+                            <constraint firstItem="Gdq-ct-rDM" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="zHm-qh-TSM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="age-SH-yeD"/>
                     <connections>
                         <outlet property="searchBar" destination="gUR-GI-q40" id="t2A-6d-fru"/>
                         <outlet property="searchDisplayController" destination="ScZ-e0-1mK" id="g6N-d2-ruX"/>
+                        <outlet property="tableView" destination="Gdq-ct-rDM" id="UGV-IV-P6X"/>
                         <outlet property="webView" destination="5Sw-rd-u8Q" id="lq3-Vp-ZLf"/>
                         <segue destination="AzV-le-D8R" kind="modal" identifier="favorites" id="tYM-aa-yZp"/>
                     </connections>
@@ -1059,6 +1103,7 @@ THE SOFTWARE.</string>
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>

@@ -14,14 +14,16 @@
 
 NSString * const kLesLoadArticleNotification = @"LesLoadArticle";
 
-@interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate>
+@interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSString *title;
 @property bool soul;
 @property int soulCurId;
+@property (strong, nonatomic) NSMutableArray *result;
 
 - (void)loadArticle:(NSString *)title;
 - (void)setSearchIconToFavorites;
@@ -35,12 +37,9 @@ static NSOperationQueue *queue;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-       
+    
     queue = [[NSOperationQueue alloc] init];
     [queue setMaxConcurrentOperationCount:5];
-    
-    self.webView.delegate = self;
-    self.searchBar.delegate = self;
     
     for (UIView *searchBarSubview in [self.searchBar subviews]) {
         if ([searchBarSubview conformsToProtocol:@protocol(UITextInputTraits)]) {
@@ -179,6 +178,22 @@ static NSOperationQueue *queue;
     [webView.scrollView setContentSize: CGSizeMake(webView.frame.size.width, webView.scrollView.contentSize.height)];
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    self.tableView.hidden = NO;
+    [self searchBar:self.searchBar textDidChange:@""];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    self.result = [[NSMutableArray alloc] init];
+    ArticleSet *articles = [ArticleSet singleton];
+    for (NSString *title in [articles articlesByKeyword:searchText]) {
+        [self.result addObject:title];
+    }
+    [self.tableView reloadData];
+}
+
 - (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
 {
     [self performSegueWithIdentifier:@"favorites" sender:self];
@@ -190,6 +205,7 @@ static NSOperationQueue *queue;
     NSString *title = [self.searchBar text];
     [self loadArticle:title];
     [searchBar resignFirstResponder];
+    self.tableView.hidden = YES;
 }
 
 - (void)setSearchIconToFavorites
@@ -217,6 +233,37 @@ static NSOperationQueue *queue;
     else {
         [favs add:self.title];
     }
+}
+
+#pragma mark Table view methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.result.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] init];
+    }
+    
+	cell.textLabel.text = self.result[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *title = self.result[indexPath.row];
+    [self loadArticle:title];
+    self.tableView.hidden = YES;
+    [self.searchBar resignFirstResponder];
 }
 
 @end

@@ -31,7 +31,6 @@
 		1A84F4261712A9D6006FC0EF /* Cosette.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F4251712A9D6006FC0EF /* Cosette.m */; };
 		1A874F0016F9534A0050517E /* FavoriteSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A874EFF16F9534A0050517E /* FavoriteSet.m */; };
 		1A874F0416F9584B0050517E /* ArticleSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A874F0316F9584B0050517E /* ArticleSet.m */; };
-		1A98490B16F2FFE6008B69EA /* LesSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */; };
 		1ACF92D416F36C1D006ACE08 /* Static in Resources */ = {isa = PBXBuildFile; fileRef = 1ACF92D316F36C1D006ACE08 /* Static */; };
 		1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */; };
 		1AF8016A16FF48F6001D29CD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */; };
@@ -82,8 +81,6 @@
 		1A874EFF16F9534A0050517E /* FavoriteSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteSet.m; path = miserables/Model/FavoriteSet.m; sourceTree = SOURCE_ROOT; };
 		1A874F0216F9584B0050517E /* ArticleSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleSet.h; path = miserables/Model/ArticleSet.h; sourceTree = SOURCE_ROOT; };
 		1A874F0316F9584B0050517E /* ArticleSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleSet.m; path = miserables/Model/ArticleSet.m; sourceTree = SOURCE_ROOT; };
-		1A98490916F2FFE6008B69EA /* LesSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesSearchViewController.h; path = miserables/LesSearchViewController.h; sourceTree = SOURCE_ROOT; };
-		1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesSearchViewController.m; path = miserables/LesSearchViewController.m; sourceTree = SOURCE_ROOT; };
 		1ACF92D316F36C1D006ACE08 /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
 		1AD2A89816FF42FD004137FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1AE4C3FA16F0532800EB7C10 /* NSDate+PrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+PrettyDate.h"; path = "miserables/Common/NSDate+PrettyDate.h"; sourceTree = SOURCE_ROOT; };
@@ -165,8 +162,6 @@
 				1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */,
 				1A1A4A7916EB123400EF7BBE /* LesViewController.h */,
 				1A1A4A7A16EB123400EF7BBE /* LesViewController.m */,
-				1A98490916F2FFE6008B69EA /* LesSearchViewController.h */,
-				1A98490A16F2FFE6008B69EA /* LesSearchViewController.m */,
 				1A1A4A6516EB123400EF7BBE /* Supporting Files */,
 			);
 			path = Miserables;
@@ -357,7 +352,6 @@
 				1A1A4A7B16EB123400EF7BBE /* LesViewController.m in Sources */,
 				1A25566116EC8B1D004BECAC /* LesLibraryViewController.m in Sources */,
 				1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */,
-				1A98490B16F2FFE6008B69EA /* LesSearchViewController.m in Sources */,
 				1A4D73F916F6E209003CFC46 /* LesFavoritesViewController.m in Sources */,
 				1A874F0016F9534A0050517E /* FavoriteSet.m in Sources */,
 				1A874F0416F9584B0050517E /* ArticleSet.m in Sources */,
