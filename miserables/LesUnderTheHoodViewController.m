@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *appVersionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dbVersionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bundleVersionLable;
 @property (weak, nonatomic) IBOutlet UILabel *noticeTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *noticeContentLabel;
 @property (weak, nonatomic) IBOutlet UITextView *libraryTextView;
@@ -39,6 +40,10 @@
     } failure:^(NSError *error) {
         ;
     }];
+    
+    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *build = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
+    self.bundleVersionLable.text = [NSString stringWithFormat: @"%@ (%@)", version, build];
     
     [[Cosette me] requestNoticeWithSuccess:^(id JSON) {
         self.noticeTimeLabel.text = JSON[@"time"];
