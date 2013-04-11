@@ -185,6 +185,7 @@ static NSOperationQueue *queue;
     self.soul = false;
     NSString *title = [self.searchBar text];
     [self loadArticle:title];
+    [searchBar resignFirstResponder];
 }
 
 - (void)setSearchIconToFavorites

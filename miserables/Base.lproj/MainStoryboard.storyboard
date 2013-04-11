@@ -145,7 +145,7 @@
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                             <searchBar contentMode="redraw" showsBookmarkButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gUR-GI-q40">
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
                                     <string>Title</string>
@@ -993,9 +993,6 @@ THE SOFTWARE.</string>
         <class className="LesFavoritesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesFavoritesViewController.h"/>
             <relationships>
-                <relationship kind="action" name="doneClicked:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="editClicked:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="segmentChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
@@ -1024,7 +1021,6 @@ THE SOFTWARE.</string>
         <class className="LesUnderTheHoodViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LesUnderTheHoodViewController.h"/>
             <relationships>
-                <relationship kind="action" name="doneClicked:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="appVersionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dbVersionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="libraryTextView" candidateClass="UITextView"/>
