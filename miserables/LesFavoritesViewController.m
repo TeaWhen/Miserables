@@ -8,7 +8,6 @@
 
 #import "LesFavoritesViewController.h"
 #import "LesViewController.h"
-#import "LesRecentsDelegate.h"
 #import "LesPlaceholderCell.h"
 #import "FavoriteSet.h"
 
@@ -19,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property FavoriteSet *favoriteSet;
-@property id recentsDelegate;
 @property NSInteger prevSegment;
 
 @end
@@ -35,47 +33,11 @@
     self.tableView.delegate = self;
 
     self.prevSegment = self.segmentedControl.selectedSegmentIndex;
-
-    self.recentsDelegate = [[LesRecentsDelegate alloc] init];
-}
-
-- (IBAction)doneClicked:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-enum {
-    FavoritesSeg = 0,
-    RecentsSeg,
-    LibrarySeg,
-};
-
-- (IBAction)segmentChanged:(UISegmentedControl *)sender
-{
-    if (sender.selectedSegmentIndex == FavoritesSeg) {
-        self.title = @"Favorites";
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
-        [self.tableView reloadData];
-        
-        self.prevSegment = self.segmentedControl.selectedSegmentIndex;
-    }
-    else if (sender.selectedSegmentIndex == RecentsSeg) {
-        self.title = @"Recents";
-        self.tableView.dataSource = self.recentsDelegate;
-        self.tableView.delegate = self.recentsDelegate;
-        [self.tableView reloadData];
-        
-        self.prevSegment = self.segmentedControl.selectedSegmentIndex;
-    }
-    else if (sender.selectedSegmentIndex == LibrarySeg) {
-        self.segmentedControl.selectedSegmentIndex = self.prevSegment;
-        [self performSegueWithIdentifier:@"Library" sender:self];
-    }
 }
 
 #pragma mark Table view methods

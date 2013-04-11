@@ -23,7 +23,8 @@
 		1A25566116EC8B1D004BECAC /* LesLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A25566016EC8B1D004BECAC /* LesLibraryViewController.m */; };
 		1A26E79A16F1C81D00EC72E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */; };
 		1A4D73F916F6E209003CFC46 /* LesFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */; };
-		1A7D5E0B1707292700CCF834 /* LesRecentsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5E0A1707292700CCF834 /* LesRecentsDelegate.m */; };
+		1A66F12B1716EC0E00989EBA /* LesTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A66F12A1716EC0E00989EBA /* LesTabViewController.m */; };
+		1A7D5E0B1707292700CCF834 /* LesRecentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5E0A1707292700CCF834 /* LesRecentsViewController.m */; };
 		1A839716171541F4006B4D42 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A839714171541F4006B4D42 /* Icon-72.png */; };
 		1A8397191715484A006B4D42 /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8397181715484A006B4D42 /* Icon-144.png */; };
 		1A84F42017129839006FC0EF /* LesPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F41F17129839006FC0EF /* LesPlaceholderCell.m */; };
@@ -67,8 +68,10 @@
 		1A26E79916F1C81D00EC72E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1A4D73F716F6E209003CFC46 /* LesFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesFavoritesViewController.h; path = miserables/LesFavoritesViewController.h; sourceTree = SOURCE_ROOT; };
 		1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesFavoritesViewController.m; path = miserables/LesFavoritesViewController.m; sourceTree = SOURCE_ROOT; };
-		1A7D5E091707292700CCF834 /* LesRecentsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesRecentsDelegate.h; path = miserables/LesRecentsDelegate.h; sourceTree = SOURCE_ROOT; };
-		1A7D5E0A1707292700CCF834 /* LesRecentsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesRecentsDelegate.m; path = miserables/LesRecentsDelegate.m; sourceTree = SOURCE_ROOT; };
+		1A66F1291716EC0E00989EBA /* LesTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesTabViewController.h; path = miserables/LesTabViewController.h; sourceTree = SOURCE_ROOT; };
+		1A66F12A1716EC0E00989EBA /* LesTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesTabViewController.m; path = miserables/LesTabViewController.m; sourceTree = SOURCE_ROOT; };
+		1A7D5E091707292700CCF834 /* LesRecentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesRecentsViewController.h; path = miserables/LesRecentsViewController.h; sourceTree = SOURCE_ROOT; };
+		1A7D5E0A1707292700CCF834 /* LesRecentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesRecentsViewController.m; path = miserables/LesRecentsViewController.m; sourceTree = SOURCE_ROOT; };
 		1A839714171541F4006B4D42 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = SOURCE_ROOT; };
 		1A8397181715484A006B4D42 /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = SOURCE_ROOT; };
 		1A84F41E17129839006FC0EF /* LesPlaceholderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesPlaceholderCell.h; path = miserables/LesPlaceholderCell.h; sourceTree = SOURCE_ROOT; };
@@ -155,7 +158,7 @@
 			children = (
 				1A84F4271712A9DF006FC0EF /* Cosette */,
 				1A874F0116F953510050517E /* Jean Valjean */,
-				1A7D5E081707290100CCF834 /* Favorites */,
+				1A7D5E081707290100CCF834 /* Tabs */,
 				1AE4C3FE16F0533400EB7C10 /* Common */,
 				1A1A4A6D16EB123400EF7BBE /* LesAppDelegate.h */,
 				1A1A4A6E16EB123400EF7BBE /* LesAppDelegate.m */,
@@ -194,21 +197,23 @@
 			path = Miserables;
 			sourceTree = "<group>";
 		};
-		1A7D5E081707290100CCF834 /* Favorites */ = {
+		1A7D5E081707290100CCF834 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				1A66F1291716EC0E00989EBA /* LesTabViewController.h */,
+				1A66F12A1716EC0E00989EBA /* LesTabViewController.m */,
 				1A4D73F716F6E209003CFC46 /* LesFavoritesViewController.h */,
 				1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */,
+				1A7D5E091707292700CCF834 /* LesRecentsViewController.h */,
+				1A7D5E0A1707292700CCF834 /* LesRecentsViewController.m */,
 				1A25565F16EC8B1D004BECAC /* LesLibraryViewController.h */,
 				1A25566016EC8B1D004BECAC /* LesLibraryViewController.m */,
-				1A7D5E091707292700CCF834 /* LesRecentsDelegate.h */,
-				1A7D5E0A1707292700CCF834 /* LesRecentsDelegate.m */,
 				1A84F41E17129839006FC0EF /* LesPlaceholderCell.h */,
 				1A84F41F17129839006FC0EF /* LesPlaceholderCell.m */,
 				1A84F4211712A46A006FC0EF /* LesUnderTheHoodViewController.h */,
 				1A84F4221712A46A006FC0EF /* LesUnderTheHoodViewController.m */,
 			);
-			name = Favorites;
+			name = Tabs;
 			sourceTree = "<group>";
 		};
 		1A84F4271712A9DF006FC0EF /* Cosette */ = {
@@ -355,12 +360,13 @@
 				1A4D73F916F6E209003CFC46 /* LesFavoritesViewController.m in Sources */,
 				1A874F0016F9534A0050517E /* FavoriteSet.m in Sources */,
 				1A874F0416F9584B0050517E /* ArticleSet.m in Sources */,
-				1A7D5E0B1707292700CCF834 /* LesRecentsDelegate.m in Sources */,
+				1A7D5E0B1707292700CCF834 /* LesRecentsViewController.m in Sources */,
 				BF88057A170B02C900B4E441 /* LesDownloader.m in Sources */,
 				ABF7BCEE170C4CE900EA3A6B /* RecentSet.m in Sources */,
 				1A84F42017129839006FC0EF /* LesPlaceholderCell.m in Sources */,
 				1A84F4231712A46A006FC0EF /* LesUnderTheHoodViewController.m in Sources */,
 				1A84F4261712A9D6006FC0EF /* Cosette.m in Sources */,
+				1A66F12B1716EC0E00989EBA /* LesTabViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

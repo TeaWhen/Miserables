@@ -6,15 +6,25 @@
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
-#import "LesRecentsDelegate.h"
+#import "LesRecentsViewController.h"
 #import "LesPlaceholderCell.h"
 #import "RecentSet.h"
 
-@interface LesRecentsDelegate () <UITableViewDataSource, UITableViewDelegate>
+@interface LesRecentsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation LesRecentsDelegate
+@implementation LesRecentsViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

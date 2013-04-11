@@ -196,7 +196,7 @@ static NSOperationQueue *queue;
 
 - (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
 {
-    [self performSegueWithIdentifier:@"favorites" sender:self];
+    [self performSegueWithIdentifier:@"tabs" sender:self];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *) searchBar

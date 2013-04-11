@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LesRecentsDelegate : NSObject
+@interface LesRecentsViewController : UITableViewController
 
 @end
