@@ -15,11 +15,9 @@
 #import "QRootElement.h"
 #import "QRootBuilder.h"
 
-@interface LesLibraryViewController () <UITableViewDelegate, LesDownloaderDelegate>
+@interface LesLibraryViewController () <LesDownloaderDelegate>
 
 @property LesDownloader *downloader;
-@property UIActivityIndicatorView *progressIndicator;
-
 @property QLabelElement *updateDateLabel;
 @property QLabelElement *articleCountLabel;
 @property QLabelElement *downloadProgressLabel;
@@ -31,7 +29,7 @@
 
 @implementation LesLibraryViewController
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear_:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
@@ -62,6 +60,23 @@
     // update things
     [self updateArticleCount];
     [self updateUpdateDate];
+    
+    self.downloader = [LesDownloader singleton];
+    self.downloader.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    QRootElement *root = [QRootElement new];
+    root.grouped = YES;
+    QSection *section = [QSection new];
+    section.footer = @"Test Footer";
+    QLabelElement *label = [[QLabelElement alloc] initWithTitle:@"Updated on" Value:@"42 days ago"];
+    [section addElement:label];
+    [root addSection:section];
+    self.root = root;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -72,15 +87,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.downloader = [LesDownloader singleton];
-    self.downloader.delegate = self;
-    
-    if (self.downloader.downloaded) {
-    }
-    
-    self.progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [self.view addSubview:self.progressIndicator];
 }
 
 - (void)updateArticleCount
@@ -101,30 +107,6 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    switch (indexPath.section) {
-        case 0:
-            if (indexPath.row == 2) {
-                // update button clicked
-                NSLog(@"Update clicked.");
-                
-                [self.downloader start];
-            }
-            break;
-        case 1:
-            if (indexPath.row == 1) {
-                // cancel button clicked
-                NSLog(@"Cancel clicked.");
-                [self.downloader cancel];
-            }
-            
-        default:
-            break;
-    }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
 - (void)downloadCompleted
 {    
     // reload things
@@ -135,7 +117,6 @@
 
 - (void)downloadFailed:(NSError *)error withStatusCode:(NSInteger)statusCode
 {
-    [self.progressIndicator stopAnimating];
     NSLog(@"Error occured: %@", error);
     
     NSString *message;
