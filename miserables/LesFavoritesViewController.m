@@ -88,20 +88,6 @@
 
 #pragma mark Table view editing
 
-- (IBAction)editClicked:(UIBarButtonItem *)sender {
-    if ([self.tableView isEditing]) {
-        [sender setStyle:UIBarButtonItemStyleBordered];
-        sender.title = @"Edit";
-        [self.tableView setEditing:NO animated:YES];
-    }
-    else
-    {
-        [sender setStyle:UIBarButtonItemStyleDone];
-        sender.title = @"Done";
-        [self.tableView setEditing:YES animated:YES];
-    }
-}
-
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleDelete;
