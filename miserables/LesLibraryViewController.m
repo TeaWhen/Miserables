@@ -51,12 +51,17 @@
     
     QSection *creditsSection = [QSection new];
     QButtonElement *creditsButton = [[QButtonElement alloc] initWithTitle:@"Credits"];
+    creditsButton.controllerAction = @"creditsClicked:";
     [creditsSection addElement:creditsButton];
     
     [root addSection:section];
     [root addSection:creditsSection];
     
     self.root = root;
+    
+    // update things
+    [self updateArticleCount];
+    [self updateUpdateDate];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -76,10 +81,6 @@
     
     self.progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.progressIndicator];
-    
-    // update things
-    [self updateArticleCount];
-    [self updateUpdateDate];
 }
 
 - (void)updateArticleCount
@@ -163,6 +164,11 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     // TODO: if main view is displaying main page, reload it.
+}
+
+- (void)creditsClicked:(id)sender
+{
+    [self performSegueWithIdentifier:@"credits" sender:self];
 }
 
 @end
