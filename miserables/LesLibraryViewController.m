@@ -12,21 +12,17 @@
 #import "LesViewController.h"
 #import "ArticleSet.h"
 #import "LesDownloader.h"
+#import "QRootElement.h"
+#import "QRootBuilder.h"
 
 @interface LesLibraryViewController () <UITableViewDelegate, LesDownloaderDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *articleCountLabel;
-@property (weak, nonatomic) IBOutlet UIProgressView *downloadProgressView;
-@property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
-@property (weak, nonatomic) IBOutlet UITableViewCell *downloadCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *downloadProgressCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *cancelCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *downloadButton;
-
 @property LesDownloader *downloader;
 @property UIActivityIndicatorView *progressIndicator;
+
+@property QLabelElement *updateDateLabel;
+@property QLabelElement *articleCountLabel;
+@property QLabelElement *downloadProgressLabel;
 
 - (void)updateArticleCount;
 - (void)updateUpdateDate;
@@ -34,6 +30,34 @@
 @end
 
 @implementation LesLibraryViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    QRootElement *root = [QRootElement new];
+    root.grouped = YES;
+    
+    QSection *section = [QSection new];
+    section.footer = @"If the network is slow, you can also use iTunes File Sharing to import the library.";
+    self.updateDateLabel = [[QLabelElement alloc] initWithTitle:@"Updated on" Value:@"42 days ago"];
+    self.articleCountLabel = [[QLabelElement alloc] initWithTitle:@"Number of Articles" Value:@"31415926"];
+    self.downloadProgressLabel = [[QLabelElement alloc] initWithTitle:@"Downloaded" Value:@"0%"];
+    QButtonElement *updateButton = [[QButtonElement alloc] initWithTitle:@"Update Now"];
+    
+    [section addElement:self.updateDateLabel];
+    [section addElement:self.articleCountLabel];
+    [section addElement:updateButton];
+    
+    QSection *creditsSection = [QSection new];
+    QButtonElement *creditsButton = [[QButtonElement alloc] initWithTitle:@"Credits"];
+    [creditsSection addElement:creditsButton];
+    
+    [root addSection:section];
+    [root addSection:creditsSection];
+    
+    self.root = root;
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -48,13 +72,9 @@
     self.downloader.delegate = self;
     
     if (self.downloader.downloaded) {
-        self.downloadLabel.text = @"Already updated";
-        self.downloadLabel.enabled = NO;
-        self.downloadCell.userInteractionEnabled = NO;
     }
     
     self.progressIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.progressIndicator.center = CGPointMake(self.downloadButton.center.x + 100, self.downloadButton.center.y);
     [self.view addSubview:self.progressIndicator];
     
     // update things
@@ -65,7 +85,7 @@
 - (void)updateArticleCount
 {
     ArticleSet *articles = [ArticleSet singleton];
-    self.articleCountLabel.text = [NSString stringWithFormat:@"%d", [articles count]];
+    self.articleCountLabel.value = [NSString stringWithFormat:@"%d", [articles count]];
 }
 
 - (void)updateUpdateDate
@@ -73,10 +93,10 @@
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     NSDate *updateDate = [defaults objectForKey:@"LibraryLastUpdateDate"];
     if (updateDate) {
-        self.updateDateLabel.text = [updateDate prettyDate];
+        self.updateDateLabel.value = [updateDate prettyDate];
     }
     else {
-        self.updateDateLabel.text = @"Never update";
+        self.updateDateLabel.value = @"Never update";
     }
 }
 
@@ -88,12 +108,6 @@
                 // update button clicked
                 NSLog(@"Update clicked.");
                 
-                [self.progressIndicator startAnimating];
-                
-                self.downloadLabel.text = @"Connecting...";
-                self.downloadLabel.enabled = NO;
-                self.downloadCell.userInteractionEnabled = NO;
-                
                 [self.downloader start];
             }
             break;
@@ -102,13 +116,6 @@
                 // cancel button clicked
                 NSLog(@"Cancel clicked.");
                 [self.downloader cancel];
-                
-                self.downloadLabel.text = @"Update Now";
-                [self.downloadProgressCell setHidden:YES];
-                [self.cancelCell setHidden:YES];
-                [self.tableView reloadData];
-                self.downloadLabel.enabled = YES;
-                self.downloadCell.userInteractionEnabled = YES;
             }
             
         default:
@@ -117,26 +124,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
-        if (self.downloadProgressCell.hidden) {
-            return @"";
-        }
-        else {
-            return @"Download progress";
-        }
-    }
-    
-    return @"";
-}
-
 - (void)downloadCompleted
-{
-    self.downloadLabel.text = @"Already updated";
-    [self.tableView reloadData];
-    [self.downloadProgressCell setHidden:YES];
-    [self.cancelCell setHidden:YES];
-    
+{    
     // reload things
     [self updateArticleCount];
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
@@ -158,27 +147,11 @@
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download failure" message:message delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
     [alert show];
-    
-    self.downloadLabel.text = @"Update Now";
-    [self.downloadProgressCell setHidden:YES];
-    [self.cancelCell setHidden:YES];
-    [self.tableView reloadData];
-    self.downloadLabel.enabled = YES;
-    self.downloadCell.userInteractionEnabled = YES;
 }
 
 - (void)downloaded:(long long)currentBytes of:(long long)totalBytes
 {
-    [self.progressIndicator stopAnimating];
-    self.downloadLabel.text = @"Downloading...";
-    [self.tableView reloadData];
-    [self.downloadProgressCell setHidden:NO];
-    [self.cancelCell setHidden:NO];
-    self.downloadLabel.enabled = NO;
-    self.downloadCell.userInteractionEnabled = NO;
-    
     float progress = currentBytes / (float)totalBytes;
-    [self.downloadProgressView setProgress:progress];
     // NSLog(@"%lld / %lld", currentBytes, totalBytes);
 }
 

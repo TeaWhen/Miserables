@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Eksband. All rights reserved.
 //
 
-@interface LesLibraryViewController : UITableViewController
+#import "QuickDialogController.h"
+
+@interface LesLibraryViewController : QuickDialogController
 
 @end
