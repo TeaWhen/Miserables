@@ -226,7 +226,7 @@
         <!--Les Library View Controller - Library-->
         <scene sceneID="Jh2-HV-yFJ">
             <objects>
-                <tableViewController storyboardIdentifier="library" id="33w-6c-5jK" customClass="LesLibraryViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="library" autoresizesArchivedViewToFullSize="NO" id="33w-6c-5jK" customClass="LesLibraryViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Library" id="6BW-u2-WzV"/>
                     <navigationItem key="navigationItem" title="Library" id="mqo-e0-6A9"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -235,11 +235,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcG-tF-iqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="VaF-yo-gna">
-                    <connections>
-                        <segue destination="skB-wR-fkz" kind="push" id="Qeg-M2-WXV"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="679" y="469"/>
         </scene>
@@ -264,9 +259,13 @@
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Wikipedia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aib-cA-pDD">
                                                     <rect key="frame" x="10" y="11" width="80" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="SWC-Q1-yQF" appends="YES" id="8Wv-76-dsH"/>
+                                                    </connections>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="The Free Encyclopedia" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v4m-5H-T99">
                                                     <rect key="frame" x="115" y="11" width="175" height="21"/>
@@ -360,7 +359,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Friends" id="bJ7-wb-bGS">
+                            <tableViewSection headerTitle="Friends" footerTitle="Good afternoon, gentlemen." id="bJ7-wb-bGS">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="T8A-sJ-sle" detailTextLabel="F0K-DN-wkl" style="IBUITableViewCellStyleValue1" id="geR-cd-QqU">
                                         <rect key="frame" x="0.0" y="362" width="320" height="45"/>
@@ -490,6 +489,11 @@
                     <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pz2-j1-HRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="SWC-Q1-yQF">
+                    <connections>
+                        <segue destination="skB-wR-fkz" kind="push" id="u7j-NU-BH3"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1164" y="-393"/>
         </scene>
@@ -598,7 +602,7 @@ THE SOFTWARE.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Version" footerTitle="Good afternoon, gentlemen." id="pJE-K0-O9e">
+                            <tableViewSection headerTitle="Version" footerTitle="Open the pod bay doors." id="pJE-K0-O9e">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gCg-QR-CvD" detailTextLabel="Ivc-DD-k6z" style="IBUITableViewCellStyleValue2" id="XvG-6L-fqY">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -796,7 +800,7 @@ THE SOFTWARE.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="soJ-No-cwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="469"/>
+            <point key="canvasLocation" x="1609" y="239"/>
         </scene>
         <!--View Controller - FMDB-->
         <scene sceneID="uC9-ha-xiD">
