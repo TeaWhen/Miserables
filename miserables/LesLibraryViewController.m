@@ -12,16 +12,17 @@
 #import "LesViewController.h"
 #import "ArticleSet.h"
 #import "LesDownloader.h"
-#import "QRootElement.h"
-#import "QRootBuilder.h"
+#import "QuickDialog.h"
+#import "QProgressElement.h"
 
 @interface LesLibraryViewController () <LesDownloaderDelegate>
 
 @property LesDownloader *downloader;
 @property QLabelElement *updateDateLabel;
 @property QLabelElement *articleCountLabel;
-@property QLabelElement *downloadProgressLabel;
+@property QProgressElement *downloadProgress;
 
+- (void)loadDialog;
 - (void)updateArticleCount;
 - (void)updateUpdateDate;
 
@@ -33,18 +34,32 @@
 {
     [super viewDidLoad];
     
-    QRootElement *root = [QRootElement new];
+    [self loadDialog];
+    
+    // update things
+    [self updateArticleCount];
+    [self updateUpdateDate];
+    
+    self.downloader = [LesDownloader singleton];
+    self.downloader.delegate = self;
+}
+
+- (void)loadDialog
+{
+    QRootElement *root = [[QRootElement alloc] init];
     root.grouped = YES;
     
-    QSection *section = [QSection new];
+    QSection *section = [[QSection alloc] init];
     section.footer = @"If the network is slow, you can also use iTunes File Sharing to import the library.";
     self.updateDateLabel = [[QLabelElement alloc] initWithTitle:@"Updated on" Value:@"42 days ago"];
     self.articleCountLabel = [[QLabelElement alloc] initWithTitle:@"Number of Articles" Value:@"31415926"];
-    self.downloadProgressLabel = [[QLabelElement alloc] initWithTitle:@"Downloaded" Value:@"0%"];
+    self.downloadProgress = [[QProgressElement alloc] init];
     QButtonElement *updateButton = [[QButtonElement alloc] initWithTitle:@"Update Now"];
+    updateButton.controllerAction = @"updateClicked:";
     
     [section addElement:self.updateDateLabel];
     [section addElement:self.articleCountLabel];
+    [section addElement:self.downloadProgress];
     [section addElement:updateButton];
     
     QSection *creditsSection = [QSection new];
@@ -57,18 +72,6 @@
     
     self.root = root;
     self.quickDialogTableView = [self.quickDialogTableView initWithController:self];
-    
-    // update things
-    [self updateArticleCount];
-    [self updateUpdateDate];
-    
-    self.downloader = [LesDownloader singleton];
-    self.downloader.delegate = self;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 - (void)updateArticleCount
@@ -119,6 +122,16 @@
     // NSLog(@"%lld / %lld", currentBytes, totalBytes);
 }
 
+- (void)creditsClicked:(id)sender
+{
+    [self performSegueWithIdentifier:@"credits" sender:self];
+}
+
+- (void)updateClicked:(id)sender
+{
+    NSLog(@"Update clicked.");
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -127,11 +140,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     // TODO: if main view is displaying main page, reload it.
-}
-
-- (void)creditsClicked:(id)sender
-{
-    [self performSegueWithIdentifier:@"credits" sender:self];
 }
 
 @end
