@@ -29,9 +29,9 @@
 
 @implementation LesLibraryViewController
 
-- (void)viewWillAppear_:(BOOL)animated
+- (void)viewDidLoad
 {
-    [super viewWillAppear:animated];
+    [super viewDidLoad];
     
     QRootElement *root = [QRootElement new];
     root.grouped = YES;
@@ -56,6 +56,7 @@
     [root addSection:creditsSection];
     
     self.root = root;
+    self.quickDialogTableView = [self.quickDialogTableView initWithController:self];
     
     // update things
     [self updateArticleCount];
@@ -65,28 +66,9 @@
     self.downloader.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    QRootElement *root = [QRootElement new];
-    root.grouped = YES;
-    QSection *section = [QSection new];
-    section.footer = @"Test Footer";
-    QLabelElement *label = [[QLabelElement alloc] initWithTitle:@"Updated on" Value:@"42 days ago"];
-    [section addElement:label];
-    [root addSection:section];
-    self.root = root;
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 - (void)updateArticleCount
