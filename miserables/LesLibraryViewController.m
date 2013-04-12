@@ -21,6 +21,7 @@
 @property QLabelElement *updateDateLabel;
 @property QLabelElement *articleCountLabel;
 @property QProgressElement *downloadProgress;
+@property QButtonElement *updateButton;
 
 - (void)loadDialog;
 - (void)updateArticleCount;
@@ -36,7 +37,6 @@
     
     [self loadDialog];
     
-    // update things
     [self updateArticleCount];
     [self updateUpdateDate];
     
@@ -54,13 +54,14 @@
     self.updateDateLabel = [[QLabelElement alloc] initWithTitle:@"Updated on" Value:@"42 days ago"];
     self.articleCountLabel = [[QLabelElement alloc] initWithTitle:@"Number of Articles" Value:@"31415926"];
     self.downloadProgress = [[QProgressElement alloc] init];
-    QButtonElement *updateButton = [[QButtonElement alloc] initWithTitle:@"Update Now"];
-    updateButton.controllerAction = @"updateClicked:";
+    self.downloadProgress.hidden = YES;
+    self.updateButton = [[QButtonElement alloc] initWithTitle:@"Update Now"];
+    self.updateButton.controllerAction = @"updateClicked:";
     
     [section addElement:self.updateDateLabel];
     [section addElement:self.articleCountLabel];
     [section addElement:self.downloadProgress];
-    [section addElement:updateButton];
+    [section addElement:self.updateButton];
     
     QSection *creditsSection = [QSection new];
     QButtonElement *creditsButton = [[QButtonElement alloc] initWithTitle:@"Credits"];
@@ -93,7 +94,12 @@
 }
 
 - (void)downloadCompleted
-{    
+{
+    self.downloadProgress.hidden = YES;
+    self.updateButton.enabled = NO;
+    self.updateButton.title = @"Updated";
+    [self.quickDialogTableView reloadData];
+    
     // reload things
     [self updateArticleCount];
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
@@ -119,7 +125,7 @@
 - (void)downloaded:(long long)currentBytes of:(long long)totalBytes
 {
     float progress = currentBytes / (float)totalBytes;
-    // NSLog(@"%lld / %lld", currentBytes, totalBytes);
+    self.downloadProgress.progress = progress;
 }
 
 - (void)creditsClicked:(id)sender
@@ -127,9 +133,23 @@
     [self performSegueWithIdentifier:@"credits" sender:self];
 }
 
-- (void)updateClicked:(id)sender
+- (void)updateClicked:(QButtonElement *)sender
 {
-    NSLog(@"Update clicked.");
+    [self.downloader cancel];
+    [self.downloader start];
+    self.downloadProgress.hidden = NO;
+    self.updateButton.controllerAction = @"cancelClicked:";
+    self.updateButton.title = @"Cancel";
+    [self.quickDialogTableView reloadData];
+}
+
+- (void)cancelClicked:(QButtonElement *)sender
+{
+    [self.downloader cancel];
+    self.downloadProgress.hidden = YES;
+    self.updateButton.controllerAction = @"updateClicked:";
+    self.updateButton.title = @"Update Now";
+    [self.quickDialogTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

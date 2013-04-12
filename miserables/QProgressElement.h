@@ -9,7 +9,6 @@
 #import "QuickDialog.h"
 #import <Foundation/Foundation.h>
 
-
 @interface QProgressElement : QElement
 
 @property (nonatomic) float progress;
