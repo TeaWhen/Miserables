@@ -101,6 +101,7 @@
     [self.quickDialogTableView reloadData];
     
     // reload things
+    [[ArticleSet singleton] reload];
     [self updateArticleCount];
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
     [self updateUpdateDate];

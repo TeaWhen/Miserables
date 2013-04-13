@@ -13,6 +13,7 @@
 + (ArticleSet *)singleton;
 - (void)open;
 - (void)close;
+- (void)reload;
 
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword;
 - (NSString *)articleByTitle:(NSString *)title;
