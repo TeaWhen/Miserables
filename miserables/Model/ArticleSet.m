@@ -79,6 +79,12 @@
     }
 }
 
+- (void)reload
+{
+    [self close];
+    [self open];
+}
+
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword
 {
     FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", keyword]];

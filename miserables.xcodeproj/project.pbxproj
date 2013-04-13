@@ -32,7 +32,6 @@
 		1A84F4261712A9D6006FC0EF /* Cosette.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F4251712A9D6006FC0EF /* Cosette.m */; };
 		1A874F0016F9534A0050517E /* FavoriteSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A874EFF16F9534A0050517E /* FavoriteSet.m */; };
 		1A874F0416F9584B0050517E /* ArticleSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A874F0316F9584B0050517E /* ArticleSet.m */; };
-		1AAD28ED17183A0B00F9007C /* QProgressElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAD28EC17183A0B00F9007C /* QProgressElement.m */; };
 		1ACF92D416F36C1D006ACE08 /* Static in Resources */ = {isa = PBXBuildFile; fileRef = 1ACF92D316F36C1D006ACE08 /* Static */; };
 		1AE4C3FC16F0532800EB7C10 /* NSDate+PrettyDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AE4C3FB16F0532800EB7C10 /* NSDate+PrettyDate.m */; };
 		1AF8016A16FF48F6001D29CD /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A1A4A7616EB123400EF7BBE /* MainStoryboard.storyboard */; };
@@ -85,8 +84,6 @@
 		1A874EFF16F9534A0050517E /* FavoriteSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteSet.m; path = miserables/Model/FavoriteSet.m; sourceTree = SOURCE_ROOT; };
 		1A874F0216F9584B0050517E /* ArticleSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleSet.h; path = miserables/Model/ArticleSet.h; sourceTree = SOURCE_ROOT; };
 		1A874F0316F9584B0050517E /* ArticleSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleSet.m; path = miserables/Model/ArticleSet.m; sourceTree = SOURCE_ROOT; };
-		1AAD28EB17183A0B00F9007C /* QProgressElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QProgressElement.h; path = miserables/QProgressElement.h; sourceTree = SOURCE_ROOT; };
-		1AAD28EC17183A0B00F9007C /* QProgressElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QProgressElement.m; path = miserables/QProgressElement.m; sourceTree = SOURCE_ROOT; };
 		1ACF92D316F36C1D006ACE08 /* Static */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Static; sourceTree = "<group>"; };
 		1AD2A89816FF42FD004137FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		1AE4C3FA16F0532800EB7C10 /* NSDate+PrettyDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+PrettyDate.h"; path = "miserables/Common/NSDate+PrettyDate.h"; sourceTree = SOURCE_ROOT; };
@@ -245,8 +242,6 @@
 		1AAD28EE17183A1400F9007C /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				1AAD28EB17183A0B00F9007C /* QProgressElement.h */,
-				1AAD28EC17183A0B00F9007C /* QProgressElement.m */,
 				1A25565F16EC8B1D004BECAC /* LesLibraryViewController.h */,
 				1A25566016EC8B1D004BECAC /* LesLibraryViewController.m */,
 			);
@@ -380,7 +375,6 @@
 				1A84F4231712A46A006FC0EF /* LesUnderTheHoodViewController.m in Sources */,
 				1A84F4261712A9D6006FC0EF /* Cosette.m in Sources */,
 				1A66F12B1716EC0E00989EBA /* LesTabViewController.m in Sources */,
-				1AAD28ED17183A0B00F9007C /* QProgressElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
