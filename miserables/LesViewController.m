@@ -128,17 +128,15 @@ static NSOperationQueue *queue;
 - (void)handleLoadArticle:(NSNotification *)note
 {
     self.soul = false;
-//    [self loadArticle:note.userInfo[@"title"]];
-    NSLog(@"display Progress HUD and go~");
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-	[self.view addSubview:hud];
-	hud.labelText = @"loading";
-	
-	[hud showAnimated:YES whileExecutingBlock:^{
-		[self loadArticle:note.userInfo[@"title"]];
-	} completionBlock:^{
-		[hud removeFromSuperview];
-	}];
+    [self.view addSubview:hud];
+    hud.labelText = @"Loading";
+
+    [hud showAnimated:YES whileExecutingBlock:^{
+        [self loadArticle:note.userInfo[@"title"]];
+    } completionBlock:^{
+        [hud removeFromSuperview];
+    }];
 }
 
 - (void)handleReloadArticle:(NSNotification *)note
@@ -219,7 +217,7 @@ static NSOperationQueue *queue;
     [self performSegueWithIdentifier:@"tabs" sender:self];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *) searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *title = [self.searchBar text];
     [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": title}];
