@@ -10,9 +10,8 @@
 #import "FMDatabase.h"
 
 FOUNDATION_EXPORT NSString * const kLesLoadArticleNotification;
+FOUNDATION_EXPORT NSString * const kLesReloadArticleNotification;
 
 @interface LesViewController : UIViewController
-
-- (void)handleLoadArticle:(NSNotification *)note;
 
 @end

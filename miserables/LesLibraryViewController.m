@@ -105,6 +105,7 @@
     [self updateArticleCount];
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"LibraryLastUpdateDate"];
     [self updateUpdateDate];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLesReloadArticleNotification object:self];
 }
 
 - (void)downloadFailed:(NSError *)error withStatusCode:(NSInteger)statusCode
@@ -156,11 +157,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    // TODO: if main view is displaying main page, reload it.
 }
 
 @end

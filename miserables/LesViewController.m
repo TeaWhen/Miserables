@@ -13,6 +13,7 @@
 #import "ArticleSet.h"
 
 NSString * const kLesLoadArticleNotification = @"LesLoadArticle";
+NSString * const kLesReloadArticleNotification = @"LesReloadArticle";
 
 @interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -26,6 +27,8 @@ NSString * const kLesLoadArticleNotification = @"LesLoadArticle";
 @property (strong, nonatomic) NSMutableArray *result;
 
 - (void)loadArticle:(NSString *)title;
+- (void)handleLoadArticle:(NSNotification *)note;
+- (void)handleReloadArticle:(NSNotification *)note;
 - (void)setSearchIconToFavorites;
 
 @end
@@ -67,6 +70,7 @@ static NSOperationQueue *queue;
     [self loadArticle:@"Main Page"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoadArticle:) name:kLesLoadArticleNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleReloadArticle:) name:kLesReloadArticleNotification object:nil];
     
     UISwipeGestureRecognizer *backRecongnizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goBack:)];
     backRecongnizer.direction = UISwipeGestureRecognizerDirectionRight;
@@ -124,6 +128,11 @@ static NSOperationQueue *queue;
 {
     self.soul = false;
     [self loadArticle:note.userInfo[@"title"]];
+}
+
+- (void)handleReloadArticle:(NSNotification *)note
+{
+    [self loadArticle:self.title];
 }
 
 - (void)loadArticle:(NSString *)title
