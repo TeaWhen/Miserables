@@ -11,10 +11,11 @@
 #import "FavoriteSet.h"
 #import "RecentSet.h"
 #import "ArticleSet.h"
+#import "MBProgressHUD.h"
 
 NSString * const kLesLoadArticleNotification = @"LesLoadArticle";
 
-@interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface LesViewController () <UIWebViewDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MBProgressHUDDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -123,7 +124,17 @@ static NSOperationQueue *queue;
 - (void)handleLoadArticle:(NSNotification *)note
 {
     self.soul = false;
-    [self loadArticle:note.userInfo[@"title"]];
+//    [self loadArticle:note.userInfo[@"title"]];
+    NSLog(@"display Progress HUD and go~");
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+	[self.view addSubview:hud];
+	hud.labelText = @"loading";
+	
+	[hud showAnimated:YES whileExecutingBlock:^{
+		[self loadArticle:note.userInfo[@"title"]];
+	} completionBlock:^{
+		[hud removeFromSuperview];
+	}];
 }
 
 - (void)loadArticle:(NSString *)title
@@ -201,9 +212,8 @@ static NSOperationQueue *queue;
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *) searchBar
 {
-    self.soul = false;
     NSString *title = [self.searchBar text];
-    [self loadArticle:title];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": title}];
     [searchBar resignFirstResponder];
     self.tableView.hidden = YES;
 }
@@ -261,7 +271,7 @@ static NSOperationQueue *queue;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *title = self.result[indexPath.row];
-    [self loadArticle:title];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": title}];
     self.tableView.hidden = YES;
     [self.searchBar resignFirstResponder];
 }
