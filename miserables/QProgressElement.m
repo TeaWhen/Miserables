@@ -36,8 +36,8 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.bar.frame = CGRectMake(0, 0, cell.contentView.frame.size.width - 60, self.bar.frame.size.height);
-    // I love magic numbers!
-    self.bar.center = CGPointMake((cell.contentView.frame.size.width - 18) / 2, cell.contentView.frame.size.height / 2);
+    self.bar.center = CGPointMake(cell.contentView.frame.size.width / 2, cell.contentView.frame.size.height / 2);
+    self.bar.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     [cell.contentView addSubview:self.bar];
     return cell;
 }
