@@ -141,7 +141,7 @@ static NSOperationQueue *queue;
 
 - (void)handleReloadArticle:(NSNotification *)note
 {
-    [self loadArticle:self.title];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": self.title}];
 }
 
 - (void)loadArticle:(NSString *)title
