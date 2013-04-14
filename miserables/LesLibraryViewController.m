@@ -122,6 +122,10 @@
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download failure" message:message delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
     [alert show];
+    
+    self.downloadProgress.hidden = YES;
+    self.updateButton.title = @"Update";
+    [self.quickDialogTableView reloadData];
 }
 
 - (void)downloaded:(long long)currentBytes of:(long long)totalBytes
