@@ -202,10 +202,8 @@
 			children = (
 				1A66F1291716EC0E00989EBA /* LesTabViewController.h */,
 				1A66F12A1716EC0E00989EBA /* LesTabViewController.m */,
-				1A4D73F716F6E209003CFC46 /* LesFavoritesViewController.h */,
-				1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */,
-				1A7D5E091707292700CCF834 /* LesRecentsViewController.h */,
-				1A7D5E0A1707292700CCF834 /* LesRecentsViewController.m */,
+				1AC2D5CC1719C469006B99F0 /* Favorites */,
+				1AC2D5CD1719C472006B99F0 /* Recents */,
 				1AAD28EE17183A1400F9007C /* Library */,
 				1A84F41E17129839006FC0EF /* LesPlaceholderCell.h */,
 				1A84F41F17129839006FC0EF /* LesPlaceholderCell.m */,
@@ -246,6 +244,24 @@
 				1A25566016EC8B1D004BECAC /* LesLibraryViewController.m */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		1AC2D5CC1719C469006B99F0 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				1A4D73F716F6E209003CFC46 /* LesFavoritesViewController.h */,
+				1A4D73F816F6E209003CFC46 /* LesFavoritesViewController.m */,
+			);
+			name = Favorites;
+			sourceTree = "<group>";
+		};
+		1AC2D5CD1719C472006B99F0 /* Recents */ = {
+			isa = PBXGroup;
+			children = (
+				1A7D5E091707292700CCF834 /* LesRecentsViewController.h */,
+				1A7D5E0A1707292700CCF834 /* LesRecentsViewController.m */,
+			);
+			name = Recents;
 			sourceTree = "<group>";
 		};
 		1AE4C3FE16F0533400EB7C10 /* Common */ = {

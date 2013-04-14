@@ -127,6 +127,9 @@ static NSOperationQueue *queue;
 
 - (void)handleLoadArticle:(NSNotification *)note
 {
+    [self.searchBar resignFirstResponder];
+    self.tableView.hidden = YES;
+    
     self.soul = false;
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:hud];
@@ -279,8 +282,6 @@ static NSOperationQueue *queue;
 {
     NSString *title = self.result[indexPath.row];
     [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": title}];
-    self.tableView.hidden = YES;
-    [self.searchBar resignFirstResponder];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
