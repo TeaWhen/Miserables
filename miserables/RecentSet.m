@@ -115,6 +115,12 @@
     [self reload];
 }
 
+- (void)removeAll
+{
+    [self.DB executeUpdate:@"DELETE FROM Recents"];
+    [self reload];
+}
+
 - (NSInteger)count
 {
     if (!self.recents) {

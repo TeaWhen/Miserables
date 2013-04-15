@@ -19,6 +19,7 @@
 - (void)add:(NSString *)title;
 - (void)update:(NSString *)title;
 - (void)remove:(NSString *)title;
+- (void)removeAll;
 - (NSInteger)count;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface LesRecentsViewController : UITableViewController
 
+- (void)clear;
+
 @end

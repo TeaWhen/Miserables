@@ -70,4 +70,10 @@
     return cell;
 }
 
+- (void)clear
+{
+    [[RecentSet singleton] removeAll];
+    [self.tableView reloadData];
+}
+
 @end

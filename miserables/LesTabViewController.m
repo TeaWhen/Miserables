@@ -43,7 +43,7 @@
     [self addChildViewController:self.libraryVC];
     
     self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
-    self.clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleBordered target:self action:nil];
+    self.clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleBordered target:self action:@selector(clearClicked:)];
     self.spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
     NSMutableArray *items = [self.toolbar.items mutableCopy];
     [items insertObject:self.spaceItem atIndex:0];
@@ -118,6 +118,10 @@ enum {
 //        sender.title = @"Done";
 //        [self.tableView setEditing:YES animated:YES];
 //    }
+}
+
+- (void)clearClicked:(UIBarButtonItem *)sender {
+    [self.recentsVC clear];
 }
 
 @end
