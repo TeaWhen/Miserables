@@ -96,10 +96,8 @@ static NSOperationQueue *queue;
     NSLog(@"goBack");
     RecentSet *rec = [RecentSet singleton];
     NSMutableArray *list = [rec list];
-    if (self.soulCurId + 1 <= [rec count])
-    {
-        if (!self.soul)
-        {
+    if (self.soulCurId + 1 <= [rec count]) {
+        if (!self.soul) {
             self.soul = true;
             self.soulCurId = 0;
         }
@@ -113,10 +111,8 @@ static NSOperationQueue *queue;
     NSLog(@"goForward");
     RecentSet *rec = [RecentSet singleton];
     NSMutableArray *list = [rec list];
-    if (self.soulCurId - 1 >= 0)
-    {
-        if (!self.soul)
-        {
+    if (self.soulCurId - 1 >= 0) {
+        if (!self.soul) {
             self.soul = true;
             self.soulCurId = 0;
         }
@@ -149,13 +145,11 @@ static NSOperationQueue *queue;
 
 - (void)loadArticle:(NSString *)title
 {
-    if (!self.soul)
-    {
+    if (!self.soul) {
         RecentSet *rec = [RecentSet singleton];
         [rec add:title];
     }
-    else
-    {
+    else {
         self.soulCurId = 0;
     }
 

@@ -105,11 +105,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABF04E98170AB2F2005B2D54 /* libz.dylib in Frameworks */,
 				1A26E79A16F1C81D00EC72E8 /* QuartzCore.framework in Frameworks */,
 				1A1A4A5F16EB123400EF7BBE /* UIKit.framework in Frameworks */,
 				1A1A4A6116EB123400EF7BBE /* Foundation.framework in Frameworks */,
 				1A1A4A6316EB123400EF7BBE /* CoreGraphics.framework in Frameworks */,
+				ABF04E98170AB2F2005B2D54 /* libz.dylib in Frameworks */,
 				69E996E6BFE6461087498C7E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
