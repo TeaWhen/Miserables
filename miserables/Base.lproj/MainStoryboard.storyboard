@@ -105,7 +105,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="tableView" destination="0XG-Oz-uZm" id="hWW-Qh-U1Q"/>
+                        <outlet property="tableView" destination="0XG-Oz-uZm" id="wUf-Vc-Dsk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9F9-3V-SXr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -904,50 +904,6 @@ THE SOFTWARE.</string>
             <point key="canvasLocation" x="2019" y="-393"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="LesFavoritesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesFavoritesViewController.h"/>
-        </class>
-        <class className="LesLibraryViewController" superclassName="QuickDialogController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesLibraryViewController.h"/>
-        </class>
-        <class className="LesRecentsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesRecentsViewController.h"/>
-        </class>
-        <class className="LesTabViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesTabViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="container" candidateClass="UIView"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="LesUnderTheHoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesUnderTheHoodViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="appVersionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="bundleVersionLable" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dbVersionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="libraryTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="noticeContentLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="noticeTimeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="LesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="QuickDialogController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuickDialogController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

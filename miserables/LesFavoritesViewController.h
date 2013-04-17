@@ -10,4 +10,6 @@
 
 @interface LesFavoritesViewController : UITableViewController
 
+- (void)editClicked:(UIBarButtonItem *)sender;
+
 @end

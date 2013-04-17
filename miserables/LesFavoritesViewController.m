@@ -13,6 +13,8 @@
 
 @interface LesFavoritesViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @property FavoriteSet *favoriteSet;
 
 @end
@@ -87,6 +89,21 @@
 }
 
 #pragma mark Table view editing
+
+- (void)editClicked:(UIBarButtonItem *)sender
+{
+    if ([self.tableView isEditing]) {
+        [sender setStyle:UIBarButtonItemStyleBordered];
+        sender.title = @"Edit";
+        [self.tableView setEditing:NO animated:YES];
+    }
+    else
+    {
+        [sender setStyle:UIBarButtonItemStyleDone];
+        sender.title = @"Done";
+        [self.tableView setEditing:YES animated:YES];
+    }
+}
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {

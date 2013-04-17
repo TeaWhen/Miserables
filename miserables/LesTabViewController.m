@@ -42,7 +42,7 @@
     self.libraryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"library"];
     [self addChildViewController:self.libraryVC];
     
-    self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:nil];
+    self.editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editClicked:)];
     self.clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleBordered target:self action:@selector(clearClicked:)];
     self.spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
     NSMutableArray *items = [self.toolbar.items mutableCopy];
@@ -60,6 +60,14 @@
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)editClicked:(UIBarButtonItem *)sender {
+    [self.favoritesVC editClicked:sender];
+}
+
+- (void)clearClicked:(UIBarButtonItem *)sender {
+    [self.recentsVC clear];
 }
 
 enum {
@@ -104,24 +112,6 @@ enum {
         [items insertObject:self.spaceItem atIndex:0];
         self.toolbar.items = items;
     }
-}
-
-- (void)editClicked:(UIBarButtonItem *)sender {
-//    if ([self.tableView isEditing]) {
-//        [sender setStyle:UIBarButtonItemStyleBordered];
-//        sender.title = @"Edit";
-//        [self.tableView setEditing:NO animated:YES];
-//    }
-//    else
-//    {
-//        [sender setStyle:UIBarButtonItemStyleDone];
-//        sender.title = @"Done";
-//        [self.tableView setEditing:YES animated:YES];
-//    }
-}
-
-- (void)clearClicked:(UIBarButtonItem *)sender {
-    [self.recentsVC clear];
 }
 
 @end
