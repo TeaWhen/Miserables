@@ -7,7 +7,6 @@
 //
 
 #import "LesRecentsViewController.h"
-#import "LesPlaceholderCell.h"
 #import "RecentSet.h"
 
 @interface LesRecentsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -39,7 +38,7 @@
     }
     else {
         // placeholder cell
-        return kPlaceholderNth;
+        return 4;
     }
 }
 
@@ -49,21 +48,16 @@
     RecentSet *rec = [RecentSet singleton];
     if ([rec count]) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] init];
-        }
         [cell textLabel].text = [rec list][indexPath.row];
     }
     else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Placeholder"];
-        if (cell == nil) {
-            cell = [[LesPlaceholderCell alloc] init];
-        }
-        if (indexPath.row + 1 == kPlaceholderNth) {
-            [cell label].text = @"No Recents";
+        // 4th is placeholder
+        if (indexPath.row + 1 == 4) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Placeholder"];
         }
         else {
-            [cell label].text = @"";
+            cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+            [cell textLabel].text = @"";
         }
     }
     

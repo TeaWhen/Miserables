@@ -27,7 +27,6 @@
 		1A7D5E0B1707292700CCF834 /* LesRecentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D5E0A1707292700CCF834 /* LesRecentsViewController.m */; };
 		1A839716171541F4006B4D42 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A839714171541F4006B4D42 /* Icon-72.png */; };
 		1A8397191715484A006B4D42 /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A8397181715484A006B4D42 /* Icon-144.png */; };
-		1A84F42017129839006FC0EF /* LesPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F41F17129839006FC0EF /* LesPlaceholderCell.m */; };
 		1A84F4231712A46A006FC0EF /* LesUnderTheHoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F4221712A46A006FC0EF /* LesUnderTheHoodViewController.m */; };
 		1A84F4261712A9D6006FC0EF /* Cosette.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A84F4251712A9D6006FC0EF /* Cosette.m */; };
 		1A874F0016F9534A0050517E /* FavoriteSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A874EFF16F9534A0050517E /* FavoriteSet.m */; };
@@ -74,8 +73,6 @@
 		1A7D5E0A1707292700CCF834 /* LesRecentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesRecentsViewController.m; path = miserables/LesRecentsViewController.m; sourceTree = SOURCE_ROOT; };
 		1A839714171541F4006B4D42 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = SOURCE_ROOT; };
 		1A8397181715484A006B4D42 /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-144.png"; sourceTree = SOURCE_ROOT; };
-		1A84F41E17129839006FC0EF /* LesPlaceholderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesPlaceholderCell.h; path = miserables/LesPlaceholderCell.h; sourceTree = SOURCE_ROOT; };
-		1A84F41F17129839006FC0EF /* LesPlaceholderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesPlaceholderCell.m; path = miserables/LesPlaceholderCell.m; sourceTree = SOURCE_ROOT; };
 		1A84F4211712A46A006FC0EF /* LesUnderTheHoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LesUnderTheHoodViewController.h; path = miserables/LesUnderTheHoodViewController.h; sourceTree = SOURCE_ROOT; };
 		1A84F4221712A46A006FC0EF /* LesUnderTheHoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LesUnderTheHoodViewController.m; path = miserables/LesUnderTheHoodViewController.m; sourceTree = SOURCE_ROOT; };
 		1A84F4241712A9D6006FC0EF /* Cosette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cosette.h; path = miserables/Cosette.h; sourceTree = SOURCE_ROOT; };
@@ -205,8 +202,6 @@
 				1AC2D5CC1719C469006B99F0 /* Favorites */,
 				1AC2D5CD1719C472006B99F0 /* Recents */,
 				1AAD28EE17183A1400F9007C /* Library */,
-				1A84F41E17129839006FC0EF /* LesPlaceholderCell.h */,
-				1A84F41F17129839006FC0EF /* LesPlaceholderCell.m */,
 				1A84F4211712A46A006FC0EF /* LesUnderTheHoodViewController.h */,
 				1A84F4221712A46A006FC0EF /* LesUnderTheHoodViewController.m */,
 			);
@@ -387,7 +382,6 @@
 				1A7D5E0B1707292700CCF834 /* LesRecentsViewController.m in Sources */,
 				BF88057A170B02C900B4E441 /* LesDownloader.m in Sources */,
 				ABF7BCEE170C4CE900EA3A6B /* RecentSet.m in Sources */,
-				1A84F42017129839006FC0EF /* LesPlaceholderCell.m in Sources */,
 				1A84F4231712A46A006FC0EF /* LesUnderTheHoodViewController.m in Sources */,
 				1A84F4261712A9D6006FC0EF /* Cosette.m in Sources */,
 				1A66F12B1716EC0E00989EBA /* LesTabViewController.m in Sources */,
