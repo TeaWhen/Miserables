@@ -7,6 +7,7 @@
 //
 
 #import "LesRecentsViewController.h"
+#import "LesViewController.h"
 #import "RecentSet.h"
 
 @interface LesRecentsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -59,9 +60,22 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
             [cell textLabel].text = @"";
         }
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RecentSet *rec = [RecentSet singleton];
+    if ([rec count]) {
+        NSString *title = [rec list][indexPath.row];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": title}];
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)clear
