@@ -84,12 +84,13 @@ def main():
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
 	res = c.execute('SELECT title FROM Articles')
 	titles = [title[0] for title in res.fetchall()]
-	count = 1
+	count = 0
 	for title in f:
 		title = title.strip()
+		count = count + 1
+		print count, title
 		if title in titles:
 			continue
-		print count, title
 		headers = {'User-agent': 'Mozilla/5.0'}
 		r = requests.get('http://zh.wikipedia.org/w/index.php?title={0}&variant=zh-cn&redirect=no'.format(urllib.quote(title)), headers=headers)
 		html = parse(r.text)
@@ -102,7 +103,6 @@ def main():
 			html_file.write(html)
 
 		insert_article(title, html)
-		count = count + 1
 		if count % 10000 == 0:
 			conn.commit()
 
