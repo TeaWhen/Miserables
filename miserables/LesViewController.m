@@ -153,7 +153,13 @@ static NSOperationQueue *queue;
         else
         {
             RecentSet *rec = [RecentSet singleton];
-            [rec add:title];
+            if ( ![rec exist:title] )
+                [rec add:title];
+            else
+            {
+                [rec remove:title];
+                [rec add:title];
+            }
         }
     }
     else {
