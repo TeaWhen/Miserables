@@ -13,7 +13,7 @@ from threading import Thread
 from Queue import Queue
 import apsw
 
-conn = apsw.connect('articles.db')
+conn = apsw.Connection('articles.db')
 conn.text_factory = str
 cursor = conn.cursor()
 
