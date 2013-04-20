@@ -86,7 +86,7 @@ def run():
 		item = q.get()
 		title = item[1]
 		
-		print item[0], title
+		print item[0], title.encode('utf-8')
 
 		headers = {'User-agent': 'Mozilla/5.0'}
 		r = requests.get('http://zh.wikipedia.org/w/index.php?title={0}&variant=zh-cn&redirect=no'.format(urllib.quote(title)), headers=headers)
