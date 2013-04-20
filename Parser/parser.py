@@ -81,15 +81,19 @@ def parse(html):
 
 def main():
 	open_db()
-	f = open('titles.txt', 'r')
+	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
+	res = c.execute('SELECT title FROM Articles')
+	titles = [title[0] for title in res.fetchall()]
 	count = 1
 	for title in f:
 		title = title.strip()
+		if title in titles:
+			continue
 		print count, title
 		headers = {'User-agent': 'Mozilla/5.0'}
 		r = requests.get('http://zh.wikipedia.org/w/index.php?title={0}&variant=zh-cn&redirect=no'.format(urllib.quote(title)), headers=headers)
 		html = parse(r.text)
-		
+
 		# output HTML file for debug
 		output_dir = os.path.join(os.path.dirname(__file__), 'contents')
 		if not os.path.exists(output_dir):
@@ -99,8 +103,8 @@ def main():
 
 		insert_article(title, html)
 		count = count + 1
-		if count >= 100:
-			break
+		if count % 10000 == 0:
+			conn.commit()
 
 if __name__ == "__main__":
 	try:
