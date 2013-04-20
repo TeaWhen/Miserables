@@ -17,12 +17,11 @@ conn = apsw.Connection('articles.db')
 cursor = conn.cursor()
 
 def open_db():
-	c.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
-	self.start()
+	cursor.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
 
 def insert_article(title, content):
 	compressed = zlib.compress(content)
-	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
+	cursor.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
 	
 def parse(html):
 	soup = BeautifulSoup(html)
