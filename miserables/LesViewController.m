@@ -146,8 +146,15 @@ static NSOperationQueue *queue;
 - (void)loadArticle:(NSString *)title
 {
     if (!self.soul) {
-        RecentSet *rec = [RecentSet singleton];
-        [rec add:title];
+        if ([title isEqualToString:@"Main Page"])
+        {
+            ;
+        }
+        else
+        {
+            RecentSet *rec = [RecentSet singleton];
+            [rec add:title];
+        }
     }
     else {
         self.soulCurId = 0;
@@ -164,6 +171,8 @@ static NSOperationQueue *queue;
         html_body = content;
     }
     else {
+        RecentSet *rec = [RecentSet singleton];
+        [rec remove:title];
         html_body = @"No entry found.";
     }
     
