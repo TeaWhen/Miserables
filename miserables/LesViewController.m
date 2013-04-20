@@ -191,6 +191,7 @@ static NSOperationQueue *queue;
 {
     // disable horizontal scrolling
     [webView.scrollView setContentSize: CGSizeMake(webView.frame.size.width, webView.scrollView.contentSize.height)];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';"];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
