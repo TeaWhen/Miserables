@@ -142,8 +142,6 @@ def main():
 		counter += 1
 		if title not in titles:
 			q.put([counter, title])
-	
-	conn.commit()
 
 if __name__ == "__main__":
 	main()
