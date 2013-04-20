@@ -86,7 +86,7 @@ def run():
 		item = q.get()
 		title = item[1]
 		
-		print item[0], title.encode('utf-8')
+		print item[0], title
 
 		headers = {'User-agent': 'Mozilla/5.0'}
 		r = requests.get('http://zh.wikipedia.org/w/index.php?title={0}&variant=zh-cn&redirect=no'.format(urllib.quote(title)), headers=headers)
@@ -116,9 +116,9 @@ def main():
 
 	counter = 0
 	for title in f:
-		title = title.strip().decode('utf-8')
+		title = title.strip()
 		counter += 1
-		if title not in titles:
+		if title.decode('utf-8') not in titles:
 			q.put([counter, title])
 
 if __name__ == "__main__":
