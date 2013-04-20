@@ -82,7 +82,7 @@ def parse(html):
 	html = re.sub(r'<!--.+?-->', '', html, 0, re.DOTALL)
 	return html
 
-def run():
+def run(t):
 	while True:
 		item = q.get()
 		title = item[1]
@@ -100,7 +100,7 @@ def run():
 		# with open(os.path.join(output_dir, title.replace('/', '-') + '.html'), 'w') as html_file:
 		# 	html_file.write(html)
 		
-		insert_article(title, html, 0)
+		insert_article(title, html, t)
 		q.task_done()
 
 q = Queue()
