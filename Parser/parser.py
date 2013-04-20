@@ -107,7 +107,7 @@ q = Queue()
 def main():
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
 	res = cursor.execute('SELECT title FROM Articles')
-	titles = [title[0] for title in res.fetchall()]
+	titles = [unicode(title[0]) for title in res.fetchall()]
 
 	for i in range(10):
 		t = Thread(target=run)
@@ -118,7 +118,7 @@ def main():
 	for title in f:
 		title = title.strip()
 		counter += 1
-		if title not in titles:
+		if unicode(title) not in titles:
 			q.put([counter, title])
 
 if __name__ == "__main__":
