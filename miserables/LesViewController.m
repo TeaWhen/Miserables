@@ -146,17 +146,16 @@ static NSOperationQueue *queue;
 - (void)loadArticle:(NSString *)title
 {
     if (!self.soul) {
-        if ([title isEqualToString:@"Main Page"])
-        {
+        if ([title isEqualToString:@"Main Page"]) {
             ;
         }
-        else
-        {
+        else {
             RecentSet *rec = [RecentSet singleton];
             if ( ![rec exist:title] )
-                [rec add:title];
-            else
             {
+                [rec add:title];
+            }
+            else {
                 [rec remove:title];
                 [rec add:title];
             }
