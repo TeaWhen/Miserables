@@ -14,14 +14,15 @@ from Queue import Queue
 import apsw
 
 conn = apsw.Connection('articles.db')
-cursor = conn.cursor()
+cursor = []
 
+class Spider(Thread):
 def open_db():
-	cursor.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
+	cursor[0].execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
 
-def insert_article(title, content):
+def insert_article(title, content, t):
 	compressed = zlib.compress(content)
-	cursor.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title.decode('utf-8'), sqlite3.Binary(compressed)))
+	cursor[t].execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title.decode('utf-8'), sqlite3.Binary(compressed)))
 	
 def parse(html):
 	soup = BeautifulSoup(html)
@@ -99,18 +100,19 @@ def run():
 		# with open(os.path.join(output_dir, title.replace('/', '-') + '.html'), 'w') as html_file:
 		# 	html_file.write(html)
 		
-		insert_article(title, html)
+		insert_article(title, html, 0)
 		q.task_done()
 
 q = Queue()
 
 def main():
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
-	res = cursor.execute('SELECT title FROM Articles')
+	res = cursor[0].execute('SELECT title FROM Articles')
 	titles = [title[0] for title in res.fetchall()]
 
 	for i in range(10):
-		t = Thread(target=run)
+		cursor.append(conn.cursor())
+		t = Thread(target=run(i))
 		t.daemon = True
 		t.start()
 
@@ -122,4 +124,8 @@ def main():
 			q.put([counter, title])
 
 if __name__ == "__main__":
-	main()
+	try:
+		main()
+	except KeyboardInterrupt:
+		for i in range(10):
+			cursor[i].commit()
