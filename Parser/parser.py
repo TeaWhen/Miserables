@@ -11,18 +11,13 @@ from bs4 import BeautifulSoup
 import zlib
 from threading import Thread
 from Queue import Queue
-import apsw
+import time
+import random
 
-conn = apsw.Connection('articles.db')
-cursor = []
+THREAD_NUMBER = 5
 
-class Spider(Thread):
-def open_db():
-	cursor[0].execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
-
-def insert_article(title, content, t):
-	compressed = zlib.compress(content)
-	cursor[t].execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title.decode('utf-8'), sqlite3.Binary(compressed)))
+def open_db(cursor):
+	cursor.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
 	
 def parse(html):
 	soup = BeautifulSoup(html)
@@ -82,50 +77,73 @@ def parse(html):
 	html = re.sub(r'<!--.+?-->', '', html, 0, re.DOTALL)
 	return html
 
-def run(t):
+def run():
 	while True:
+		time.sleep(random.random())
+		
 		item = q.get()
 		title = item[1]
-		
+
 		print item[0], title
 
 		headers = {'User-agent': 'Mozilla/5.0'}
 		r = requests.get('http://zh.wikipedia.org/w/index.php?title={0}&variant=zh-cn&redirect=no'.format(urllib.quote(title)), headers=headers)
 		html = parse(r.text)
-	
+
 		# output HTML file for debug
 		# output_dir = os.path.join(os.path.dirname(__file__), 'contents')
 		# if not os.path.exists(output_dir):
 		# 	os.makedirs(output_dir)
 		# with open(os.path.join(output_dir, title.replace('/', '-') + '.html'), 'w') as html_file:
 		# 	html_file.write(html)
-		
-		insert_article(title, html, t)
+
+		result.put([title, html])
 		q.task_done()
 
+def dba():
+	conn = sqlite3.connect('articles.db')
+	conn.text_factory = str
+	cursor = conn.cursor()
+	while True:
+		item = result.get()
+		title, content = item[0], item[1]
+		compressed = zlib.compress(content)
+		cursor.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
+		result.task_done()
+		conn.commit()
+	conn.close()
+
+result = Queue()
 q = Queue()
 
 def main():
+	conn = sqlite3.connect('articles.db')
+	conn.text_factory = str
+	cursor = conn.cursor()
+	
+	open_db(cursor)
+
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
-	res = cursor[0].execute('SELECT title FROM Articles')
+	res = cursor.execute('SELECT title FROM Articles')
 	titles = [title[0] for title in res.fetchall()]
 
-	for i in range(10):
-		cursor.append(conn.cursor())
-		t = Thread(target=run(i))
-		t.daemon = True
+	conn.close()
+
+	t = Thread(target=dba)
+	t.start()
+
+	for i in range(THREAD_NUMBER):
+		t = Thread(target=run)
 		t.start()
 
 	counter = 0
 	for title in f:
 		title = title.strip()
 		counter += 1
-		if title.decode('utf-8') not in titles:
+		if title not in titles:
 			q.put([counter, title])
+	
+	conn.commit()
 
 if __name__ == "__main__":
-	try:
-		main()
-	except KeyboardInterrupt:
-		for i in range(10):
-			cursor[i].commit()
+	main()
