@@ -14,7 +14,7 @@ from Queue import Queue
 import time
 import random
 
-THREAD_NUMBER = 5
+THREAD_NUMBER = 6
 
 def open_db(cursor):
 	cursor.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
@@ -110,7 +110,9 @@ def dba():
 		compressed = zlib.compress(content)
 		cursor.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
 		result.task_done()
-		conn.commit()
+		if random.choice(range(200)) == 0:
+			conn.commit()
+	conn.commit()
 	conn.close()
 
 result = Queue()
@@ -140,7 +142,7 @@ def main():
 	for title in f:
 		title = title.strip()
 		counter += 1
-		if title not in titles:
+		if title not in titles and random.choice(range(200)) == 0 and counter > 900000:
 			q.put([counter, title])
 
 if __name__ == "__main__":
