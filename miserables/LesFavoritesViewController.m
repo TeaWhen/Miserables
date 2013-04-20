@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property FavoriteSet *favoriteSet;
+@property BOOL shouldDisplayPlaceholder;
 
 @end
 
@@ -25,6 +26,12 @@
     [super viewDidLoad];
 
     self.favoriteSet = [FavoriteSet singleton];
+    if ([self.favoriteSet count]) {
+        self.shouldDisplayPlaceholder = NO;
+    }
+    else {
+        self.shouldDisplayPlaceholder = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,12 +48,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([self.favoriteSet count]) {
-        return [self.favoriteSet count];
-    }
-    else {
+    if (self.shouldDisplayPlaceholder) {
+        self.editButton.enabled = NO;
         // placeholder cell
         return 4;
+    }
+    else {
+        self.editButton.enabled = YES;
+        return [self.favoriteSet count];
     }
 }
 
@@ -66,6 +75,7 @@
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
             [cell textLabel].text = @"";
         }
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
     return cell;

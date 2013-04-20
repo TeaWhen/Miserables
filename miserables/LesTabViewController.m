@@ -43,6 +43,7 @@
     [self addChildViewController:self.libraryVC];
     
     self.editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editClicked:)];
+    self.favoritesVC.editButton = self.editButton;
     self.clearButton = [[UIBarButtonItem alloc] initWithTitle:@"Clear" style:UIBarButtonItemStyleBordered target:self action:@selector(clearClicked:)];
     self.spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
     NSMutableArray *items = [self.toolbar.items mutableCopy];
