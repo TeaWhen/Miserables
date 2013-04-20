@@ -222,7 +222,7 @@ static NSOperationQueue *queue;
     for (NSString *title in firstChoice) {
         [self.result addObject:title];
     }
-    NSMutableArray *secondChoice = [articles articlesByKeyword:[@"%" stringByAppendingString:searchText]];
+    NSMutableArray *secondChoice = [articles articlesByKeyword:[[@"%" stringByAppendingString:searchText] stringByAppendingString:@"%"]];
     for (NSString *title in secondChoice) {
         if (![firstChoice containsObject:title]) {
             [self.result addObject:title];

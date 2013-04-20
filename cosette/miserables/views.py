@@ -31,5 +31,6 @@ def library(request):
         "id": library.id,
         "time": library.time.strftime('%Y-%m-%d %H:%M:%S'),
         "url": library.url,
+        "md5": library.md5
     } for library in librarys]
     return response
