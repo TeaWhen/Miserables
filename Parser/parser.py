@@ -20,11 +20,11 @@ def open_db():
 	c.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
 	self.start()
 
-def insert_article(self, title, content):
+def insert_article(title, content):
 	compressed = zlib.compress(content)
 	c.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
 	
-def parse(self, html):
+def parse(html):
 	soup = BeautifulSoup(html)
 	html = soup.body.find(id='mw-content-text')
 	scr = html.find_all('script')
@@ -109,7 +109,7 @@ def main():
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
 	res = cursor.execute('SELECT title FROM Articles')
 	titles = [title[0] for title in res.fetchall()]
-	
+
 	for i in range(10):
 		t = Thread(target=run)
 		t.daemon = True
