@@ -21,7 +21,7 @@ def open_db():
 
 def insert_article(title, content):
 	compressed = zlib.compress(content)
-	cursor.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title, sqlite3.Binary(compressed)))
+	cursor.execute('INSERT INTO Articles (title, content) VALUES (?, ?)', (title.decode('utf-8'), sqlite3.Binary(compressed)))
 	
 def parse(html):
 	soup = BeautifulSoup(html)
