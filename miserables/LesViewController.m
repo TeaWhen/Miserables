@@ -151,7 +151,7 @@ static NSOperationQueue *queue;
         }
         else {
             RecentSet *rec = [RecentSet singleton];
-            if ( ![rec exist:title] )
+            if (![rec exist:title])
             {
                 [rec add:title];
             }
