@@ -218,8 +218,15 @@ static NSOperationQueue *queue;
 {
     self.result = [[NSMutableArray alloc] init];
     ArticleSet *articles = [ArticleSet singleton];
-    for (NSString *title in [articles articlesByKeyword:searchText]) {
+    NSMutableArray *firstChoice = [articles articlesByKeyword:searchText];
+    for (NSString *title in firstChoice) {
         [self.result addObject:title];
+    }
+    NSMutableArray *secondChoice = [articles articlesByKeyword:[@"%" stringByAppendingString:searchText]];
+    for (NSString *title in secondChoice) {
+        if (![firstChoice containsObject:title]) {
+            [self.result addObject:title];
+        }
     }
     [self.tableView reloadData];
 }
