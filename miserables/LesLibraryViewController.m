@@ -14,6 +14,7 @@
 #import "LesDownloader.h"
 #import "QuickDialog.h"
 #import "QProgressElement.h"
+#import "Cosette.h"
 
 @interface LesLibraryViewController () <LesDownloaderDelegate>
 
@@ -42,6 +43,20 @@
     
     self.downloader = [LesDownloader singleton];
     self.downloader.delegate = self;
+    
+    self.updateButton.enabled = NO;
+    self.updateButton.title = @"Checking Update...";
+    [[Cosette me] requestLibrariesWithSuccess:^(id JSON) {
+#warning Incomplete
+        self.downloader.url = [NSURL URLWithString:JSON[0][@"url"]];
+        self.downloader.md5 = JSON[0][@"md5"];
+        
+        self.updateButton.enabled = YES;
+        self.updateButton.title = @"Update Now";
+        [self.quickDialogTableView reloadData];
+    } failure:^(NSError *error) {
+        ;
+    }];
 }
 
 - (void)loadDialog

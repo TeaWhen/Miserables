@@ -25,6 +25,8 @@
 
 @property id<LesDownloaderDelegate> delegate;
 @property BOOL downloaded;
+@property NSURL *url;
+@property NSString *md5;
 
 // TODO
 - (void)pause;
