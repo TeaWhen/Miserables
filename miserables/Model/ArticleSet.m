@@ -87,10 +87,16 @@
 
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword
 {
-    FMResultSet *rs = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", keyword]];
+    FMResultSet *firstChoices = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", keyword]];
     NSMutableArray *articles = [[NSMutableArray alloc] init];
-    while ([rs next]) {
-        NSString *title = [rs stringForColumn:@"title"];
+    while ([firstChoices next]) {
+        NSString *title = [firstChoices stringForColumn:@"title"];
+        [articles addObject:title];
+    }
+    
+    FMResultSet *secondChoices = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%%_%@%%", keyword]];
+    while ([secondChoices next]) {
+        NSString *title = [secondChoices stringForColumn:@"title"];
         [articles addObject:title];
     }
 
