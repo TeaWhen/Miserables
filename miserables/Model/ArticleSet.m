@@ -85,6 +85,27 @@
     [self open];
 }
 
+#warning TODO: Second choices.
+- (NSInteger)countForSearch
+{
+    FMResultSet *rs = [self.DB executeQuery:@"SELECT COUNT(*) FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", self.searchTerm]];
+    if ([rs next]) {
+        return [rs intForColumnIndex:0];
+    }
+    return 0;
+}
+
+- (NSString *)resultAtRow:(NSInteger)row
+{
+    FMResultSet *rs = [self.DB executeQuery:@"SELECT title FROM Articles WHERE title LIKE ? LIMIT ?, 1",
+                       [NSString stringWithFormat:@"%@%%", self.searchTerm],
+                       [NSString stringWithFormat:@"%d", row]];
+    if ([rs next]) {
+        return [rs stringForColumn:@"title"];
+    }
+    return nil;
+}
+
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword
 {
     NSMutableArray *articles = [[NSMutableArray alloc] init];

@@ -25,7 +25,6 @@ NSString * const kLesReloadArticleNotification = @"LesReloadArticle";
 @property (strong, nonatomic) NSString *title;
 @property bool soul;
 @property int soulCurId;
-@property (strong, nonatomic) NSMutableArray *result;
 
 - (void)loadArticle:(NSString *)title;
 - (void)handleLoadArticle:(NSNotification *)note;
@@ -216,11 +215,7 @@ static NSOperationQueue *queue;
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    self.result = [[NSMutableArray alloc] init];
-    ArticleSet *articles = [ArticleSet singleton];
-    for (NSString *title in [articles articlesByKeyword:searchText]) {
-        [self.result addObject:title];
-    }
+    [ArticleSet singleton].searchTerm = searchText;
     [self.tableView reloadData];
 }
 
@@ -273,7 +268,7 @@ static NSOperationQueue *queue;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.result.count;
+    return [[ArticleSet singleton] countForSearch];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -283,13 +278,13 @@ static NSOperationQueue *queue;
         cell = [[UITableViewCell alloc] init];
     }
     
-	cell.textLabel.text = self.result[indexPath.row];
+	cell.textLabel.text = [[ArticleSet singleton] resultAtRow:indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *title = self.result[indexPath.row];
+    NSString *title = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
     [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": title}];
 }
 
