@@ -87,17 +87,26 @@
 
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword
 {
-    FMResultSet *firstChoices = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", keyword]];
     NSMutableArray *articles = [[NSMutableArray alloc] init];
+    
+    FMResultSet *firstChoices;
+    if ([keyword isEqualToString:@""]) {
+        firstChoices = [self.DB executeQuery:@"SELECT title FROM Articles"];
+    }
+    else {
+        firstChoices = [self.DB executeQuery:@"SELECT title FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%@%%", keyword]];
+    }
     while ([firstChoices next]) {
         NSString *title = [firstChoices stringForColumn:@"title"];
         [articles addObject:title];
     }
     
-    FMResultSet *secondChoices = [self.DB executeQuery:@"SELECT * FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%%_%@%%", keyword]];
-    while ([secondChoices next]) {
-        NSString *title = [secondChoices stringForColumn:@"title"];
-        [articles addObject:title];
+    if (![keyword isEqualToString:@""]) {
+        FMResultSet *secondChoices = [self.DB executeQuery:@"SELECT title FROM Articles WHERE title LIKE ?", [NSString stringWithFormat:@"%%_%@%%", keyword]];
+        while ([secondChoices next]) {
+            NSString *title = [secondChoices stringForColumn:@"title"];
+            [articles addObject:title];
+        }
     }
 
     return articles;
