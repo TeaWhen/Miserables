@@ -135,7 +135,7 @@
         message = error.localizedDescription;
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download failure" message:message delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Download Failed" message:message delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
     [alert show];
     
     self.downloadProgress.hidden = YES;
