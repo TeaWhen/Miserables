@@ -23,6 +23,7 @@ NSString * const kLesReloadArticleNotification = @"LesReloadArticle";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSString *title;
+@property NSString *searchTerm;
 @property bool soul;
 @property int soulCurId;
 
@@ -124,6 +125,8 @@ static NSOperationQueue *queue;
 {
     [self.searchBar resignFirstResponder];
     self.tableView.hidden = YES;
+    self.tableView.scrollsToTop = NO;
+    self.webView.scrollView.scrollsToTop = YES;
     
     self.soul = false;
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
@@ -210,13 +213,19 @@ static NSOperationQueue *queue;
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     self.tableView.hidden = NO;
+    self.tableView.scrollsToTop = YES;
+    self.webView.scrollView.scrollsToTop = NO;
     [self searchBar:self.searchBar textDidChange:searchBar.text];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    [ArticleSet singleton].searchTerm = searchText;
-    [self.tableView reloadData];
+    if (![searchText isEqualToString:self.searchTerm]) {
+        self.searchTerm = searchText;
+        [ArticleSet singleton].searchTerm = searchText;
+        [self.tableView reloadData];
+        [self.tableView setContentOffset:CGPointZero];
+    }
 }
 
 - (void)searchBarBookmarkButtonClicked:(UISearchBar *)searchBar
@@ -229,7 +238,6 @@ static NSOperationQueue *queue;
     NSString *title = [self.searchBar text];
     [[NSNotificationCenter defaultCenter] postNotificationName:kLesLoadArticleNotification object:self userInfo:@{@"title": title}];
     [searchBar resignFirstResponder];
-    self.tableView.hidden = YES;
 }
 
 - (void)setSearchIconToFavorites
