@@ -11,9 +11,14 @@
 #import "FMResultSet.h"
 #import "NSData+Godzippa.h"
 
+const NSInteger cacheSize = 100;
+
 @interface ArticleSet ()
 
 @property FMDatabase *DB;
+@property NSInteger cacheOffset;
+@property NSMutableArray *cachedResult;
+
 - (void)initDB;
 
 @end
@@ -85,6 +90,12 @@
     [self open];
 }
 
+- (void)setSearchTerm:(NSString *)searchTerm
+{
+    _searchTerm = searchTerm;
+    self.cachedResult = nil;
+}
+
 #warning TODO: Second choices.
 - (NSInteger)countForSearch
 {
@@ -97,15 +108,23 @@
 
 - (NSString *)resultAtRow:(NSInteger)row
 {
-    FMResultSet *rs = [self.DB executeQuery:@"SELECT title FROM Articles WHERE title LIKE ? LIMIT ?, 1",
-                       [NSString stringWithFormat:@"%@%%", self.searchTerm],
-                       [NSString stringWithFormat:@"%d", row]];
-    if ([rs next]) {
-        return [rs stringForColumn:@"title"];
+    if (self.cachedResult && row >= self.cacheOffset && row < self.cacheOffset + cacheSize) {
+        return self.cachedResult[row - self.cacheOffset];
     }
-    return nil;
+
+    self.cacheOffset = MAX(row - cacheSize / 2, 0);
+    FMResultSet *rs = [self.DB executeQuery:@"SELECT title FROM Articles WHERE title LIKE ? LIMIT ?, ?",
+                       [NSString stringWithFormat:@"%@%%", self.searchTerm],
+                       [NSString stringWithFormat:@"%d", self.cacheOffset],
+                       [NSString stringWithFormat:@"%d", cacheSize]];
+    self.cachedResult = [[NSMutableArray alloc] init];
+    while ([rs next]) {
+        [self.cachedResult addObject:[rs stringForColumn:@"title"]];
+    }
+    return self.cachedResult[row - self.cacheOffset];
 }
 
+#warning Deprecated.
 - (NSMutableArray *)articlesByKeyword:(NSString *)keyword
 {
     NSMutableArray *articles = [[NSMutableArray alloc] init];

@@ -10,7 +10,7 @@
 
 @interface ArticleSet : NSObject
 
-@property NSString *searchTerm;
+@property (nonatomic) NSString *searchTerm;
 
 + (ArticleSet *)singleton;
 - (void)open;
@@ -19,7 +19,6 @@
 
 - (NSInteger)countForSearch;
 - (NSString *)resultAtRow:(NSInteger)row;
-- (NSMutableArray *)articlesByKeyword:(NSString *)keyword;
 - (NSString *)articleByTitle:(NSString *)title;
 - (NSInteger)count;
 
