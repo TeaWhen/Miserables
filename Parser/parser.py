@@ -14,7 +14,7 @@ from Queue import Queue
 import time
 import random
 
-THREAD_NUMBER = 6
+THREAD_NUMBER = 50
 
 def open_db(cursor):
 	cursor.execute('CREATE TABLE IF NOT EXISTS Articles (title TEXT, content BLOB)')
@@ -79,15 +79,15 @@ def parse(html):
 
 def run():
 	while True:
-		time.sleep(random.random())
-		
+		# time.sleep(random.random())
+
 		item = q.get()
 		title = item[1]
 
 		print item[0], title
 
 		headers = {'User-agent': 'Mozilla/5.0'}
-		r = requests.get('http://zh.wikipedia.org/w/index.php?title={0}&variant=zh-cn&redirect=no'.format(urllib.quote(title)), headers=headers)
+		r = requests.get('http://127.0.0.1/wiki/index.php?title={0}&variant=zh-cn&redirect=yes'.format(urllib.quote(title)), headers=headers)
 		html = parse(r.text)
 
 		# output HTML file for debug
@@ -122,7 +122,7 @@ def main():
 	conn = sqlite3.connect('articles.db')
 	conn.text_factory = str
 	cursor = conn.cursor()
-	
+
 	open_db(cursor)
 
 	f = open('zhwiki-latest-all-titles-in-ns0', 'r')
@@ -142,7 +142,7 @@ def main():
 	for title in f:
 		title = title.strip()
 		counter += 1
-		if title not in titles and random.choice(range(200)) == 0 and counter > 900000:
+		if title not in titles and random.choice(range(10)) == 0:
 			q.put([counter, title])
 
 if __name__ == "__main__":
